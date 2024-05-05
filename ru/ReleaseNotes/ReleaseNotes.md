@@ -98,14 +98,14 @@ Stride 4.2 включает в себя многочисленные усове�
 * Fixes OpenGL by @MaximilianEmel in https://github.com/stride3d/stride/pull/2023
 * Update dotnet 8 by @Doprez in https://github.com/stride3d/stride/pull/1616
 
-## New Contributors
-* @adrsch made their first contribution in https://github.com/stride3d/stride/pull/1920
-* @froce made their first contribution in https://github.com/stride3d/stride/pull/1788
-* @Fydar made their first contribution in https://github.com/stride3d/stride/pull/1941
-* @WojciechNagorski made their first contribution in https://github.com/stride3d/stride/pull/1951
-* @Schossi made their first contribution in https://github.com/stride3d/stride/pull/1811
-* @MaximilianEmel made their first contribution in https://github.com/stride3d/stride/pull/1956
-* @ch3mbot made their first contribution in https://github.com/stride3d/stride/pull/1769
+## Новые участники
+* @adrsch внес первый вклад в https://github.com/stride3d/stride/pull/1920
+* @froce внес первый вклад в https://github.com/stride3d/stride/pull/1788
+* @Fydar внес первый вклад в https://github.com/stride3d/stride/pull/1941
+* @WojciechNagorski внес первый вклад в https://github.com/stride3d/stride/pull/1951
+* @Schossi внес первый вклад в https://github.com/stride3d/stride/pull/1811
+* @MaximilianEmel внес первый вклад в https://github.com/stride3d/stride/pull/1956
+* @ch3mbot внес первый вклад в https://github.com/stride3d/stride/pull/1769
 
 ## Обзор функций Stride 4.2
 
@@ -172,18 +172,18 @@ End Module
 
 ## Исправления
 Хотя было [много исправлений](**https://github.com/stride3d/stride/pulls?page=2&q=is%3Apr+merged%3A%3E2023-10-10**), мы хотели бы отметить некоторые из них
-- [Runtime rasterized fonts are broken #1750](https://github.com/stride3d/stride/issues/1750)
-- [Game Studio doesnt reload sub projects after changes #1703](https://github.com/stride3d/stride/issues/1703)
-- [Changing the comparison project related and not UPath related #1704](https://github.com/stride3d/stride/pull/1704)
-- [Translations fix #1717](https://github.com/stride3d/stride/pull/1717)
-- [C# Beginner Tutorial Build Errors #1652](https://github.com/stride3d/stride/issues/1652)
-- [Can not create "C# Beginner" project #1650](https://github.com/stride3d/stride/issues/1650)
+- [Растрированные шрифты во время выполнения не работают #1750](https://github.com/stride3d/stride/issues/1750)
+- [Game Studio не перезагружает подпроекты после изменений #1703](https://github.com/stride3d/stride/issues/1703)
+- [Изменение проекта сравнения, связанного с проектом сравнения, а не с UPath #1704](https://github.com/stride3d/stride/pull/1704)
+- [Исправление переводов #1717](https://github.com/stride3d/stride/pull/1717)
+- [Примеры C# начинающий Ошибки сборки #1652](https://github.com/stride3d/stride/issues/1652)
+- [Невозможно создать проект "C# Начинающий" #1650](https://github.com/stride3d/stride/issues/1650)
 
 ## Также полезно знать
-Although not directly tied to Release 4.2, we have made some other big changes. For instance to our website and documentation. We also had another community meeting to address all those new members.
-- [Website and documentation revamped and build process updated](https://www.stride3d.net/blog/announcing-website-update/)
-- [Contributor section moved to docs](https://doc.stride3d.net/latest/en/contributors/index.html)
-- [Community meeting October 2023](https://www.stride3d.net/blog/community-meeting-october-2023/)
+Хотя это и не связано напрямую с версией 4.2, мы внесли и другие большие изменения. Например, на наш веб-сайт и в документацию. У нас также было еще одно собрание сообщества, на котором мы обратились ко всем этим новым членам.
+- [Обновлен веб-сайт и документация, а также обновлен процесс сборки](https://www.stride3d.net/blog/announcing-website-update/)
+- [Раздел для авторов перемещен в документацию](https://doc.stride3d.net/latest/en/contributors/index.html)
+- [Встреча сообщества, октябрь 2023 г.](https://www.stride3d.net/blog/community-meeting-october-2023/)
 
-## Acknowledgements
-We extend our heartfelt gratitude for all the hard work and donations that have been made. Your generous contributions significantly aid in the continuous development and enhancement of the Stride community and projects. Thank you for your support and belief in our collective efforts.
+## Благодарности
+Мы выражаем нашу сердечную благодарность за всю тяжелую работу и пожертвования, которые были сделаны. Ваш щедрый вклад значительно помогает постоянному развитию и совершенствованию сообщества и проектов Stride. Спасибо за вашу поддержку и веру в наши коллективные усилия.
