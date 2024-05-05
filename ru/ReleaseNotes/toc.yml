@@ -1,0 +1,28 @@
+- name: Примечание к выпуску 4.2
+  href: ReleaseNotes.md
+- name: Примечание к выпуску 4.1
+  href: ReleaseNotes-4.1.md
+- name: Примечание к выпуску 4.0
+  href: ReleaseNotes-4.0.md
+- name: Примечание к выпуску 3.1
+  href: ReleaseNotes-3.1.md
+- name: Примечание к выпуску 3.0
+  href: ReleaseNotes-3.0.md
+- name: Примечание к выпуску 2.1
+  href: ReleaseNotes-2.1.md
+- name: Примечание к выпуску 2.0
+  href: ReleaseNotes-2.0.md
+- name: Примечание к выпуску 1.10
+  href: ReleaseNotes-1.10.md
+- name: Примечание к выпуску 1.9
+  href: ReleaseNotes-1.9.md
+- name: Примечание к выпуску 1.8
+  href: ReleaseNotes-1.8.md
+- name: Примечание к выпуску 1.7
+  href: ReleaseNotes-1.7.md
+- name: Примечание к выпуску 1.6
+  href: ReleaseNotes-1.6.md
+- name: Примечание к выпуску 1.5
+  href: ReleaseNotes-1.5.md
+- name: Примечание к выпуску 1.4
+  href: ReleaseNotes-1.4.md
