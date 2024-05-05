@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>エミッター | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="エミッター | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/emitters.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="エミッター">エミッター</h1>
+
+<!--
+# Emitters
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><strong>パーティクル エミッター（Perticle emitter）</strong> は、エフェクトに含まれるパーティクルの数、表示・移動・消滅方法、描画方法を管理します。例えば、炎のエフェクトは、炎、余炎、煙の 3 つのパーティクルエフェクトで構成されています。これらのエフェクトは、別々のパーティクルエミッターで管理されます。</p>
+<!--
+**Particle emitters** manage how many particles are in an effect, how they appear, move, and disappear, and how they are drawn. For example, a fire effect might be composed of three separate particle effects: flames, embers, and smoke. Each of these effects is managed by a separate particle emitter.
+-->
+<p>エミッターには、<a href="spawners.html">スポナー（spawners）</a>、<a href="initializers.html">イニシャライザー（initializers）</a>、<a href="updaters.html">アップデーター（updaters）</a>などのコントロールが含まれています。</p>
+<!--
+Emitters contain further controls such as [spawners](spawners.md), [initializers](initializers.md), and [updaters](updaters.md).
+-->
+<p><img src="media/particles-reference-emitters-1.png" alt="media/particles-reference-emitters-1.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emitter Name</td>
+<td>パーティクルエミッターの一意な識別子。</td>
+</tr>
+<tr>
+<td>Max particles</td>
+<td>パーティクルのスポーンレートと寿命に基づいて、エミッターが所定の時間に管理できるアクティブなパーティクルの最大数です。これを 0 にしておくと、Stride は独自の推定値を使用します。</td>
+</tr>
+<tr>
+<td>Lifespan</td>
+<td>新しいパーティクルは、X 値と Y 値の間のライフスパンを持ちます。</td>
+</tr>
+<tr>
+<td>Space</td>
+<td><strong>World</strong> 空間にあるパーティクルは、エミッターが遠ざかってもワールド空間に留まります。<strong>Local</strong> 空間にあるパーティクルは、常にエミッターのローカル座標系に存在します（エミッターが移動、回転、拡大縮小すると、パーティクルもそれに合わせて移動します）。</td>
+</tr>
+<tr>
+<td>Randomize</td>
+<td>パーティクルは、ランダム性を要求するすべての値に疑似乱数を使用します。<strong>Time</strong> を指定すると、様々なエミッターが様々な乱数を生成します。<strong>Fixed</strong> を指定すると、同じエフェクトの異なるインスタンスは同じように動作します。<strong>Position</strong> は Fixed と同じように動作しますが、位置によって動作が異なります。</td>
+</tr>
+<tr>
+<td>Draw priority</td>
+<td>パーティクルの描画の順番をコントロールします。数字が大きいほど優先順位が高くなります。例えば、このパーティクルエフェクトの描画優先度が 2 である場合には、描画優先度が 1 のパーティクルエフェクトの後に描画されます。</td>
+</tr>
+<tr>
+<td>Sorting</td>
+<td>パーティクルの描画の順番を並び替えます。<strong>ByDepth</strong>（カメラから遠ざかる）、<strong>ByAge</strong>（最初に生成されたパーティクルが上に描画される）、<strong>ByOrder</strong>、<strong>None</strong>（ソートの必要がない加算パーティクルに適しています）のいずれかを指定します。</td>
+</tr>
+<tr>
+<td>Shape</td>
+<td>パーティクルの描画に使用する<a href="shapes.html">シェイプ</a>を指定します。</td>
+</tr>
+<tr>
+<td>Material</td>
+<td>パーティクルのレンダリングに使用する<a href="material.md">マテリアル</a>を指定します。</td>
+</tr>
+<tr>
+<td>Spawners</td>
+<td><a href="spawners.html">スポナー</a>は、新しいパーティクルの放出速度をコントロールします。パーティクルを放出するには、エミッターには少なくとも 1 つのスポナーが必要です。</td>
+</tr>
+<tr>
+<td>Initializers</td>
+<td><a href="initializers.html">イニシャライザー</a> は、新しいパーティクルの初期値を設定します。</td>
+</tr>
+<tr>
+<td>Updaters</td>
+<td><a href="updaters.html">アップデーター</a>は、フレームごとに生きているパーティクルを更新し、その属性を変更します。アップデーターは、リストに表示されている順に実行されます。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property         | Description
+| ---------------- | -----------
+| Emitter name     | A unique identifier for the particle emitter
+| Max particles    | The maximum number of active particles the emitter can manage at a given time, based on the particles' spawn rate and lifespan. If you leave this at 0, Stride uses its own estimate.
+| Lifespan         | New particles have a lifespan between these two values
+| Space            | Particles in **world** space remain in the world space when the emitter moves away from them. Particles in **local** space always exist in the emitter's local coordinate system; if the emitter moves, rotates, or scales, the particles move with it.
+| Randomize        | Particles use pseudo-random values for everything which requires randomness. If you set this to **Time**, different emitters generate different random numbers. If you set it to **Fixed**, different instances of the same effect behave identically. **Position** acts as Fixed but is different for different positions.
+| Draw priority    |  This controls the order in which particles are drawn. Higher numbers have higher priority. For example, if this particle effect has a draw priority of 2, it will be drawn after a particle effect with a draw priority of 1.
+| Sorting          | Choose if the articles should be drawn by **depth** (away from the camera), **age** (particles spawned first are drawn on top), **order**, or in no order **none** (good for additive particles, which need no sorting). |
+| Shape            | Specifies the [shape](shapes.md) used to draw the particles
+| Material         | Specifies the [material](materials.md) used to render the particles
+| Spawners         | [Spawners](spawners.md) control how quickly new particles are emitted. To emit particles, emitters must have at least one spawner.
+| Initializers     | [Initializers](initializers.md) set the initial values of new particles
+| Updaters         | [Updaters](updaters.md) update living particles every frame, changing their attributes. Updaters execute in the order in which they appear on the list.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="create-particles.html">パーティクルの作成</a></li>
+<li><a href="shapes.html">シェイプ</a></li>
+<li><a href="materials.html">マテリアル</a></li>
+<li><a href="spawners.html">スポナー</a></li>
+<li><a href="initializers.html">イニシャライザー</a></li>
+<li><a href="updaters.html">アップデーター</a></li>
+</ul>
+<!--
+* [Create particles](create-particles.md)
+
+* [Shapes](shapes.md)
+
+* [Materials](materials.md)
+
+* [Spawners](spawners.md)
+
+* [Initializers](initializers.md)
+
+* [Updaters](updaters.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/emitters.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

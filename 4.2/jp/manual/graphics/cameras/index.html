@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>カメラ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="カメラ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/cameras/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="カメラ">カメラ</h1>
+
+<!--
+# Cameras
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Designer</span>
+-->
+<p><strong>カメラ</strong>は、シーンを切り取ってプレイヤーに表示します。カメラがないと、ゲーム内では何も見ることができません。</p>
+<p>シーンにはカメラの数に制限はありません。</p>
+<!--
+**Cameras** capture your scene and display it to the player. Without cameras, you can't see anything in your game. 
+
+You can have an unlimited number of cameras in your scene.
+-->
+<h2 id="game-studio-でカメラを作る">Game Studio でカメラを作る</h2>
+<!--
+## Create a camera in Game Studio
+-->
+<p><strong>シーンエディタ</strong>内の何もないところを右クリックして <strong>Camera</strong> を選択し、さらに、作成したいカメラの種類を選択します（<strong>Perspective</strong>または<strong>Orthographic</strong>）。</p>
+<!--
+In the Scene Editor, right-click and select **Camera**, then choose the kind of camera you want to create (**perspective** or **orthographic**).
+-->
+<p><img src="media/add-camera.png" alt="Add camera"></p>
+<p>Game Studio は、カメラコンポーネントがアタッチされたエンティティを作成します。</p>
+<p>あるいは、カメラにしたいエンティティを選択し、<strong>プロパティグリッド</strong>で [<strong>Add component</strong>] をクリックして <strong>Camera</strong> を選択します。</p>
+<!--
+Game Studio creates an entity with a camera component attached.
+
+Alternatively, select the entity you want to be a camera, and in the **Property Grid**, click **Add component** and select **Camera**.
+-->
+<p><img src="media/add-camera-component.png" alt="Add a camera component"></p>
+<h2 id="カメラのプロパティ">カメラのプロパティ</h2>
+<!--
+## Camera properties
+-->
+<p><img src="media/camera-properties.png" alt="Camera properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Projection</td>
+<td>カメラが使用する投影の種類（透視投影（Perspective）または平行投影（Orthographic）</td>
+</tr>
+<tr>
+<td>Field of view</td>
+<td>垂直方向の視野（単位：度）。透視投影を使う場合に指定します。</td>
+</tr>
+<tr>
+<td>Orthographic Size</td>
+<td>平行投影の高さ（幅はターゲットの比率に基づいて自動的に計算されます）。平行投影を使う場合に指定します。これには、ズームイン、ズームアウトの効果があります。</td>
+</tr>
+<tr>
+<td>Near Clip Plane</td>
+<td>カメラで見ることのできる最も近い点</td>
+</tr>
+<tr>
+<td>Far Clip Plane</td>
+<td>カメラで見ることのできる最も遠い点</td>
+</tr>
+<tr>
+<td>Custom aspect ratio</td>
+<td>カスタムアスペクト比オプション。有効にしない場合は、自動的にレンダーターゲットの比率に調整されます。</td>
+</tr>
+<tr>
+<td>Aspect Ratio</td>
+<td>カスタムアスペクト比。<strong>Custom aspect ratio</strong>オプションを有効にした場合に指定します。</td>
+</tr>
+<tr>
+<td>Slot</td>
+<td>グラフィックスコンポジターで使用されるカメラスロット。詳細については<a href="camera-slots.html">カメラ スロット</a>を参照してください。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property            | Description                                       
+|---------------------|--------------------------------------------------
+| Projection          | The type of projection used by the camera (perspective or orthographic)
+| Field of view (degrees)      | The vertical field of view used for perspective projection
+| Orthographic size   | The height of the orthographic projection (the orthographic width is automatically calculated based on the target ratio). This has the effect of zooming in and out
+| Near clip plane     | The nearest point the camera can see
+| Far clip plane      | The furthest point the camera can see
+| Custom aspect ratio | Use a custom aspect ratio you specify.  Otherwise, automatically adjust the aspect ratio to the render target ratio
+| Custom aspect ratio | The aspect ratio for the camera (when the **Custom aspect ratio** option is selected)
+| Slot                | The camera slot used in the graphics compositor. For more information, see [Camera slots](camera-slots.md)
+-->
+<h2 id="透視投影カメラと平行投影カメラ">透視投影カメラと平行投影カメラ</h2>
+<!--
+## Perspective and orthographic cameras
+-->
+<p><strong>透視投影（perspective）カメラ</strong>は、シーン内のオブジェクトの「実世界」の透視投影を提供します。このビューでは、カメラの近くにあるオブジェクトが大きく見えたり、同じ長さの線が現実とは異なる長さの線になって見えたりします。透視投影カメラは、三人称視点や一人称視点のゲームなど、リアルな遠近法を必要とするゲームに最もよく使用されます。</p>
+<!--
+**Perspective cameras** provide a "real-world" perspective of the objects in your scene. In this view, objects close to the camera appear larger, and lines of identical lengths appear different due to foreshortening, as in reality. Perspective cameras are most used for games that require a realistic perspective, such as third-person and first-person games.
+-->
+<p><strong>平行投影（orthographic）カメラ</strong>では、対象物の大きさは、カメラからの距離に関わらず常に同じです。平行線が接触することはなく、消失点もありません。平行投影カメラは、戦略ゲームや <a href="https://ja.wikipedia.org/wiki/4X">4X ゲーム</a>、ロールプレイングゲームなど、アイソメトリック視点のゲームに最もよく使用されます。</p>
+<!--
+With **orthographic cameras**, objects are always the same size, no matter their distance from the camera. Parallel lines never touch, and there's no vanishing point. Orthographic cameras are most used for games with isometric perspectives, such as some strategy, 4X, or role-playing games.
+-->
+<p><img src="../../game-studio/media/perspective-orthographic-diagram.png" alt="Perspective and orthographic diagram"></p>
+<table>
+<thead>
+<tr>
+<th>透視投影（perspective）</th>
+<th>平行投影（orthographic）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/perspective-screenshot.png" alt="Perspective view"></td>
+<td><img src="media/orthographic-screenshot.png" alt="Orthographic view"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| Perspective  | Orthographic
+|--------------|------------
+| ![Perspective view](media/perspective-screenshot.png)| ![Orthographic view](media/orthographic-screenshot.png)
+-->
+<h3 id="視野field-of-view-透視投影モードのみ">視野（Field of view; 透視投影モードのみ）</h3>
+<!--
+### Field of view (perspective mode only)
+-->
+<p>カメラが<strong>透視投影</strong>モードに設定されている場合、**視野（firld of view）**は、カメラの内部構造を変化させ、シーンのズームインとズームアウトを行う効果があります。高設定（90 以上）では、視野は引き伸ばされた「魚眼レンズ」のようなビューになります。デフォルト設定は 45 です。</p>
+<!--
+When the camera is set to **perspective** mode, the **field of view** changes the camera frustum, and has the effect of zooming in and out of the scene. At high settings (90 and above), the field of view creates stretched "fish-eye lens" views. The default setting is 45.
+-->
+<table>
+<thead>
+<tr>
+<th>視野: 45 (既定値)</th>
+<th>視野: 90</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/perspective-screenshot.png" alt="Default FOV"></td>
+<td><img src="media/90-degree-fov.png" alt="High FOV"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| Field of view: 45 (default) | Field of view: 90
+|-----------------------------|------------------
+| ![Default FOV](media/perspective-screenshot.png)| ![High FOV](media/90-degree-fov.png)
+-->
+<h3 id="平行投影サイズ平行投影モードのみ">平行投影サイズ（平行投影モードのみ）</h3>
+<!--
+### Orthographic size (orthographic mode only)
+-->
+<p>カメラが<strong>平行投影</strong>モードに設定されている場合、**平行投影サイズ（orthographic size）**は、ズームインとズームアウトの効果があります。</p>
+<!--
+When the camera is set to **orthographic** mode, the **orthographic size** has the effect of zooming in and out.
+-->
+<table>
+<thead>
+<tr>
+<th>平行投影サイズ: 10 (既定値)</th>
+<th>平行投影サイズ: 50</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/orthographic-size-10.png" alt="Default FOV"></td>
+<td><img src="media/orthographic-size-50.png" alt="High FOV"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| Orthographic size: 10 (default) | Orthographic size: 50
+|-----------------------------|------------------
+| ![Default FOV](media/orthographic-size-10.png)| ![High FOV](media/orthographic-size-50.png)
+-->
+<h2 id="近面と遠面">近面と遠面</h2>
+<!--
+## Near and far planes
+-->
+<p>近い平面と遠い平面で、カメラの視野の始まりと終わりが決まります。</p>
+<!--
+The near and far planes determine where the camera's view begins and ends.
+-->
+<ul>
+<li><p>**近面（near plane）**は、カメラが映すことのできる最も近い点です。既定値は 0.1 です。この点より手前にあるオブジェクトは描画されません。</p>
+</li>
+<li><p>**遠面（far plane）**は、描画距離とも言われ、カメラが写すことのできる最も遠い点です。この点より遠くにあるオブジェクトは描画されません。既定値は 1000 です。</p>
+</li>
+</ul>
+<!--
+* The **near plane** is the closest point the camera can see. The default setting is 0.1. Objects before this point aren't drawn.
+
+* The **far plane**, also known as the draw distance, is the furthest point the camera can see. Objects beyond this point aren't drawn. The default setting is 1000.
+-->
+<p>Stride は、近面と遠面の間の領域をレンダリングします。</p>
+<!--
+Stride renders the area between the near and far planes.
+-->
+<p><img src="../../get-started/media/camera-position.png" alt="Camera position"></p>
+<table>
+<thead>
+<tr>
+<th>近面 0.1 (既定値)、遠面 50</th>
+<th>近面 7、遠面 1000 (既定値)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/far-clip-50.png" alt="Far plane: 50"></td>
+<td><img src="media/near-clip-7.png" alt="Near plane: 7"></td>
+</tr>
+<tr>
+<td><strong>遠面</strong>の値が小さいと、近距離のオブジェクトは描画されません。</td>
+<td><strong>近面</strong>の値を大きくすると、カメラに近いオブジェクトは描画されません。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Near plane 0.1 (default); far plane: 50  | Near plane: 7; far plane 1000 (default)
+|--------------------|------------------
+| ![Far plane: 50](media/far-clip-50.png) | ![Near plane: 7](media/near-clip-7.png)
+| With a low **far plane** value, objects in the near distance aren't drawn. | With a high **near plane** value, objects close to the camera aren't drawn.
+-->
+<h2 id="カメラ-スクリプト">カメラ スクリプト</h2>
+<!--
+## Camera scripts
+-->
+<p><strong>カメラスクリプト</strong>を使って、カメラを制御することができます。Stride は、FPS カメラスクリプト、横スクロールカメラスクリプト、基本的なカメラコントローラスクリプトの、3つのカメラスクリプトテンプレートを提供しています。</p>
+<!--
+You can control cameras using **camera scripts**. Stride includes three camera script templates: an FPS camera script, a side-scrolling camera script, and a basic camera controller script.
+-->
+<h3 id="game-studio-でカメラスクリプトを追加する">Game Studio でカメラスクリプトを追加する</h3>
+<!--
+### Add a camera script in Game Studio
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、[<strong>Add asset</strong>] &gt; [<strong>Scripts</strong>] をクリックし、追加したいカメラスクリプトを選択します。</p>
+<p><img src="media/add-camera-script.png" alt="Add a camera script"></p>
+</li>
+<li><p><strong>シーンエディター</strong>で、制御したいカメラを持つエンティティを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、[<strong>Add component</strong>] をクリックし、使いたいカメラスクリプトを選択します。</p>
+<p><img src="media/add-camera-script-component.png" alt="Add script component"></p>
+<p>Game Studio は、エンティティにカメラスクリプトを追加します。</p>
+</li>
+</ol>
+<!--
+1. In the **Asset View** (in the bottom by default), click **Add asset > Scripts** and choose the camera script you want to add.
+
+    ![Add a camera script](media/add-camera-script.png)
+
+2. In the **Scene Editor**, select the entity with the camera you want to control.
+
+3. In the **Property Grid** (on the right by default), click **Add component** and select the camera script you want to use.
+
+    ![Add script component](media/add-camera-script-component.png)
+
+    Game Studio adds the camera script to the entity.
+-->
+<p>スクリプトの作り方と使い方の詳細については、<a href="../../scripts/index.html">スクリプト</a>を参照してください。</p>
+<!--
+For more information about how to create and use scripts, see [Scripts](../../scripts/index.md).
+-->
+<h2 id="カメラスロット">カメラスロット</h2>
+<!--
+## Camera slots
+-->
+<p><strong>カメラスロット</strong>は、<a href="../graphics-compositor/index.html">グラフィックスコンポジター</a>をシーンのカメラにリンクします。各カメラをスロットに割り当てて、それからコンポジターが使用するスロットを定義します。これは、毎回新しいカメラを割り当てなくても、<a href="../../game-studio/manage-scenes.html">ルートシーン</a>やグラフィックスコンポジターを変更することができるということを意味しています。</p>
+<!--
+**Camera slots** link the [graphics compositor](index.md) to the cameras in your scene. You bind each camera to a slot, then define which slot the compositor uses. This means you can change the [root scene](../../game-studio/manage-scenes.md) or graphics compositor without having to assign new cameras each time.
+-->
+<p>詳細については、<a href="camera-slots.html">カメラ スロット</a>を参照してください。</p>
+<!--
+For more information, see [Camera slots](camera-slots.md).
+-->
+<h2 id="テクスチャにカメラを描画する">テクスチャにカメラを描画する</h2>
+<!--
+## Render a camera to a texture
+-->
+<p>カメラのビューをテクスチャーに送り、そのテクスチャーをシーン内のオブジェクトに使用することができます。例えば、防犯カメラの映像など、同じシーン内のテレビ画面にシーンの一部を表示させることができます。詳しくは、<a href="../graphics-compositor/render-textures.html">レンダー テクスチャー</a>を参照してください。</p>
+<!--
+You can send a camera's view to a texture and use the texture on objects in your scene. For example, you can use this to display part of your scene on a TV screen in the same scene, such as security camera footage. For more information, see [Render textures](../graphics-compositor/render-textures.md).
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="camera-slots.html">カメラ スロット</a></li>
+<li><a href="animate-a-camera-with-a-model-file.html">カメラのアニメーション</a></li>
+<li><a href="../graphics-compositor/index.html">グラフィックス コンポジター</a></li>
+</ul>
+<!--
+* [Camera slots](camera-slots.md)
+* [Animate a camera](animate-a-camera-with-a-model-file.md)
+* [Graphics compositor](../graphics-compositor/index.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/cameras/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

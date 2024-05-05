@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ポインター | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ポインター | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/pointers.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ポインター">ポインター</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p><strong>ポインター</strong>は、<strong>指のタッチ</strong>に対応するデバイス画面上の点です。マルチタッチ機能のあるデバイスでは、同時に複数のポインターがサポートされます。</p>
+<p>デスクトップ プラットフォームでは、左マウス ボタンを使用してポインターをシミュレートできます。マウス入力の詳細については、「<a href="mouse.html">マウス</a>」を参照してください。</p>
+<h2 id="stride-によるポインター入力の処理方法">Stride によるポインター入力の処理方法</h2>
+<ol>
+<li><p>ユーザーが、画面をタッチするか、左マウス ボタンをクリックします。</p>
+</li>
+<li><p>Stride が、ポインターを作成します。</p>
+</li>
+<li><p>Stride が、特定の指に対応するそのポインターに<strong>ポインター ID</strong> を割り当てます。</p>
+</li>
+<li><p>ポインターが変更されるたびに、Stride はそのポインターで新しい<strong>ポインター イベント</strong>を作成します。</p>
+</li>
+<li><p>新しい指ごとに、Stride は新しいポインター ID で新しいポインターを作成します。</p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>各ポインター イベントには、1 つのポインターだけについての情報が含まれます。複数のポインターが同じ更新で同時に変更された場合、ポインターごとに異なるイベントが作成されます。</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>ポインターの変更の処理は、OS ごとに異なります。つまり、指の同じジェスチャでも、プラットフォームが異なると、若干異なるポインター イベント シーケンスが生成されることがあります。たとえば、Android では、指が画面にタッチしても、動いていない場合は、新しいポインター イベントは作成されません。詳細については、OS のドキュメントを参照してください。</p>
+</div>
+<p>ジェスチャの認識を有効にして、長押しやタップなどのジェスチャを検出できます。詳細については、「<a href="gestures.html">ジェスチャ</a>」を参照してください。</p>
+<h2 id="pointerevent-クラス">PointerEvent クラス</h2>
+<p><a class="xref" href="../../api/Stride.Input.PointerEvent.html">PointerEvent</a> は、ポインターのイベントを報告します。イベントには、現在の<strong>ポインターの位置</strong>と時刻の情報が含まれます。<strong>ポインター</strong>が変更されるたびにスローされます。</p>
+<p>最後の更新以降の<strong>ポインター イベント</strong>のリストには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_PointerEvents">InputManager.PointerEvents</a> を使用してアクセスできます。ポインター イベントは時間順に一覧表示されます。リストは更新のたびにクリアされるので、手動でクリアする必要はありません。</p>
+<h3 id="ポインターの情報を取得する">ポインターの情報を取得する</h3>
+<p>以下のプロパティを使用して、イベントをトリガーしたポインターに関する情報を取得できます。</p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.PointerEvent.html#Stride_Input_PointerEvent_PointerId">PointerEvent.PointerId</a></td>
+<td>イベントをトリガーしたポインターの ID を示します。</td>
+</tr>
+</tbody>
+</table>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>ポインターの ID は、ポインター イベントの 1 回の <em>Pressed-&gt;Moved-&gt;Released</em> のシーケンスの間だけ有効です。
+同じ指でも、画面にタッチするたびに ID が異なる場合があります (非常にすばやく行われた場合であっても)。</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>ポインターに ID を割り当てる方法は、OS ごとに異なります。
+ポインター ID の値と対応する指の間に関係はありません。</p>
+</div>
+<p>マウスまたはタッチによってポインター イベントがトリガーされたかどうかを確認するには、次のようにします。</p>
+<pre><code class="lang-cs">bool isTriggeredByMouse = event.Pointer is IMouseDevice
+</code></pre>
+<h3 id="ポインターの位置を取得する">ポインターの位置を取得する</h3>
+<p>正規化された座標または絶対座標でポインターの位置を取得できます。</p>
+<h4 id="正規化された座標">正規化された座標</h4>
+<p><a class="xref" href="../../api/Stride.Input.PointerEvent.html#Stride_Input_PointerEvent_Position">Position</a> は、ピクセル単位の実際の画面サイズではなく、<strong>正規化された</strong> X および Y 座標でポインターの位置を返します。そのため、ポインターの位置は任意の解像度に合わせて調整され、異なる解像度ごとに異なるコードを作成する必要はありません。</p>
+<ul>
+<li>(0,0): ポインターは画面の左上隅にあります。</li>
+<li>(1,1): ポインターは画面の右下隅にあります。</li>
+</ul>
+<h4 id="絶対座標">絶対座標</h4>
+<p><a class="xref" href="../../api/Stride.Input.PointerEvent.html#Stride_Input_PointerEvent_AbsolutePosition">PointerEvent.AbsolutePosition</a> は、X と Y の絶対座標 (ピクセル単位の実際の画面サイズ) でポインターの位置を返します。たとえば、ポインターが画面の左上隅にある場合、値は (0,0) です。ポインターが右下隅にある場合、値は画面の解像度に依存します (たとえば (1280,720))。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>画面の実際のサイズを取得するには、<a class="xref" href="../../api/Stride.Input.IPointerDevice.html#Stride_Input_IPointerDevice_SurfaceSize">IPointerDevice.SurfaceSize</a> にアクセスします。次に例を示します。</p>
+<pre><code class="lang-cs">var surfaceSize = Input.Pointer.SurfaceSize;
+</code></pre>
+</div>
+<h3 id="ポインター-イベントを取得する">ポインター イベントを取得する</h3>
+<p>ポインター イベントを調べるには、<a class="xref" href="../../api/Stride.Input.PointerEvent.html#Stride_Input_PointerEvent_EventType">PointerEvent.EventType</a> を使用します。</p>
+<p>5 種類のポインター イベントがあります。</p>
+<ul>
+<li><strong>Pressed</strong>: 指が画面にタッチしました。</li>
+<li><strong>Moved</strong>: 指が画面に沿って移動しました。</li>
+<li><strong>Released</strong>: 指が画面を離れました。</li>
+<li><strong>Canceled</strong>: ポインター シーケンスがキャンセルされました。このイベントは、たとえば電話の着信によって電話アプリが割り込まれた場合など、アプリケーションが中断されたときに発生します。</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>1 つのポインターに対するポインター イベントのシーケンスは、常に <strong>Pressed</strong> イベントで開始します。その後で 1 つ以上の <strong>Moved</strong> イベントが発生する可能性があり、常に <strong>Released</strong> または <strong>Canceled</strong> イベントで終了します。</p>
+</div>
+<h3 id="デルタ値を取得する">デルタ値を取得する</h3>
+<p><a class="xref" href="../../api/Stride.Input.PointerEvent.html#Stride_Input_PointerEvent_DeltaTime">PointerEvent.DeltaTime</a> は、前回の <a class="xref" href="../../api/Stride.Input.PointerEvent.html">PointerEvent</a> からの経過時間を取得します。</p>
+<p>正規化された座標または絶対座標でデルタ位置を取得できます。</p>
+<h3 id="正規化されたデルタ値">正規化されたデルタ値</h3>
+<p><a class="xref" href="../../api/Stride.Input.PointerEvent.html#Stride_Input_PointerEvent_DeltaPosition">PointerEvent.DeltaPosition</a> は、前回の <a class="xref" href="../../api/Stride.Input.PointerEvent.html">PointerEvent</a> からの位置の変化を、<strong>正規化された</strong> X、Y 座標で取得します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>ポインター イベントのシーケンスの開始時には (つまり、<strong>ポインターの状態</strong>が<strong>ダウン</strong>のとき)、デルタ値は常に null になっています。</p>
+</div>
+<h3 id="絶対デルタ値">絶対デルタ値</h3>
+<p><a class="xref" href="../../api/Stride.Input.PointerEvent.html#Stride_Input_PointerEvent_AbsoluteDeltaPosition">PointerEvent.DeltaPosition</a> は、前回の <a class="xref" href="../../api/Stride.Input.PointerEvent.html">PointerEvent</a> からの位置の変化を、<strong>絶対</strong> (X,Y) 座標で取得します。</p>
+<h2 id="コード例">コード例</h2>
+<p>このスクリプトは、ポインターの動きを追跡して、その位置を表示します。</p>
+<pre><code class="lang-cs">using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Stride.Core.Mathematics;
+using Stride.Engine;
+
+namespace Stride.Input.Tests
+{
+    public class PointerTestScript : AsyncScript
+    {
+        public override async Task Execute()
+        {
+            var pointerPositions = new Dictionary&lt;int, Vector2&gt;();
+            while (true)
+            {
+                await Script.NextFrame();
+                foreach (var pointerEvent in Input.PointerEvents)
+                {
+                    switch (pointerEvent.EventType)
+                    {
+                    case PointerEventType.Pressed:
+                        pointerPositions［pointerEvent.PointerId］ = pointerEvent.Position;
+                        break;
+                    case PointerEventType.Moved:
+                        pointerPositions［pointerEvent.PointerId］ = pointerEvent.Position;
+                        break;
+                    case PointerEventType.Released:
+                    case PointerEventType.Canceled:
+                        pointerPositions.Remove(pointerEvent.PointerId);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                    }
+                }
+                var positionsStr = pointerPositions.Values.Aggregate(&quot;&quot;, (current, pointer) =&gt; current + (pointer.ToString() + &quot;, &quot;));
+                Log.Info(&quot;There are currently {0} pointers on the screen located at {1}&quot;, pointerPositions.Count, positionsStr);
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="gestures.html">ジェスチャ</a></li>
+<li><a href="mouse.html">マウス</a></li>
+<li><a href="virtual-buttons.html">仮想ボタン</a></li>
+<li><a href="index.html">入力の概要</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/pointers.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

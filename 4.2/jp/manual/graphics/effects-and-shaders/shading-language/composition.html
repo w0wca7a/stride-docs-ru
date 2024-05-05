@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>コンポジション | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="コンポジション | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../../favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/shading-language/composition.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="コンポジション">コンポジション</h1>
+
+<!--
+# Composition
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>継承システムに加えて、SDSL は<strong>コンポジション（composition）</strong> の概念を導入しています。コンポジションとは、別のシェーダークラスを型とするメンバーのことです。変数と同じように定義されます。</p>
+<!--
+In addition to the inheritance system, SDSL introduces the concept of **composition**. A composition is a member whose type is another shader class. It's defined the same way as variables.
+-->
+<p>希望するシェーダークラスのインスタンス、または希望するシェーダークラスを継承したシェーダークラスのインスタンスを使って、構成することができます。</p>
+<!--
+You can compose with an instance of the desired shader class or an instance of a shader class that inherits from the desired one.
+-->
+<h2 id="サンプルコード">サンプルコード</h2>
+<!--
+## Example code
+-->
+<pre><code class="lang-cs">shader CompositionBase
+{
+	float4 Compute()
+	{
+		return float4(0.0);
+	}
+};
+ 
+shader CompositionShaderA : CompositionBase
+{
+	float4 myColor;
+ 
+	override float4 Compute()
+	{
+		return myColor;
+	}
+};
+ 
+shader CompositionShaderB : CompositionBase
+{
+	float4 myColor;
+
+	override float4 Compute()
+	{
+		return 0.5 * myColor;
+	}
+};
+ 
+shader BaseShader
+{
+	CompositionBase Comp0;
+	CompositionBase Comp1;
+ 
+	float4 GetColor()
+	{
+		return Comp0.Compute() + Comp1.Compute();
+	}
+};
+</code></pre>
+<p>コンポジションは、それ自身のコンテキストでコンパイルされます。これは、非ステージ変数はコンポジションの内部でのみアクセス可能であることを意味しています。コンポジションの中にコンポジションを持つことも可能です。</p>
+<!--
+The compositions are compiled in their own context, meaning that the non-stage variables are only accessible within the composition. It's also possible to have compositions inside compositions.
+-->
+<h2 id="サンプルコードルートコンテキストにアクセスする">サンプルコード：ルートコンテキストにアクセスする</h2>
+<!--
+## Example code: access root context
+-->
+<p>ルートのコンパイルコンテキストにアクセスしたい場合は、次の形式を使用します。</p>
+<!--
+If you want to access the root compilation context, you can use the following format:
+-->
+<pre><code class="lang-cs">shader CompositionShaderC : CompositionBase
+{
+	BaseShader rootShader = stage;
+ 
+	float4 GetColor()
+	{
+		return rootShader.GetColor();
+	}
+};
+</code></pre>
+<p>これは、<code>CompositionShaderC</code> で <code>BaseShader</code> がルートコンテキストで利用可能であることを期待しているため、エラーになりやすい書き方です。</p>
+<!--
+This is error-prone, since `CompositionShaderC` expects `BaseShader` to be available in the root context.
+-->
+<h2 id="サンプルコードコンポジションの配列">サンプルコード：コンポジションの配列</h2>
+<!--
+## Example code: array of compositions
+-->
+<p>値の配列と同じ方法で、コンポジションの配列を作成することもできます。コンポジションがいくつあるかを事前に知る方法がないので、<code>foreach</code> 文を使って反復処理を行う必要があります。</p>
+<!--
+You can also create an array of compositions the same way you use an array of values. Since there's no way to know beforehand how many compositions there are, you should iterate using a `foreach` statement.
+-->
+<pre><code class="lang-cs">shader BaseShaderArray
+{
+	CompositionBase Comps[];
+	
+	float4 GetColor()
+	{
+		float4 resultColor = float4(0.0);
+ 
+		foreach (var comp in Comps)
+		{
+			resultColor += comp.Compute();
+		}
+ 
+		return resultColor;
+	}
+};
+</code></pre>
+<h2 id="サンプルコードステージstageの振る舞い">サンプルコード：ステージ（stage）の振る舞い</h2>
+<!--
+## Example code: stage behavior
+-->
+<p><code>stage</code> キーワードの動作は単純です。変数やメソッドのインスタンスは1つだけ生成されます。</p>
+<!--
+The behavior of the `stage` keyword is straightforward: only one instance of the variable or method is produced.
+-->
+<pre><code class="lang-cs">shader BaseShader
+{
+	stage float BaseStageValue;
+	float NonStageValue;
+};
+ 
+shader TestShader : BaseShader
+{
+	BaseShader comp0;
+	BaseShader comp1;
+};
+ 
+// resulting shader (representation)
+shader TestShader
+{
+	float BaseStageValue;
+	float NonStageValue;
+	float comp0_NonStageValue;
+	float comp1_NonStageValue;
+};
+</code></pre>
+<h3 id="サンプルコードステージメンバーの振るまい">サンプルコード：ステージメンバーの振るまい</h3>
+<!--
+### Example code: stage member behavior
+-->
+<pre><code class="lang-cs">shader BaseShader
+{
+	stage float BaseStageMethod()
+	{
+		return 1.0;
+	}
+
+	float NonStageMethod()
+	{
+		return 2.0;
+	}
+};
+ 
+shader TestShader : BaseShader
+{
+	BaseShader comp0;
+	BaseShader comp1;
+};
+
+// 結果のシェーダー（表現）
+// resulting shader (representation)
+shader TestClass
+{
+	float BaseStageMethod()
+	{
+		return 1.0;
+	}
+
+	float NonStageMethod()
+	{
+		return 2.0;
+	}
+	float comp0_NonStageMethod()
+	{
+		return 2.0;
+	}
+	float comp1_NonStageMethod()
+	{
+		return 2.0;
+	}
+};
+</code></pre>
+<p>コンポジションでも、ベースとなるメソッドを呼び出したり、オーバーライドしたりすることができることを覚えておいてください。オーバーライドは、コンポジションと同じ順番で行われます。</p>
+<!--
+Keep in mind that even in composition, you can call for base methods, override them, and so on. Overriding happens in the same order as the compositions.
+-->
+<p>この動作は、複数のコンポジションで使われるけれども計算は一度だけでいい場合（例えば、ビュー空間の法線）に便利です。</p>
+<!--
+This behavior is useful when you need a value in multiple composition but you only need to compute it once (eg the normal in view space).
+-->
+<h2 id="クローンcloneの振る舞い">クローン（clone）の振る舞い</h2>
+<!--
+## Clone behavior
+-->
+<p><code>clone</code> キーワードには、それほど些細な仕様はありません。これは、<code>stage</code> キーワードが一意のメソッドを生成することを防ぎます。</p>
+<!--
+The `clone` keyword has a less trivial behavior. It prevents the `stage` keyword to produce a unique method.
+-->
+<pre><code class="lang-cs">shader BaseShader
+{
+	stage float BaseStageMethod()
+	{
+		return 1.0;
+	}
+ 
+	stage float BaseStageMethodNotCloned()
+	{
+		return 1.0;
+	}
+};
+ 
+shader CompShader : BaseShader
+{
+	override clone float BaseStageMethod()
+	{
+		return 1.0 + base.BaseStageMethod();
+	}
+ 
+	override float BaseStageMethodNotCloned()
+	{
+		return 1.0f + base.BaseStageMethodNotCloned();
+	}
+};
+ 
+shader TestShader : BaseShader
+{
+	CompShader comp0;
+	CompShadercomp1;
+};
+ 
+// 結果のシェーダー（表現）
+// resulting shader (representation)
+shader TestShader
+{
+	// cloned method
+	float base_BaseStageMethod()
+	{
+		return 1.0;
+	}
+ 
+	float comp0_BaseStageMethod()
+	{
+		return 1.0 + base_BaseStageMethod();
+	}
+ 
+	float BaseStageMethod() // in fact comp1_BaseStageMethod
+	{
+		return 1.0 + comp0_BaseStageMethod; // 3.0f
+	}
+ 
+	// not cloned method
+	float base_BaseStageMethodNotCloned()
+	{
+		return 1.0f;
+	}
+ 
+	float BaseStageMethodNotCloned()
+	{
+		return 1.0f + base_BaseStageMethodNotCloned(); // 2.0f
+	}
+};
+</code></pre>
+<p>この動作は、単純な関数を異なるパラメーターで繰り返したい場合に便利です（例えば、別の関数の上に色を追加するなど）。</p>
+<!--
+This behavior is useful when you want to repeat a simple function but with different parameters (eg adding color on top of another).
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="../effect-language.html">エフェクト言語</a></li>
+<li><a href="index.html">シェーディング言語</a>
+<ul>
+<li><a href="shader-classes-mixins-and-inheritance.html">シェーダークラス、ミックスイン、継承</a></li>
+<li><a href="templates.html">テンプレート</a></li>
+<li><a href="automatic-shader-stage-input-output.html">シェーダー ステージ入出力の自動管理</a></li>
+<li><a href="shader-stages.html">シェーダー ステージ</a></li>
+</ul>
+</li>
+</ul>
+<!--
+* [Effect language](../effect-language.md)
+* [Shading language index](index.md)
+    - [Shader classes, mixins, and inheritance](shader-classes-mixins-and-inheritance.md)
+    - [Templates](templates.md)
+    - [Shader stage input/output automatic management](automatic-shader-stage-input-output.md)
+	- [Shader stages](shader-stages.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/shading-language/composition.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

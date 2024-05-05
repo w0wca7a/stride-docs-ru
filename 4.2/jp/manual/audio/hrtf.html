@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>頭部伝達関数 (HRTF) オーディオ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="頭部伝達関数 (HRTF) オーディオ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/audio/hrtf.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="頭部伝達関数-hrtf-オーディオ">頭部伝達関数 (HRTF) オーディオ</h1>
+
+<p><strong>頭部伝達関数 (HRTF)</strong> は、サウンドが 3D 空間内の特定のポイントで生成されているようにしてバイノーラル オーディオを合成する、高度なオーディオ表現手法です。標準の<a href="spatialized-audio.html">空間オーディオ</a>より現実に近いオーディオが提供されます。たとえば、HRTF を有効にすると、プレイヤーはキャラクターが自分より上にいるのか下にいるのかを聞き分けることができます。没入感が増すので、<a href="../virtual-reality/index.html">VR アプリケーション</a>に特に適しています。</p>
+<p>HRTF を使用するためにプレイヤーが特別なハードウェアを装着する必要はありません。ただし、スピーカーよりヘッドホンの方が、はるかに良い効果が得られます。</p>
+<p>次のビデオでは、HRTF オーディオの効果を実際にご覧に体験できます。</p>
+<p>
+<video class="embed-responsive-item" poster="media/hrtf-first-frame.jpg" controls="">
+   <source src="media/hrtf.mp4" type="video/mp4">
+</video>
+</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>現在、HRTF は Windows 10 でのみ使用できます。</p>
+</div>
+<h2 id="hrtf-を有効にする">HRTF を有効にする</h2>
+<p>HRTF を使用するには、最初に［Game Settings］アセットでグローバルに有効にした後、使用するエンティティで HRTF を有効にします。</p>
+<h3 id="1-hrtf-をグローバルに有効にする">1. HRTF をグローバルに有効にする</h3>
+<ol>
+<li><p>［Solution explorer］(既定では左下のペイン) で、［Assets］フォルダーを選択します。</p>
+<p><img src="../game-studio/media/select-asset-folder.png" alt="Select Assets folder asset"></p>
+</li>
+<li><p>［Asset view］(既定では下部のペイン) で、［Game Settings］アセットを選択します。</p>
+<p><img src="../game-studio/media/select-game-settings-asset.png" alt="Select Game Settings asset"></p>
+</li>
+<li><p>［Property grid］(既定では右側のペイン) で、［Audio Settings］の［HRTF support］を選択します。</p>
+<p><img src="../game-studio/media/audio-settings.png" alt="Audio settings"></p>
+</li>
+</ol>
+<p>ゲーム設定アセットの詳細については、「<a href="../game-studio/game-settings.html">ゲームの設定</a>」を参照してください。</p>
+<h3 id="2-hrtf-をエンティティで有効にする">2. HRTF をエンティティで有効にする</h3>
+<ol>
+<li><p>HRTF を有効にするサウンドを含むエンティティを<a href="audio-emitters.html">オーディオ エミッター</a>で選択します。</p>
+</li>
+<li><p>［Property grid］(既定では右側) の［Audio Emitter］で、［Use HRTF］を選択します。</p>
+<p><img src="media/audio-emitter-properties.png" alt="Audio emitter properties"></p>
+<p>このエンティティから生成されるサウンドは、HRTF を使用するようになります。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>HRTF オプションは、このオーディオ エミッターから生成されるすべてのサウンドに適用されます。</p>
+</div>
+</li>
+</ol>
+<p>変更できるプロパティなど、オーディオ エミッターの詳細については、「<a href="audio-emitters.html">オーディオ エミッター</a>」を参照してください。</p>
+<h3 id="関連項目">関連項目</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Head-related_transfer_function">Head-related transfer function (頭部伝達関数) (Wikipedia)</a></li>
+<li><a href="spatialized-audio.html">空間オーディオ</a></li>
+<li><a href="audio-emitters.html">オーディオ エミッター</a></li>
+<li><a href="audio-listeners.html">オーディオ リスナー</a></li>
+<li><a href="../game-studio/game-settings.html">ゲームの設定</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/audio/hrtf.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

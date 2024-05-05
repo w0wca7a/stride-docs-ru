@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>エンティティの追加 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="エンティティの追加 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/add-entities.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="エンティティの追加">エンティティの追加</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">レベル デザイナー</span></p>
+<p>シーンを作成した後は、シーンにエンティティを追加して、レベルを構築する必要があります。</p>
+<h2 id="シーン-エディターからエンティティを作成する">シーン エディターからエンティティを作成する</h2>
+<ol>
+<li><p><strong>エンティティ ツリー</strong>の上にある <img src="media/add-entities-to-a-scene-plus-icon.png" alt="Plus"> アイコンをクリックします。</p>
+<p>［Create］メニューが開きます。</p>
+<p><img src="media/add-entities-to-a-scene-context-menu.png" alt="Scene editor Create menu"></p>
+<p>あるいは、<strong>エンティティ ツリー</strong>または<strong>シーン</strong>内のどこかを右クリックします。エンティティをシーンに作成する場合は、クリックした場所にエンティティが追加されます。</p>
+<p><img src="media/create-entity-in-scene.png" alt="Right-click entity tree or scene"></p>
+</li>
+<li><p>［Empty entity］を選択するか、またはエンティティ テンプレートを選択します。</p>
+<p>エンティティがアクティブなシーンに追加されて、エンティティ ツリーに表示されます。</p>
+<p><img src="media/add-entities-to-a-scene-empty-entity.png" alt="New Entity in MainScen"></p>
+</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p><strong>アクティブなシーン</strong>とは、エンティティが追加されるシーンです。アクティブなシーンを設定するには、<strong>エンティティ ツリー</strong> (既定では左側) でシーンを右クリックして［Set as active scene］を選択します。</p>
+</div>
+<blockquote>
+<p><img src="media/set-active-scene.png" alt="Set active scene"></p>
+</blockquote>
+<blockquote>
+<p>アクティブなシーンは実行時にはどのような影響もありません。</p>
+</blockquote>
+<h2 id="アセットからエンティティを作成する">アセットからエンティティを作成する</h2>
+<p>［Asset view］からシーンにアセットをドラッグ アンド ドロップして、エンティティを追加できます。</p>
+<video controls="" autoplay="" loop="" height="360" width="480">
+   <source src="media/add-entities-to-scene-drag-and-place-entity.mp4" type="video/mp4">
+</video>
+<p>エンティティが自動的に作成され、使用したアセットに基づいて必要なコンポーネントと参照が追加されます。たとえば、モデル アセットをシーンにドラッグした場合、そのモデル アセットを参照とするモデル コンポーネントを含むエンティティが作成されます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>対応するコンポーネントのあるアセットをドラッグすることによってのみ、エンティティを作成できます。たとえば、モデル コンポーネントはモデル アセットを使用するので、ドラッグできます。アニメーションには対応するコンポーネントがないので、ドラッグできません。</p>
+</div>
+<h2 id="コンポーネントをセットアップする">コンポーネントをセットアップする</h2>
+<p><strong>コンポーネント</strong>は、プロジェクトの目的を定義する特別なプロパティをエンティティに追加します。たとえば、ライト コンポーネントをエンティティに追加することによってライトをシーンに追加し、モデル コンポーネントを追加することによってモデルを追加する、といった方法です。コンポーネントのないエンティティに目的はありません。</p>
+<p>コンポーネントをエンティティに追加するには:</p>
+<ol>
+<li><p>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］で、［Add component］をクリックして、必要なコンポーネントを追加します。</p>
+<p><img src="media/add-entities-to-a-scene-add-model-component.png" alt="Add a component in the property grid"></p>
+<p>コンポーネントが追加されます。</p>
+<p><img src="media/add-entities-to-a-scene-add-model-component-added.png" alt="New component in property grid"></p>
+</li>
+<li><p>新しいコンポーネントの<strong>プロパティを設定</strong>します。</p>
+</li>
+</ol>
+<h2 id="エンティティを複製する">エンティティを複製する</h2>
+<p>エンティティをすべてのプロパティと共に複製できます。エンティティを複製し、新しいエンティティのプロパティを変更する方が、最初からエンティティを作成するより時間がかからないことがよくあります。</p>
+<ol>
+<li><p>複製するエンティティを選択します。</p>
+</li>
+<li><p><strong>Ctrl</strong> キーを押しながら、マウスでエンティティを移動します。</p>
+<p>エンティティとそのすべてのプロパティが複製されます。</p>
+ <video controls="" autoplay="" loop="" height="360" width="480">
+    <source src="../get-started/media/populate-scene-duplicate-entity.mp4" type="video/mp4">
+ </video>
+</li>
+</ol>
+<p>または、エンティティを右クリックして、［Duplicate selected entities］を選択します。</p>
+<p><img src="../get-started/media/duplicate-selected-entities.png" alt="Duplicate selected entities"></p>
+<h2 id="エンティティの名前を変更する">エンティティの名前を変更する</h2>
+<ol>
+<li>エンティティを選択し、<strong>F2</strong> キーを押します。</li>
+<li>エンティティの名前を入力して、<strong>Enter</strong> キーを押します。</li>
+</ol>
+<p><img src="media/add-entities-to-a-scene-renamed-entity.png" alt="Renamed entity in a scene"></p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="manage-scenes.html">シーンを管理する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/add-entities.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

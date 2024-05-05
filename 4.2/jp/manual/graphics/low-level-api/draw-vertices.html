@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>頂点の描画 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="頂点の描画 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/draw-vertices.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="頂点の描画">頂点の描画</h1>
+
+<!--
+# Draw vertices
+-->
+<p><span class="badge text-bg-primary">上級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Advanced</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>シーンを読み込む際、Stride は、エンティティシステムを介してシーンを表示するための描画呼び出しを自動的に処理します。このページでは、手動で描画する方法について紹介します。</p>
+<!--
+When loading a scene, Stride automatically handles the draw calls to display the scene throughout the entity system. This page introduces manual drawing.
+-->
+<h2 id="プリミティブ">プリミティブ</h2>
+<!--
+## Primitives
+-->
+<p>Stride には、次のような組み込みプリミティブが用意されています。</p>
+<!--
+Stride provides the following set of built-in primitives:
+-->
+<ul>
+<li>Plane（プレーン／平面）</li>
+<li>Cube（キューブ／立方体）</li>
+<li>Sphere（スフィア／球体）</li>
+<li>Geosphere（ジオスフィア／天球体）</li>
+<li>Cylinder（シリンダー／円柱）</li>
+<li>Torus（トールス／円環体）</li>
+<li>Teapot（ティーポット／きゅうす）</li>
+</ul>
+<!--
+- Plane
+- Cube
+- Sphere
+- Geosphere
+- Cylinder
+- Torus
+- Teapot
+-->
+<p>これらは <a class="xref" href="../../../api/Stride.Graphics.GraphicsDevice.html">GraphicsDevice</a> と一緒に自動作成されたりはしないので、手動でインスタンス化する必要があります。これは、@'Stride.Graphics.GeometricPrimitive.GeometricPrimitive' クラスで行うことができます。</p>
+<!--
+They aren't automatically created along with the @'Stride.Graphics.GraphicsDevice', so you have to instantiate them. You can do this through the @'Stride.Graphics.GeometricPrimitives.GeometricPrimitive' class.
+-->
+<p><strong>コード：</strong> プリミティブの作成と使用</p>
+<!--
+**Code:** Creating and using a primitive
+-->
+<pre><code class="lang-cs">// 生成
+// creation
+var myCube = GeometricPrimitive.Cube.New(GraphicsDevice);
+var myTorus = GeometricPrimitive.Torus.New(GraphicsDevice);
+ 
+// ...
+
+// 画面上に描画 
+// draw one on screen
+myCube.Draw(CommandList, EffectInstance);
+</code></pre>
+<p>これらは関連付けられたエフェクトを持っていないので、描画時に手動で <a class="xref" href="../../../api/Stride.Rendering.EffectInstance.html">EffectInstance</a>を提供する必要があります。エフェクトの読み込みの詳細については、<a href="../effects-and-shaders/index.html">エフェクトとシェーダー</a>を参照してください。</p>
+<!--
+They have no effect associated with them, so the user has to provide an @'Stride.Rendering.EffectInstance' when drawing. For information on loading effects, please see [Effects and shaders](../effects-and-shaders/index.md).
+-->
+<h2 id="カスタム描画">カスタム描画</h2>
+<!--
+## Custom drawing
+-->
+<p>組込みプリミティブの他に、カスタム頂点バッファを作成することでジオメトリを描画することができます。頂点バッファを作成するには、まず <a class="xref" href="../../../api/Stride.Graphics.VertexDeclaration.html">VertexDeclaration</a> を定義する必要があります。この頂点宣言では、各頂点の要素と、そのレイアウトを記述します。
+詳細については、<a class="xref" href="../../../api/Stride.Graphics.VertexElement.html">VertexElement</a> のリファレンスをご覧ください。</p>
+<!--
+Outside of built-in primitives, any geometry can be drawn by creating custom vertex buffers. To create a vertex buffer, first a @'Stride.Graphics.VertexDeclaration' has to be defined. A vertex declaration describes the elements of each vertex and their layout.
+For details, see the @'Stride.Graphics.VertexElement' reference page.
+-->
+<p>次に、頂点の配列から頂点バッファを作成することができます。頂点データ型は、<a class="xref" href="../../../api/Stride.Graphics.VertexDeclaration.html">VertexDeclaration</a> と一致する必要があります。</p>
+<!--
+Next, a vertex buffer can be created from an array of vertices. The vertex data type has to match the @'Stride.Graphics.VertexDeclaration'.
+-->
+<p>頂点バッファと頂点宣言を使って、<a class="xref" href="../../../api/Stride.Graphics.VertexBufferBinding.html">VertexBufferBinding</a> を作成することができます。</p>
+<!--
+Given vertex buffer and declaration, a @'Stride.Graphics.VertexBufferBinding' can be created. 
+-->
+<p><strong>コード：</strong> 頂点バッファを作成する</p>
+<!--
+**Code:** Creating a vertex buffer
+-->
+<pre><code class="lang-cs">// 位置とテクスチャ座標を持つ頂点レイアウトの作成
+// Create a vertex layout with position and texture coordinate
+var layout = new VertexDeclaration(VertexElement.Position&lt;Vector3&gt;(), VertexElement.TextureCoordinate&lt;Vector2&gt;()); 
+
+// 頂点の配列から頂点バッファの作成
+// Create the vertex buffer from an array of vertices
+var vertices = new VertexPositionTexture[vertexCount];
+var vertexBuffer = Buffer.Vertex.New(GraphicsDevice, vertices);
+
+// 頂点バッファバインディングの作成
+// Create a vertex buffer binding
+var vertexBufferBinding = new VertexBufferBinding(vertexBuffer, layout, vertexCount);
+</code></pre>
+<p>新しく作成した頂点バッファを描画するには、パイプラインにバインドする必要があります。描画する頂点レイアウトと <a class="xref" href="../../../api/Stride.Graphics.PrimitiveType.html">PrimitiveType</a> は、<a href="pipeline-state.html">パイプライン ステート</a>オブジェクトに含まれていなければなりません。バッファ自体は動的に設定することができます。</p>
+<!--
+To draw the newly created vertex buffer, it has to be bound to the pipeline. The vertex layout and the @'Stride.Graphics.PrimitiveType' to draw have to be included in the [pipeline state](pipeline-state.md) object. The buffer itself can be set dynamically.
+-->
+<p>その後、<a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_Draw_System_Int32_System_Int32_">Draw(int, int)</a> を使って、頂点のレンダリングが行えます。</p>
+<!--
+Afterwards, the vertices are ready to be rendered using @'Stride.Graphics.CommandList.Draw(System.Int32,System.Int32)'.
+-->
+<p><strong>コード：</strong> 頂点バッファのバインドと描画</p>
+<!--
+**Code:** Binding and drawing vertex buffers
+-->
+<pre><code class="lang-cs">// パイプラインステートの設定
+// Set the pipeline state
+pipelineStateDescription.InputElements = vertexBufferBinding.Layout.CreateInputElements();
+pipelineStateDescription.PrimitiveType = PrimitiveType.TriangleStrip;
+ 
+// PipelineState オブジェクトの集合を作成
+// Create and set a PipelineState object
+// ...
+
+// 頂点バッファをパイプラインにバインド
+// Bind the vertex buffer to the pipeline
+commandList.SetVertexBuffers(0, vertexBuffer, 0, vertexBufferBinding.Stride);
+
+// 頂点を描画 
+// Draw the vertices
+commandList.Draw(vertexCount);
+</code></pre>
+<p>また、インデックス付きのジオメトリを描画することも可能です。インデックスバッファを使うには、まず頂点バッファと同じようにインデックスバッファを作成し、パイプラインにバインドします。
+その後、<a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_DrawIndexed_System_Int32_System_Int32_System_Int32_">DrawIndexed(int, int, int)</a> を使って描画することができます。</p>
+<!--
+It is also possible to draw indexed geometry. To use an index buffer, first create it similarly to the vertex buffer and bind it to the pipeline.
+It can then be used for drawing using @'Stride.Graphics.CommandList.DrawIndexed(System.Int32,System.Int32,System.Int32)'.
+-->
+<p><strong>コード：</strong> インデックス付き頂点の描画</p>
+<!--
+**Code:** Drawing indexed vertices
+-->
+<pre><code class="lang-cs">// インデックスバッファの作成
+// Create the index buffer
+var indices = new short[indexCount];
+var is32Bits = false;
+var indexBuffer = Buffer.Index.New(GraphicsDevice, indices);
+ 
+// 頂点配列の設定
+// set the VAO
+commandList.SetIndexBuffer(indexBuffer, 0, is32Bits);
+
+// インデックス付き頂点の描画
+// Draw indexed vertices
+commandList.DrawIndexed(indexBuffer.ElementCount);
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/draw-vertices.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

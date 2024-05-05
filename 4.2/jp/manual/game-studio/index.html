@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Game Studio | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Game Studio | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="game-studio">Game Studio</h1>
+
+<p><span class="badge text-bg-primary">初級</span></p>
+<p><strong>Game Studio</strong> は、Stride でゲームとアプリケーションを開発するときの中心的なツールです。Game Studio では、次のことができます。</p>
+<ul>
+<li>シーンを作成して調整します</li>
+<li>アセットをインポートし、そのパラメーターを変更して、プレビュー ウィンドウで変更をリアルタイムに確認します</li>
+<li>アセットをフォルダーで整理し、タグをアタッチし、ディスクで変更されたアセットから通知を受け取ります</li>
+<li>ゲームの実行可能ファイルをビルドして、直接実行します</li>
+</ul>
+<p>また、Game Studio は Visual Studio のプロジェクトと統合されるので、シームレスに同期し、両者を切り替えて使用することができます。</p>
+<h2 id="インターフェイス">インターフェイス</h2>
+<p><img src="../get-started/media/game-studio-main-interface.png" alt="Game Studio"></p>
+<p>［Asset editor］(A) は、アセットとシーンの編集に使用します。<a href="create-a-scene.html">シーン</a>などの一部のアセットの種類には専用のエディターがあり、アセットに対する複雑な変更を行うことができます。専用エディターを開くには (使用できる場合)、アセットをダブルクリックするか、アセットを右クリックして［Edit asset］を選択します。</p>
+<p>［Property grid］(B) には、選択されているアセットまたはエンティティのプロパティが表示されます。ここでプロパティを編集できます。</p>
+<p>［Solution explorer］(C) には、プロジェクトの要素 (アセット、コード ファイル、パッケージ、依存関係など) の階層が表示されます。フォルダーとオブジェクトを作成し、それらの名前を変更したり移動したりできます。</p>
+<p>［Asset view］(D) には、プロジェクトのアセットが表示されます。［New Asset］ボタンを使用して、またはリソース ファイルを［Asset view］にドラッグ アンド ドロップすることで、新しいアセットを作成できます。また、［Asset view］からさまざまなエディターまたは［Property grid］にアセットをドラッグ アンド ドロップして、アセットのインスタンスを作成したり、アセットへの参照を追加したりすることもできます。既定では、［Asset view］は下部の中央に表示されます。</p>
+<p>［Asset preview］タブ (E) には、選択されているアセットのプレビューが表示されます。プレビューは、選択したアセットの種類に応じて変わります。たとえば、アニメーションやサウンドを再生できます。これを使用して、［Property grid］で編集しているアセットに対する変更を簡単に確認できます。既定では、［Asset preview］は右下に表示されます。</p>
+<p>Game Studio のさまざまな部分は、［View］メニューで表示/非表示を切り替えることができます。また、UI の各部分は、サイズを変更したり移動したりできます。</p>
+<h2 id="このセクションの内容">このセクションの内容</h2>
+<ul>
+<li><a href="scenes.html">シーン</a>
+<ul>
+<li><a href="create-a-scene.html">シーンを作成する</a></li>
+<li><a href="navigate-in-the-scene-editor.html">シーン エディター内を移動する</a></li>
+<li><a href="manage-scenes.html">シーンを管理する</a></li>
+<li><a href="load-scenes.html">シーンをロードする</a></li>
+<li><a href="add-entities.html">エンティティを追加する</a></li>
+<li><a href="manage-entities.html">エンティティを管理する</a></li>
+</ul>
+</li>
+<li><a href="assets.html">アセット</a>
+<ul>
+<li><a href="create-assets.html">アセットを作成する</a></li>
+<li><a href="use-assets.html">アセットを使用する</a></li>
+<li><a href="archetypes.html">アーキタイプ</a></li>
+<li><a href="game-settings.html">ゲームの設定</a></li>
+</ul>
+</li>
+<li><a href="prefabs/index.html">プレハブ</a>
+<ul>
+<li><a href="prefabs/create-a-prefab.html">プレハブを作成する</a></li>
+<li><a href="prefabs/use-prefabs.html">プレハブを使用する</a></li>
+<li><a href="prefabs/edit-prefabs.html">プレハブを編集する</a></li>
+<li><a href="prefabs/nested-prefabs.html">入れ子になったプレハブ</a></li>
+<li><a href="prefabs/override-prefab-properties.html">プレハブのプロパティをオーバーライドする</a></li>
+</ul>
+</li>
+<li><a href="world-units.html">ワールド単位</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

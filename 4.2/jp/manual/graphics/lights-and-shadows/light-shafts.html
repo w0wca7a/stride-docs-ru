@@ -1,0 +1,421 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ライト シャフト | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ライト シャフト | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/lights-and-shadows/light-shafts.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ライト-シャフト">ライト シャフト</h1>
+
+<!--
+# Light shafts
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span>
+<span class="badge text-bg-success">アーティスト</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Designer</span>
+<span class="badge text-bg-success">Artist</span>
+-->
+<p><strong>ライトシャフト（light shafts; 光の軸）</strong> は目に見える光の線のことであり、<strong>ゴッドレイ（god rays; 神の光）</strong> とも呼ばれます。</p>
+<!--
+**Light shafts**, also called **god rays**, are visible rays of light. 
+-->
+<video autoplay="" loop="" class="responsive-video" poster="media/lightshaft_CoS_640.jpg">
+   <source src="media/lightshaft_CoS_640.mp4" type="video/mp4">
+</video>
+<p>Stride のライトシャフトは<a href="shadows.html">シャドウマップ</a>に基づいており、ポストエフェクトではなくレイマーチングを使用しているため、ライトが見えていなくても表示できます。影を落とすライト（<a href="point-lights.html">ポイント ライト</a>、<a href="directional-lights.html">ディレクショナル ライト</a>、<a href="spot-lights.html">スポット ライト</a>など）であれば、ライトシャフトを落とすことができます。</p>
+<!--
+Stride light shafts are based on [shadow maps](shadows.md) and use raymarching rather than post effects, so they're visible even when the light source isn't. Any light source that casts shadows (ie [point lights](point-lights.md), [directional lights](directional-lights.md) and [spot lights](spot-lights.md)) can cast light shafts.
+-->
+<p>ライトシャフトを作成するには、3つのコンポーネントを併用します。<strong>ライト</strong>、<strong>ライトシャフト</strong>、<strong>ライトシャフトバウンディングボリューム</strong>です。</p>
+<!--
+To create light shafts, use three components together: **lights**, **light shafts**, and **light shaft bounding volumes**.
+-->
+<h2 id="1-グラフィックスコンポジターでライトシャフトを有効化する">1. グラフィックスコンポジターでライトシャフトを有効化する</h2>
+<!--
+## 1. Enable light shafts in the graphics compositor
+-->
+<p>既定では、Stride の新規プロジェクトではライトシャフトは無効です。有効にする手順は次の通りです。</p>
+<!--
+By default, Stride disables light shafts in new projects. To enable them:
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、<strong>グラフィックスコンポジター</strong>アセットをダブルクリックします。</p>
+<p><img src="..%5Cgraphics-compositor%5Cmedia%5Cgraphics-compositor-asset.png" alt="Graphics Compositor asset"></p>
+<p>すると、グラフィックスコンポジターエディターが開きます。</p>
+</li>
+<li><p><strong>フォワードレンダラー</strong>ノードを選択します。</p>
+<p><img src="../../virtual-reality/media/select-forward-renderer.png" alt="Select forward renderer"></p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>Light shafts</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、<strong>LightShafts</strong> を選択します。</p>
+<p><img src="media/select-light-shafts.png" alt="Select light shafts"></p>
+</li>
+<li><p><strong>LightShafts</strong> チェックボックスがオンであることを確認します。</p>
+<p><img src="media/enable-light-shafts.png" alt="Enable light shafts"></p>
+<p>グラフィックスコンポジターにの詳細については、<a href="../graphics-compositor/index.html">グラフィックス コンポジター</a>を参照してください。</p>
+</li>
+</ol>
+<!--
+1. In the **Asset View** (in the bottom pane by default), double-click the **Graphics Compositor** asset.
+
+    ![Graphics Compositor asset](..\graphics-compositor\media\graphics-compositor-asset.png)
+
+    The graphics compositor editor opens.
+
+2. Select the **forward renderer** node.
+
+    ![Select forward renderer](../../virtual-reality/media/select-forward-renderer.png)
+
+3. In the **Property Grid** (on the right by default), next to **Light shafts**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select **LightShafts**.
+
+    ![Select light shafts](media/select-light-shafts.png)
+
+4. Make sure the **light shafts** checkbox is selected.
+
+    ![Enable light shafts](media/enable-light-shafts.png)
+
+    For more information about the graphics compositor, see the [Graphics compositor](../graphics-compositor/index.md) page.
+-->
+<h2 id="2-ライトシャフトコンポーネントを追加する">2. ライトシャフトコンポーネントを追加する</h2>
+<!--
+## 2. Add a light shaft component
+-->
+<ol>
+<li><p>シーンから、ライトシャフトを作成したい<strong>ライト</strong>を持つエンティティを選択します。ライトは、影を落とせるものでなければなりません（<a href="point-lights.html">ポイント ライト</a>、<a href="directional-lights.html">ディレクショナル ライト</a>、<a href="spot-lights.html">スポット ライト</a>など）。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>Light</strong> &gt; <strong>Shadow</strong> プロパティのチェックがオンになっていることを確認します。</p>
+<p><img src="media/light-shafts-enable-shadows.png" alt="Enable light shafts"></p>
+</li>
+<li><p>[<strong>Add component</strong>] をクリックし、<strong>Light shaft</strong> を選択します。</p>
+<p><img src="media/add-light-shaft-component.png" alt="Add light shaft component"></p>
+<p>Game Studioは、エンティティにライトシャフトを追加します。</p>
+</li>
+</ol>
+<!--
+1. In your scene, select the entity with the **light** you want to create light shafts. This must be a light that casts shadows (ie a [point light](point-lights.md), [directional light](directional-lights.md), or [spot light](spot-lights.md)).
+
+2. In the **Property Grid**, in the **Light** component properties, make sure the **Shadow** checkbox is selected.
+
+    ![Enable light shafts](media/light-shafts-enable-shadows.png)
+
+3. Click **Add component** and select **Light shaft**.
+
+    ![Add light shaft component](media/add-light-shaft-component.png)
+
+    Game Studio adds a light shaft component to the entity.
+-->
+<h2 id="3-バウンディングボリュームを追加する">3. バウンディングボリュームを追加する</h2>
+<!--
+## 3. Add a bounding volume
+-->
+<p><strong>ライトシャフトバウンディングボリューム</strong>は、ライトシャフトが作られる領域を定義します。バウンディングボリュームは、ディレクショナルライトを持っているエンティティに追加することもできますが、通常は他のエンティティに追加した方が簡単です。</p>
+<!--
+The **light shaft bounding volume** defines the area in which light shafts are created. You can add the bounding volume to the same entity that has the directional light, but it's usually simpler to add it to a separate entity.
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、[<strong>Add asset</strong>] をクリックします。</p>
+</li>
+<li><p><strong>Models</strong> 配下で、ボリュームにしたい形状を持つモデルを選択します。例えば、キューブを選択すると、ライトシャフトはキューブの領域の内部に作成されます。</p>
+<p><img src="media/add-cube-model.png" alt="Cube model"></p>
+<p>マテリアルアセットを選択するために、<strong>Select an asset</strong> ウィンドウが開きます。</p>
+<p><img src="media/asset-picker.png" alt="Select an asset"></p>
+</li>
+<li><p>モデルにマテリアルは必要ありませんので、ここでは [<strong>Cancel</strong>] をクリックし、マテリアルのないモデルを作成します。</p>
+</li>
+<li><p>シーンに空の<strong>エンティティ</strong>を追加します。後で位置を変えることができるので、最初はどこに置いても構いません。</p>
+</li>
+<li><p>エンティティを選択した状態で、<strong>プロパティグリッド</strong>で [<strong>Add component</strong>] をクリックし、<strong>Light Shaft Bounding Volume</strong> を選択します。</p>
+<p><img src="media/add-light-shaft-bounding-volume.png" alt="Add light shaft bounding volume component"></p>
+</li>
+<li><p><strong>ライトシャフトバウンディングボリューム</strong>コンポーネントの <strong>light shaft</strong> プロパティの横にある <img src="../../game-studio/media/hand-icon.png" alt="Hand icon">（<strong>アセットの選択</strong>）をクリックします。</p>
+</li>
+<li><p><strong>エンティティピッカー</strong>で、ライトシャフトを作成するディレクショナルライトを選択し、[<strong>OK</strong>] をクリックします。</p>
+</li>
+<li><p><strong>ライトシャフトバウンディングボリューム</strong>コンポーネントの <strong>Model</strong> プロパティの横にある <img src="../../game-studio/media/hand-icon.png" alt="Hand icon">（<strong>アセットの選択</strong>）をクリックします。</p>
+</li>
+<li><p><strong>Select an asset</strong> ウィンドウで、先ほど作成したモデルを選択し、[<strong>OK</strong>] をクリックします。</p>
+<p><img src="media/select-procedural-model.png" alt="Select model"></p>
+<p>このモデルが、ライトシャフトバウンディングボリュームの形状を定義します。</p>
+</li>
+<li><p><strong>トランスフォーム</strong>コンポーネントを使って、ライトシャフトを作りたい領域をカバーするエンティティの位置とスケールを設定します。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>シーンエディターでライトシャフトバウンディングボリュームのナビゲーションの表示／非表示を切り替えるには、<strong>シーンエディターツールバー</strong> の <strong>ギズモオプション</strong>メニューを開き、<strong>ライトシャフトバウンディングボリューム</strong> チェックボックスを変更します。</p>
+</div>
+<p><img src="media/show-or-hide-light-shaft-bounding-volume.png" alt="Show light shaft bounding volumes"></p>
+</li>
+</ol>
+<!--
+1. In the **Asset View**, click **Add asset**.
+
+2. Under **Models**, select a model in the shape you want the volume to be. For example, if you use a cube, light shafts will be created in a cube-shaped area.
+
+    ![Cube model](media/add-cube-model.png)
+
+    The **Select an asset** window opens.
+
+    ![Select an asset](media/asset-picker.png)
+
+3. You don't need a material for the model, so click **Cancel** to create a model without a material.
+
+4. In the scene, create an empty **entity**. For now, it doesn't matter where you put it; you can reposition it later.
+
+5. With the entity selected, in the **Property Grid**, click **Add component** and select **light shaft bounding volume**.
+
+    ![Add light shaft bounding volume component](media/add-light-shaft-bounding-volume.png)
+
+6. In the **light shaft bounding volume** component properties, next to **light shaft**, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+7. In the **entity picker**, select the entity with the directional light you want to create light shafts and click **OK**.
+
+8. In the **light shaft bounding volume** component properties, next to **Model**, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+9. In the **Select an asset** window, select the model you created and click **OK**.
+
+    ![Select model](media/select-procedural-model.png)
+
+    This model defines the shape of the light shaft bounding volume.
+
+10. Using the **transform** component, position and scale the entity to cover the area where you want to create light shafts.
+
+    >[!Tip]
+    >To show or hide navigation light shaft bounding volumes in the Scene Editor, in the **Scene Editor toolbar**, open the **gizmo options** menu and use the **Light shaft bounding volumes** checkbox.
+    
+    ![Show light shaft bounding volumes](media/show-or-hide-light-shaft-bounding-volume.png)
+-->
+<h2 id="ライトシャフトのプロパティ">ライトシャフトのプロパティ</h2>
+<!--
+## Light shaft properties
+-->
+<p><img src="media/light-shaft-properties.png" alt="Light shaft properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Density</td>
+<td>密度。値が大きいほど明るい光軸になります。</td>
+</tr>
+<tr>
+<td>Sample count</td>
+<td>サンプル数。値が大きいほどきれいになりますが、GPU の負荷が大きくなります。</td>
+</tr>
+<tr>
+<td>Process bounding volumes separately</td>
+<td>オンにすると、複数のバウンディングボリュームを個別に処理します。これによりライトシャフトが重なった際の品質が保たれますが、GPU　の負荷が大きくなります。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                  | Description                                               
+|---------------------------|----------
+| Density                   | Higher values produce brighter light shafts
+| Sample count              | Higher values produce better light shafts but use more GPU 
+| Process bounding volumes separately  | Preserves light shaft quality when seen through separate bounding boxes, but uses more GPU
+-->
+<h3 id="グラフィックスコンポジターにおけるライトシャフトプロパティ">グラフィックスコンポジターにおけるライトシャフトプロパティ</h3>
+<!--
+### Light shaft graphics compositor properties
+-->
+<p>これらのプロパティにアクセスするには、<strong>グラフィックスコンポジターエディター</strong> で <strong>フォワードレンダラー</strong>ノードを選択し、<strong>Light Shafts</strong> を展開します。</p>
+<!--
+To access these properties, in the **graphics compositor editor**, select the **forward renderer** node and expand **Light Shafts**.
+-->
+<p>これらのプロパティは、シーン内のすべてのライトシャフトにグローバルに適用されます。</p>
+<!--
+These properties apply globally to all the light shafts in the scene.
+-->
+<p><img src="media/light-shaft-graphics-compositor-properties.png" alt="Light shaft graphics compositor properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bounding volume buffer downsample level</td>
+<td>値が小さいほど正確なボリュームバッファ領域を生成しますが、GPU の負荷がより大きくなります。</td>
+</tr>
+<tr>
+<td>Light buffer downsample level</td>
+<td>値が小さいほど光軸がシャープになりますが、GPU の負荷がより大きくなります。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                                | Description                                                    
+|-----------------------------------------|--------------
+| Bounding volume buffer downsample level | Lower values produce more precise volume buffer areas, but use more GPU
+| Light buffer downsample level           | Lower values produce sharper light shafts, but use more GPU
+-->
+<h2 id="ライトシャフトの最適化">ライトシャフトの最適化</h2>
+<!--
+## Optimize light shafts
+-->
+<p>ライトシャフトは、暗い環境で最も効果を発揮します。ライトとライトシャフトのコンポーネントプロパティを調整することで、さまざまな結果を得ることができます。たとえば、ライトの色（<strong>ライトコンポーネントプロパティ</strong>）やライトシャフトの密度（<strong>ライトシャフトコンポーネントプロパティ</strong>）を変更することができます。</p>
+<!--
+Light shafts work best in dark environments. You can adjust the light and light shaft component properties to achieve different results — for example, by changing the light color (in the **light component properties**) or the light shaft density (in the **light shaft component properties**).
+-->
+<p>複数のライトシャフトが重なると、次のスクリーンショットのように、視覚的にうるさくなってしまいます。</p>
+<!--
+Multiple light shafts viewed through one another can become visually noisy, as in the screenshot below:
+-->
+<p><img src="media/noisy-light-shafts.jpg" alt="Noisy light shafts"></p>
+<p>この問題を軽減するには、<strong>ライトシャフトコンポーネントプロパティ</strong>で、<strong>密度（density）</strong> を減らし、<strong>サンプル数（Sample count）</strong> を増やします。</p>
+<!--
+To reduce this effect, in the **light shaft component properties**, reduce the **density** and increase the **sample count**.
+-->
+<p><img src="media/density-factor.png" alt="Density factor"></p>
+<p>また、別のバウンディングボリュームを追加した際に、個別に処理するという方法もあります。</p>
+<!--
+Alternatively, add additional bounding volumes and process them separately. To do this:
+-->
+<ol>
+<li><p>追加のバウンディングボリュームを作成し、ライトシャフトを作成したい領域を覆うように配置します。バウンディングボリュームが重なるとライトシャフトが眩しくなるので、注意してください。</p>
+</li>
+<li><p><strong>ライトシャフトコンポーネントのプロパティ</strong>で、<strong>Process bounding volumes separately（バウンディングボリュームを個別に処理する）</strong> が選択されていることを確認します。</p>
+</li>
+</ol>
+<!--
+1. Create additional bounding volumes and position them to cover the areas where you want to create light shafts. Make sure the bounding volumes don't overlap, as this makes light shafts extra-bright.
+
+2. In the **light shaft component properties**, make sure **Process bounding volumes separately** is selected.
+-->
+<p><img src="media/separate-bounding-volumes.png" alt="Separate bounding volume"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>バウンディングボリュームを個別に処理するには、より多くの GPU パワーが必要です。</p>
+</div>
+<!--
+> [!Note]
+> Processing bounding volumes separately uses more GPU.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="directional-lights.html">ディレクショナル ライト</a></li>
+<li><a href="shadows.html">シャドウ</a></li>
+<li><a href="../graphics-compositor/index.html">グラフィックス コンポジター</a></li>
+</ul>
+<!--
+* [Directional lights](directional-lights.md)
+* [Shadows](shadows.md)
+* [Graphics compositor](../graphics-compositor/index.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/lights-and-shadows/light-shafts.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

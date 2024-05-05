@@ -1,0 +1,679 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Unity&#174; 開発者のための Stride | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Unity&#174; 開発者のための Stride | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/stride-for-unity-developers/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="unity-開発者のための-stride">Unity® 開発者のための Stride</h1>
+
+<p>Stride と Unity® はどちらも C# を使用し、多くの概念を共有していますが、いくつか大きな違いがあります。</p>
+<p><img src="media/stride-vs-unity-opening-image.png" alt="Stride for Unity® developers"></p>
+<h2 id="エディター">エディター</h2>
+<p>Stride のエディターは <strong>Game Studio</strong> です。これは Unity® Editor と同等のものです。</p>
+<p><img src="media/stride-vs-unity-interface-comparison.png" alt="Stride and Unity®  interface comparison"></p>
+<p><em><a href="http://through-the-interface.typepad.com/through_the_interface/2012/04/calling-a-web-service-from-a-unity3d-scene.html">Unity3D シーンからの Web サービスの呼び出し</a>から取得された Unity® のスクリーンショット (Kean Walmsley 氏提供)。</em></p>
+<p>Visual Studio と同様に、Game Studio のレイアウトはタブをドラッグすることによってカスタマイズできます。</p>
+<p>Game Studio の詳細については、「<a href="../game-studio/index.html">Game Studio</a>」ページを参照してください。</p>
+<h2 id="用語">用語</h2>
+<p>Unity® と Stride ではほぼ共通の用語が使用されていますが、いくつか違いがあります。</p>
+<table>
+<thead>
+<tr>
+<th>Unity®</th>
+<th>Stride</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hierarchy panel</td>
+<td>エンティティ ツリー</td>
+</tr>
+<tr>
+<td>Inspector</td>
+<td>Property grid</td>
+</tr>
+<tr>
+<td>Project browser</td>
+<td>Asset view</td>
+</tr>
+<tr>
+<td>Scene view</td>
+<td>シーン エディター</td>
+</tr>
+<tr>
+<td>GameObject</td>
+<td>エンティティ</td>
+</tr>
+<tr>
+<td>MonoBehaviour</td>
+<td>SyncScript、AsyncScript、StartupScript</td>
+</tr>
+</tbody>
+</table>
+<h2 id="フォルダーとファイル">フォルダーとファイル</h2>
+<p>Unity® と同様に、Stride プロジェクトは以下を含むディレクトリに格納されます。</p>
+<ul>
+<li><p>プロジェクトの <code>.sln</code> ソリューション ファイル。Game Studio または Visual Studio などの任意の IDE で開くことができます。</p>
+</li>
+<li><p>プロジェクトのソース ファイル、依存関係、リソース、構成、バイナリを含む［MyGame.Game］フォルダー。</p>
+<p><img src="../files-and-folders/media/folder-structure.png" alt="Package folder structure"></p>
+</li>
+</ul>
+<p>*［Assets］には、ゲーム内の要素を表すアセット ファイルが含まれます。</p>
+<p>*［Bin］には、コンパイル済みのバイナリとデータが含まれます。プロジェクトをビルドすると、プラットフォームごとのサブディレクトリ含むフォルダーが作成されます。</p>
+<p>*［MyGame.Game］には、ソース コードが含まれます。</p>
+<ul>
+<li>［MyGame.Platform］には、プロジェクトがサポートするプラットフォーム用の追加コードが含まれます。プラットフォームごとにフォルダーが作成されます (［MyGame.Windows］、［MyGame.Linux］など)。通常、これらのフォルダーは小さく、プログラムのエントリ ポイントだけが含まれます。</li>
+</ul>
+<p>*［obj］には、キャッシュされたファイルが含まれます。このフォルダーは、プロジェクトをビルドすると作成されます。アセットとコードの完全なリビルドを強制的に行うには、このフォルダーを削除して、プロジェクトを再度ビルドします。</p>
+<p>*［Resources］は、アセットによって使用される画像ファイルやオーディオ ファイルなどのファイルに推奨される場所です。</p>
+<p>Stride と Unity® は次の点が異なります。</p>
+<ul>
+<li><p>Stride では、リソース ファイルをアセットにインポートしても、リソース ファイルはプロジェクト フォルダーに自動的にコピーされません。手動で行う必要があります。リソース ファイルは［Resources］フォルダーに保存することをお勧めします。</p>
+</li>
+<li><p>Stride では、リソース ファイルとアセット ファイルが同じフォルダーに存在する必要はありません。必要であればリソース ファイルを［Assets］フォルダーに保存できますが、［Resources］フォルダーに保存することをお勧めします。このようにすれば、バージョン管理によるプロジェクトの共有が容易になります。</p>
+</li>
+</ul>
+<p>Stride でのプロジェクトの構造およびファイルの編成と共有の方法に関するアドバイスについては、「<a href="../files-and-folders/project-structure.html">プロジェクトの構造</a>」ページを参照してください。</p>
+<h3 id="game-studio-からプロジェクト-ディレクトリを開く">Game Studio からプロジェクト ディレクトリを開く</h3>
+<p>Game Studio の［Project］&gt;［Show in Explorer］からプロジェクト ディレクトリを開くことができます。</p>
+<p><img src="media/stride-vs-unity-open-project-in-windows-explorer.png" alt="Open project directory from Game Studio"></p>
+<h2 id="ゲームの設定">ゲームの設定</h2>
+<p>Unity® では、グローバルな設定が個別のアセットに保存されます (グラフィックスの設定、品質の設定、オーディオ マネージャーなど)。</p>
+<p>Stride では、グローバルな設定は 1 つのアセット (［Game Settings］アセット) に保存されます。以下の情報を構成できます。</p>
+<ul>
+<li><strong>既定のシーン</strong></li>
+<li><strong>レンダリングの設定</strong></li>
+<li><strong>エディターの設定</strong></li>
+<li><strong>テクスチャの設定</strong></li>
+<li><strong>物理特性の設定</strong></li>
+<li><strong>オーバーライド</strong></li>
+</ul>
+<p>Game Settings アセットを使用するには、［Asset view］で［Game Settings］を選択し、［Property grid］でプロパティを表示します。</p>
+<p><img src="media/game-settings.png" alt="Game settings"></p>
+<h2 id="シーン">シーン</h2>
+<p>Unity® と同様に、Stride ではすべてのオブジェクトをシーンに配置します。シーンは、独立した <code>.sdscene</code> アセットとしてプロジェクト ディレクトリに格納されます。</p>
+<h3 id="既定のシーンを設定する">既定のシーンを設定する</h3>
+<p>プロジェクトには複数のシーンを作成できます。実行時には既定のシーンがロードされます。</p>
+<p>既定のシーンを設定するには:</p>
+<ol>
+<li><p>［Game Settings］のプロパティで、［Default Scene］の隣の <img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p><img src="media/stride-vs-unity-game-settings-default-scene.png" alt="Set default scene"></p>
+<p>［Select an asset］ウィンドウが開きます。</p>
+</li>
+<li><p>既定のシーンを選択し、［OK］をクリックします。</p>
+</li>
+</ol>
+<p>シーンの詳細については、「<a href="../game-studio/scenes.html">シーン</a>」を参照してください。</p>
+<h2 id="エンティティと-gameobject">エンティティと GameObject</h2>
+<p>Unity® では、シーン内のオブジェクトは <strong>GameObject</strong> と呼ばれます。Stride では<strong>エンティティ</strong>と呼びます。</p>
+<p><img src="media/stride-vs-unity-entities.jpg" alt="Entities in Stride"></p>
+<p>GameObject と同様に、エンティティには変換コンポーネント、モデル コンポーネント、オーディオ コンポーネントなどのコンポーネントが格納されます。Unity® の GameObject を使い慣れている場合、Game Studio のエンティティも問題なく使用できるはずです。</p>
+<h2 id="エンティティのコンポーネント">エンティティのコンポーネント</h2>
+<p>Unity® で GameObject にコンポーネントを追加するのと同じように、Stride ではエンティティにコンポーネントを追加します。</p>
+<p>Game Studio でコンポーネントをエンティティに追加するには:</p>
+<ol>
+<li><p>コンポーネントを追加するエンティティを選択します。</p>
+</li>
+<li><p>［Property grid］(既定では右側) で［Add component］をクリックし、ドロップダウン リストからコンポーネントを選択します。</p>
+<p><img src="media/stride-vs-unity-add-component-to-entity.png" alt="Add component"></p>
+</li>
+</ol>
+<h3 id="transform-コンポーネント">Transform コンポーネント</h3>
+<p>Unity® の GameObject と同じように、Stride の各エンティティにはワールドでの位置、回転、拡大縮小を設定する <a class="xref" href="../../api/Stride.Engine.TransformComponent.html">Transform コンポーネント</a>があります。</p>
+<p><img src="media/stride-vs-unity-entity-transform-component.png" alt="Transform component"></p>
+<p>シーン内のすべてのエンティティは位置を持つ必要があるため、空のエンティティにも Transform コンポーネントがあります。</p>
+<h2 id="アセット">アセット</h2>
+<p>Unity® では、［Project browser］でアセットを選択し、［Inspector］タブでプロパティを編集します。</p>
+<p>Stride も同様です。［Asset view］でアセットを選択し、［Property grid］でプロパティを編集します。</p>
+<p><img src="media/asset-and-properties.png" alt="Asset and properties"></p>
+<p>特定の種類のアセットには、専用のエディターがあります。</p>
+<ul>
+<li>プレハブ</li>
+<li>シーン</li>
+<li>スプライト シート</li>
+<li>UI ページ</li>
+<li>UI ライブラリ</li>
+<li>スクリプト</li>
+</ul>
+<p>これらの種類のアセットの専用エディターを開くには、次のいずれかの方法を使用します。</p>
+<ul>
+<li>アセットをダブルクリックします</li>
+<li>アセットを右クリックして、［Edit asset］を選択します</li>
+<li>アセットを選択して、Ctrl + Enter キーを押します</li>
+</ul>
+<p>新しいタブでエディターが開きます。自由にタブを配置することも、Web ブラウザーのタブのように別のウィンドウにすることもできます。</p>
+<p><img src="media/stride-vs-unity-different-editors.png" alt="Dedicated Stride editors"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Game Studio の外部でリソース ファイルを変更すると、Game Studio で対応するリソースが自動的に更新されます。</p>
+</div>
+<h3 id="アセットをインポートする">アセットをインポートする</h3>
+<p>アセットをインポートするには、エクスプローラーから［Asset view］にドラッグします。または、［Add asset］ボタンをクリックし、目的のファイルに移動して、インポートするアセットの種類を指定することもできます。</p>
+<p>プロジェクトにアセットを追加するとすぐに、［Property grid］でプロパティを編集できます。</p>
+<p><img src="media/stride-vs-unity-add-asset.png" alt="Add asset"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Unity® とは異なり、Stride ではリソース ファイルをプロジェクトにインポートしても、リソース ファイルはプロジェクト ディレクトリに自動的にコピーされません。</p>
+</div>
+<h3 id="サポートされるファイル形式">サポートされるファイル形式</h3>
+<p>Unity® と同様に、Stride では次のファイル形式がサポートされています。</p>
+<table>
+<thead>
+<tr>
+<th>アセットの種類</th>
+<th>サポートされる形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>モデル、アニメーション、スケルトン</td>
+<td>.dae、.3ds、.obj、.blend、.x、.md2、.md3、.dxf、.fbx</td>
+</tr>
+<tr>
+<td>スプライト、テクスチャ、スカイボックス</td>
+<td>.dds、.jpg、.jpeg、.png、.gif、.bmp、.tga、.psd、.tif、.tiff</td>
+</tr>
+<tr>
+<td>オーディオ</td>
+<td>.wav、.mp3、.ogg、.aac、.aiff、.flac、.m4a、.wma、.mpc</td>
+</tr>
+<tr>
+<td>フォント</td>
+<td>.ttf、.otf</td>
+</tr>
+</tbody>
+</table>
+<p>アセットの詳細については、「<a href="../game-studio/assets.html">アセット</a>」を参照してください。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<ul>
+<li>現在、Stride は動画ファイルをサポートしていません。</li>
+</ul>
+</div>
+<h2 id="プレハブ">プレハブ</h2>
+<p>Unity® と同様に、Stride ではプレハブが使用されます。プレハブとはオブジェクトの「マスター」バージョンであり、必要な場所で再利用できます。プレハブを変更すると、そのプレハブのすべてのインスタンスも変わります。</p>
+<p><img src="media/stride-vs-unity-prefabs.png" alt="Prefabs in Stride"></p>
+<p>Unity® とは異なり、Stride ではプレハブを他のプレハブに追加することもできます。これは<strong>入れ子になったプレハブ</strong>と呼ばれます。入れ子になったプレハブを変更した場合、すべての依存するプレハブが変更を自動的に継承します。</p>
+<p>たとえば、加速、ブレーキ、ステアリングなどを持つ［Vehicle］プレハブを作成しているものとします。［Vehicle］プレハブを、タクシー、バス、トラックなどの異なる種類の自動車のプレハブに入れ子にできます。［Vehicle］プレハブでプロパティを調整すると、他のすべてのプレハブに変更が継承されます。たとえば、［Vehicle］プレハブで加速プロパティを大きくすると、タクシー、バス、トラックの加速プロパティも大きくなります。</p>
+<p>Unity® でこれを行うには、自動車の種類ごとに異なるプレハブを作成し、加速パラメーターを 1 つずつ変更する必要があります。</p>
+<p>Stride でのプレハブの使用の詳細については、「<a href="../game-studio/prefabs/index.html">プレハブ</a>」を参照してください。</p>
+<h2 id="アーキタイプ">アーキタイプ</h2>
+<p><strong>アーキタイプ</strong>とは、それから<strong>派生</strong>するアセットのプロパティを制御するマスター アセットです。派生アセットは、アセットの「リミックス」バージョンを作成するときに便利です。これはプレハブと似ています。</p>
+<p>たとえば、［Metal］という名前のマテリアル アセットを共有する 3 つの球体エンティティがあるものとします。次に、<em>1 つ</em>の球体だけの色を変更し、他のプロパティは同じままにしたいものとします。その場合は、マテリアル アセットを複製し、その色を変更して、新しいアセットを 1 つの球体だけに適用することで実現できます。しかし、後で<em>すべての</em>球体の別のプロパティを変更しようとすると、両方のアセットを変更する必要があります。これでは時間がかかり、間違うおそれもあります。</p>
+<p>もっとよい方法は、アーキタイプから新しいアセットを派生することです。派生アセットはアーキタイプからプロパティを継承し、必要に応じて個別のプロパティをオーバーライドできます。たとえば、球体のマテリアル アセットを派生して、その色をオーバーライドできます。その後、アーキタイプの光沢度を変更すると、3 つの球体すべての光沢度が変わります。</p>
+<p><img src="../game-studio/media/archetypes-three-spheres.png" alt="Create derived asset"></p>
+<p>アーキタイプからアセットを派生し、さらにその派生アセットから別のアセットを派生することができます。このようにすると、アセットのさまざまなレイヤーを作成して、プロジェクトを整理することができます。</p>
+<pre><code class="lang-cs">Archetype
+    Derived asset
+        Derived asset
+</code></pre>
+<p>アーキタイプの詳細については、「<a href="../game-studio/archetypes.html">アーキタイプ</a>」を参照してください。</p>
+<h2 id="入力">入力</h2>
+<p>Stride はさまざまな入力をサポートします。以下のコード サンプルでは、Stride と Unity® での入力コードの違いを示します。</p>
+<p>Stride での入力の詳細については、「<a href="../input/index.html">入力</a>」を参照してください。</p>
+<h4 id="unity">Unity®</h4>
+<pre><code class="lang-cs">void Update()
+{
+    // Space バーが押された 1 フレームについて true
+    if(Input.GetKeyDown(KeyCode.Space))
+    {
+        // 処理を行う。
+    }
+
+    // このジョイスティック ボタンがダウン状態の間 true
+    if (Input.GetButton(&quot;joystick button 0&quot;))
+    {
+        // 処理を行う。
+    }
+
+    float Horiz = Input.GetAxis(&quot;Horizontal&quot;);
+    float Vert = Input.GetAxis(&quot;Vertical&quot;);
+    // 別の処理を実行する。
+}
+</code></pre>
+<h2 id="物理特性">物理特性</h2>
+<p>Unity® と同様に、Stride にも 3 種類のコライダーがあります。</p>
+<ul>
+<li>静的コライダー</li>
+<li>剛体</li>
+<li>キャラクター</li>
+</ul>
+<p>これらのスクリプトでの制御方法は少しずつ異なります。</p>
+<h3 id="運動学的剛体">運動学的剛体</h3>
+<h4 id="unity-1">Unity®</h4>
+<pre><code class="lang-cs">public Rigidbody rigidBody;
+void Start()
+{
+    rigidBody = GetComponent&lt;Rigidbody&gt;();
+}
+
+void EnableRagdoll()
+{
+    rigidBody.isKinematic = false;
+    rigidBody.detectCollisions = true;
+}
+
+void DisableRagdoll()
+{
+    rigidBody.isKinematic = true;
+    rigidBody.detectCollisions = false;
+}
+</code></pre>
+<h4 id="stride">Stride</h4>
+<pre><code class="lang-cs">public class KinematicX : SyncScript
+{
+    public RigidbodyComponent component;
+
+    public override void Start()
+    {
+        // スクリプトの初期化。
+        component = Entity.Get&lt;RigidbodyComponent&gt;();
+    }
+
+    public override void Update()
+    {
+    }
+
+    public void EnableRagdoll()
+    {
+        component.IsKinematic = false;
+        component.ProcessCollisions = true;
+    }
+
+    public void DisableRagdoll()
+    {
+        component.IsKinematic = true;
+        component.ProcessCollisions = false;
+    }
+}
+</code></pre>
+<p>Stride での剛体の詳細については、「<a href="../physics/rigid-bodies.html">剛体</a>」を参照してください。</p>
+<h3 id="トリガー">トリガー</h3>
+<h4 id="unity-2">Unity®</h4>
+<pre><code class="lang-cs">// ゲーム オブジェクトがトリガーと衝突したとき。
+void OnTriggerEnter(Collider Other)
+{
+    Other.transform.localScale = new Vector3(2.0f, 2.0f, 2.0f);
+}
+
+// ゲーム オブジェクトがコライダー空間を出るとき。
+void OnTriggerExit(Collider Other)
+{
+    Other.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+}
+</code></pre>
+<h4 id="stride-1">Stride</h4>
+<pre><code class="lang-cs">var trigger = Entity.Get&lt;PhysicsComponent&gt;();
+trigger.ProcessCollisions = true;
+
+// 状態マシンを開始する。
+while (Game.IsRunning)
+{
+    // 1. エンティティがトリガーと衝突するのを待つ。
+    var firstCollision = await trigger.NewCollision();
+
+    var otherCollider = trigger == firstCollision.ColliderA
+        ? firstCollision.ColliderB
+        : firstCollision.ColliderA;
+    otherCollider.Entity.Transform.Scale = new Vector3(2.0f, 2.0f, 2.0f);
+
+    // 2. エンティティがトリガーから出るのを待つ。
+    Collision collision;
+
+    do
+    {
+        collision = await trigger.CollisionEnded();
+    }
+    while (collision != firstCollision);
+
+    otherCollider.Entity.Transform.Scale = new Vector3(1.0f, 1.0f, 1.0f);
+}
+</code></pre>
+<p>Stride でのトリガーの詳細については、「<a href="../physics/triggers.html">トリガー</a>」を参照してください。</p>
+<h3 id="レイキャスティング">レイキャスティング</h3>
+<h4 id="unity-3">Unity®</h4>
+<pre><code class="lang-cs">Collider FindGOCameraIsLookingAt()
+{
+    int distance = 50;
+
+    // レイをキャストし、ゲーム内のマウス カーソルの位置に設定する
+    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    RaycastHit hit;
+    if (Physics.Raycast(ray, out hit, distance))
+    {
+        // 見えないレイ キャスト/ベクトルを描画する
+        Debug.DrawLine(ray.origin, hit.point);
+        // ヒット領域をコンソールに記録する
+        Debug.Log(hit.point);
+        return hit.collider;
+    }
+    return null;
+}
+</code></pre>
+<h4 id="stride-2">Stride</h4>
+<pre><code class="lang-cs">public static PhysicsComponent ScreenPositionToWorldPositionRaycast(Vector2 screenPos, CameraComponent camera, Simulation simulation)
+{
+    Matrix invViewProj = Matrix.Invert(camera.ViewProjectionMatrix);
+
+    Vector3 sPos;
+    sPos.X = screenPos.X * 2f - 1f;
+    sPos.Y = 1f - screenPos.Y * 2f;
+
+    sPos.Z = 0f;
+    var vectorNear = Vector3.Transform(sPos, invViewProj);
+    vectorNear /= vectorNear.W;
+
+    sPos.Z = 1f;
+    var vectorFar = Vector3.Transform(sPos, invViewProj);
+    vectorFar /= vectorFar.W;
+
+    var result = simulation.Raycast(vectorNear.XYZ(), vectorFar.XYZ());
+    return result.Succeeded;
+}
+</code></pre>
+<p>Stride でのレイキャスティングの詳細については、「<a href="../physics/raycasting.html">レイキャスティング</a>」を参照してください。</p>
+<h2 id="スクリプト">スクリプト</h2>
+<p>Stride では、スクリプトはプロジェクト ディレクトリの［MyGame.Game］フォルダーのサブフォルダーに保存されます。</p>
+<p>Game Studio のスクリプト エディターでスクリプトを開くには、［Asset view］でスクリプトをダブルクリックします。スクリプト エディターには、構文の強調表示、オートコンプリート、ライブ診断の機能があります。</p>
+<p><img src="media/stride-vs-unity-script-editor.png" alt="Stride script editor"></p>
+<p>Visual Studio などの他の IDE でスクリプトを編集することもできます。外部 IDE でスクリプトを編集すると、自動的に再ロードされます。</p>
+<p>Stride をインストールするときに Visual Studio プラグインをインストールすると、Game Studio からプロジェクトを Visual Studio で開くことができます。そのためには、Game Studio ツールバーで［Open in IDE］をクリックします。</p>
+<p><img src="media/stride-vs-unity-open-project-in-visual-studio.png" alt="Open project in Visual Studio"></p>
+<p>または、［Asset view］でスクリプトを右クリックし、［Open asset file］をクリックします。</p>
+<p><img src="media/stride-vs-unity-open-asset-file.png" alt="Open asset file"></p>
+<h3 id="イベント関数-startupdateexecute-など">イベント関数 (Start、Update、Execute など)</h3>
+<p>Unity® では、Start()、Update()、その他のメソッドで MonoBehaviour を操作します。</p>
+<p>MonoBehaviour の代わりに、Stride には SyncScript、AsyncScript、StartupScript の 3 種類のスクリプトがあります。詳細については、「<a href="../scripts/types-of-script.html">スクリプトの種類</a>」を参照してください。</p>
+<h3 id="unity-の-monobehaviour">Unity® の MonoBehaviour</h3>
+<pre><code class="lang-cs">public class BasicMethods : MonoBehaviour
+{
+    void Start() { }
+    void OnDestroy() { }
+    void Update() { }
+}
+</code></pre>
+<h3 id="stride-の-syncscript">Stride の SyncScript</h3>
+<pre><code class="lang-cs">public class BasicMethods : SyncScript
+{
+    public override void Start() { }
+    public override void Cancel() { }        
+    public override void Update() { }
+}
+</code></pre>
+<h3 id="stride-の-asyncscript">Stride の AsyncScript</h3>
+<pre><code class="lang-cs">public class BasicMethods : AsyncScript
+{
+    // Game Studio に表示される、宣言されたパブリック メンバー フィールドとプロパティ
+    public override async Task Execute()
+    {
+        while(Game.IsRunning)
+        {
+            // 新しいフレームのたびに処理を行う
+            await Script.NextFrame();
+        }
+    }
+
+    public override void Cancel()
+    {
+        // スクリプトのクリーンアップ
+    }     
+}
+</code></pre>
+<h3 id="stride-の-startupscript">Stride の StartupScript</h3>
+<pre><code class="lang-cs">public class BasicMethods : StartupScript
+{
+    // Game Studio に表示される、宣言されたパブリック メンバー フィールドとプロパティ
+    public override void Start()
+    {
+        // スクリプトの初期化
+    }
+
+    public override void Cancel()
+    {
+        // スクリプトのクリーンアップ
+    }     
+}
+</code></pre>
+<h2 id="スクリプト-コンポーネント">スクリプト コンポーネント</h2>
+<p>Unity® と同様に、Stride では、スクリプト コンポーネントとして追加することによってスクリプトをエンティティにアタッチします。</p>
+<h3 id="スクリプトを作成する">スクリプトを作成する</h3>
+<p>スクリプトを作成するには、［Add asset］ボタンをクリックして、［Scripts］を選択します。</p>
+<p><img src="media/stride-vs-unity-create-script.png" alt="Create script in Stride"></p>
+<p>Unity® では、<code>MonoBehaviour</code> スクリプトを作成すると、2 つの基底関数 <code>Start()</code> と <code>Update()</code> が作成されます。Stride の <a class="xref" href="../../api/Stride.Engine.SyncScript.html">SyncScript</a> は同じように動作します。<code>MonoBehaviour</code> と同様に、<a class="xref" href="../../api/Stride.Engine.SyncScript.html">SyncScript</a> には次の 2 つのメソッドがあります。</p>
+<ul>
+<li><p><a class="xref" href="../../api/Stride.Engine.StartupScript.html#Stride_Engine_StartupScript_Start">Start()</a> は、スクリプトがロードされると呼び出されます。</p>
+</li>
+<li><p><a class="xref" href="../../api/Stride.Engine.SyncScript.html#Stride_Engine_SyncScript_Update">Update()</a> は、更新のたびに呼び出されます。</p>
+</li>
+</ul>
+<p><code>MonoBehaviour</code> とは異なる、すべての <a class="xref" href="../../api/Stride.Engine.SyncScript.html">SyncScript</a> で <a class="xref" href="../../api/Stride.Engine.SyncScript.html#Stride_Engine_SyncScript_Update">Update()</a> メソッドを使用する必要があります。そうしないと、コードは正しく動作しません。</p>
+<p>スクリプトをスタートアップ スクリプトまたは非同期スクリプトにしたい場合は、対応するスクリプトの種類を使用します。</p>
+<ul>
+<li><p><a class="xref" href="../../api/Stride.Engine.StartupScript.html">StartupScript</a>: このスクリプトのメソッドは <a class="xref" href="../../api/Stride.Engine.StartupScript.html#Stride_Engine_StartupScript_Start">Start()</a> の 1 つだけです。起動時にシーンとその内容を初期化します。</p>
+</li>
+<li><p><a class="xref" href="../../api/Stride.Engine.AsyncScript.html">AsyncScript</a>: 非同期スクリプトのメソッドは <a class="xref" href="../../api/Stride.Engine.AsyncScript.html#Stride_Engine_AsyncScript_Execute">Execute()</a> の 1 つだけで、そのメソッド内で非同期/待機を使用できます。非同期スクリプトは、同期スクリプトのように 1 つずつロードされることはありません。すべてのスクリプトが並列にロードされます。</p>
+</li>
+</ul>
+<h3 id="アセンブリを再ロードする">アセンブリを再ロードする</h3>
+<p>Unity® とは異なり、スクリプトを作成した後は、アセンブリを手動で再ロードする必要があります。そのためには、Game Studio のツールバーで［Reload game assemblies］をクリックします。</p>
+<p><img src="../platforms/media/reload-assemblies.png" alt="Reload assemblies"></p>
+<h3 id="スクリプトをエンティティに追加する">スクリプトをエンティティに追加する</h3>
+<ol>
+<li><p><strong>エンティティ ツリー</strong> (既定では左側) またはシーンで、スクリプトを追加するエンティティを選択します。</p>
+<p><img src="../scripts/media/select-entity.png" alt="Select an entity"></p>
+</li>
+<li><p>［Property grid］(既定では右側) で、［Add component］をクリックし、追加するスクリプトを選択します。</p>
+</li>
+</ol>
+<p><img src="../scripts/media/add-script-component.png" alt="Add script component"></p>
+<p>Unity® では、スクリプト コンポーネントは［Components］&gt;［Scripts］の下にグループ化されています。Stride では、スクリプトはグループ化されません。Game Studio では、他のコンポーネントと一緒にアルファベット順に一覧表示されます。</p>
+<p>Stride でのスクリプトの追加の詳細については、「<a href="../scripts/use-a-script.html">スクリプトを使用する</a>」を参照してください。</p>
+<h2 id="ゲームプレイのスクリプト化">ゲームプレイのスクリプト化</h2>
+<p>Unity® と Stride はどちらも C# を使用します。ただし、Stride でのゲームプレイのスクリプト化は Unity® と少し異なります。</p>
+<h3 id="エンティティgameobject-をインスタンス化する">エンティティ/GameObject をインスタンス化する</h3>
+<p>Unity® では、<code>Instantiate</code> を使用して新しいオブジェクト インスタンスを作成します。この関数は、<code>UnityEngine.Object</code> をコピーし、それをシーンに対して生成します。</p>
+<h4 id="unity-4">Unity®</h4>
+<pre><code class="lang-cs">public GameObject CarPrefab;
+public Vector3 SpawnPosition;
+public Quaternion SpawnRotation;
+
+void Start()
+{
+    GameObject NewGO = (GameObject)Instantiate(CarPrefab, SpawnPosition, SpawnRotation);
+    NewGO.name = &quot;NewGameObject1&quot;;
+}
+</code></pre>
+<h4 id="stride-3">Stride</h4>
+<p>Stride では、Unity® の GameObject と同じように<strong>エンティティ</strong>をインスタンス化できます。</p>
+<pre><code class="lang-cs">// Game Studio のプロパティ グリッドに表示される、宣言されたパブリック メンバー フィールドとプロパティ。
+public Prefab CarPrefab;
+public Vector3 SpawnPosition;
+public Quaternion SpawnRotation;
+
+public override void Start()
+{
+    // スクリプトの初期化。
+    var car = CarPrefab.Instantiate();
+    SceneSystem.SceneInstance.RootScene.Entities.AddRange(car);
+    car.First().Transform.Position = SpawnPosition;
+    car.First().Transform.Rotation = SpawnRotation;
+    car.First().Name = &quot;MyNewEntity&quot;;
+}
+</code></pre>
+<h3 id="既定値を使用する">既定値を使用する</h3>
+<p>Unity® の各クラスには特定の既定値があります。スクリプトでこれらのプロパティをオーバーライドしないと、既定値が使用されます。これは Stride でも同じです。</p>
+<h4 id="unity-5">Unity®</h4>
+<pre><code class="lang-cs">public int NewProp = 30;
+public Light MyLightComp = null;
+
+void Start()
+{
+    // まだない場合はライト コンポーネントを作成する。
+    if (MyLightComp == null)
+    {
+        MyLightComp = gameObject.AddComponent&lt;Light&gt;();
+        MyLightComp.intensity = 3;
+    }
+}
+</code></pre>
+<h4 id="stride-4">Stride</h4>
+<pre><code class="lang-cs">// Game Studio のプロパティ グリッドに表示される、宣言されたパブリック メンバー フィールドとプロパティ。
+public int NewProp = 30;
+public LightComponent MyLightComponent = null;
+
+public override void Start()
+{
+    // まだない場合はライト コンポーネントを作成する。
+    if (MyLightComponent == null)
+    {
+        MyLightComponent = new LightComponent();
+        MyLightComponent.Intensity = 3;
+        Entity.Add(MyLightComponent);
+    }
+}
+</code></pre>
+<h3 id="gameobjectエンティティを無効にする">GameObject/エンティティを無効にする</h3>
+<h4 id="unity-6">Unity®</h4>
+<pre><code class="lang-cs">MyGameObject.SetActive(false);
+</code></pre>
+<h4 id="stride-5">Stride</h4>
+<pre><code class="lang-cs">Entity.EnableAll(false, true);
+</code></pre>
+<h3 id="gameobjectエンティティからコンポーネントにアクセスする">GameObject/エンティティからコンポーネントにアクセスする</h3>
+<h4 id="unity-7">Unity®</h4>
+<pre><code class="lang-cs">Light lightComponent = GetComponent&lt;Light&gt;();
+</code></pre>
+<h4 id="stride-6">Stride</h4>
+<pre><code class="lang-cs">LightComponent lightComponent = Entity.Get&lt;LightComponent&gt;();
+</code></pre>
+<h3 id="コンポーネントから-gameobjectエンティティにアクセスする">コンポーネントから GameObject/エンティティにアクセスする</h3>
+<h4 id="unity-8">Unity®</h4>
+<pre><code class="lang-cs">GameObject ParentGO = lightComponent.gameObject;
+</code></pre>
+<h4 id="stride-7">Stride</h4>
+<pre><code class="lang-cs">Entity ParentEntity = lightComponent.Entity;
+</code></pre>
+<h2 id="出力を記録する">出力を記録する</h2>
+<p>出力を表示するには、Game Studio のツールバーで、［View］の［Output］を有効にします。</p>
+<p><img src="media/enable-output.png" alt="Enable output"></p>
+<p>Game Studio は、［Output］タブ (既定では Game Studio の下部) に表示します。</p>
+<p><img src="media/output-tab.png" alt="Output tab"></p>
+<h3 id="デバッグ-メッセージを表示する">デバッグ メッセージを表示する</h3>
+<p>Visual Studio の出力を表示するには、次のようにします。</p>
+<pre><code class="lang-cs">System.Diagnostics.Debug.WriteLine(&quot;hello&quot;);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>デバッグ メッセージを表示するには、Game Studio ではなく Visual Studio からゲームを実行する必要があります。Game Studio の出力ウィンドウに表示する方法はありません。</p>
+</div>
+<hr>
+<p>Unity® は、Unity Technologies の商標です。</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/stride-for-unity-developers/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ゲームパッド | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ゲームパッド | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/gamepads.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ゲームパッド">ゲームパッド</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p><strong>ゲームパッド</strong> (Xbox Elite ワイヤレス コントローラー、PS4 DualShock など) は、コンソールおよびデスクトップ用の一般的な入力デバイスです。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>現在、Stride は Xbox Elite ゲームパッド用に最適化されています。他のコントローラーも動作しますが、予期しないボタン マッピングになる場合があります。PS4 DualShock タッチパッドなどのゲームパッド固有の機能はサポートされません。</p>
+</div>
+<h2 id="デジタル-ボタンとアナログ-ボタン">デジタル ボタンとアナログ ボタン</h2>
+<ul>
+<li><p><strong>デジタル</strong> ボタンには、<strong>アップ</strong>と<strong>ダウン</strong>の 2 つの状態があります。D パッド、スタート、バック、サムスティック (押す)、A、B、X、Y の各ボタンはデジタル ボタンです。</p>
+</li>
+<li><p><strong>アナログ</strong> ボタンは、ユーザーが押した強さに応じた値を返します。トリガーはアナログ ボタンであり、0 ～ 1 の範囲の値を返します。サムスティックはアナログ ボタンでもあり、X 軸および Y 軸の -1 ～ 1 の値を返します。</p>
+</li>
+</ul>
+<p>Xbox Elite コントローラーのボタンは、Stride では次のような名前になっています。</p>
+<p><img src="media/input-gamepad-standard-gamepad.png" alt="Xbox gamepad"></p>
+<h2 id="ゲームパッドの入力を処理する">ゲームパッドの入力を処理する</h2>
+<h3 id="ゲームパッドが接続されていることを確認する">ゲームパッドが接続されていることを確認する</h3>
+<p>ゲームパッドの入力を処理する前に:</p>
+<ul>
+<li><p>いずれかのゲームパッドが接続されているかどうかを確認するには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_HasGamePad">InputManager.HasGamePad</a> を使用します。</p>
+</li>
+<li><p>接続されているゲームパッドの数を確認するには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_GamePadCount">InputManager.GamePadCount</a> を使用します。</p>
+</li>
+<li><p>現在のデバイスが切断されたかどうかを確認するには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_DeviceRemoved">InputManager.DeviceRemoved</a> イベントを使用します。</p>
+</li>
+<li><p>デバイスが接続されたかどうかを確認するには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_DeviceAdded">InputManager.DeviceAdded</a> イベントを使用します。</p>
+</li>
+</ul>
+<h3 id="デジタル-ボタン">デジタル ボタン</h3>
+<p>ゲームパッドのデジタル ボタンの状態および状態変化を問い合わせるには、<code>GamePad</code> オブジェクトで以下のメソッドを使用します。</p>
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.GamePadDeviceExtensions.html#Stride_Input_GamePadDeviceExtensions_IsButtonDown_Stride_Input_IGamePadDevice_Stride_Input_GamePadButton_">IsButtonDown(IGamePadDevice, GamePadButton)</a></td>
+<td>ボタンが「<em>押されている</em>」状態かどうかを確認します。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.GamePadDeviceExtensions.html#Stride_Input_GamePadDeviceExtensions_IsButtonPressed_Stride_Input_IGamePadDevice_Stride_Input_GamePadButton_">IsButtonPressed(IGamePadDevice, GamePadButton)</a></td>
+<td>前回の更新以降にユーザーがボタンを「<em>押した</em>」かどうかを確認します。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.GamePadDeviceExtensions.html#Stride_Input_GamePadDeviceExtensions_IsButtonReleased_Stride_Input_IGamePadDevice_Stride_Input_GamePadButton_">IsButtonReleased(IGamePadDevice, GamePadButton)</a></td>
+<td>前回の更新以降にユーザーがボタンを「<em>放した</em>」かどうかを確認します。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ボタン (GamePadButton)</strong> は確認するゲームパッド ボタンです。</p>
+<p>デジタル ボタンの状態は、<a class="xref" href="../../api/Stride.Input.GamePadState.html#Stride_Input_GamePadState_Buttons">GamePadState.Buttons</a> を使用して取得することもできます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="../../api/Stride.Input.GamePadState.html#Stride_Input_GamePadState_Buttons">GamePadState.Buttons</a> フィールドは、2 進法を使用するビットマスクです。ビットマスクの値に応じて、どのボタンが<em>アップ</em>か<em>ダウン</em>かを特定できます。</p>
+</div>
+<p>ゲームパッドの状態を取得するには、<a class="xref" href="../../api/Stride.Input.IGamePadDevice.html#Stride_Input_IGamePadDevice_State">IGamePadDevice.State</a> を使用します。</p>
+<h3 id="アナログ-ボタン">アナログ ボタン</h3>
+<p>アナログ ボタンの値を問い合わせるには、最初に
+<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_GetGamePadByIndex_System_Int32_">GetGamePadByIndex(index)</a> を使用してゲームパッドの現在の状態を取得します。<em>index (整数)</em> は、確認するゲームパッドのインデックスです。</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p><a class="xref" href="../../api/Stride.Input.IGamePadDevice.html#Stride_Input_IGamePadDevice_State">IGamePadDevice.State</a> によって返される値は、<strong>現在の</strong>更新でのゲームパッドの状態です。この値を次の更新に再使用することはできません。更新のたびに、再度問い合わせる必要があります。</p>
+</div>
+<p>トリガーとサムスティックの位置を取得するには、
+<a class="xref" href="../../api/Stride.Input.GamePadState.html">GamePadState</a> のフィールドを使用します。</p>
+<table>
+<thead>
+<tr>
+<th>フィールド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.GamePadState.html#Stride_Input_GamePadState_LeftThumb">GamePadState.LeftThumb</a></td>
+<td>左サムスティックの X 軸/Y 軸の値です。どちらの軸も範囲は［-1.0f, 1.0f］です。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.GamePadState.html#Stride_Input_GamePadState_RightThumb">GamePadState.RightThumb</a></td>
+<td>右サムスティックの X 軸/Y 軸の値です。どちらの軸も範囲は［-1.0f, 1.0f］です。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.GamePadState.html#Stride_Input_GamePadState_LeftTrigger">GamePadState.LeftTrigger</a></td>
+<td>左トリガー アナログ コントロールの値です。1 つの軸の範囲は［0, 1.0f］です。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.GamePadState.html#Stride_Input_GamePadState_RightTrigger">GamePadState.RightTrigger</a></td>
+<td>右トリガー アナログ コントロールの値です。1 つの軸の範囲は［0, 1.0f］です。</td>
+</tr>
+</tbody>
+</table>
+<p>サムスティックは、X 軸および Y 軸の方向に動きます。その位置は次のように表されます。</p>
+<p><img src="media/index-gamepad-stick-position-1.png" alt="Query thumb position">
+<img src="media/index-gamepad-stick-position-2.png" alt="Query thumb position"></p>
+<p>トリガーは X 軸の方向に動きます。その位置は次のように表されます。</p>
+<p><img src="media/index-gamepad-trigger-position.png" alt="Query trigger position"></p>
+<h3 id="振動">振動</h3>
+<p>ゲームパッドの振動レベルを設定するには、<a class="xref" href="../../api/Stride.Input.IGamePadDevice.html#Stride_Input_IGamePadDevice_SetVibration_System_Single_System_Single_System_Single_System_Single_">IGamePadDevice.SetVibration</a> を使用します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>現在、Stride は Xbox ゲームパッドの振動のみをサポートします。</p>
+</div>
+<h2 id="コード例">コード例</h2>
+<pre><code class="lang-cs">using Stride.Core.Mathematics;
+using Stride.Engine;
+
+public class TestScript : SyncScript
+{
+    public override void Update()
+    {
+        // ゲームパッドが接続されているかどうかを確認する
+        if (Input.HasGamePad)
+        {
+            // 接続されているゲームパッドの数を取得する
+            int gamepadCount = Input.GamePadCount;
+
+            // ゲームパッドのステータスを確認する
+            foreach(var gamepad in Input.GamePads)
+            {
+                // アナログ サムスティックの位置を取得する
+                Vector2 speed = gamepad.State.LeftThumb;
+                Vector2 direction = gamepad.State.RightThumb;
+
+                // デジタル ボタンのステータスを取得する
+                if (gamepad.IsButtonDown(GamePadButton.X))
+                {
+                    // ユーザーがボタンを押し続けている限り、アクションを繰り返す。
+                    // これは、マシンガンの連射のような連続するアクションに利用できる。
+                }
+                if (gamepad.IsButtonPressed(GamePadButton.A))
+                {
+                    // ユーザーがボタンを押し続けている場合であっても、アクションを 1 回だけトリガーする。
+                    // これは、ジャンプのような 1 回限りのアクションに利用できる。
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="keyboards.html">キーボード</a></li>
+<li><a href="virtual-buttons.html">仮想ボタン</a></li>
+<li><a href="index.html">入力の概要</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/gamepads.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>UI エディター | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="UI エディター | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/ui-editor.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ui-エディター">UI エディター</h1>
+
+<!--
+# UI editor
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Designer</span>
+-->
+<p><strong>UI エディター</strong>を使って、<a href="ui-pages.html">UI ページ</a>や <a href="ui-libraries.html">UI ライブラリ</a>を編集することができます。</p>
+<!--
+You can edit [UI pages](ui-pages.md) and [UI libraries](ui-libraries.md) with the **UI editor**.
+-->
+<p>UI エディターを開くには、<strong>アセットビュー</strong>で、<strong>UI Page</strong> または <strong><a href="ui-libraries.html">UI Libraries</a></strong> アセットをダブルクリックします。</p>
+<!--
+To open the editor, in the **Asset View**, double-click a **UI page** or **[UI library](ui-libraries.md)**.
+-->
+<p><img src="media/open-UI-editor.png" alt="Open UI editor"></p>
+<p>すると、UI エディターが開きます。</p>
+<!--
+The UI editor opens.
+-->
+<p><img src="media/ui-editor-overview.png" alt="UI editor overview"></p>
+<p>UI エディターの構成は以下の通りです。</p>
+<!--
+The UI editor comprises:
+-->
+<ul>
+<li><p><a href="ui-libraries.html">UI ライブラリ</a>のリスト（<strong>A</strong>）。UI に追加することができる要素（ボタンやグリッドなど）が含まれます。</p>
+</li>
+<li><p>UI ページの要素のビジュアルツリー（<strong>B</strong>）。</p>
+</li>
+<li><p>ゲームで表示される UI ページのプレビュー（<strong>C</strong>）。</p>
+</li>
+<li><p>UI 要素のプロパティを編集するためのプロパティグリッド（<strong>D</strong>）。</p>
+</li>
+</ul>
+<!--
+* the list of [UI libraries](ui-libraries.md) (**A**), which contain the elements (such as buttons and grids) you can add to your UI
+
+* a visual tree of the elements in the UI page (**B**)
+
+* a preview of the UI page as it appears in the game (**C**)
+
+* a Property Grid (**D**) to edit the properties of your UI elements
+-->
+<h2 id="ui-ライブラリ">UI ライブラリ</h2>
+<!--
+## UI libraries
+-->
+<p><strong>UI ライブラリ</strong>には、UI ページで使用し再利用できる <strong>UI 要素</strong>（グリッド、ボタン、スライダーなど）が含まれています。これらは、シーンエディタの<a href="../game-studio/prefabs/index.html">プレハブ</a> と同様に動作します。</p>
+<!--
+A **UI library** contains **UI elements** (such as grids, buttons, sliders and so on) that you can use and re-use in your UI pages. They work similarly to [prefabs](../game-studio/prefabs/index.md) in the Scene Editor.
+-->
+<p><img src="media/UI-library.png" alt="UI library"></p>
+<p>詳細については、<a href="ui-libraries.html">UI ライブラリ</a> を参照してください。</p>
+<!--
+For more information, see [UI libraries](ui-libraries.md).
+-->
+<h2 id="ビジュアルツリー">ビジュアルツリー</h2>
+<!--
+## Visual tree
+-->
+<p><strong>ビジュアルツリー（Visual Tree）</strong> は、UI ページに含まれる要素とその階層を表示します。これは、シーンエディターの<strong>エンティティツリー</strong>に似ています。</p>
+<!--
+The **visual tree** shows the elements in the UI page and their hierarchy. This is similar to the **Entity Tree** in the Scene Editor.
+-->
+<p><img src="media/ui-editor-visual-tree.png" alt="UI asset properties"></p>
+<p>かっこ内の数字は、要素が持つ子の数を示しています。ボタンなどの一部の要素は、子を 1 つしか持つことができません。</p>
+<!--
+The number in parentheses indicates the number of children an element has. Some elements, such as buttons, can only have one child.
+-->
+<p>ビジュアルツリーの要素の順序を変えるには、それらをドラッグ＆ドロップします。</p>
+<!--
+To re-order elements in the visual tree, drag and drop them.
+-->
+<p>要素を新しいグループに移動するには、要素を右クリックして[<strong>グループ化</strong>]を選択します。
+例えば、新しいグリッドを作成してそこに要素を移動させるには、要素を右クリックして [<strong>Group into</strong>] &gt; [<strong>Grid</strong>」を選択します。</p>
+<!--
+To move an element to a new group, right-click the element and select **Group into**. For example, to create a new grid and move an element into it, right-click the element and select **Group into > Grid**.
+-->
+<p><img src="media/group-into-grid.png" alt="Group into grid"></p>
+<h2 id="ui-プレビュー">UI プレビュー</h2>
+<!--
+## UI preview
+-->
+<p><strong>UI プレビュー</strong>は、ランタイムに表示される UI のプレビューを表示します。デザインの解像度が、編集したアセットを使用する UI コンポーネントと同じであると想定して、ゲーム内のレンダリングと同等のものが表示されます。</p>
+<!--
+The **UI preview** displays a preview of the UI as it appears at runtime. The rendering is equivalent to the rendering in the game, assuming the design resolution is the same as the UI component that uses the edited asset.
+-->
+<p>既定では、UI は<strong>ビルボード</strong>であり、常にカメラに面を向けています。UI ビューカメラは**平行投影（orthographic）**です（<a href="../graphics/cameras/index.html">カメラ</a>を参照）。</p>
+<!--
+By default, the UI is a **billboard**, meaning it always faces the camera. The UI view camera is **orthographic** (see [Cameras](../graphics/cameras/index.md)). 
+-->
+<p>プレビューでは、画像編集アプリケーションと同じように、要素の選択、移動、サイズ変更が可能です。</p>
+<!--
+You can select, move, and resize elements in the preview as you do in image editing applications.
+-->
+<p><img src="media/ui-editor-selecting.gif" alt="Select an element"></p>
+<p><img src="media/ui-editor-moving.gif" alt="Move an element"></p>
+<p><img src="media/ui-editor-resizing.gif" alt="Resize an element"></p>
+<h3 id="コントロール">コントロール</h3>
+<!--
+### Controls
+-->
+<table>
+<thead>
+<tr>
+<th>アクション</th>
+<th>コントロール</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pan</td>
+<td>マウスの中ボタンを押しながらマウスを移動</td>
+</tr>
+<tr>
+<td>Zoom</td>
+<td>マウスホイール</td>
+</tr>
+<tr>
+<td>Speed up pan/zoom</td>
+<td>シフトを押しながらパンやズームをする</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Action            | Control                              
+|-------------------|--------------------------------------
+| Pan               | Hold middle mouse button + move mouse
+| Zoom              | Mouse wheel                    
+| Speed up pan/zoom | Hold shift while panning or zooming
+-->
+<h3 id="ツールオプション">ツールオプション</h3>
+<!--
+### Tool options
+-->
+<p>選択ツールの色とサイズを変更するには、<strong>UI エディターのツールバー</strong>で、 <img src="media/eye-icon.png" alt="Eye icon">をクリックします。</p>
+<!--
+To change the color and size of the selection tools, in the **UI editor toolbar**, click ![Eye icon](media/eye-icon.png)
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>これらのオプションは、実行時における UI の表示には影響しません。</p>
+</div>
+<!--
+> [!Note]
+> These options have no effect on how the UI is displayed at runtime.
+-->
+<p><img src="media/ui-editor-view-options.png" alt="UI editor view options"></p>
+<ul>
+<li><p><strong>Guideline</strong>: 余白までの距離を示す線の幅を変更します（ピクセル単位）。</p>
+</li>
+<li><p><strong>Highlight</strong>: 要素の上にマウスを移動したときに表示されるハイライトの幅を変更します。</p>
+</li>
+<li><p><strong>Selection</strong>: 選択範囲のハイライトの幅を変更します。</p>
+</li>
+<li><p><strong>Sizing</strong>: 要素のサイズを変更するために表示される、選択範囲の端にあるボックスのサイズを変更します。</p>
+</li>
+</ul>
+<!--
+* **Guideline**: changes the width of the lines that indicate the distance to the margins (in pixels)
+
+* **Highlight**: changes the width of the highlight that appears when you move your mouse over an element
+
+* **Selection**: changes the width of the selection highlight
+
+* **Sizing**: changes the size of the boxes at the edges of selections used to resize elements
+-->
+<h2 id="ui-ページに-ui-要素を追加する">UI ページに UI 要素を追加する</h2>
+<!--
+## Add a UI element to a UI page
+-->
+<p>要素（グリッドやボタンなど）を追加するには、要素を <strong>UI ライブラリ</strong>から UI ページや<strong>ビジュアルツリー</strong>にドラッグします。</p>
+<!--
+To add an element (such as a grid or button), drag it from the **UI library** to the UI page or the **visual tree**.
+-->
+<p><img src="media/add-ui-element.gif" alt="Add UI element"></p>
+<h2 id="プロパティ">プロパティ</h2>
+<!--
+## Properties
+-->
+<p>要素のプロパティは、<strong>プロパティグリッド</strong>で確認し編集することができます。</p>
+<!--
+You can view and edit element properties in the **Property Grid**.
+-->
+<p><img src="media/element-property-grid.png" alt="Property Grid!"></p>
+<p>プロパティは、<strong>概観（Appearance）</strong>, <strong>振る舞い（Behavior）</strong>, <strong>レイアウト（Layout）</strong>, <strong>その他（Misc）</strong> の順に表示されます。</p>
+<!--
+Properties are sorted by **Appearance**, **Behavior**, **Layout** and **Misc**.
+-->
+<h3 id="概観appearance">概観（Appearance）</h3>
+<!--
+### Appearance
+-->
+<p>よく使われるプロパティには、<code>BackgroundColor</code>, <code>Opacity</code>, <code>Visibility</code>, <code>ClipToBounds</code> などがあります。</p>
+<!--
+Commonly used properties include `BackgroundColor`, `Opacity`, `Visibility` and `ClipToBounds`.
+-->
+<p><img src="media/appearance-properties.png" alt="Appearance properties"></p>
+<h3 id="振る舞いbehavior">振る舞い（Behavior）</h3>
+<!--
+### Behavior
+-->
+<p>よく使われるプロパティに、<code>CanBeHitByUser</code>（要素がタッチイベントに反応するかどうか）があります。</p>
+<!--
+Commonly used properties include whether the element responds to touch events(`CanBeHitByUser`).
+-->
+<p><img src="media/behavior-properties.png" alt="Behavior properties"></p>
+<h3 id="レイアウトlayout">レイアウト（Layout）</h3>
+<!--
+### Layout
+-->
+<p>よく使われるプロパティには、要素のサイズ（<code>Height</code>, <code>Width</code>, <code>Depth</code>）、配列（<code>HorizontalAlignment</code>, <code>VerticalAlignment</code>, <code>DepthAlignement</code>）、自身の <code>Margin</code> があります。</p>
+<!--
+Commonly used properties include the size of the element (`Height`, `Width` and `Depth`), its alignment (`HorizontalAlignment`, `VerticalAlignment`, `DepthAlignement`) and its `Margin`.
+-->
+<p><img src="media/layout-properties.png" alt="Layout properties"></p>
+<h3 id="その他misc">その他（Misc）</h3>
+<!--
+### Misc
+-->
+<p>このカテゴリーには、要素の <code>Name</code>（名前）だけがあります。</p>
+<!--
+This category contains only the `Name` of the element.
+-->
+<p><img src="media/misc-properties.png" alt="Misc properties"></p>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="ui-pages.html">UI ページ</a></li>
+<li><a href="ui-libraries.html">UI ライブラリ</a></li>
+<li><a href="add-a-ui-to-a-scene.html">シーンに UI を追加する</a></li>
+<li><a href="layout-system.html">レイアウト システム</a></li>
+</ul>
+<!--
+* [UI pages](ui-pages.md)
+* [UI libraries](ui-libraries.md)
+* [Add a UI to a scene](add-a-ui-to-a-scene.md)
+* [Layout system](layout-system.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/ui-editor.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

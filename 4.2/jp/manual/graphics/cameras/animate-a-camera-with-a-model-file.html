@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>モデルファイルを使ったカメラのアニメーション | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="モデルファイルを使ったカメラのアニメーション | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/cameras/animate-a-camera-with-a-model-file.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="モデルファイルを使ったカメラのアニメーション">モデルファイルを使ったカメラのアニメーション</h1>
+
+<!--
+# Animate a camera with a model file
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">アーティスト</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Artist</span>
+-->
+<p>他のエンティティと同様に、<code>.3ds</code>、<code>.fbx</code>、<code>.obj</code> などの3Dモデルファイルからアニメーションをインポートして、カメラを<a href="../../animation/index.html">アニメーション</a>させることができます。</p>
+<!--
+Like other entities, you can [animate](../../animation/index.md) cameras using animations imported from 3D model files such as `.3ds`, `.fbx`, and `.obj`.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>モデルファイルを使ってカメラをアニメーションさせるには、まず、モデリングツール（Maya、3ds Max、Blenderなど）を使ってアニメーションを<a href="https://entry.cgworld.jp/terms/%E3%83%99%E3%82%A4%E3%82%AF%E5%87%A6%E7%90%86.html">ベイク</a>する必要があります。
+Stride は、ターゲットカメラを使ったカメラアニメーションには対応していません。</p>
+</div>
+<!--
+>[!Note]
+>To animate a camera using a model file, you first need to bake the animation using your modeling tool (eg Maya, 3ds Max or Blender).
+>Stride doesn't support cameras animated using target cameras.
+-->
+<p>カメラが独立して移動する場合、最も簡単な方法は、カメラアニメーションを別ファイルとしてエクスポートし、アニメーションの <strong>Root Motion</strong> オプションを有効にしてから、カメラ、アニメーション、アニメーションスクリプトを同じエンティティに追加することです。アニメーションに FOV アニメーション、近・遠平面アニメーションが含まれている場合、Stride カメラはそれに応じて更新されます。この方法では、モデルやスケルトンは必要ありません。</p>
+<!--
+If the camera moves independently, the simplest method is to export the camera animation as a separate file, enable the **root motion** option on the animation, then add the camera, animation, and animation script to the same entity. If the animations include FOV or near or far plane animations, the Stride camera updates accordingly. With this method, you don't need a model or a skeleton.
+-->
+<p>他のアニメーションと連動してカメラを動かしたい場合、例えば、独自のモデル、スケルトン、アニメーションを持つカメラマンがカメラを持っている場合は、<a href="../../animation/model-node-links.html">モデルノードリンク</a>コンポーネントを使って、カメラのエンティティをカメラマンの動きに連動させます。</p>
+<!--
+If you want the camera to move in tandem with another animation — for example, if the camera is held by a cameraman character with its own model, skeleton and animation — use a [model node link](../../animation/model-node-links.md) component to link the camera entity to the cameraman's movements.
+-->
+<h2 id="カメラを個別にアニメーションさせる">カメラを個別にアニメーションさせる</h2>
+<!--
+## Animate a camera independently
+-->
+<p>これを行うには、プロジェクトに以下のアセットが必要です。</p>
+<ul>
+<li>アニメーションさせるカメラを表す<a href="index.html">カメラ エンティティ</a></li>
+<li>モデリングツールから個別にエクスポートされた、カメラの<a href="../../animation/import-animations.html">アニメーション</a></li>
+<li>アニメーションを再生するための<a href="../../animation/animation-scripts.html">アニメーション スクリプト</a></li>
+</ul>
+<!--
+To do this, you need the following assets in your project:
+
+* a [camera entity](../index.md), the camera to be animated
+* an [animation](../../animation/import-animations.md), to animate the camera (exported separately in your modeling tool)
+* an [animation script](../../animation/animation-scripts.md), to play the animation
+--->
+<ol>
+<li><p><strong>アセットビュー</strong>で、カメラ用のアニメーションアセットを選択します。</p>
+<p><img src="media/select-animation1.png" alt="Select animation asset"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>アニメーションのインポート方法については、<a href="../../animation/import-animations.html">アニメーションのインポート</a>を参照してください。</p>
+</div>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>Root Motion</strong> を有効にします。</p>
+<p><img src="media/enable-root-motion.png" alt="Enable root motion"></p>
+<p>Root Motion を有効にすると、Stride は <strong>ルート ノード アニメーション</strong> をスケルトンに適用する代わりに、アニメーションの追加先エンティティの <a class="xref" href="../../../api/Stride.Engine.TransformComponent.html">TransformComponent</a> に適用します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><strong>Skelton</strong> にスケルトンが指定されていない場合は、<strong>Root Motion</strong> が無効になっていても、Stride は常に <a class="xref" href="../../../api/Stride.Engine.TransformComponent.html">TransformComponent</a>にアニメーションを適用します。</p>
+</div>
+</li>
+<li><p><strong>シーンエディター</strong>で、カメラを持っているエンティティを選択します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>カメラを追加する方法については、<a href="index.html">カメラ</a>を参照してください。</p>
+</div>
+</li>
+<li><p><strong>プロパティグリッド</strong>で [<strong>Add component</strong>] をクリックし、<strong>Animations</strong> を選択します。</p>
+<p><img src="media/add-animations-component-to-camera.png" alt="Select an entity"></p>
+<p>Game Studio は、エンティティにアニメーションコンポーネントを追加します。</p>
+<p><img src="media/animation-component-added-to-camera.png" alt="Animation component"></p>
+</li>
+<li><p><strong>Animations</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button">（<strong>Add</strong>）をクリックして、名前を入力します。</p>
+<p><img src="media/animation-name.png" alt="Add animation"></p>
+<p>Game Studio はリストにアニメーションを追加します。</p>
+<p><img src="media/animation-added.png" alt="Animation added"></p>
+</li>
+<li><p>追加したアニメーションの横にある <img src="../../game-studio/media/hand-icon.png" alt="Hand icon">（<strong>Select an asset</strong>）をクリックします。</p>
+<p>すると、<strong>Select an asset</strong> ウィンドウが開きます。</p>
+<p><img src="media/select-mycamera-animation.png" alt="Select an asset"></p>
+</li>
+<li><p>カメラに適用したいアニメーションを選択して、[<strong>OK</strong>] をクリックします。</p>
+</li>
+<li><p>[<strong>Add component</strong>] をクリックして、カメラアニメーションに使用するアニメーションスクリプトを選択します。</p>
+<p><img src="media/add-animation-script.png" alt="Add animation script"></p>
+<p>Game Studio は、エンティティにコンポーネントを追加します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>アニメーションスクリプトを追加する方法については、<a href="../../animation/animation-scripts.html">アニメーション スクリプト</a>を参照してください。</p>
+</div>
+</li>
+<li><p>スクリプトコンポーネントで、<strong>Animations</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button">（<strong>Add</strong>）をクリックします。</p>
+<p><img src="../../animation/media/add-animation-to-list.png" alt="Add animation to the list"></p>
+</li>
+<li><p>[<strong>Clip</strong>] の横にある <img src="../../game-studio/media/hand-icon.png" alt="Hand icon">（<strong>Select an asset</strong>）をクリックします。</p>
+<p>すると、<strong>Select an asset</strong> ウィンドウが開きます。</p>
+<p><img src="media/select-mycamera-animation.png" alt="Select an asset"></p>
+</li>
+<li><p>カメラに適用したいアニメーションアセットを選択して、[<strong>OK</strong>] をクリックします。</p>
+</li>
+</ol>
+<!--
+1. In the **Asset View**, select the animation asset you want to use to animate the camera.
+
+    ![Select animation asset](media/select-animation1.png)
+
+    >[!Note]
+    >For instructions about how import animations, see [Import animations](../../animation/import-animations.md).
+
+2. In the **Property Grid**, enable **Root motion**.
+
+    ![Enable root motion](media/enable-root-motion.png)
+
+    When root motion is enabled, Stride applies the **root node animation** to the [TransformComponent](xref:Stride.Engine.TransformComponent) of the entity you add the animation to, instead of applying it to the skeleton.
+
+    >[!Note]
+    >If there is no skeleton specified in **Skeleton**, Stride always applies the animation to [TransformComponent](xref:Stride.Engine.TransformComponent), even if **root motion** is disabled.
+
+3. In the **Scene Editor**, select the entity that contains the camera you want to animate.
+
+    >[!Note]
+    >For instructions about how add cameras, see [Cameras](index.md).
+
+4. In the **Property Grid**, click **Add component** and select **Animations**.
+
+    ![Select an entity](media/add-animations-component-to-camera.png)
+
+    Game Studio adds an animation component to the entity.
+
+    ![Animation component](media/animation-component-added-to-camera.png)
+
+5. Next to **Animations**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**) and type a name.
+
+    ![Add animation](media/animation-name.png)
+
+    Game Studio adds an animation to the list.
+
+    ![Animation added](media/animation-added.png)
+
+6. Next to the animation you added, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+    The **Select an asset** window opens.
+
+    ![Select an asset](media/select-mycamera-animation.png)
+
+7. Select the animation you want to use to animate the camera and click **OK**.
+
+8. Click **Add component** and select the animation script you want to use to animate the camera.
+
+    ![Add animation script](media/add-animation-script.png)
+
+    Game Studio adds the script to the entity as a component.
+
+    >[!Note]
+    >For instructions about how to add animation scripts, see [Animation scripts](../../animation/animation-scripts.md).
+
+9. Under the script component, next to **Animations**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**).
+
+    ![Add animation to the list](../../animation/media/add-animation-to-list.png)
+
+10. Next to **Clip**, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+    The **Select an asset** window opens.
+
+    ![Select an asset](media/select-mycamera-animation.png)
+
+11. Select the animation asset you want to use to animate the camera and click **OK**.
+-->
+<p>実行時に、カメラはアニメーションを使用します。アニメーションに FOV アニメーションや近・遠平面アニメーションが含まれている場合、Stride はカメラをそれらに応じて更新します。</p>
+<!--
+At runtime, the camera uses the animation. If the animation includes FOV or near or far plane animations, the Stride camera updates accordingly.
+-->
+<h2 id="カメラを別のモデルのノードにアタッチする">カメラを別のモデルのノードにアタッチする</h2>
+<!--
+## Attach the camera to a node on another model
+-->
+<p>カメラを他のモデルと一緒に動かすには、カメラ用のエンティティを別途作成し、<strong>モデルノードリンク</strong>コンポーネントを使ってエンティティを適切なノードにリンクします。</p>
+<!--
+To move a camera in tandem with another model, create a separate entity for the camera, then use a **model node link** component to link the entity to the correct node.
+-->
+<p>これを行うには、プロジェクトに以下のアセットを追加する必要があります。</p>
+<ul>
+<li>アニメーションさせたいカメラを表す<a href="../index.html">カメラエンティティ</a></li>
+<li>カメラをアタッチする<a href="../../animation/index.html">モデル</a></li>
+<li>モデルに適合する<a href="../../animation/index.html">スケルトン</a></li>
+<li>モデルに適用する<a href="../../animation/index.html">アニメーション</a></li>
+<li>アニメーションを再生するための<a href="../../animation/animation-scripts.html">アニメーション スクリプト</a></li>
+</ul>
+<!--
+To do this, you need the following assets in your project:
+
+* a [camera entity](../index.md), the camera you want to animate
+* a [model](../../animation/index.md), to attach the camera to
+* a [skeleton](../../animation/index.md) that matches the model
+* an [animation](../../animation/index.md), to animate the model
+* an [animation script](../../animation/animation-scripts.md), to play the animation
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>この方法を使用すると、FOV および近・遠平面アニメーションは無視されます。</p>
+</div>
+<!--
+>>[!Note]
+>FOV and near or far plane animations are ignored if you use this method.
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、カメラをリンクしたいモデルを選択します。<strong>Skeleton</strong> の横にモデルと適合したスケルトンが指定されていることを確認してください。</p>
+</li>
+<li><p>カメラをアタッチするエンティティに、アニメーションに必要なモデル、アニメーションクリップ、アニメーションスクリプトのコンポーネントがあることを確認します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>これらを追加する方法については、<a href="../../animation/index.html">アニメーション</a>を参照してください。</p>
+</div>
+</li>
+<li><p>カメラエンティティを選択した状態で、<strong>プロパティグリッド</strong>で [<strong>Add component</strong>] をクリックし、<strong>Model Node Link</strong> を選択します。</p>
+<p><img src="../../particles/tutorials/media/add-model-node-link.png" alt="Add component"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p><a class="xref" href="../../../api/Stride.Engine.TransformComponent.html">TransformComponent</a> は、モデルノードの位置にオフセットを追加します。オフセットを追加したくない場合は、<a class="xref" href="../../../api/Stride.Engine.TransformComponent.html">TransformComponent</a> が <code>0,0,0</code> に設定されていることを確認してください。</p>
+</div>
+<p>Game Studio は、エンティティにモデルノードリンクコンポーネントを追加します。</p>
+<p><img src="../../animation/media/model-node-component.png" alt="Model node link component"></p>
+</li>
+<li><p><strong>Target</strong> の横にある <img src="../../game-studio/media/hand-icon.png" alt="Hand icon"> をクリックし、カメラをリンクするモデルを持つエンティティを選択してください。</p>
+<p><img src="../../animation/media/select-an-entity-window.png" alt="Select an entity"></p>
+<p>または、<strong>Target</strong> フィールドを空白にしておきます。<strong>エンティティツリー</strong>で、アニメーションさせたい<strong>カメラエンティティ</strong>を、モデルを含むエンティティにドラッグします。Stride は、エンティティを親エンティティのモデルにリンクします。</p>
+<p><img src="media/parent-and-child.png" alt="Parent and child"></p>
+</li>
+<li><p><strong>Node Name</strong> フィールドで、カメラをリンクしたいノードを選択してください。</p>
+<p><img src="media/select-node.png" alt="Node link"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>リンク先のエンティティは、モデルが実行時に表示されない場合ても、スケルトンを持つモデルを持っている必要があります。</p>
+</div>
+</li>
+</ol>
+<!--
+1. In the **Asset View**, select the model you want to link the camera to. Next to **Skeleton**, make sure a skeleton is specified that matches the model.
+
+2. Make sure the entity you want to attach the camera to has the model, animation clip, and animation script components needed to animate it.
+
+    >[!Note]
+    >For instructions about how to add these, see [Animation](../../animation/index.md).
+
+3. With the camera entity selected, in the **Property Grid**, click **Add component** and select **Model node link**.
+
+    ![Add component](../../particles/tutorials/media/add-model-node-link.png)
+
+    >[!Note]
+    >The [TransformComponent](xref:Stride.Engine.TransformComponent) applies an offset to the model node position. If you don't want to add an offset, make sure the [TransformComponent](xref:Stride.Engine.TransformComponent) is set to `0,0,0`.
+
+    Game Studio adds a model link component to the entity.
+
+    ![Model node link component](../../animation/media/model-node-component.png)
+
+4. Next to **Target**, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) and select the entity that has the model you want to link the camera to.
+
+    ![Select an entity](../../animation/media/select-an-entity-window.png)
+
+    Alternatively, leave the **Target** field blank. In the **Entity Tree**, drag the **camera entity** you want to animate to the entity that contains the model. Stride links the entity to the model on the parent entity.
+
+    ![Parent and child](media/parent-and-child.png)
+
+5. In **Node name**, select the node you want to link the camera to.
+
+    ![Node link](media/select-node.png)
+
+    >[!Note]
+    >The entity you link to must have a model with a skeleton, even if the model isn't visible at runtime.
+-->
+<p>実行時に、カメラはアニメーションを使用します。</p>
+<!--
+At runtime, the camera uses the animation.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="index.html">カメラ</a></li>
+<li><a href="../../animation/model-node-links.html">モデルノードリンク</a></li>
+<li><a href="../../animation/index.html">アニメーション</a></li>
+<li><a href="../../animation/animation-scripts.html">アニメーション スクリプト</a></li>
+</ul>
+<!--
+* [Cameras](index.md)
+* [Model node links](../../animation/model-node-links.md)
+* [Animation](../../animation/index.md)
+* [Animation scripts](../../animation/animation-scripts.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/cameras/animate-a-camera-with-a-model-file.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

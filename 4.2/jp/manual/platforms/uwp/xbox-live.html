@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Xbox Live | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Xbox Live | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/platforms/uwp/xbox-live.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="xbox-live">Xbox Live</h1>
+
+<p>このページでは、Xbox Live で動作するようにプロジェクトを構成する方法について説明します。</p>
+<h2 id="1-始める前に">1. 始める前に</h2>
+<ol>
+<li><p>プロジェクトがプラットフォームとして UWP を使用するように設定します。そのためには、次のいずれかのようにします。</p>
+<ul>
+<li><a href="../../get-started/create-a-project.html">プロジェクトを作成</a>し、プラットフォームとして <strong>UWP</strong> を選択します</li>
+<li>または、<a href="../add-or-remove-a-platform.html">既存のプロジェクトにプラットフォームとして <strong>UWP</strong> を追加</a>します</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>このチュートリアルでは、新しいプロジェクトを作成してプロセスをテストした後、その知識を既存のプロジェクトに応用することをお勧めします。</p>
+</div>
+</li>
+<li><p>UWP からプロジェクトを実行できることを確認します。そのためには、［ソリューション プラットフォーム］ドロップダウン リストで目的のプラットフォーム (UWP-64、UWP-32、または UWP-ARM) を選択して、プロジェクトを実行します。</p>
+</li>
+<li><p>Xbox Live SDK をダウンロードします。</p>
+<p>このページを書くときは、XboxLiveSDK-1612-20170114-002 を使用しました。サンプルは、Xbox Live SDK の Achievements サンプルに基づいていますが、厳密ではありません。</p>
+</li>
+<li><p>Xbox Live の環境を変更します。［SDK］フォルダーの［Tools］で以下を実行します。</p>
+<pre><code>SwitchSandbox.cmd XDKS.1
+</code></pre>
+<p>XDKS.1 は、Microsoft のサンプルに使用されるサンドボックスです。</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>これを行うと、Xbox の通常のアカウントはブロックされて、開発者のアカウントだけが許可されるようになります。元に戻すには、次のコマンドを実行します。</p>
+</div>
+<blockquote>
+<pre><code>SwitchSandbox.cmd RETAIL
+</code></pre>
+</blockquote>
+</li>
+<li><p>開発者アカウントで Achievements サンプルを実行できることを確認します。</p>
+</li>
+</ol>
+<h2 id="2-xbox-live-sdk-をソリューションに追加する">2. Xbox Live SDK をソリューションに追加する</h2>
+<ol>
+<li><p>Visual Studio で、ゲームのソリューションを開きます。</p>
+</li>
+<li><p>［パッケージ マネージャー コンソール］を開きます (［ツール］&gt;［NuGet パッケージ マネージャー］&gt; [パッケージ マネージャー コンソール］)。</p>
+</li>
+<li><p>［既定のプロジェクト］フィールドで、UWP プロジェクト (<em>MyGame.UWP</em> など) を選択します。</p>
+<p><img src="media/xboxlive01.png" alt="MyGame.UWP"></p>
+</li>
+<li><p>コンソールで次のように入力します。</p>
+<pre><code>PM &gt; Install-Package Microsoft.Xbox.Live.SDK.WinRT.UWP
+</code></pre>
+<p>NuGet パッケージがプロジェクトに追加されます。</p>
+</li>
+<li><p>パッケージが［参照］の一覧に表示されることを確認します。</p>
+<p><img src="media/xboxlive02.png" alt="Package in list"></p>
+</li>
+</ol>
+<h2 id="3-uwp-プロジェクトを構成する">3. UWP プロジェクトを構成する</h2>
+<ol>
+<li><p><em>MyGame.UWP.TemporaryKey.pfx</em> を削除します。</p>
+</li>
+<li><p><em>xboxservices.config</em> をプロジェクトに追加します。</p>
+<p>このファイルは、テスト用に Xbox Live SDK サンプル (Achievements サンプルなど) から入手できます。ゲームを公開するときは、<strong>タイトル ID</strong> と<strong>サービス構成 ID</strong> を実際のプロジェクトのものに変更します。詳細については、Xbox Live のドキュメントを参照してください。</p>
+</li>
+<li><p><em>xboxservices.config</em> のプロパティで、［ビルド アクション］の［コンテンツ］を選択し、［出力ディレクトリにコピー］の［常にコピーする］を選択します。</p>
+<p><img src="media/xboxlive03.png" alt="Properties"></p>
+</li>
+<li><p><em>Package.appxmanifest</em> をプロジェクトの詳細に合わせて編集します。</p>
+<p>マニフェスト ファイルは、テスト用に Xbox Live SDK サンプル (Achievements サンプルなど) から使用できます。ゲームをストア アプリと関連付ける場合は、生成されたマニフェスト ファイルを使用します。詳細については、Xbox Live のドキュメントを参照してください。</p>
+</li>
+<li><p><em>InternetClientServer</em> の機能が有効になっていることを確認します。</p>
+</li>
+</ol>
+<h2 id="4-ユーザー-アカウント-スクリプトをゲームに追加する">4. ユーザー アカウント スクリプトをゲームに追加する</h2>
+<p>Xbox Live SDK を公開することなく、ゲーム プロジェクトで Xbox Live の機能を有効にする必要があります。既に <em>MyGame.UWP</em> が <em>MyGame.Game</em> を参照しているので、ここで参照することはできません。代わりに、インターフェイスを作成し、UWP プロジェクト側から実装することができます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>これを行うには複数の方法があります。ここでは 1 つの方法について説明します。</p>
+</div>
+<ol>
+<li><p>2 つのインターフェイス <code>IAccountManager</code> と <code>IConnectedAccount</code> をゲームに追加します。</p>
+</li>
+<li><p>UWP プロジェクト (<em>MyGame.UWP</em> など) で、インターフェイス <code>public class XboxAccount : IConnectedAccount</code> および <code>public class XboxLiveAccountManager : IAccountManager</code> を実装します。</p>
+</li>
+<li><p>後でゲーム スクリプトからアクセスできるように、アカウント ファクトリをゲームに追加します。<code>MyGameMainPage.xaml.cs</code> に次の行を追加します。</p>
+<pre><code>Game.Services.AddService(typeof(IAccountManager), new XboxLiveAccountManager());
+</code></pre>
+<p><img src="media/xboxlive04.png" alt="References"></p>
+<p>最終的に、スクリプトは少なくとも次のような内容になります。</p>
+<pre><code>    public class LoginScript : AsyncScript
+    {
+        private IConnectedAccount account;
+
+        public override async Task Execute()
+        {
+            var accountMgr = Services.GetServiceAs&lt;IAccountManager&gt;();
+            account = accountMgr?.CreateConnectedAccount();
+ 		    if (account == null)
+ 			    return;
+
+            var result = account.LoginAsync();
+
+     		// TODO ここにコードを追加する!
+        }
+    }
+</code></pre>
+</li>
+</ol>
+<p><code>xbox_live_user</code> 機能および他のクラスをゲームで公開できるようになります。</p>
+<p><img src="media/xboxlive05.png" alt="Property grid"></p>
+<h2 id="サンプル-プロジェクト">サンプル プロジェクト</h2>
+<ul>
+<li><p>Xbox Live のログイン機能で<a href="media/XboxLiveSample.zip">サンプル プロジェクトをダウンロード</a>します</p>
+<p><img src="media/xboxlive08.png" alt="Sample project"></p>
+</li>
+</ul>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="../index.html">プラットフォーム</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/platforms/uwp/xbox-live.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>エフェクト言語 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="エフェクト言語 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/effect-language.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="エフェクト言語">エフェクト言語</h1>
+
+<!--
+# Effect language
+-->
+<h2 id="c-でシェーダーを作成する">C# でシェーダーを作成する</h2>
+<!--
+## Create shaders in C&#35;
+-->
+<p><a class="xref" href="../../../api/Stride.Shaders.ShaderSource.html">ShaderSource</a> オブジェクトを使って、シェーダーを実行時に作成することができます。シェーダーには3つのタイプがあります。</p>
+<!--
+You can create a shader at runtime with @'Stride.Shaders.ShaderSource' objects. Shaders come in three types:
+-->
+<ul>
+<li><a class="xref" href="../../../api/Stride.Shaders.ShaderClassSource.html">ShaderClassSource</a> は一意なシェーダークラスに対応します。</li>
+<li><a class="xref" href="../../../api/Stride.Shaders.ShaderMixinSource.html">ShaderMixinSource</a> 複数の <a class="xref" href="../../../api/Stride.Shaders.ShaderSource.html">ShaderSource</a> をミックスし、プリプロセッサの値を設定し、コンポジションを定義します。</li>
+<li><a class="xref" href="../../../api/Stride.Shaders.ShaderArraySource.html">ShaderArraySource</a> はコンポジションの配列として使用されます。</li>
+</ul>
+<!--
+- @'Stride.Shaders.ShaderClassSource' correspond to a unique shader class
+- @'Stride.Shaders.ShaderMixinSource' mix several @'Stride.Shaders.ShaderSource', set preprocessor values, define compositions
+- @'Stride.Shaders.ShaderArraySource' are used for arrays of compositions
+-->
+<p>この方法で、実行時にシェーダーを生成することができます。しかし、プラットフォームの多くは HLSL をサポートしておらず、実行時にシェーダーをコンパイルする機能がありません。さらに、この方法ではミックスインによる再利用性の恩恵を受けることができません。</p>
+<!--
+This method produces shaders at runtime. However, many platforms don't support HLSL and have no ability to compile shaders at runtime. Additionally, the approach doesn't benefit from the reusability of mixins.
+-->
+<h2 id="stride-エフェクトsdfx">Stride エフェクト（SDFX）</h2>
+<!--
+## Stride Effects (SDFX)
+-->
+<p>シェーダーの多くは、既存のシェーダーの変種や組み合わせです。例えば、影を落とすメッシュ、影を受けるメッシュ、スキニングが必要なメッシュなどがあります。コードを再利用するには、条件に応じて使用する部分を選択するのがよいでしょう（条件の例：「スキニングが必要」）。この問題を解決するには、「ウーバー（uber; 優れた）シェーダー」と呼ばれる、プリプロセッサのパラメータセットで設定されたモノリシックなシェーダーがよく使われます。</p>
+<!--
+Many shaders are variations or combinations of pre-existing shaders. For example, some meshes cast shadows, others receive them, and others need skinning. To reuse code, it's a good idea to select which parts to use through conditions (eg "Skinning required"). This is often solved by "uber shaders": monolithic shaders configured by a set of preprocessor parameters.
+-->
+<p>Stride では、拡張性と再利用性を念頭に置きつつ、同様の制御を行っています。シェーダークラスで定義されたシンプルなコードブロックは、シェーダーミキサーによって混ぜ合わせることができます。このプロセスでは、より複雑なロジックを Stride エフェクトファイル（*.sdfx）に記述し、使用することができます。</p>
+<!--
+Stride offers the same kind of control, keeping extensibility and reusability in mind. The simple code blocks defined by shader classes can be mixed together by a shader mixer. This process can use more complex logic, described in Stride Effect (*.sdfx) files.
+-->
+<h3 id="一般的な文法">一般的な文法</h3>
+<!--
+### General syntax
+-->
+<p>SDFXファイル（.sdfx）は、シェーダーの組み合わせを生成するために使われる小さなプログラムです。一連のパラメータ（コレクションのキーと値）を受け取り、コンパイル可能な <code>ShaderMixinSource</code> を生成します。</p>
+<!--
+An .sdfx file is a small program used to generate shader permutations. It takes a set of parameters (key and value in a collection) and produces a `ShaderMixinSource` ready to be compiled.
+-->
+<p>Stride エフェクトファイル（.sdfx）の例：</p>
+<!--
+An example .sdfx file:
+-->
+<pre><code class="lang-cs">using Stride.Effects.Data;
+
+namespace StrideEffects
+{
+	params MyParameters
+	{
+		bool EnableSpecular = true;
+	};
+	
+	effect BasicEffect
+	{
+		using params MaterialParameters;
+		using params MyParameters;
+
+		mixin ShaderBase;
+		mixin TransformationWAndVP;
+		mixin NormalVSStream;
+		mixin PositionVSStream;
+		mixin BRDFDiffuseBase;
+		mixin BRDFSpecularBase;
+		mixin LightMultiDirectionalShadingPerPixel&lt;2&gt;;
+		mixin TransparentShading;
+		mixin DiscardTransparent;
+
+		if (MaterialParameters.AlbedoDiffuse != null)
+		{
+			mixin compose DiffuseColor = ComputeBRDFDiffuseLambert;
+			mixin compose albedoDiffuse = MaterialParameters.AlbedoDiffuse;
+		}
+
+		if (MaterialParameters.AlbedoSpecular != null)
+		{
+			mixin compose SpecularColor = ComputeBRDFColorSpecularBlinnPhong;
+			mixin compose albedoSpecular = MaterialParameters.AlbedoSpecular;
+		}
+	};
+}
+</code></pre>
+<h3 id="ミックスインを追加する">ミックスインを追加する</h3>
+<!--
+### Add a mixin
+-->
+<p>ミックスインを追加するには、<code>mixin &lt;mixin_name&gt;</code> を使用します。</p>
+<!--
+To add a mixin, use `mixin <mixin_name>`.
+-->
+<h3 id="パラメーターを使う">パラメーターを使う</h3>
+<!--
+### Use parameters
+-->
+<p>構文は C# に似ていますが、以下のルールが追加されています。</p>
+<!--
+The syntax is similar to C#. The following rules are added:
+-->
+<ul>
+<li><p>パラメーターキーを使用する場合は、<code>params &lt;shader_name&gt;</code> を使って追加します。そうしないと、キーは変数として扱われます。</p>
+</li>
+<li><p>キーに隠れている値がどこでチェックされるかを記載する必要はありません。ただ、キーを使うだけです。</p>
+</li>
+</ul>
+<!--
+- When you use parameter keys, add them using `params <shader_name>`. If you don't, keys are treated as variables.
+
+- You don't need to tell the program where to check the values behind the keys. Just use the key.
+-->
+<pre><code class="lang-cs">using params MaterialParameters;
+ 
+if (MaterialParameters.AlbedoDiffuse != null)
+{
+	mixin MaterialParameters.AlbedoDiffuse;
+}
+</code></pre>
+<p>パラメータは、変数のように扱えます。パラメーターの値を読み書きしたり、値を比較したり、テンプレートパラメーターを設定することができます。パラメーターの中にはミックスインを格納しているものもあるので、コンポジションや継承にも利用できます。</p>
+<!--
+The parameters behave like any variable. You can read and write their value, compare their values, and set template parameters. Since some parameters store mixins, they can be used for composition and inheritance, too.
+-->
+<h3 id="カスタムパラメーター">カスタムパラメーター</h3>
+<!--
+### Custom parameters
+-->
+<p>構造体定義構文を使って、独自のパラメータセットを作成することができます。</p>
+<!--
+You can create your own set of parameters using a structure definition syntax. 
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>たとえ SDFX ファイルの中で定義されているとしても、それを使う際には <code>using</code> の記述を忘れてはいけません。</p>
+</div>
+<!--
+>[!Note]
+>Even if they're defined in the XKFX file, don't forget the `using` statement when you want to use them.
+-->
+<pre><code class="lang-cs">params MyParameters
+{
+	bool EnableSpecular = true; // true is the default value
+}
+</code></pre>
+<h3 id="コンポジション">コンポジション</h3>
+<!--
+### Compositions
+-->
+<p>コンポジションを追加するには、以下のような構文でコンポジション変数をミックスインに割り当てます。</p>
+<!--
+To add a composition, assign the composition variable to your mixin with the syntax below.
+-->
+<pre><code class="lang-cs">// albedoSpecular は，ミックスイン内のコンポジション変数の名前です。
+// albedoSpecular is the name of the composition variable in the mixin
+mixin compose albedoSpecular = ComputeColorTexture;
+ 
+or
+ 
+mixin compose albedoSpecular = MaterialParameters.AlbedoSpecular;
+</code></pre>
+<h3 id="部分エフェクト">部分エフェクト</h3>
+<!--
+### Partial effects
+-->
+<p>コードをいくつかのサブミックスインに分割して他の場所で再利用するには、次の構文を使用します。</p>
+<!--
+You can also break the code into sub-mixins to reuse elsewhere with the syntax below.
+-->
+<pre><code class="lang-cs">partial effect MyPartialEffect
+{
+	mixin ComputeColorMultiply;
+	mixin compose color1 = ComputeColorStream;
+	mixin compose color2 = ComputeColorFixed;
+}
+ 
+// to use it
+mixin MyPartialEffect;
+mixin compose myComposition = MyPartialEffect;
+</code></pre>
+<p><code>MyPartialEffect</code> ミックスインは、コード内の他のミックスインと同様に使用できます。</p>
+<!--
+You can use the `MyPartialEffect` mixin like any other mixin in the code.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="shading-language/index.html">シェーディング言語</a></li>
+</ul>
+<!--
+* [Shading language](shading-language/index.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/effect-language.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

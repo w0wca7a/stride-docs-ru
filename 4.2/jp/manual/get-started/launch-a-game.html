@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ゲームの起動 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ゲームの起動 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/get-started/launch-a-game.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ゲームの起動">ゲームの起動</h1>
+
+<p><span class="badge text-bg-primary">初級</span></p>
+<p>このページでは、Game Studio または Visual Studio を使用してゲームを起動する方法を説明します。</p>
+<h2 id="game-studio-からゲームを起動する">Game Studio からゲームを起動する</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Game Studio では、Windows ストア プラットフォーム用または UWP (ユニバーサル Windows プラットフォーム) プラットフォーム用のゲームは起動できません。これらのプラットフォーム用のゲームを起動するには、Visual Studio を使用します (後述)。</p>
+</div>
+<ol>
+<li><p><strong>ツールバー</strong>で、対象のプラットフォームを選択します。</p>
+<p><img src="media/launch-your-game-game-studio-profiles.png" alt="Platform selection"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>プロジェクトを作成するときに［Create a new game］ダイアログで選択したプラットフォームだけを選択できます。プロジェクトに新しいプラットフォームを追加する方法については、「<a href="../platforms/add-or-remove-a-platform.html">プラットフォームを追加または削除する</a>」を参照してください。</p>
+</div>
+</li>
+<li><p>ゲームを実行するには、ツールバーの <img src="media/launch-your-game-play-icon.png" alt="Play icon"> をクリックするか、または <strong>F5</strong> キーを押します。</p>
+<p><img src="media/game-studio-toolbar-build-button.png" alt="Game Studio play button"></p>
+</li>
+</ol>
+<p>［Output］ウィンドウに、ビルドの進行状況が表示されます。</p>
+<p><img src="media/output-window.png" alt="Output window"></p>
+<p>ビルドが完了すると、選択したプラットフォームでゲームが開始します。</p>
+<h2 id="visual-studio-からゲームを起動する">Visual Studio からゲームを起動する</h2>
+<ol>
+<li><p>Game Studio のツールバーで <img src="media/launch-your-game-IDE-icon.png" alt="Open in IDE"> (［Open in IDE］) をクリックして、Visual Studio を起動します。</p>
+</li>
+<li><p>Visual Studio のツールバーで、スタートアップ プロジェクトとして適切なプロジェクトを設定します。</p>
+<p><img src="media/launch-your-game-visual-studio-profiles.png" alt="Select build profile in Visual Studio"></p>
+<p>スタートアップ プロジェクトの構成が自動的に更新されます。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>右側の［ソリューション エクスプローラー］で、プロジェクトを確認できます。プロジェクトのファイル名の拡張子が、プラットフォームを示します (例：<em>.Android</em>、<em>.iOS</em> など)。</p>
+</div>
+</li>
+<li><p>構成とプラットフォームが適切に対応していることを確認します。</p>
+</li>
+<li>
+<ul>
+<li><p>デバッグなしでゲームを開始するには、<strong>Ctrl + F5</strong> キーを押します。</p>
+</li>
+<li><p>デバッグありでゲームを開始するには、［スタート］をクリックするか、<strong>F5</strong> キーを押します。</p>
+<p><img src="media/visual-studio-start-button.png" alt="Visual Studio Start button"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="境界を削除する">境界を削除する</h2>
+<p>既定では、ゲームを実行するとウィンドウの境界が表示されます。</p>
+<table>
+<thead>
+<tr>
+<th>境界がある場合</th>
+<th>境界がない場合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/with-borders.jpg" alt="With borders"></td>
+<td><img src="media/without-borders.jpg" alt="Without borders"></td>
+</tr>
+</tbody>
+</table>
+<p>境界なしでゲームを実行するには、次のコマンドを使用します。</p>
+<pre><code class="lang-cs">Game.Window.IsBorderLess = true;
+</code></pre>
+<p>次に例を示します。</p>
+<pre><code class="lang-cs">using Stride.Engine;
+
+namespace MyGame
+{
+    public class MyScript : StartupScript
+    {
+        public override void Start()
+        {
+            base.Start();
+            Game.Window.IsBorderLess = true;
+        }
+    }
+}
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/get-started/launch-a-game.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

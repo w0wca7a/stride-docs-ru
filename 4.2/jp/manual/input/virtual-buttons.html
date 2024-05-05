@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>仮想ボタン | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="仮想ボタン | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/virtual-buttons.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="仮想ボタン">仮想ボタン</h1>
+
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>制御を物理的なキーやボタンにバインドするのではなく、<strong>仮想ボタン</strong>にバインドすることができます。ユーザーは、物理ボタンを仮想ボタンに割り当てて、独自の制御方法を作成できます。</p>
+<p>たとえば、ファーストパーソン シューティング ゲームを開発していて、<em>UseMedkit</em> 関数にキーを割り当てる必要があるものとします。関数を特定のキーにバインドするのではなく、<em>UseMedkit</em> という名前の<strong>仮想ボタン</strong>を作成し、それをたとえば <strong>F</strong> キーに割り当てることができます。プレイヤーは、好みに応じて、実行時に別のキーに仮想キーをバインドできます。</p>
+<p><img src="media/index-how-virtual-buttons-work.png" alt="Virtual buttons"></p>
+<h2 id="仮想ボタンを使用する">仮想ボタンを使用する</h2>
+<ol>
+<li>キー、ボタン、またはポインターを仮想ボタン (たとえば <em>MyButton</em>) にバインドします。</li>
+<li>仮想ボタンのリストを作成します。</li>
+<li><em>MyButton</em> を仮想ボタンのリストに追加します。</li>
+<li>関数を <em>MyButton</em> に割り当てます。</li>
+<li>追加の仮想ボタンを作成します。</li>
+<li>追加のボタンを同じリストに追加するか、または新しいリストを作成します。</li>
+</ol>
+<h2 id="コード例">コード例</h2>
+<pre><code class="lang-cs">public override void Start()
+{
+    base.Start();
+
+    // 存在しない場合は、新しい VirtualButtonConfigSet を作成する。
+    Input.VirtualButtonConfigSet = Input.VirtualButtonConfigSet ?? new VirtualButtonConfigSet();
+
+    // 「M」キー、ゲームパッドの「Start」ボタン、左マウス ボタンを、仮想ボタン「MyButton」にバインドする。
+    VirtualButtonBinding b1 = new VirtualButtonBinding(&quot;MyButton&quot;, VirtualButton.Keyboard.M);
+    VirtualButtonBinding b2 = new VirtualButtonBinding(&quot;MyButton&quot;, VirtualButton.GamePad.Start);
+    VirtualButtonBinding b3 = new VirtualButtonBinding(&quot;MyButton&quot;, VirtualButton.Mouse.Left);
+
+    VirtualButtonConfig c = new VirtualButtonConfig();
+
+    c.Add(b1);
+    c.Add(b2);
+    c.Add(b3);
+
+    Input.VirtualButtonConfigSet.Add(c);
+}
+
+public override void Update() {
+    float button = Input.GetVirtualButton(0, &quot;MyButton&quot;);
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="gamepads.html">ゲームパッド</a></li>
+<li><a href="keyboards.html">キーボード</a></li>
+<li><a href="mouse.html">マウス</a></li>
+<li><a href="pointers.html">ポインター</a></li>
+<li><a href="index.html">入力の概要</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/virtual-buttons.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

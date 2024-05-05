@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>シーン エディターでの移動 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="シーン エディターでの移動 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/navigate-in-the-scene-editor.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="シーン-エディターでの移動">シーン エディターでの移動</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">レベル デザイナー</span></p>
+<p>シーン内を移動し、エディター カメラの視点を変えることができます。左下にある XYZ 軸が、3D 空間内での向きを示します。</p>
+<p><img src="media/navigate-in-a-scene-scene-orientation-gizmo.png" alt="Scene orientation gizmo"></p>
+<h2 id="シーン内を動き回る">シーン内を動き回る</h2>
+<p>シーン エディター内でエディター カメラを移動させるには複数の方法があります。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p><strong>Shift</strong> キーを押したまま操作すると移動の速度が上がります。</p>
+</div>
+<h3 id="飛ぶ">飛ぶ</h3>
+<video controls="" autoplay="" loop="" height="240" width="320">
+                <source src="media/navigate-in-scene-fly-in-the-scene.mp4" type="video/mp4">
+</video>
+<p>カメラの向きを変えるには、<strong>右マウス ボタン</strong>を押したまま<strong>マウスを動かし</strong>ます。カメラを移動するには、<strong>右マウス ボタン</strong>を押したまま <strong>WASD キー</strong>を使用します。これは、多くのアクション ゲームのコントロールと似ています。</p>
+<h3 id="パン">パン</h3>
+<p><strong>右マウス ボタン</strong>と<strong>中央マウス ボタン</strong>を押したまま、マウスを動かします。</p>
+<video controls="" autoplay="" loop="" height="240" width="320">
+                <source src="media/navigate-in-scene-walk-in-the-scene.mp4" type="video/mp4">
+</video>
+<h3 id="ドリー">ドリー</h3>
+<p>ドリーする (カメラを前後に動かす) には、<strong>マウス ホイール</strong>を使用します。</p>
+<h3 id="周回">周回</h3>
+<p><strong>Alt</strong> キーと<strong>左マウス ボタン</strong>を押したまま、<strong>マウス</strong>を動かします。</p>
+<p>回転の中心は、常に画面の中心です。中心点までの距離を調整するには、<strong>マウス ホイール</strong>を使用します。</p>
+<p><img src="media/navigate-in-scene-orbital-rotation-schema.png" alt="Rotation"></p>
+<video controls="" autoplay="" loop="" height="240" width="320">
+                <source src="media/navigate-in-scene-orbital-rotation.mp4" type="video/mp4">
+</video>
+<h3 id="エンティティに焦点を合わせる">エンティティに焦点を合わせる</h3>
+<p>エンティティを選択した後、<strong>F</strong> キーを押します。エンティティにズームインし、エンティティがカメラ エディターの中央に配置されます。</p>
+<p>また、エンティティ ツリーのエンティティの隣にある<strong>虫眼鏡アイコン</strong>をクリックすることで、エンティティに焦点を合わせることもできます。</p>
+<p><img src="media/focus-icon.png" alt="Focus icon"></p>
+<video controls="" autoplay="" loop="" height="240" width="320">
+                <source src="media/navigate-in-scene-focus-on-entity-using-f-key.mp4" type="video/mp4">
+</video>
+<div class="TIP">
+<h5>Tip</h5>
+<p>エンティティに焦点を合わせた後、<strong>Alt キーと左マウス ボタン</strong>を使用して周回させると、エンティティを調べることができます。</p>
+</div>
+<h3 id="コントロールの表">コントロールの表</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>コントロール</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>移動</td>
+<td>方向キー + 右マウス ボタン <br>WASDQE キー + 右マウス ボタン <br></td>
+</tr>
+<tr>
+<td>見回す</td>
+<td>右マウス ボタン + マウスを移動</td>
+</tr>
+<tr>
+<td>パン</td>
+<td>中央マウス ボタン + 右マウス ボタン + マウスを移動</td>
+</tr>
+<tr>
+<td>周回</td>
+<td>Alt キー + 左マウス ボタン</td>
+</tr>
+<tr>
+<td>ズーム</td>
+<td>マウス ホイール <br>Alt キー + 右マウス ボタン + マウスを移動<br></td>
+</tr>
+<tr>
+<td>パン</td>
+<td>中央マウス ボタン + マウスを移動</td>
+</tr>
+<tr>
+<td>フォーカス</td>
+<td>F (エンティティを選択して)</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<h5>Tip</h5>
+<p>シーン ナビゲーターのコントロールは、［Edit］&gt;［Settings］の［Scene editor］&gt;［Key bindings］で変更できます。
+<img src="media/settings-key-bindings.png" alt="Key bindings"></p>
+</div>
+<h2 id="カメラ-エディターの視点を変更する">カメラ エディターの視点を変更する</h2>
+<p>シーン エディターの右上にある<strong>ビュー カメラ ギズモ</strong>を使用して、カメラ エディターの視点を変更できます。</p>
+<p><img src="media/navigate-in-a-scene-view-camera-gizmo.png" alt="View camera gizmo"></p>
+<h3 id="カメラを位置にスナップする">カメラを位置にスナップする</h3>
+<p>エディター カメラの角度を変更するには、<strong>ビュー カメラ ギズモ</strong>の対応する面、辺、または頂点をクリックします。</p>
+<table>
+<thead>
+<tr>
+<th>クリック</th>
+<th>カメラの位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>面</td>
+<td>選択した面を向きます</td>
+</tr>
+<tr>
+<td>辺</td>
+<td>隣接する 2 つの面に対して 45° の方向を向きます</td>
+</tr>
+<tr>
+<td>頂点</td>
+<td>隣接する 3 つの面に対して 45° の方向を向きます</td>
+</tr>
+</tbody>
+</table>
+<video controls="" autoplay="" loop="" height="240" width="320">
+                <source src="media/navigate-in-scene-change-view-angle.mp4" type="video/mp4">
+</video>
+<h2 id="カメラの位置">カメラの位置</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>このページでは、シーン エディターのカメラを使用する方法について説明します。ゲームでカメラを使用する方法については、「<a href="../graphics/cameras/index.html">グラフィックス - カメラ</a>」を参照してください。</p>
+</div>
+<p>シーン エディター カメラのオプションを表示するには、シーン エディターの右上にある<strong>カメラ アイコン</strong>をクリックします。</p>
+<p><img src="../get-started/media/switch-to-orthographic.png" alt="Switch to orthographic"></p>
+<h3 id="透視投影ビューと正投影ビュー">透視投影ビューと正投影ビュー</h3>
+<p><strong>透視投影ビュー</strong>は、シーン内のオブジェクトの「現実世界」の遠近法です。このビューでは、カメラに近いオブジェクトほど大きく表示され、同じ長さの線が、実際と同じように、短縮遠近のために異なる長さで表示されます。</p>
+<p><strong>正投影ビュー</strong>では、カメラからの距離に関係なく、オブジェクトは常に同じサイズで表示されます。平行線は交わることがなく、消失点はありません。正投影ビューでは、オブジェクトが正確に整列されているかどうかを簡単に確認できます。</p>
+<p><img src="media/perspective-orthographic-diagram.png" alt="Perspective and orthographic diagram"></p>
+<p><img src="media/perspective-and-orthographic-views.png" alt="Perspective and orthographic views"></p>
+<p>また、カメラが自分を向いているときに<strong>ビュー カメラ ギズモ</strong>をクリックすることによって、透視投影ビューと正投影ビューを切り替えることもできます。</p>
+<video controls="" autoplay="" loop="" height="240" width="320">
+              <source src="media/navigate-in-scene-switch-projection-mode.mp4" type="video/mp4">
+</video>
+<h4 id="視野">視野</h4>
+<p>カメラの視野を変更できます。カメラの錐台が変化し、シーンのズームインとズームアウトの効果があります。高い値 (90 以上) に設定すると、引き延ばされた「魚眼レンズ」ビューになります。既定の設定は 45 です。</p>
+<h4 id="近平面と遠平面">近平面と遠平面</h4>
+<p>近平面と遠平面により、カメラのビューが開始および終了する位置が決まります。</p>
+<ul>
+<li><p><strong>近平面</strong>は、カメラが表示できる最も近いポイントです。既定の設定は 0.1 です。このポイントより手前にあるオブジェクトは描画されません。</p>
+</li>
+<li><p><strong>遠平面</strong>は、描画距離とも呼ばれ、カメラが表示できる最も遠いポイントです。このポイントより遠くにあるオブジェクトは描画されません。既定の設定は 1000 です。</p>
+</li>
+</ul>
+<p>Game Studio は、近平面と円平面の間の領域をレンダリングします。</p>
+<p><img src="../get-started/media/camera-position.png" alt="Camera position"></p>
+<h4 id="カメラ速度">カメラ速度</h4>
+<p><strong>カメラ速度</strong>の設定は、エディター内をカメラが移動する速さを変更します。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-a-scene.html">シーンを作成して開く</a></li>
+<li><a href="load-scenes.html">シーンをロードする</a></li>
+<li><a href="add-entities.html">エンティティを追加する</a></li>
+<li><a href="manage-entities.html">エンティティを管理する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/navigate-in-the-scene-editor.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

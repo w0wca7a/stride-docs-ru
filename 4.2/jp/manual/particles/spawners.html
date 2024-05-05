@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>パーティクル スポナー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="パーティクル スポナー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/spawners.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="パーティクル-スポナー">パーティクル スポナー</h1>
+
+<!--
+# Particle spawners
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><strong>パーティクルスポナー（particle spawner）</strong> は、パーティクルをいつ、どれだけ、どんな早さで放出するかをコントロールします。エミッターには少なくとも 1 つのスポナーが必要ですが、異なる設定を持つ複数のスポナーを含めることもできます。</p>
+<!--
+**Particle spawners** control when, how many, and how quickly particles are emitted. Emitters need at least one spawner, but can contain multiple spawners with different settings.
+-->
+<h2 id="秒ごとper-second">秒ごと（Per second）</h2>
+<!--
+## Per second
+-->
+<p>1 秒間に決まった数のパーティクルを放出します。フレームレートが変化したり低下したりしてもバランスよく補間され、安定しています。例えば、1 秒間に 20 個のパーティクルを放出する場合、60 fps のゲームでは 3 フレームに 1 個、30 fps のゲームでは 3 フレームに 2 個のパーティクルを放出します（いずれも 3 つめのフレームではスキップされます）。</p>
+<!--
+Emits a fixed number of particles per second. It balances and interpolates them and is stable even if the framerate changes or drops. For example, at a rate of 20 particles per second, the spawner spawns one particle every three frames for 60fps games and two particles for every three frames (skipping every third frame) for 30fps games.
+-->
+<p><img src="media/particles-reference-spawners-1.png" alt="media/particles-reference-spawners-1.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loop</td>
+<td>放出をループさせるには、<strong>Looping</strong> を指定します（既定）。ループする際に待ち時間が発生ないようにするには、<strong>Looping, no delay</strong> を指定します。スポナーを一度だけ起動して停止させるには、<strong>One shot</strong> を指定します。</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td>放出が始まるまでの待ち時間（秒）。X（最小値）とY（最大値）の間のランダムな値になります。</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>放出の持続時間（秒）。持続時間が終了すると、Loop プロパティに応じて、スポナーは再び開始するか停止します。</td>
+</tr>
+<tr>
+<td>Particles</td>
+<td>1 秒間に生成されるパーティクルの数です。浮動小数点数で指定できます（例：36.875）。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                | Description                                                                                            |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| Loop                    | To have the spawner loop when it reaches the end of its duration, select **Looping** (default). To have the spawner loop with no wait between each loop, select **Looping, no delay**. To have the spawner spawn once and then stop, select **One shot**. |
+| Delay                   | How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.|
+| Duration                | How long (in seconds) the spawner spawns particles for. At the end of the duration, the spawner either starts again or stops, depending on the Loop property.|
+| Particles               | The number of particles the spawned per second. This can be a floating value (eg 36.875).                       |
+-->
+<h2 id="フレームごとper-frame">フレームごと（Per frame）</h2>
+<!--
+## Per frame
+-->
+<p>フレームごとに決まった数のパーティクルを放出します。フレームレートは関係ありません。これは、固定数のパーティクルが必要になる場合に便利です。例えば、1 フレームごとに正しく 1 個ずつパーティクルが生まれる設定は、軌跡やリボンなどで便利です。</p>
+<!--
+Emits a fixed number of particles per frame, regardless of framerate. This can be useful if you require a fixed number of particles - for example, exactly one every frame, which is useful for trails and ribbons.
+-->
+<p><img src="media/particles-reference-spawners-2.png" alt="media/particles-reference-spawners-2.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loop</td>
+<td>放出をループさせるには、<strong>Looping</strong> を指定します（既定）。ループする際に待ち時間が発生ないようにするには、<strong>Looping, no delay</strong> を指定します。スポナーを一度だけ起動して停止させるには、<strong>One shot</strong> を指定します。</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td>放出が始まるまでの待ち時間（秒）。X（最小値）とY（最大値）の間のランダムな値になります。</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>放出の持続時間（秒）。持続時間が終了すると、Loop プロパティに応じて、スポナーは再び開始するか停止します。</td>
+</tr>
+<tr>
+<td>Particles</td>
+<td>フレームごとに生成されるパーティクルの数です。値は浮動小数値であり、1 より小さい数も指定できます。その場合、パーティクルを数フレームごとに生成されます。</td>
+</tr>
+<tr>
+<td>Framerate</td>
+<td>このフレームレートは、エンジンがパーティクルの最大個数を計算するためだけに使用する推定値です。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                | Description                                                                                            |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| Loop                    | To have the spawner loop when it reaches the end of its duration, select **Looping** (default). To have the spawner loop with no wait between each loop, select **Looping, no delay**. To have the spawner spawn once and then stop, select **One shot**. |
+| Delay                   | How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.|
+| Duration                | How long (in seconds) the spawner spawns particles for.                                                                 |
+| Particles               | The number of particles spawned per frame. The value can be a floating value, including values less than 1, in which case a new particle is spawned every few frames.                                                                              |
+| Framerate               | This is for estimation purposes only when the engine calculates the maximum number of particles.|
+-->
+<h2 id="バーストburst">バースト（Burst）</h2>
+<!--
+## Burst
+-->
+<p>すべてのパーティクルを一度の爆発で放出します。</p>
+<!--
+Emits all particles in one burst.
+-->
+<p><img src="media/particles-reference-spawners-3.png" alt="media/particles-reference-spawners-2.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loop</td>
+<td>放出をループさせるには、<strong>Looping</strong> を指定します（既定）。ループする際に待ち時間が発生ないようにするには、<strong>Looping, no delay</strong> を指定します。スポナーを一度だけ起動して停止させるには、<strong>One shot</strong> を指定します。</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td>放出が始まるまでの待ち時間（秒）。X（最小値）とY（最大値）の間のランダムな値になります。</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>放出の持続時間（秒）。持続時間が終了すると、Loop プロパティに応じて、スポナーは再び開始するか停止します。</td>
+</tr>
+<tr>
+<td>Particles/burst</td>
+<td>1 回のバーストごとに放出されるパーティクルの数。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                | Description                                                                                            |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| Loop                    | To have the spawner loop when it reaches the end of its duration, select **Looping** (default). To have the spawner loop with no wait between each loop, select **Looping, no delay**. To have the spawner spawn once and then stop, select **One shot**. |
+| Delay                   | How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.|
+| Duration                | How long (in seconds) the spawner spawns particles for.                                                             |
+| Particles/burst         | The number of particles spawned in each burst. |
+-->
+<h2 id="distance">Distance</h2>
+<!--
+## Distance
+-->
+<p>エミッターの移動した距離に応じてパーティクルを放出します。エミッターが動かない場合はパーティクルを生成しません。</p>
+<!--
+Emits particles based on the distance traveled by the emitter. If the emitter doesn't move, it spawns no particles.
+-->
+<p><img src="media/particles-reference-spawners-4.png" alt="media/particles-reference-spawners-2.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loop</td>
+<td>放出をループさせるには、<strong>Looping</strong> を指定します（既定）。ループする際に待ち時間が発生ないようにするには、<strong>Looping, no delay</strong> を指定します。スポナーを一度だけ起動して停止させるには、<strong>One shot</strong> を指定します。</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td>放出が始まるまでの待ち時間（秒）。X（最小値）とY（最大値）の間のランダムな値になります。</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>放出の持続時間（秒）。持続時間が終了すると、Loop プロパティに応じて、スポナーは再び開始するか停止します。</td>
+</tr>
+<tr>
+<td>Particles/unit</td>
+<td>スポナーが距離単位を移動するごとに生成されるパーティクルの数です。距離単位あたりのパーティクル数が少ない場合には、分数を使用できます。レートはスケーリングで調整されます。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                | Description                                                                                            |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| Loop                    | To have the spawner loop when it reaches the end of its duration, select **Looping** (default). To have the spawner loop with no wait between each loop, select **Looping, no delay**. To have the spawner spawn once and then stop, select **One shot**. |
+| Delay                   | How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.|
+| Duration                | How long (in seconds) the spawner spawns particles for.                                                              |
+| Particles/unit          | The number of particles spawned for every distance unit the spawner moves. You can use fractions if you need fewer than one particle per distance unit. The rate adjusts with scaling. |
+-->
+<h2 id="親からfrom-parent">親から（From parent）</h2>
+<!--
+## From parent
+-->
+<p>他のパーティクル（親）に基づいてパーティクルを放出します。親パーティクルの特定の条件が満たされた際に、スポナーはパーティクルを放出します。</p>
+<!--
+Emits particles based on other particles (parents). When certain conditions in a parent particle are met, the spawner spawns particles.
+-->
+<p><img src="media/particles-reference-spawners-5.png" alt="media/particles-reference-spawners-2.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loop</td>
+<td>放出をループさせるには、<strong>Looping</strong> を指定します（既定）。ループする際に待ち時間が発生ないようにするには、<strong>Looping, no delay</strong> を指定します。スポナーを一度だけ起動して停止させるには、<strong>One shot</strong> を指定します。</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td>放出が始まるまでの待ち時間（秒）。X（最小値）とY（最大値）の間のランダムな値になります。</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>放出の持続時間（秒）。持続時間が終了すると、Loop プロパティに応じて、スポナーは再び開始するか停止します。</td>
+</tr>
+<tr>
+<td>Parent emitter</td>
+<td>親となるエミッターの名前を指定します。</td>
+</tr>
+<tr>
+<td>Spawn Control Group</td>
+<td>このフィールドは親パーティクルに追加され、どの親パーティクルが何個の子パーティクルを生成するかをより正確にコントロールできるようになります。4 つのグループから選ぶことができ、イニシャライザーの制御が必要な場合は、イニシャライザーのグループと一致させる必要があります。</td>
+</tr>
+<tr>
+<td>Particles/trigger</td>
+<td>トリガー条件が満たされるたびに、親から生成されるパーティクルの最小個数と最大個数を指定します。</td>
+</tr>
+<tr>
+<td>Particle Spawn Trigger</td>
+<td>どのような条件（トリガー）で子パーティクルが発生するのかを指定します（詳細は以下）。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                | Description                                                                                            |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| Loop                    | To have the spawner loop when it reaches the end of its duration, select **Looping** (default). To have the spawner loop with no wait between each loop, select **Looping, no delay**. To have the spawner spawn once and then stop, select **One shot**. |
+| Delay                   | How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.|
+| Duration                | How long (in seconds) the spawner spawns particles for.                                                                    |
+| Parent emitter          | The parent emitter, which should match the emitter's name set on that emitter. |
+| Spawn Control Group     | This field will be added to the parent particles for more precise control over which parent particle spawns how many children. There are 4 groups you can choose from and they should match the initializers' groups, if initializers require control. |
+| Particles/trigger       | How many particles (min and max) are spawned from a parent each time the triggering condition is met. |
+| Particle Spawn Trigger  | What condition triggers child particles spawning (detailed below) |
+-->
+<h3 id="パーティクル放出トリガーparticle-spawn-trigger">パーティクル放出トリガー（Particle Spawn Trigger）</h3>
+<!--
+### Particle Spawn Trigger
+-->
+<table>
+<thead>
+<tr>
+<th>トリガー</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On Birth</td>
+<td>子パーティクルは、親パーティクルが生まれたときに 1 度だけ生成されます（それぞれの親ごとに 1 回）。</td>
+</tr>
+<tr>
+<td>On Death</td>
+<td>子パーティクルは、親パーティクルが死んだときに 1 度だけ生成されます（それぞれの親ごとに 1 回）。</td>
+</tr>
+<tr>
+<td>Distance</td>
+<td>親パーティクルの移動距離に応じて子パーティクルが生成されます。</td>
+</tr>
+<tr>
+<td>On Hit</td>
+<td>親パーティクルは <em>衝突アップデーター（Collision Updater）</em> を実装している必要があります。子パーティクルは、親パーティクルがサーフェスに衝突したときに生成されます。</td>
+</tr>
+<tr>
+<td>Lifetime</td>
+<td>親パーティクルのライフタイムを、全ライフタイムの長さを 1 として正規化して表した場合に、それが 2 つの値 A と B の間にあるときに子パーティクルが生成されます。A &lt; B の場合、期間は 0...(A..B)...1 となり、B &gt; A の場合、期間は逆に (0..B)...(A..1) となります。この方法は、On Birth/On Death よりも精度は低くなります。</td>
+</tr>
+</tbody>
+</table>
+<!--
+- On Birth - Child particles are spawned once when a parent particle is born (once per parent)
+ - On Death - Child particles are spawned once when a parent particle dies (once per parent)
+ - Distance - Child particles are spawned per distance traveled as the parent particle moves
+ - On Hit - Parent particles need to implement *Collision Updater*. Child particles are spawned when a parent particle hits the surface.
+ - Lifetime - Child particles are spawned when the parent particle's lifetime is between two limits, A and B, expressed as normalized values (0 to 1) over the particle's lifetime. If A < B, the period is 0..(A..B)..1, if B > A the period is reversed to (0..B)..(A..1). This method is less precise than the On Birth/On Death conditions.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="create-particles.html">パーティクルの作成</a></li>
+<li><a href="emitters.html">エミッター</a></li>
+<li><a href="shapes.html">シェイプ</a></li>
+<li><a href="materials.html">マテリアル</a></li>
+<li><a href="initializers.html">イニシャライザー</a></li>
+<li><a href="updaters.html">アップデーター</a></li>
+</ul>
+<!--
+* [Create particles](create-particles.md)
+* [Emitters](emitters.md)
+* [Shapes](shapes.md)
+* [Materials](materials.md)
+* [Initializers](initializers.md)
+* [Updaters](updaters.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/spawners.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

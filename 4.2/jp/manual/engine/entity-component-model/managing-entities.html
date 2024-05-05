@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>エンティティの管理 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="エンティティの管理 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/engine/entity-component-model/managing-entities.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="エンティティの管理">エンティティの管理</h1>
+
+<!--
+# Manage entities
+-->
+<div class="doc-incomplete"></div>
+<h2 id="概要">概要</h2>
+<!--
+## Overview
+-->
+<p>一般的に、特定のエンティティに含まれるコンポーネントを操作したいユーザーに対して、エンジンは種類別にコンポーネントにアクセスしたいと考えています（描画時にはすべてのメッシュコンポーネント、アニメーションの更新時にはすべてのアニメーションコンポーネント、など）。</p>
+<!--
+User usually want to manipulate Component contained in a specific entity, while engine wants to access component by types (i.e. all Mesh Component while drawing, all animation components while updating animations, etc...):
+-->
+<p><img src="media/7438984.png" alt="media/7438984.png"></p>
+<p>ユーザーは、コンポーネントベースのエンティティをエンティティマネージャに追加します。</p>
+<!--
+User will add component-based entities into an entity manager.
+-->
+<p>エンジンまたはユーザーは、特定のエンティティやコンポーネントを処理することができるエンティティプロセッサーを登録します。</p>
+<!--
+Engine or user registers entity processors that can process specific entities and/or components.
+-->
+<h2 id="エンティティ-プロセッサー">エンティティ プロセッサー</h2>
+<!--
+## Entity Processor
+-->
+<p>この問題を解決するために、エンティティプロセッサーというコンセプトが追加されました。
+エンティティプロセッサーは、特定の要件（メッシュコンポーネントで処理すべきすべてのエンティティなど）に合致するエンティティにアクセスし、1つの更新関数ですべてのエンティティを処理します。これにより、フレームごとにすべてのエンティティとコンポーネントを何度もチェックする必要がなくなり、効率性とキャッシュの利便性が向上します。</p>
+<!--
+To solve this problem, the concept of Entity Processor has been added. An Entity Processor will access Entities that matches specific requirements (i.e. process all entities with MeshComponent) and process all of them in a single update function. This allows for greater efficiency and cache-friendliness, as there is no need to check every entity/components many times per frame.
+-->
+<p>また、このアプローチは、更新順序の依存性に関する多くの問題を解決します（エンティティプロセッサーが適切な順番で更新するよう並べ替える必要があります）。</p>
+<!--
+This approach also solves many update order dependencies issues (just need to order the entity processors updates properly).
+-->
+<p>エンティティプロセッサーの例を紹介します。</p>
+<!--
+Here is some examples of entity processors:
+-->
+<ul>
+<li><p>@'Stride.Engine.TransformationProcessor': 階層と、@'Stride.Engine.TransformationComponent' に格納されているローカル変換から、変換行列を計算します。</p>
+<p>その結果、単純なエンティティリストの代わりに、<a class="xref" href="../../../api/Stride.Engine.EntityManager.html">EntityManager</a> を階層化シーングラフとして使用することができます。</p>
+</li>
+<li><p>@'Stride.Engine.MeshProcessor': <a class="xref" href="../../../api/Stride.Engine.ModelComponent.html#Stride_Engine_ModelComponent_Model">Model</a> をレンダリングに追加します。</p>
+</li>
+<li><p>@'Stride.Engine.LightProcessor': ライトを集めて更新し、レンダリングシステムに転送します。実装の詳細（遅延レンダリングやフォワードレンダリングなど）は隠蔽されます。</p>
+</li>
+</ul>
+<!--
+- @'Stride.Engine.TransformationProcessor': Compute transformation matrices from hierarchy and local transformation stored in @'Stride.Engine.TransformationComponent'.
+  
+  As a result, @'Stride.Engine.EntityManager' can be used as a hierarchical scenegraph instead of a simple entity list.
+- @'Stride.Engine.MeshProcessor': Add @'Stride.Engine.ModelComponent.Model' to rendering.
+- @'Stride.Engine.LightProcessor': Collects and update lights, and transfer it to rendering system. It can hides implementation details (deferred or forward rendering, etc...)
+-->
+<h2 id="エンティティ-システム">エンティティ システム</h2>
+<!--
+## Entity System
+-->
+<p>エンティティは、<a class="xref" href="../../../api/Stride.Engine.EntityManager.html">EntityManager</a> にまとめられています。これには、エンティティプロセッサーのリストも含まれます。エンティティが追加されたり、エンティティコンポーネントが変更されたりする際には、エンティティプロセッサーを含めるべきかを問い合わせます。</p>
+<!--
+Entity are grouped together in an @'Stride.Engine.EntityManager'. It will also contains the list of entity processors. When an entity is added or an entity components changes, it will ask entity processors if they should be included.
+-->
+<pre><code class="lang-cs">// エンティティを追加
+var myEntity = new Entity();
+engine.EntityManager.AddEntity(myEntity);
+ 
+// 追加されたエンティティを順番に処理
+foreach (var entity in engine.EntityManager.Entities)
+{
+	Console.WriteLine(entity.Name);
+}
+</code></pre>
+<!--
+```cs
+// Add an entity:
+var myEntity = new Entity();
+engine.EntityManager.AddEntity(myEntity);
+ 
+// Iterate through added entities:
+foreach (var entity in engine.EntityManager.Entities)
+{
+	Console.WriteLine(entity.Name);
+}
+```
+-->
+<p><a class="xref" href="../../../api/Stride.Engine.EntityManager.html">EntityManager</a> は、<code>Entities (ref:{Stride.Engine.Entity})</code> を列挙するために使うことができます。エンティティの子のエンティティもこのリストに含まれることに注意してください。</p>
+<!--
+@'Stride.Engine.EntityManager' can be used to enumerate its `Entities (ref:{Stride.Engine.Entity})`. Note that children of a given entities will also be in this list.
+-->
+<p>エンティティをシーングラフとして操作するには、@'Stride.Engine.TransformationComponent'クラスを使用してください。</p>
+<!--
+To manipulate entities as a scenegraph, refer to @'Stride.Engine.TransformationComponent' class.
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/engine/entity-component-model/managing-entities.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

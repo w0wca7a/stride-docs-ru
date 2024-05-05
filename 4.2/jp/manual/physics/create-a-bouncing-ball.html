@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>跳ね返るボールの作成 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="跳ね返るボールの作成 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/create-a-bouncing-ball.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="跳ね返るボールの作成">跳ね返るボールの作成</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p>このチュートリアルでは、<a href="colliders.html">静的コライダーと剛体コンポーネント</a>を使用して、床で跳ね返るボールを作成します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>このチュートリアルのスクリーンショットとビデオは、前のバージョンの Stride を使用して作成されました。そのため、UI の一部および既定のスカイボックスと球体は、お使いのバージョンと異なる場合があります。</p>
+</div>
+<h2 id="1-新しいプロジェクトを作成する">1. 新しいプロジェクトを作成する</h2>
+<p><strong>新しいゲーム</strong> プロジェクトを開始します。</p>
+<p>プレロードされる既定のシーンには、カメラ、ディレクショナル ライト、スカイボックス、地面、球体の 5 つのエンティティが含まれます。<strong>地面</strong>および<strong>球体</strong>エンティティに、物理コンポーネントを追加します。</p>
+<h2 id="2-静的コライダーを追加する">2. 静的コライダーを追加する</h2>
+<p>最初に、<a href="static-colliders.html">静的コライダー</a> コンポーネントを地面エンティティに追加します。静的コライダーは、動かない物理オブジェクトです。一般的な静的コライダーとしては、壁、床、大きな岩などがあります。この例の静的コライダーは、それに対してボールが跳ね返るものになります。</p>
+<ol>
+<li><p><strong>地面</strong>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］で［Add component］をクリックして、［Static Collider］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-add-collider-component.png" alt="Add Static collider component"></p>
+</li>
+<li><p>エンティティの形状と一致するように<a href="collider-shapes.html">コライダーの形状</a>を設定します。そのためには、［Property grid］で［Static Collider］コンポーネントを展開してプロパティを表示します。</p>
+</li>
+<li><p>［Collider Shapes］の隣の <img src="../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、［Infinite Plane］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-collider-shape.png" alt="Add Static collider component"></p>
+<p>地面に静的コライダーが追加され、ボールが跳ね返るものができました。</p>
+</li>
+</ol>
+<h2 id="3-剛体コライダーを追加する">3. 剛体コライダーを追加する</h2>
+<p>次に、<a href="rigid-bodies.html">剛体</a>コンポーネントを球体に追加します。剛体は動く物理オブジェクトであり、跳ね返るボールに最適です。</p>
+<ol>
+<li><p><strong>シーン エディター</strong>で<strong>球体</strong>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］で［Add component］をクリックして、［Rigidbody］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-add-rigitbody-component.png" alt="Add Static collider component"></p>
+</li>
+<li><p>地面エンティティの場合と同じように、エンティティと一致するように<a href="collider-shapes.html">コライダーの形状</a>を設定します。そのためには、［Property grid］で［Rigidbody］コンポーネントを展開してプロパティを表示します。</p>
+</li>
+<li><p>［Collider Shapes］の隣の <img src="../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、［Sphere］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-rigitbody-shape.png" alt="Add Static collider component"></p>
+</li>
+</ol>
+<h2 id="4-ボールを配置する">4. ボールを配置する</h2>
+<p>空中から動き始めて地面に向かって落下するように、球体を配置します。</p>
+<ol>
+<li><p><strong>球体</strong>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］の［Transform］で、［Position］を <em>X: 0, Y: 6, Z: 0</em> に設定します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-change-sphere-position.png" alt="Change Sphere position"></p>
+<p>これにより、ボールは地面の上の空中に配置されます。</p>
+</li>
+</ol>
+<h2 id="5-カメラを配置する">5. カメラを配置する</h2>
+<p>次に、シーンがよく見えるようにカメラを移動します。</p>
+<ol>
+<li><p><strong>カメラ</strong> エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］の［Transform］で、［Position］を <em>X: -12, Y: 7, Z: 9</em> に設定します。</p>
+</li>
+<li><p>［Rotation］を <em>X: -20, Y: -50, Z: 0</em> に設定します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-change-camera-position.png" alt="Change camera position"></p>
+<p>シーン エディターの右下にある［Camera preview］で、カメラ ビューをプレビューできます。</p>
+<p><img src="media/physics-tutorials-camera-preview.png" alt="Camera preview"></p>
+</li>
+</ol>
+<h2 id="6-反発を設定する">6. 反発を設定する</h2>
+<p>ここまでで、シーンがどのように見えるかを確認します。プロジェクトを実行するには、<strong>F5</strong> キーを押します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-falling-ball.gif" alt="Falling ball"></p>
+<p>球体 (剛体) が重力に反応して落下します。地面 (静的コライダー) がその落下を妨げます。しかし、跳ね返り効果はまだありません。</p>
+<p>跳ね返り効果を作成するには、球体と地面の<strong>反発</strong>を変更する必要があります。これは、現実世界の衝突の<a href="https://en.wikipedia.org/wiki/Coefficient_of_restitution">反発係数 (Wikipedia)</a> をシミュレートします。</p>
+<ul>
+<li>衝突するエンティティの反発プロパティが 0 の場合、エンティティはすべてのエネルギーを失い、衝突と同時に動かなくなります。</li>
+<li>反発が 1 の場合は、エネルギーを失わず、衝突したときと同じ速さで跳ね返ります。</li>
+<li>反発が 1 より大きい場合は、エネルギーを獲得し、<em>より大きい</em>速度で跳ね返ります。</li>
+</ul>
+<p>原則として、現実的な衝突を作成するには、反発を 0 ～ 1 の範囲に設定します。</p>
+<p>この例の球体エンティティと地面エンティティに反発を設定します。</p>
+<ol>
+<li><p><strong>球体</strong>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］の［Rigidbody］で、［Restitution］を 0.8 に設定します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-restitution-of-a-sphere.png" alt="Set restitution for a sphere"></p>
+</li>
+<li><p><strong>地面</strong>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］の［Static Collider］で、［Restitution］を 0.5 に設定します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-restitution-of-the-ground.png" alt="Set restitution for the ground"></p>
+</li>
+</ol>
+<p>物理特性がどのように変化したかを確認するため、プロジェクトを再び実行します (<strong>F5</strong> キー)。今度は、ボールは静止する前に地面で跳ね返ります。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-falling-and-bouncing-ball.gif" alt="Bouncing effect"></p>
+<p>両方のエンティティの反発を 1 に変更してみます。ボールはエネルギーを失わず、いつまでも同じ高さに跳ね返ります。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-infinitely-bouncing-ball.gif" alt="Infinite bounce"></p>
+<p>反発を 1.1 に設定すると、ボールは毎回少しずつ高くまで跳ね返ります。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-higher-and-higher.gif" alt="Ball bouncing higher"></p>
+<p>跳ね返るボールができたので、それを使用してトリガーを学習できます。詳細については、「<a href="script-a-trigger.html">トリガーをスクリプトにする</a>」チュートリアルを参照してください。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="colliders.html">コライダー</a></li>
+<li><a href="collider-shapes.html">コライダーの形状</a></li>
+<li><a href="script-a-trigger.html">チュートリアル: トリガーをスクリプトにする</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/create-a-bouncing-ball.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

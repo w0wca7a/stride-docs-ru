@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>アニメーション プロパティ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="アニメーション プロパティ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/animation-properties.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="アニメーション-プロパティ">アニメーション プロパティ</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p><a href="import-animations.html">アニメーションをインポート</a>した後は、［Asset view］(既定では下部のペイン) でそのアニメーションを選択し、［Property grid］(既定では右側) でそのプロパティを表示および編集できます。</p>
+<p><img src="media/assets-in-asset-view2.png" alt="Assets in asset view"></p>
+<p><img src="media/animations-properties.png" alt="Properties"></p>
+<h3 id="source">Source</h3>
+<p>これは、アニメーション アセットによって使用されるソース ファイルです。これを変更すると、アニメーションが再インポートされます。</p>
+<h3 id="clip-duration">Clip duration</h3>
+<p>既定では、クリップ期間は無効になっています。つまり、アニメーションはフレーム 0 で開始し、ファイルに書き込まれている最後のキーフレームまで実行します。</p>
+<p>ただし、1 つのアニメーション トラックに複数のアニメーションが含まれることがあります。その場合は、トラックを分割する必要があります。そのためには、［Clip duration］を有効にして、各アニメーションの期間と一致するように<strong>開始</strong>フレームと<strong>終了</strong>フレームを調節します。</p>
+<p>その場合でも、開始フレームと終了フレームは、ファイルにエクスポートされたキーフレームによって制限されます。たとえば、最初にアニメーション ツールからフレーム 20 ～ 40 をエクスポートした場合、開始フレームを 20 より小さくすることはできず、終了フレームを 40 より大きくすることはできません。</p>
+<p>Game Studio の既定のフレーム レートは 30 です。この値は、［Game settings］アセット プロパティの［Editor settings］&gt;［Animation frame rate］で変更できます。</p>
+<h3 id="pivot-position">Pivot Position</h3>
+<p>Game Studio では、ピボットはアニメーションのローカル座標系の原点と見なされます。<strong>(0, 0, 0)</strong> に設定されている必要があります。エクスポートしたときにアニメーションが原点からシフトした場合、このプロパティを使用して再調整できます。</p>
+<h3 id="scale-import">Scale Import</h3>
+<p>［Scale Import］は 1 に設定する必要があります。Stride はデータがエクスポートされた単位を検出し、自動的にそれを調整します。アニメーション ファイルにエクスポートの設定がなく、スケールが正しくないように見える場合は、［Scale Import］プロパティを使用して再調整できます。</p>
+<h3 id="repeat-mode">Repeat Mode</h3>
+<p>［PlayOnce］、［LoopInfinite］、[PlayOnce&amp;Hold］を選択できます。これは、エンジンに対する単なる <em>ヒント</em> です。アニメーション アセットをモデルに割り当てるときに、異なる値を指定できます。後でモデルを指定しないと、Stride はここで設定されている属性を既定で使用します。</p>
+<h3 id="type">Type</h3>
+<p>Stride は 2 種類のアニメーション クリップをサポートします。通常のアニメーションは既定で［Animation clip］になり、混合される場合はリニア ブレンディングで使用されます。［Difference clip］の場合は、さらにいくつか設定があります。詳細については、「<a href="additive-animation.html">加算アニメーション</a>」を参照してください。</p>
+<h3 id="skeleton">Skeleton</h3>
+<p>スキン メッシュでアニメーションを使用する場合は、スケルトンが必要です。アニメーション化するモデルで使用されているものと同じスケルトンを参照する必要があります。足りないボーンがある場合、またはアニメーション ファイルのスケルトンのノード階層とターゲット スケルトンの間に違いがある場合は、可能な限り一致するようにアニメーションが再ターゲット設定されます。</p>
+<h3 id="root-motion">Root Motion</h3>
+<p>［Root Motion］を有効にすると、メイン モーションが <a class="xref" href="../../api/Stride.Engine.TransformComponent.html">TransformComponent</a> に適用されます。無効にすると、スケルトン ノードの内部で適用されます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>スケルトンがない場合は、モーションは <a class="xref" href="../../api/Stride.Engine.TransformComponent.html">TransformComponent</a> に常に適用されます。</p>
+</div>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="index.html">アニメーション</a></li>
+<li><a href="import-animations.html">アニメーションのインポート</a></li>
+<li><a href="set-up-animations.html">アニメーションのセットアップ</a></li>
+<li><a href="preview-animations.html">アニメーションのプレビュー</a></li>
+<li><a href="animation-scripts.html">アニメーションのスクリプト</a></li>
+<li><a href="additive-animation.html">加算アニメーション</a></li>
+<li><a href="procedural-animation.html">プロシージャル アニメーション</a></li>
+<li><a href="custom-blend-trees.html">カスタム ブレンド ツリー</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/animation-properties.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

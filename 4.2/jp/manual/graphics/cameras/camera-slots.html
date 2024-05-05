@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>カメラ スロット | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="カメラ スロット | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/cameras/camera-slots.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="カメラ-スロット">カメラ スロット</h1>
+
+<!--
+# Camera slots
+-->
+<p><strong>カメラスロット</strong>は、<a href="../graphics-compositor/index.html">グラフィックスコンポジター</a>をシーンのカメラにリンクします。各カメラをスロットに割り当てて、それからコンポジターが使用するスロットを定義します。これは、毎回新しいカメラを割り当てなくても、<a href="../../game-studio/manage-scenes.html">ルートシーン</a>やグラフィックスコンポジターを変更することができるということを意味しています。</p>
+<!--
+**Camera slots** link the [graphics compositor](../graphics-compositor/index.md) to the cameras in your scene. You bind each camera to a slot, then define which slot the compositor uses. This means you can change the [root scene](../../game-studio/manage-scenes.md) or graphics compositor without having to assign new cameras each time.
+-->
+<p>カメラごとに異なるカメラスロットを作成する必要はありません。代わりに、スロットを使用するカメラを切り替えます。最良の方法は、必要のないカメラのカメラコンポーネントを無効にすることです。</p>
+<!--
+You don't have to create a different camera slot for each camera. Instead, you can just change which cameras use each slot. The best practice is to disable the camera components on cameras you don't need.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>カメラスロットには、カメラが割り当てられている必要があります。使用していないカメラスロットがある場合は、削除してください。</p>
+<p>1つのカメラを複数のスロットに割り当てることはできません。必要な場合は、カメラのエンティティを複製して別のスロットに割り当ててください。</p>
+<p>シーン内の複数の有効なカメラが同じカメラスロットを使用している場合、結果は未定義です。</p>
+</div>
+<!--
+> [!Note]
+> Each camera slot must have a camera assigned to it. If you have an unused camera slot, delete it.
+>
+> You can't assign a single camera to more than one slot. If you need to do this, duplicate the camera entity and assign it to a different slot.
+
+> If multiple enabled cameras in your scene use the same camera slot, the result is undefined.
+-->
+<h2 id="カメラスロットを作成する">カメラスロットを作成する</h2>
+<!--
+## Create a camera slot
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、<strong>Graphics Compositor</strong> アセットをダブルクリックします。</p>
+<p><img src="../graphics-compositor/media/graphics-compositor-asset.png" alt="Graphics Compositor asset"></p>
+<p>すると、グラフィックスコンポジターエディターが開きます。</p>
+<p><img src="../graphics-compositor/media/graphics-compositor-editor.png" alt="Graphics Compositor editor"></p>
+<p>グラフィックスコンポジターの詳細については、<a href="../graphics-compositor/index.html">グラフィックス コンポジター</a>を参照してください。</p>
+</li>
+<li><p>グラフィックスコンポジターエディターで、<strong>Camera slots</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button">（<strong>Add</strong>）をクリックします。</p>
+<p><img src="../graphics-compositor/media/graphics-compositor-camera-slots.png" alt="Camera slots"></p>
+<p>Game Studio は、新しいカメラスロットをリストに追加します。</p>
+<p><img src="../graphics-compositor/media/camera-slot-added.png" alt="Camera slot added"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>カメラスロットに名前を付けるには、リスト上でダブルクリックして新しい名前を入力します。</p>
+</div>
+</li>
+</ol>
+<!--
+1. In the **Asset View** (in the bottom pane by default), double-click the **Graphics Compositor** asset.
+
+    ![Graphics Compositor asset](../graphics-compositor/media/graphics-compositor-asset.png)
+
+    The graphics compositor editor opens.
+
+    ![Graphics Compositor editor](../graphics-compositor/media/graphics-compositor-editor.png)
+
+    For more information about the graphics compositor, see the [Graphics compositor](../graphics-compositor/index.md) page.
+
+2. In the graphics compositor editor, on the left, under **Camera slots**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**).
+
+    ![Camera slots](../graphics-compositor/media/graphics-compositor-camera-slots.png)
+
+    Game Studio adds a new camera slot to the list:
+
+    ![Camera slot added](../graphics-compositor/media/camera-slot-added.png)
+
+    > [!Tip]
+    > To name a camera slot, double-click it in the list and type a new name.
+-->
+<h2 id="カメラをカメラスロットに割り当てる">カメラをカメラスロットに割り当てる</h2>
+<!--
+## Bind a camera to a camera slot
+-->
+<ol>
+<li><p>シーンで、カメラコンポーネントを持つ<strong>エンティティ</strong>を選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>の<strong>カメラ</strong>コンポーネントのプロパティの <strong>Slot</strong> で、カメラを割り当てたいスロットを選択します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>ドロップダウンメニューには、<a href="../../game-studio/game-settings.html">ゲームの設定</a>で選択したグラフィックスコンポジターのカメラスロットがリストアップされます。</p>
+</div>
+<p><img src="../graphics-compositor/media/graphics-compositor-overview-2.png" alt="media/graphics-compositor-overview-2.png"></p>
+</li>
+</ol>
+<p>グラフィックスコンポジターは、有効なカメラを、各フレームの適切なスロットにマッチングさせます。</p>
+<!--
+The graphics compositor matches enabled cameras to their appropriate slots each frame.
+-->
+<h2 id="スクリプトからカメラを作成してカメラスロットに割り当てる">スクリプトから、カメラを作成してカメラスロットに割り当てる</h2>
+<!--
+## Create a camera and assign a camera slot from a script
+-->
+<p>以下の通りです。</p>
+<!--
+Use:
+-->
+<pre><code class="lang-cs">var camera = new CameraComponent();
+camera.Slot = SceneSystem.GraphicsCompositor.Cameras[0].ToSlotId();
+</code></pre>
+<p>実行時にカメラを変更するには、<code>Enabled</code>プロパティを切り替えます。</p>
+<!--
+To change the camera at runtime, toggle the ``Enabled`` property.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>以下を確認してください。</p>
+<ul>
+<li><p>少なくとも1台のカメラを有効にしておく。</p>
+</li>
+<li><p>複数のカメラを有効にして同じスロットに同時に割り当てていないこと。</p>
+</li>
+</ul>
+</div>
+<!--
+> [!Note]
+> Make sure you:
+>
+> * always have at least one enabled camera
+>
+> * don't have multiple cameras enabled and assigned to the same slot at the same time
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="index.html">カメラ</a></li>
+<li><a href="../graphics-compositor/index.html">グラフィックス コンポジター</a></li>
+<li><a href="../../game-studio/game-settings.html">Game Studio：ゲームの設定</a></li>
+<li><a href="../../game-studio/manage-scenes.html">Game Studio：シーンの管理</a></li>
+</ul>
+<!--
+* [Cameras](index.md)
+* [Graphics compositor](../graphics-compositor/index.md)
+* [Game Studio — Game settings](../../game-studio/game-settings.md)
+* [Game Studio — Manage scenes](../../game-studio/manage-scenes.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/cameras/camera-slots.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

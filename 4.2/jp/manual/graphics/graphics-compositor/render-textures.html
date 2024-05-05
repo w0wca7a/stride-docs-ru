@@ -1,0 +1,503 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>レンダーテクスチャー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="レンダーテクスチャー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/graphics-compositor/render-textures.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="レンダーテクスチャー">レンダーテクスチャー</h1>
+
+<!--
+# Render textures
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">デザイナー</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Designer</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><strong>レンダーテクスチャー</strong>を使うと、カメラのビューをテクスチャーに送り、そのテクスチャーをシーン内のオブジェクトに適用することができます。例えば、防犯カメラの映像のように、同じシーン内のテレビ画面にシーンの一部を映すことができます。</p>
+<!--
+With **render textures**, you can send a camera's view to a texture and use the texture on objects in your scene. For example, you can use this to display part of your scene on a TV screen in the same scene, such as security camera footage.
+-->
+<p>API の詳細については、<a href="../low-level-api/textures-and-render-textures.html">テクスチャーとレンダーテクスチャー</a>を参照してください。</p>
+<!--
+For API details, see [Textures and render textures](../low-level-api/textures-and-render-textures.md).
+-->
+<h2 id="1-追加のカメラスロットを作成する">1. 追加のカメラスロットを作成する</h2>
+<!--
+## 1. Create an extra camera slot
+-->
+<p>カメラスロットは、グラフィックスコンポジターをシーン内のカメラに結びつけるために使われます。新しいカメラを使うには、まずカメラスロットを追加する必要があります。カメラスロットの詳細については、<a href="../cameras/camera-slots.html">カメラ スロット</a>を参照してください。</p>
+<!--
+Camera slots link the graphics compositor to the cameras in your scene. You need to add a camera slot for a new camera to use. For more information about camera slots, see [Camera slots](../cameras/camera-slots.md).
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、<strong>グラフィックスコンポジター</strong>アセットをダブルクリックします。</p>
+<p><img src="media/graphics-compositor-asset.png" alt="Graphics Compositor asset"></p>
+<p>すると、グラフィックスコンポジターエディターが開きます。</p>
+<p><img src="media/graphics-compositor-editor.png" alt="Graphics Compositor editor"></p>
+</li>
+<li><p>左ペインの <strong>Camera slots</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="緑のプラスボタン">（<strong>追加</strong>）をクリックします。</p>
+<p><img src="media/graphics-compositor-camera-slots.png" alt="Camera slots"></p>
+<p>Game Studio は、新しいカメラスロットを追加します。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>カメラスロットの名前を変更するには、Camera slots 内のカメラスロットをダブルクリックして、新しい名前を入力します。</p>
+<p><img src="media/name-camera-slot.png" alt="Name a camera slot"></p>
+</div>
+</li>
+</ol>
+<!--
+1. In the **Asset View** (in the bottom pane by default), double-click the **Graphics Compositor** asset.
+
+    ![Graphics Compositor asset](media/graphics-compositor-asset.png)
+
+    The graphics compositor editor opens.
+
+    ![Graphics Compositor editor](media/graphics-compositor-editor.png)
+
+2. On the left, under **Camera slots**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**).
+
+    ![Camera slots](media/graphics-compositor-camera-slots.png)
+
+    Game Studio adds a new camera slot.
+
+    > [!Tip]
+    > To rename a camera slot, double-click it in the list and type a new name.
+    > ![Name a camera slot](media/name-camera-slot.png)
+-->
+<h2 id="2-カメラを作成しスロットにバインドする">2. カメラを作成しスロットにバインドする</h2>
+<!--
+## 2. Create a camera and bind it to the slot
+-->
+<ol>
+<li><p>シーンで、カメラにするエンティティに<strong>カメラコンポーネント</strong>を追加します。</p>
+<p><img src="media/add-camera-component.png" alt="Add camera component"></p>
+</li>
+<li><p>テクスチャーにレンダリングしたい範囲がカメラに映るように、エンティティを配置します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>カメラコンポーネント</strong>にチェックを入れて有効化します。</p>
+<p><img src="media/enable-camera-component.png" alt="Enable camera component"></p>
+</li>
+<li><p><strong>カメラコンポーネント</strong>の <strong>Slot</strong> プロパティで、前の手順で追加したカメラスロットを選択します。</p>
+<p><img src="media/graphics-compositor-overview-2.png" alt="Select camera slot"></p>
+</li>
+</ol>
+<!--
+1. In your scene, add a **camera component** to the entity you want to be your camera.
+
+    ![Add camera component](media/add-camera-component.png)
+
+2. Position the entity so the camera captures the area of the scene you want to render to a texture.
+
+3. In the entity **Property Grid**, enable the **Camera** component using the checkbox.
+
+    ![Enable camera component](media/enable-camera-component.png)
+
+4. in the **Camera** component properties, under **Slot**, select the slot you created in the previous step.
+
+    ![Select camera slot](media/graphics-compositor-overview-2.png)
+-->
+<h2 id="3-レンダーターゲットテクスチャーを作成する">3. レンダーターゲットテクスチャーを作成する</h2>
+<!--
+## 3. Create a render target texture
+-->
+<p><strong>アセットビュー</strong>で、[<strong>Add asset</strong>] をクリックし、<strong>Texture</strong> &gt; <strong>Render target</strong> を選択します。</p>
+<!--
+In the **Asset View**, click **Add asset** and select **Texture** > **Render target**.
+-->
+<p><img src="media/add-render-target.png" alt="Add render target"></p>
+<p>Game Studio は、プロジェクトのアセットに<strong>レンダーターゲット</strong>テクスチャーを追加します。</p>
+<!--
+Game Studio adds a **render target** texture to your project assets.
+-->
+<p><img src="media/render-target-texture-in-asset-view.png" alt="Render texture"></p>
+<h2 id="4-レンダーターゲットテクスチャーをシーンに配置する">4. レンダーターゲットテクスチャーをシーンに配置する</h2>
+<!--
+## 4. Place the render target texture in the scene
+-->
+<p>レンダーターゲットテクスチャーには、いろいろな使い方があります。</p>
+<!--
+There are various ways you can use the render target texture.
+-->
+<h3 id="例-1レンダーターゲットテクスチャーをマテリアルで使用する">例 1：レンダーターゲットテクスチャーをマテリアルで使用する</h3>
+<!--
+### Example 1: Use the render target texture in a material
+-->
+<ol>
+<li><p>マテリアルを選択し、<strong>プロパティグリッド</strong>で <strong>Shading</strong> &gt; <strong>Diffuse map</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、<strong>Texture</strong> を選択します。</p>
+<p><img src="media/select-texture.png" alt="Select texture"></p>
+</li>
+<li><p><img src="../../game-studio/media/hand-icon.png" alt="Hand icon">（<strong>アセットの選択</strong>）をクリックします。</p>
+</li>
+<li><p><strong>レンダーテクスチャー</strong>アセットを選択して [<strong>OK</strong>] をクリックします。</p>
+<p><img src="media/select-render-frame.png" alt="Select render frame"></p>
+</li>
+</ol>
+<!--
+1. In the material properties, under **Shading**, next to **Diffuse map**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select **Texture**.
+
+    ![Select texture](media/select-texture.png)
+
+2. Click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+3. Select the **Render texture** asset and click **OK**.
+
+    ![Select render frame](media/select-render-frame.png)
+-->
+<h3 id="例-2レンダーターゲットテクスチャーをスプライトコンポーネントで使用する">例 2：レンダーターゲットテクスチャーをスプライトコンポーネントで使用する</h3>
+<!--
+### Example 2: Use the render target texture in a sprite component
+-->
+<ol>
+<li><p>エンティティを作成し、テクスチャーを表示したい場所に配置します。</p>
+</li>
+<li><p>エンティティを選択した状態で、<strong>プロパティグリッド</strong>で [<strong>Add component</strong>] をクリックし、<strong>スプライト</strong>コンポーネントを追加します。</p>
+<p><img src="media/add-sprite-component.png" alt="Add sprite component"></p>
+</li>
+<li><p>スプライトコンポーネントのプロパティで、<strong>Source</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、<strong>Texture</strong> を選択します。</p>
+<p><img src="media/sprite-source-texture.png" alt="Select sprite source"></p>
+</li>
+<li><p><img src="../../game-studio/media/hand-icon.png" alt="Hand icon">（<strong>アセットの選択</strong>）をクリックします。</p>
+<p>すると、<strong>Select an asset</strong> ウィンドウが開きます。</p>
+</li>
+<li><p><strong>レンダーテクスチャー</strong>アセットを選択して、[<strong>OK</strong>] をクリックします。</p>
+<p><img src="media/select-render-frame.png" alt="Select render frame"></p>
+</li>
+<li><p>テクスチャーを半透明にしたくない場合は、<strong>Source</strong> &gt; <strong>Is transparent</strong> のチェックボックスをオフにします。</p>
+<p><img src="media/clear-is-transparent.png" alt="Clear-is-transparent"></p>
+</li>
+</ol>
+<!--
+1. Create an entity and position it where you want to display the texture.
+
+2. With the entity selected, in the **Property Grid**, click **Add component** and add a **sprite** component.
+
+    ![Add sprite component](media/add-sprite-component.png)
+
+3. In the sprite component properties, next to **Source**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select **Texture**.
+
+    ![Select sprite source](media/sprite-source-texture.png)
+
+4. Click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+    The **Select an asset** window opens.
+
+5. Select the **Render texture** asset and click **OK**.
+
+    ![Select render frame](media/select-render-frame.png)
+
+6. If you don't want the texture to be semi-transparent, under the **Source** properties, clear the **Is transparent** checkbox.
+
+    ![Clear-is-transparent](media/clear-is-transparent.png)
+-->
+<h2 id="5-グラフィックスコンポジターをセットアップする">5. グラフィックスコンポジターをセットアップする</h2>
+<!--
+## 5. Set up the graphics compositor
+-->
+<p>レンダーテクスチャーをシーンに表示するには、少なくとも2つのレンダラーが必要です。</p>
+<!--
+To display a render texture in your scene, you need at least two renderers:
+-->
+<ul>
+<li>メインカメラをレンダリングするレンダラー</li>
+<li>レンダーテクスチャーへ2番目めのカメラをレンダリングするレンダラー</li>
+</ul>
+<!--
+* one to render your main camera
+* one to render the second camera to the render texture
+-->
+<p>このセクションでは、2台のカメラと2台のレンダラーを使って、これを最初から行う最も簡単な方法を説明します。お使いのパイプラインによっては、別のセットアップが必要になるかもしれません。</p>
+<!--
+This page describes the simplest way to do this from scratch, using two cameras and two renderers. Depending on your pipeline, you might need to create a different setup.
+-->
+<div class="WARNING">
+<h5>Warning</h5>
+<p>以降の手順では、Game エントリポイントの既存のレンダラーを削除します。後でパイプラインを復元したいときのために、プロジェクトのバックアップを取っておくとよいでしょう。</p>
+</div>
+<!--
+> [!Warning]
+> These instructions involve deleting your existing renderers for the game entry point. You might want to make a backup of your project in case you want to restore your pipeline afterwards.
+-->
+<ol>
+<li><p>グラフィックスコンポジターエディターで、<strong>Entry points</strong> ノードを選択します。</p>
+<p><img src="media/entry-points-node.png" alt="Entry points node"></p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>Game renderer</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、既存のレンダラーを削除するために <strong>None</strong> を選択します。</p>
+<p><img src="media/game-renderers-cleared.png" alt="Cleared game renderers"></p>
+</li>
+<li><p><img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、<strong>SceneRendererCollection</strong> を選択します。</p>
+<p><img src="media/select-scene-renderer-collection.png" alt="Select scene renderer collection"></p>
+<p>これで、エントリポイントに複数のレンダラーを設定することができるようになりました。</p>
+</li>
+</ol>
+<!--
+1. In the graphics compositor editor, select the **Entry points** node.
+
+    ![Entry points node](media/entry-points-node.png)
+
+2. In the **Property Grid** on the right, next to **Game renderer**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select **None** to delete your existing renderers.
+
+    ![Cleared game renderers](media/game-renderers-cleared.png)
+
+3. Click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select **Scene renderer collection**.
+
+    ![Select scene renderer collection](media/select-scene-renderer-collection.png)
+
+    This lets you set multiple renderers for the game entry point.
+-->
+<h3 id="1-メインカメラをレンダリングする">1. メインカメラをレンダリングする</h3>
+<!--
+### 1. Render the main camera
+-->
+<ol>
+<li><p><strong>Game renderer</strong> の <strong>Children</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button">（<strong>追加</strong>）をクリックし、<strong>Camera Renderer</strong> を選択します。</p>
+<p><img src="media/select-render-camera.png" alt="Select camera renderer"></p>
+</li>
+<li><p><strong>Camera</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、ゲームのメインカメラを選択します。</p>
+<p><img src="media/select-main-camera.png" alt="Select main camera"></p>
+</li>
+<li><p><strong>Child</strong> で、ゲームのメインカメラ用のレンダラーを選択します（例：<strong>Forward renderer</strong>)。</p>
+<p><img src="media/select-main-camera-forward-renderer.png" alt="Select forward render"></p>
+</li>
+</ol>
+<!--
+1. Under **Game renderer**, next to **Children**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**) and select **Camera renderer**.
+
+    ![Select camera renderer](media/select-render-camera.png)
+
+2. Next to **Camera**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select your main game camera.
+
+    ![Select main camera](media/select-main-camera.png)
+
+4. Next to **Child**, select the renderer for your main game camera (eg the **forward renderer**).
+
+    ![Select forward render](media/select-main-camera-forward-renderer.png)
+-->
+<h3 id="2-テクスチャーをレンダリングする">2. テクスチャーをレンダリングする</h3>
+<!--
+### 2. Render the texture
+-->
+<ol>
+<li><p><strong>Game renderer</strong>で、<strong>Add to Children</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button">（<strong>追加</strong>）をクリックし、<strong>Camera Renderer</strong> を選択します。</p>
+<p><img src="media/select-render-camera2.png" alt="Select camera renderer"></p>
+<p>Game Studio は、Children のリストにカメラレンダラーを追加します。</p>
+<p><img src="media/added-camera-renderer.png" alt="Second camera renderer"></p>
+</li>
+<li><p>2番目の<strong>カメラレンダラー</strong>を展開します。</p>
+<p><img src="media/expand-second-camera-renderer.png" alt="Expand second renderer"></p>
+</li>
+<li><p><strong>Camera</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、テクスチャーにレンダリングしたいカメラを選択します。</p>
+<p><img src="media/select-texture-camera.png" alt="Select texture camera"></p>
+</li>
+<li><p><strong>Child</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、<strong>RenderTextureSceneRenderer</strong> を選択します。</p>
+<p><img src="media/render-texture-scene-renderer.png" alt="Select render texture scene renderer"></p>
+</li>
+<li><p><strong>RenderTextureSceneRenderer</strong> で、<strong>Child</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、ゲームのメインカメラ用のレンダラーを選択します（例：<strong>Forward renderer</strong>）。</p>
+<p><img src="media/select-forward-renderer2.png" alt="Select forward renderer"></p>
+</li>
+<li><p><strong>Render texture</strong> の横にある <img src="../../game-studio/media/hand-icon.png" alt="Hand icon"> （<strong>アセットの選択</strong>）をクリックします。</p>
+<p>すると、<strong>Select an asset</strong> ウィンドウが開きます。</p>
+</li>
+<li><p><strong>レンダーテクスチャー</strong>アセットを選択し、[<strong>OK</strong>] をクリックします。</p>
+<p><img src="media/select-render-frame.png" alt="Select render texture"></p>
+<p>Game Studio は、レンダラーにレンダーテクスチャーを追加します。</p>
+<p><img src="media/render-texture-added.png" alt="Render texture added"></p>
+</li>
+</ol>
+<!--
+1. Under **Game renderer**, next to **Add to Children**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**) and select **Camera renderer**.
+
+    ![Select camera renderer](media/select-render-camera2.png)
+
+    Game Studio adds a camera renderer to the list of children.
+
+    ![Second camera renderer](media/added-camera-renderer.png)
+
+2. Expand the second **camera renderer**.
+
+    ![Expand second renderer](media/expand-second-camera-renderer.png)
+
+3. Next to **Camera**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select the camera you want to render to a texture.
+
+    ![Select texture camera](media/select-texture-camera.png)
+
+4. Next to **Child**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select **RenderTextureSceneRenderer**.
+
+    ![Select render texture scene renderer](media/render-texture-scene-renderer.png)
+
+5. Under the **RenderTextureSceneRenderer**, next to **Child**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select the renderer for your main game camera (eg the **forward renderer**).
+
+    ![Select forward renderer](media/select-forward-renderer2.png)
+
+6. Next to **Render texture**, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+    The **Select an asset** window opens.
+
+7. Select the **render texture** and click **OK**.
+
+    ![Select render texture](media/select-render-frame.png)
+
+    Game Studio adds the render texture to the renderer.
+
+    ![Render texture added](media/render-texture-added.png)
+-->
+<p>これで、テクスチャーにカメラをレンダリングできるようになりました。</p>
+<!--
+Your game is now ready to render the camera to the texture in the scene.
+-->
+<h2 id="レンダーマスクを設定する">レンダーマスクを設定する</h2>
+<!--
+## Set a render mask
+-->
+<p><strong>レンダーマスク</strong>を使って、レンダーテクスチャーにレンダリングされるグループ（レンダーグループ）をフィルタリングすることができます。</p>
+<!--
+You can use the **render mask** to filter which groups are rendered in the render texture.
+-->
+<p><strong>Render Mask</strong> の横にある [<strong>Change values...</strong>] をクリックして、カメラに映したいレンダーグループを選択します。</p>
+<!--
+Next to **Render mask**, click **Change values** and select the render groups you want the camera to render.
+-->
+<p><img src="media/change-render-mask.png" alt="Render mask"></p>
+<p>詳細については、<a href="render-groups-and-masks.html">レンダーグループとレンダーマスク</a>を参照してください。</p>
+<!--
+ For more information, see [Render groups and masks](render-groups-and-masks.md).
+-->
+<h2 id="サンプル">サンプル</h2>
+<!--
+## Sample
+-->
+<p>テクスチャーにレンダリングするプロジェクトの例として、Stride に同梱されている <strong>Animation</strong> サンプルを参照してください。</p>
+<!--
+For an example of rendering to a texture in a project, see the **Animation** sample included with Stride.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="../cameras/index.html">カメラ</a></li>
+<li><a href="../cameras/camera-slots.html">カメラ スロット</a></li>
+<li><a href="../low-level-api/textures-and-render-textures.html">低レベル API：テクスチャーとレンダーテクスチャー</a></li>
+<li><a href="render-groups-and-masks.html">レンダーグループとレンダーマスク</a></li>
+<li><a href="index.html">グラフィックスコンポジター</a></li>
+<li><a href="scene-renderers.html">シーン レンダラー</a></li>
+</ul>
+<!--
+* [Cameras](../cameras/index.md)
+* [Camera slots](../cameras/camera-slots.md)
+* [Low-level API – Textures and render textures](../low-level-api/textures-and-render-textures.md)
+* [Render groups and masks](render-groups-and-masks.md)
+* [Graphics compositor](index.md)
+* [Scene renderers](scene-renderers.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/graphics-compositor/render-textures.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

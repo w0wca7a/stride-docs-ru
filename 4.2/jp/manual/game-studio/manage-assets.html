@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>アセットの管理 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="アセットの管理 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/manage-assets.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="アセットの管理">アセットの管理</h1>
+
+<p><span class="badge text-bg-primary">初級</span></p>
+<p>このページでは、アセットを編集および管理する方法について説明します。</p>
+<h2 id="property-grid-でアセットを編集する">Property grid でアセットを編集する</h2>
+<p>ほとんどのアセットは <strong>Property grid</strong> を使用して編集できます。既定では、Property grid は Game Studio の右上にあります。</p>
+<p>たとえば、マテリアル アセットの色を変更するには次のようにします。</p>
+<ol>
+<li><p>［Asset view］(既定では下部) で、マテリアルを選択します。</p>
+<p><img src="../get-started/media/edit-asset-sphere-material-asset-view-tab.png" alt="Select material in the asset view"></p>
+</li>
+<li><p>Property grid の［Shading］&gt;［Diffuse］で、［Diffuse Map］の横にある<strong>色付きのボックス</strong>をクリックします。このボックスには、アセットの色が表示されています (この例では黄色)。</p>
+<p>［Color picker］が開きます。</p>
+<p><img src="../get-started/media/edit-asset-color-picker-palette-diffuse.png" alt="Color picker and Palette"></p>
+</li>
+<li><p>アセットの新しい色を選択します。</p>
+<p><img src="../get-started/media/edit-asset-color-change-selected-asset.png" alt="Asset is now red"></p>
+</li>
+</ol>
+<p>［Asset preview］(既定では右下) に、アセットの変化がリアルタイムで表示されます。</p>
+<p>［Asset view］では、変更が保存されていないアセットはアスタリスク (*) で示されます。</p>
+<p><img src="../get-started/media/asset-unsaved-changes.png" alt="Unsaved changes"></p>
+<h2 id="専用エディターを使用してアセットを編集する">専用エディターを使用してアセットを編集する</h2>
+<p>Game Studio には、次のアセットの種類に対する専用のエディターがあります。</p>
+<ul>
+<li>プレハブ</li>
+<li>シーン</li>
+<li>スプライト シート</li>
+<li>UI ページ</li>
+<li>UI ライブラリ</li>
+<li>スクリプト</li>
+</ul>
+<p>たとえば、シーンを編集するには<strong>シーン エディター</strong>を使用します。</p>
+<p><img src="media/manage-assets-scene-editor.png" alt="Scene editor"></p>
+<p>これらの種類のアセットの専用エディターを開くには、次のいずれかの方法を使用します。</p>
+<ul>
+<li>アセットをダブルクリックします</li>
+<li>アセットを右クリックして、［Edit asset］を選択します</li>
+<li>アセットを選択して、<strong>Ctrl + Enter</strong> キーを押します</li>
+</ul>
+<h2 id="アセットを整理する">アセットを整理する</h2>
+<p>種類別のサブフォルダーにアセットを整理することをお勧めします。このようにすると、プロジェクトの管理が容易になります。プロジェクトが大きくなったときは特にそうです。</p>
+<p><img src="media/manage-assets-organized-project.png" alt="Organized project"></p>
+<p>アセットは、プロジェクト パッケージの［Assets］フォルダーに格納されています。プロジェクトは［Solution explorer］(既定では左下) で確認できます。</p>
+<ul>
+<li>サブフォルダーを作成するには、親フォルダーを右クリックして［Create subfolder］を選択します。</li>
+<li>アセットを移動するには、［Asset view］でアセットを選択し、それをフォルダーにドラッグ アンド ドロップします。</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>アセットを移動すると、そのアセットの内部にある他のアセットへの参照がすべて更新されます。</p>
+</div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>アセットの URL と種類を表示するには、アセットのサムネイルをマウスでポイントします。
+<img src="../get-started/media/asset-creation-solution-explorer.png" alt="Details of new asset in Asset view tab"></p>
+</div>
+<h2 id="ビルドにアセットを含める">ビルドにアセットを含める</h2>
+<p>既定では、ゲームをビルドするときにすべてのアセットは含まれません。これは、実行時に必要のないアセットがあるためです (たとえば、アセットが不完全な場合)。</p>
+<p>次のアセットだけが組み込まれます。</p>
+<ul>
+<li>ユーザーが含めるように明示的に指定したアセット (<strong>ルート アセット</strong>)</li>
+<li>ルート アセットによって<strong>参照されている</strong>アセット</li>
+</ul>
+<p>Game Studio では、アセットが含まれるかどうかが、アセットのサムネイルの左上に色付きのアイコンで示されます。</p>
+<table>
+<thead>
+<tr>
+<th>色</th>
+<th>ステータス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>青 <br><img src="media/manage-assets-reference-asset.png" alt="Blue"><br></td>
+<td>アセットはルート アセットであり、ビルドに含まれます。</td>
+</tr>
+<tr>
+<td>緑 <br><img src="media/manage-assets-include-asset.png" alt="Green"><br></td>
+<td>アセットはルート アセットによって参照されており、ビルドに含まれます。</td>
+</tr>
+<tr>
+<td>グレー <br><img src="media/manage-assets-exclude-asset.png" alt="Gray"><br></td>
+<td>アセットはビルドに含まれません。</td>
+</tr>
+</tbody>
+</table>
+<p>スクリプトを使用して実行時にアセットをロードする場合は、アセットをルート アセットにする必要があります。そのためには次のようにします。</p>
+<ul>
+<li><p>サムネイルの左上にある<strong>グレーのドット</strong>をクリックします</p>
+</li>
+<li><p>アセットを右クリックして［Include in build as root asset］を選択します。</p>
+<p><img src="media/right-click-include-in-build-as-root-asset.png" alt="Include in build as root asset"></p>
+</li>
+</ul>
+<h2 id="asset-view-のオプション">Asset view のオプション</h2>
+<p>［Asset view］のオプションを変更するには、［Asset view］のツール バーにある目のアイコンをクリックします。</p>
+<p><img src="../get-started/media/asset-view-options.png" alt="Asset view options"></p>
+<p>次のことが可能です。</p>
+<ul>
+<li>選択したフォルダーのみ、または選択したフォルダーおよびサブフォルダーのアセットを表示します</li>
+<li>名前、種類、保存されていない変更、および変更日によって、アセットを並べ替えます</li>
+<li>タイル ビュー (既定) とグリッド ビューを切り替えます</li>
+</ul>
+<h2 id="アセットをフィルターする">アセットをフィルターする</h2>
+<p>［Asset view］(既定では下部) でアセットを表示するときに、名前、タグ、種類、またはこれら 3 つの組み合わせで、アセットをフィルターできます。</p>
+<p>タグと名前のフィルターは、&quot;and&quot; フィルターです。たとえば、<em>tag:level</em> と <em>name:knight</em> でフィルターすると、［Asset view］にはタグが &quot;level&quot; <strong>かつ</strong>名前が &quot;knight&quot; のアセットだけが表示されます。</p>
+<p>種類フィルターは、&quot;or&quot; フィルターです。たとえば、<em>type:animation</em> と <em>type:texture</em> でフィルターすると、［Asset view］にはアニメーション<strong>または</strong>テクスチャのアセットだけが表示されます。</p>
+<h3 id="フィルターを追加する">フィルターを追加する</h3>
+<ol>
+<li><p>［Asset view］で、フィルター バーに入力します。</p>
+<p>一致するフィルター (名前、種類、タグ) のリストが表示されます。</p>
+<p><img src="media/add-filter.png" alt="add-filter.png"></p>
+</li>
+<li><p>名前でフィルターするには、<strong>Enter</strong> キーを押します。</p>
+<p>タグまたは種類でフィルターするには、ドロップダウン リストで<strong>タグ</strong>または<strong>種類</strong>のフィルターを選択します。</p>
+<p>フィルターが適用されて、一致するアセットが［Asset view］に表示されます。</p>
+</li>
+</ol>
+<p>複数のフィルターを追加できます。名前フィルターは緑、タグ フィルターは青、種類フィルターはオレンジです。</p>
+<p><img src="media/filter-tags.png" alt="filter-tags"></p>
+<h3 id="フィルターのオンとオフを切り替える">フィルターのオンとオフを切り替える</h3>
+<p>フィルターを削除しないでフィルターのオンとオフを切り替えるには、フィルターをクリックします。無効のフィルターは暗色になります。</p>
+<p><img src="../get-started/media/disabled-filter-tags.png" alt="filter-tags"></p>
+<h3 id="フィルターを削除する">フィルターを削除する</h3>
+<p>フィルターを削除するには、フィルター タグの X アイコンをクリックします。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-assets.html">アセットを作成する</a></li>
+<li><a href="manage-assets.html">アセットを管理する</a></li>
+<li><a href="use-assets.html">アセットを使用する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/manage-assets.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,431 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>カスタムシェーダー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="カスタムシェーダー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/custom-shaders.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="カスタムシェーダー">カスタムシェーダー</h1>
+
+<!--
+# Custom shaders
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>Visual Studio で独自のシェーダーを書いて、<a href="../materials/material-attributes.html">マテリアル属性</a>で使うことができます。例えば、オブジェクトのワールド位置に基づいてマテリアルにテクスチャーを追加するシェーダーを書いたり、ノイズを生成してマテリアルのプロパティをランダム化することに使ったりすることができます。</p>
+<!--
+You can write your own shaders in Visual Studio and use them in [material attributes](../materials/material-attributes.md). For example, you can write a shader to add textures to materials based on the objects' world positions, or generate noise and use it to randomize material properties.
+-->
+<p>シェーダーはテキストファイルなので、他のコードファイルと同じようにコメントを追加したり、コードの行を有効にしたり無効にしたりと、編集することができます。そのため、メンテナンスや作業の繰り返しが容易です。</p>
+<!--
+As shaders are text files, you can add comments, enable and disable lines of code, and edit them like any other code file. This makes them easy to maintain and iterate.
+-->
+<p>また、カスタムシェーダーを使用して、カスタムポストエフェクトを作成することもできます。詳しくは、<a href="../post-effects/color-transforms/custom-color-transforms.html">カスタム色変換</a>をご覧ください。</p>
+<!--
+You can also use custom shaders to create custom post effects. For more information, see [Custom color transforms](../post-effects/color-transforms/custom-color-transforms.md).
+-->
+<h2 id="シェーダーを作成する">シェーダーを作成する</h2>
+<!--
+## Create a shader
+-->
+<ol>
+<li><p><a href="../../get-started/visual-studio-extension.html">Stride Visual Studio 拡張機能</a>がインストールされていることを確認してください。SDSL（<a href="index.html">Stride シェーディング言語</a>）のシェーダーファイルを<code>.cs</code>ファイルに変換するために必要です。</p>
+</li>
+<li><p>Game Studio のツールバーの <img src="../../get-started/media/launch-your-game-IDE-icon.png" alt="Open in IDE">（<strong>Open in IDE</strong>）をクリックして、プロジェクトを Visual Studio で開きます。</p>
+</li>
+<li><p>Visual Studio の <strong>ソリューション エクスプローラー</strong>で、プロジェクト（例：<em>MyGame.Game</em>）を右クリックし、[<strong>追加</strong>] &gt; [<strong>新しい項目</strong>] を選択します。</p>
+<p><img src="media/new-item.png" alt="New item"></p>
+</li>
+<li><p><strong>クラス</strong> を選択します。</p>
+<p><img src="media/select-class.png" alt="Select class"></p>
+</li>
+<li><p><strong>名前</strong>を指定します。拡張子を <code>.cs</code> から <code>.sdsl</code> に変更して（例：<em>MyShader.sdsl</em>）、[<strong>追加</strong>] をクリックします。</p>
+<p><img src="media/rename-file.png" alt="Select class"></p>
+<p>すると、Stride Visual Studio 拡張機能が、<code>.sdsl</code> ファイルから <code>.cs</code> ファイルを自動生成します。ソリューション エクスプローラーでは、生成された <code>.cs</code> ファイルが <code>.sdsl</code> ファイルの子として追加されているのを確認することができます。</p>
+<p><img src="media/my-shader.png" alt="My shader"></p>
+</li>
+<li><p><code>.sdsl</code> ファイルを開き、既存の内容を消去し、あなたのシェーダーを記述します。</p>
+<p>シェーダーは、HLSL をベースにした Stride Shading Language（SDSL）で記述します。詳しくは<a href="shading-language/index.html">シェーディング言語</a>をご覧ください。</p>
+<p>例として、緑色（<code>RGBA 0;1;0;1</code>）を生成するシェーダーを次に示します。</p>
+<pre><code class="lang-cs">namespace MyGame
+{
+    shader MyShader : ComputeColor
+    {
+        override float4 Compute()
+        {
+            return float4(0, 1, 0, 1);
+        }
+    };
+}
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>シェーダーの名前（例：上記の <code>MyShader</code> の部分）がファイル名と同じであることを確認してください。</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Game Studio のプロパティグリッドからアクセスできるように、シェーダーは <code>ComputeColor</code> を継承する必要があります。
+<code>ComputeColor</code> は常に float4 の値を返すので、float の値が必要なプロパティ（metalnessやgloss マップなど）は、<code>ComputeColor</code> が返す float4 値の第一成分（赤の成分）を使用します。</p>
+</div>
+</li>
+<li><p>ソリューションのすべてのファイルを保存します（[<strong>ファイル</strong>] &gt; [<strong>すべて保存</strong>]）。</p>
+</li>
+<li><p>Game Studio で次のようなメッセージが表示されるので、[<strong>Reload</strong>] をクリックして、ファイルを再読み込みします。</p>
+<p><img src="../../particles/tutorials/media/reload-assemblies.png" alt="Reload assemblies"></p>
+<p><strong>アセットビュー</strong>に、スクリプトと同じディレクトリ（例：<strong>MyGame.Game</strong>）にあるシェーダーが表示されます。</p>
+<p><img src="media/shader-in-asset-view.png" alt="Shader in Asset View"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>下のスクリーンショットのように、Game Studio がシェーダーを誤ってスクリプトと認識してしまう場合があります。</p>
+</div>
+<blockquote>
+<p><img src="media/shader-as-script-in-asset-view.png" alt="Shader as script"></p>
+</blockquote>
+<blockquote>
+<p>この場合、Game Studio を再起動してください（[<strong>File</strong>] &gt; [<strong>Reload project</strong>]).</p>
+</blockquote>
+</li>
+</ol>
+<!--
+1. Make sure you have the [Stride Visual Studio extension](../../get-started/visual-studio-extension.md) installed. This is necessary to convert the shader files from SDSL ([Stride shading language](index.md)) to `.cs` files.
+
+2. In Game Studio, in the toolbar, click ![Open in IDE](../../get-started/media/launch-your-game-ide-icon.png) (**Open in IDE**) to open your project in Visual Studio.
+
+3. In the Visual Studio **Solution Explorer**, right-click the project (eg *MyGame.Game*) and select **Add > New item**.
+
+    ![New item](media/new-item.png)
+
+4. Select **Class**.
+
+    ![Select class](media/select-class.png)
+
+5. In the **Name** field, specify a name with the extension **.sdsl** (eg *MyShader.sdsl*), and click **Add**.
+
+    ![Select class](media/rename-file.png)
+
+    The Stride Visual Studio extension automatically generates a `.cs` file from the `.sdsl` file. The Solution Explorer lists it as a child of the `.xskl` file.
+
+    ![My shader](media/my-shader.png)
+
+6. Open the `.sdsl` file, remove the existing lines, and write your shader.
+
+    Shaders are written in Stride Shading Language (SDSL), which is based on HLSL. For more information, see [Shading language](index.md).
+
+    For example, this shader creates a green color (`RGBA 0;1;0;1`):
+
+    ```cs
+    namespace MyGame
+    {
+        shader MyShader : ComputeColor
+        {
+            override float4 Compute()
+            {
+                return float4(0, 1, 0, 1);
+            }
+        };
+    }
+    ```
+
+    >[!Note]
+    >Make sure the shader name in the file (eg `MyShader` above) is the same as the filename.
+
+    >[!Note]
+    >To be accessible from the Game Studio Property Grid, the shader must inherit from `ComputeColor`.
+    >As '`ComputeColor` always returns a float4 value, properties that take float values (eg metalness and gloss maps) use the first component (the red component) of the value returned by `ComputeColor`. 
+
+7. Save all the files in the solution (**File > Save All**).
+
+8. In Game Studio, reload the assemblies.
+
+    ![Reload assemblies](../../particles/tutorials/media/reload-assemblies.png)
+
+    The **Asset View** lists the shader in the same directory as your scripts (eg **MyGame.Game**).
+
+    ![Shader in Asset View](media/shader-in-asset-view.png)
+
+    >[!Note]
+    >In some situations, Game Studio incorrectly identifies the shader as a script, as in the screenshot below:
+    
+    >![Shader as script](media/shader-as-script-in-asset-view.png) 
+    
+    >If this happens, restart Game Studio (**File > Reload project**).
+-->
+<h2 id="カスタムシェーダーを使う">カスタムシェーダーを使う</h2>
+<!--
+## Use a custom shader
+-->
+<p>カスタムシェーダーは、任意の<a href="../materials/material-attributes.html">マテリアル属性</a>で使用することができます。</p>
+<!--
+You can use custom shaders in any [material attribute](../materials/material-attributes.md).
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、シェーダーを適用したいマテリアルを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、シェーダーを適用したいプロパティの横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>Change</strong>）をクリックし、<strong>Shader</strong> を選択します。</p>
+<p><img src="media/select-shader.png" alt="Select Shader"></p>
+</li>
+<li><p>フィールド欄に、カスタムシェーダーの名前（<em>MyShader</em> など）を入力します。</p>
+<p><img src="media/type-shader.png" alt="Type shader"></p>
+<p>そのプロパティは、指定したシェーダーを使用します。</p>
+</li>
+</ol>
+<!--
+1. In the **Asset View**, select the material you want to use the shader in.
+
+2. In the **Property Grid**, next to the property you want to control with the shader, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Change**) and select **Shader**.
+
+    ![Select Shader](media/select-shader.png)
+
+3. In the field, type the name of your shader (eg *MyShader*).
+
+    ![Type shader](media/type-shader.png)
+
+    The property uses the shader you specify.
+-->
+<div class="TIP">
+<h5>Tip</h5>
+<p>Visual Studioで <code>.sdsl</code> ファイルに変更を加えて保存すると、Game Studio は自動的にプロジェクトを変更して更新します。これが起こらない場合は、Game Studio を再起動してください（[<strong>File</strong>] &gt; [<strong>Reload project</strong>]）。</p>
+</div>
+<!--
+> [!Tip]
+> When you make a change to the `.sdsl` file in Visual Studio and save it, Game Studio automatically updates the project with your changes. If this doesn't happen, restart Game Studio (**File > Reload project**).
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>プロジェクトのアセットからシェーダーを削除した場合、エラーを防ぐために、シェーダーを使用するマテリアルのプロパティからもシェーダーを削除してください。</p>
+</div>
+<!--
+> [!Note]
+> If you delete a shader from the project assets, to prevent errors, make sure you also remove it from the properties of materials that use it.
+-->
+<h2 id="引数とパラメーター">引数とパラメーター</h2>
+<!--
+## Arguments and parameters
+-->
+<h3 id="テンプレート引数">テンプレート引数</h3>
+<!--
+### Template arguments
+-->
+<p><a href="shading-language/templates.html">テンプレート引数</a>（ジェネリック）は、実行時には変更されません。ただし、異なるマテリアルは、異なるシェーダーのインスタンスを異なる値で使用することができます。</p>
+<!--
+[Template arguments](shading-language/templates.md) (generics) don't change at runtime. However, different materials can use different instances of the shader with different values.
+-->
+<p>シェーダーがコンパイルされる際に、Stride は、テンプレートの引数に対応してプロパティグリッドで設定されている値を使用します。</p>
+<!--
+When the shaders are compiled, Stride substitutes template arguments with the value you set in the Property Grid.
+-->
+<p>例えば、次のコードでは、テンプレート引数 <code>Frequency</code> を定義し、使用しています。</p>
+<!--
+For example, the code below defines and uses the template argument `Frequency`:
+-->
+<pre><code class="lang-cs">shader ComputeColorWave&lt;float Frequency&gt; : ComputeColor, Texturing
+{
+    override float4 Compute()
+   {           
+        return sin((Global.Time) * 2 * 3.14 * Frequency);
+    }
+};
+</code></pre>
+<p><img src="media/template-argument.png" alt="Template argument"></p>
+<h3 id="パラメーター">パラメーター</h3>
+<!--
+### Parameters
+-->
+<p>パラメーターは、実行時の変更が可能です。</p>
+<!--
+Parameters can be changed at runtime.
+-->
+<p>例えば，次のコードでは，動的パラメータ <code>Frequency</code> を定義し、使用しています。</p>
+<!--
+For example, the code below defines and uses the dynamic parameter `Frequency`:
+-->
+<pre><code class="lang-cs">shader ComputeColorWave: ComputeColor, Texturing
+{
+	cbuffer PerMaterial
+	{
+		stage float Frequency = 1.0f;
+	}
+	
+    override float4 Compute()
+    {
+        return sin(( Global.Time ) * 2 * 3.14 * Frequency);
+    }
+};
+</code></pre>
+<p>実行時に値を変更するために、マテリアルのパラメーターコレクションにアクセスしてそこに設定します。例えば、<code>Frequency</code> を変更する場合は、次のようにします。</p>
+<!--
+To modify the value at runtime, access and set it in the material parameter collection. For example, to change the `Frequency`, use:
+-->
+<pre><code class="lang-cs">myMaterial.Passes[myPassIndex].Parameters.Set(ComputeColorWaveKeys.Frequency, MyFrequency);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>ComputeColorWaveKeys.Frequency</code> は、Stride Visual Studio 拡張機能によってシェーダーファイルから生成されます。</p>
+</div>
+<!--
+> [!Note]
+> `ComputeColorWaveKeys.Frequency` is generated by the Stride Visual Studio extension from the shader file.
+-->
+<h3 id="コンポジション">コンポジション</h3>
+<!--
+### Compositions
+-->
+<p>この<a href="shading-language/composition.html">コンポジション</a>では、Game Studio のプロパティグリッドから <code>Frequency</code> を設定することができます。</p>
+<!--
+This [composition](shading-language/composition.md) lets you set the `Frequency` in the Game Studio Property Grid:
+-->
+<pre><code class="lang-cs">shader ComputeColorWave : ComputeColor, Texturing
+{
+    compose ComputeColor Frequency;
+
+    override float4 Compute()
+    {
+        return sin(( Global.Time ) * 2 * 3.14 * Frequency.Compute().r);
+    }
+};
+</code></pre>
+<p>これで、マテリアルのプロパティに値を設定できます。</p>
+<!--
+Then you can set the value in the material properties:
+-->
+<p><img src="media/use-computecolorwave-shader.png" alt="Select shader"></p>
+<h2 id="カスタムシェーダーの例">カスタムシェーダーの例</h2>
+<!--
+## Custom shader sample
+-->
+<p>カスタムシェーダーの例として、Stride に同梱されている <strong>custom material shader</strong> サンプルプロジェクトを参照してみてください。</p>
+<!--
+For an example of a custom shader, see the **custom material shader** sample project included with Stride.
+-->
+<p><img src="media/custom-shader-sample-project.png" alt="Sample project"></p>
+<p>このプロジェクトでは、<strong>ComputeColorWaveNormal</strong> シェーダが<strong>ディスプレイスメントマップ</strong>と<strong>サーフェス</strong>のマテリアルプロパティに使用されています。</p>
+<!--
+In the project, the **ComputeColorWaveNormal** shader is used in the **displacement map** and **surface** material properties.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="shading-language/index.html">シェーディング言語</a></li>
+<li><a href="../post-effects/color-transforms/custom-color-transforms.html">カスタム色変換</a></li>
+<li><a href="../materials/material-attributes.html">マテリアル属性</a></li>
+<li><a href="../../get-started/visual-studio-extension.html">Stride Visual Studio 拡張機能</a></li>
+</ul>
+<!--
+* [Shading language](shading-language/index.md)
+* [Custom color transforms](../post-effects/color-transforms/custom-color-transforms.md)
+* [Material attributes](../materials/material-attributes.md)
+* [Stride Visual Studio extension](../../get-started/visual-studio-extension.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/custom-shaders.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

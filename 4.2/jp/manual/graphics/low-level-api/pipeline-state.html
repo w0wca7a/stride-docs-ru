@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>パイプライン ステート | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="パイプライン ステート | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/pipeline-state.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="パイプライン-ステート">パイプライン ステート</h1>
+
+<!--
+# Pipeline states
+-->
+<p>Stride は、グラフィックスパイプラインステートを完全にコントロールできます。パイプラインステートには、以下のものが含まれます。</p>
+<!--
+Stride gives you total control over the graphics pipeline state. This includes:
+-->
+<ul>
+<li>ラスタライザーステート</li>
+<li>深度ステンシルステート</li>
+<li>ブレンドステート</li>
+<li>エフェクト</li>
+<li>入力レイアウト</li>
+<li>出力記述</li>
+</ul>
+<!--
+- rasterizer state
+- depth and stencil state
+- blend state
+- effects
+- input layout
+- output description
+-->
+<p>ステートは不変の <a class="xref" href="../../../api/Stride.Graphics.PipelineState.html">PipelineState</a> オブジェクトにコンパイルされ、これによってパイプライン全体が記述されます。これらのオブジェクトは、<a class="xref" href="../../../api/Stride.Graphics.CommandList.html">CommandList</a> を使って結合されます。</p>
+<!--
+State is compiled into immutable @'Stride.Graphics.PipelineState' objects, which describe the whole pipeline. They are then bound using a @'Stride.Graphics.CommandList'.
+-->
+<p><strong>コード：</strong> ステートオブジェクトを作成する</p>
+<!--
+**Code:** Create state objects
+-->
+<pre><code class="lang-cs">// パイプラインステートオブジェクトの作成
+// Creating pipeline state object
+var pipelineStateDescription = new PipelineStateDescription();
+var pipelineState = PipelineState.New(GraphicsDevice, ref pipelineStateDescription);
+ 
+// ステートをパイプラインに適用
+// Applying the state to the pipeline
+CommandList.SetPipelineState(pipelineState);
+</code></pre>
+<p><a class="xref" href="../../../api/Stride.Graphics.MutablePipelineState.html">MutablePipelineState</a> クラスを使うと、基礎となるパイプラインの状態をキャッシュしつつ、独立してステートを設定することができます。</p>
+<!--
+The @'Stride.Graphics.MutablePipelineState' class let you set states independently, while caching the underlying pipeline states.
+-->
+<p><strong>コード：</strong> 可変パイプラインステート</p>
+<!--
+**Code:** Mutable pipeline state
+-->
+<pre><code class="lang-cs">// パイプラインステートオブジェクトの作成
+// Creating the pipeline state object
+var mutablePipelineState = new MutablePipelineState();
+
+// 値を設定して再構築
+// Setting values and rebuilding
+mutablePipelineState.State.BlendState = BlendStates.AlphaBlend
+mutablePipelineState.Update
+ 
+// ステートをパイプラインに適用
+// Applying the state to the pipeline
+CommandList.SetPipelineState(mutablePipelineState.CurrentState);
+</code></pre>
+<h1 id="ラスタライザーステート">ラスタライザーステート</h1>
+<!--
+# Rasterizer state
+-->
+<p>ラスタライザーは、<a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_RasterizerState">RasterizerState</a> プロパティで設定することができます。<a class="xref" href="../../../api/Stride.Graphics.RasterizerStates.html">RasterizerStates</a> クラスには定義済みの記述がいくつか保持されています。これらはカリングモードに関するもので、ほとんどの使用例には十分でしょう。</p>
+<!--
+The rasterizer can be set using the @'Stride.Graphics.PipelineStateDescription.RasterizerState' property. A set of predefined descriptions is held by the @'Stride.Graphics.RasterizerStates' class. They deal with the cull mode, and should be enough for most use cases:
+-->
+<ul>
+<li><a class="xref" href="../../../api/Stride.Graphics.RasterizerStates.html#Stride_Graphics_RasterizerStates_CullNone">CullNone</a>: カレングなし</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.RasterizerStates.html#Stride_Graphics_RasterizerStates_CullFront">CullFront</a>: 表面カリング</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.RasterizerStates.html#Stride_Graphics_RasterizerStates_CullBack">CullBack</a>: 裏面カリング</li>
+</ul>
+<!--
+- @'Stride.Graphics.RasterizerStates.CullNone': no culling
+- @'Stride.Graphics.RasterizerStates.CullFront': front-face culling
+- @'Stride.Graphics.RasterizerStates.CullBack': back-face culling
+-->
+<p><strong>コード：</strong> カリングモードを設定する</p>
+<!--
+**Code:** Set the cull mode
+-->
+<pre><code class="lang-cs">pipelineStateDescription.RasterizerState = RasterizerStates.CullNone;
+pipelineStateDescription.RasterizerState = RasterizerStates.CullFront;
+pipelineStateDescription.RasterizerState = RasterizerStates.CullBack;
+</code></pre>
+<p>独自のカスタムステートを作成することもできます。オプションと既定値の一覧については、<a class="xref" href="../../../api/Stride.Graphics.RasterizerStateDescription.html">RasterizerStateDescription</a> API ドキュメントを参照してください。</p>
+<!--
+You can create your own custom state. For the list of options and default values, see the @'Stride.Graphics.RasterizerStateDescription' API documentation.
+-->
+<p><strong>コード：</strong> カスタム ラスタライザー ステート</p>
+<!--
+**Code:** Custom rasterizer states
+-->
+<pre><code class="lang-cs">var rasterizerStateDescription = new RasterizerStateDescription(CullMode.Front);
+rasterizerStateDescription.ScissorTestEnable = true; // enables the scissor test
+pipelineStateDescription.RasterizerState = rasterizerStateDescription;
+</code></pre>
+<h1 id="深度ステンシル-ステート">深度ステンシル ステート</h1>
+<!--
+# Depth and stencil states
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_DepthStencilState">DepthStencilState</a> プロパティは、深度とステンシルのステートを表します。<a class="xref" href="../../../api/Stride.Graphics.DepthStencilStates.html">DepthStencilStates</a> クラスでは、よく使われるステートのセットが定義されています。</p>
+<!--
+The @'Stride.Graphics.PipelineStateDescription.DepthStencilState' property contains the depth and stencil states. A set of commonly used states is defined by the @'Stride.Graphics.DepthStencilStates' class:
+-->
+<ul>
+<li><a class="xref" href="../../../api/Stride.Graphics.DepthStencilStates.html#Stride_Graphics_DepthStencilStates_Default">Default</a>: 比較条件に「＜」(less)を使う深度値の Read/Write</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.DepthStencilStates.html#Stride_Graphics_DepthStencilStates_DefaultInverse">DefaultInverse</a>: 比較条件に「≧」(greater or equal)を使う Read/Write</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.DepthStencilStates.html#Stride_Graphics_DepthStencilStates_DepthRead">DepthRead</a>: 比較条件に「＜」(less)を使う read only</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.DepthStencilStates.html#Stride_Graphics_DepthStencilStates_None">None</a>: Read/Write のいずれも不可</li>
+</ul>
+<!--
+- @'Stride.Graphics.DepthStencilStates.Default': depth read and write with a less-than comparison
+- @'Stride.Graphics.DepthStencilStates.DefaultInverse': read and write with a greater-or-equals comparison
+- @'Stride.Graphics.DepthStencilStates.DepthRead': read only with a less-than comparison
+- @'Stride.Graphics.DepthStencilStates.None': neither read nor write
+-->
+<p><strong>コード：</strong> 深度ステンシルステートを設定する</p>
+<!--
+**Code:** Setting the depth state
+-->
+<pre><code class="lang-cs">pipelineStateDescription.DepthStencilState = DepthStencilStates.Default;
+pipelineStateDescription.DepthStencilState = DepthStencilStates.DefaultInverse;
+pipelineStateDescription.DepthStencilState = DepthStencilStates.DepthRead;
+pipelineStateDescription.DepthStencilState = DepthStencilStates.None;
+</code></pre>
+<p>また、独自の深度ステンシルステートを設定することもできます。オプションと既定値の一覧については、<a class="xref" href="../../../api/Stride.Graphics.DepthStencilStateDescription.html">DepthStencilStateDescription</a> API ドキュメントを参照してください。</p>
+<!--
+You can also set custom depth and stencil states. For the  list of options and default values, see the @'Stride.Graphics.DepthStencilStateDescription' API documentation.
+-->
+<p><strong>コード：</strong> カスタム深度ステンシルステート</p>
+<!--
+**Code:** Custom depth and stencil state
+-->
+<pre><code class="lang-cs">// 深度テストは有効、Write は不可。
+// depth test is enabled but it doesn't write
+var depthStencilStateDescription = new DepthStencilStateDescription(true, false);
+pipelineStateDescription.DepthStencilState = depthStencilStateDescription;
+</code></pre>
+<p>ステンシル参照は <a class="xref" href="../../../api/Stride.Graphics.PipelineState.html">PipelineState</a> の一部ではありません。ステンシル参照の値は <a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetStencilReference_System_Int32_">SetStencilReference(int)</a> を使って設定します。</p>
+<!--
+The stencil reference isn't part of the @'Stride.Graphics.PipelineState'. It's set using @'Stride.Graphics.CommandList.SetStencilReference(System.Int32)'.
+-->
+<p><strong>コード：</strong> ステンシル参照を設定する</p>
+<!--
+**Code:** Set the stencil reference
+-->
+<pre><code class="lang-cs">CommandList.SetStencilReference(2);
+</code></pre>
+<h1 id="ブレンドステート">ブレンドステート</h1>
+<!--
+# Blend state
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_BlendState">BlendState</a> プロパティと <a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_SampleMask">SampleMask</a> プロパティにより、ブレンドを制御することができます。<a class="xref" href="../../../api/Stride.Graphics.BlendStates.html">BlendStates</a> クラスには、よく使われるブレンドステートのセットが定義されています。</p>
+<!--
+The @'Stride.Graphics.PipelineStateDescription.BlendState' and @'Stride.Graphics.PipelineStateDescription.SampleMask' properties control blending. The @'Stride.Graphics.BlendStates' class defines a set of commonly used blend states:
+-->
+<ul>
+<li><a class="xref" href="../../../api/Stride.Graphics.BlendStates.html#Stride_Graphics_BlendStates_Additive">Additive</a>: 加算合成</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.BlendStates.html#Stride_Graphics_BlendStates_AlphaBlend">AlphaBlend</a>: 転送元の色と転送先のアルファを使った合成</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.BlendStates.html#Stride_Graphics_BlendStates_NonPremultiplied">NonPremultiplied</a>: 転送元のアルファと両方の色を使った合成</li>
+<li><a class="xref" href="../../../api/Stride.Graphics.BlendStates.html#Stride_Graphics_BlendStates_Opaque">Opaque</a>: 色の置換</li>
+</ul>
+<!--
+- @'Stride.Graphics.BlendStates.Additive': sums the colors 
+- @'Stride.Graphics.BlendStates.AlphaBlend': sums the colors using the alpha of the source on the destination color
+- @'Stride.Graphics.BlendStates.NonPremultiplied': sums using the alpha of the source on both colors
+- @'Stride.Graphics.BlendStates.Opaque': replaces the color
+-->
+<p><strong>コード：</strong> ブレンドステートを設定する</p>
+<!--
+**Code:** Set the blend state
+-->
+<pre><code class="lang-cs">// ありふれたブレンドステートの設定
+// Set common blend states
+pipelineStateDescription.BlendState = BlendStates.Additive;
+pipelineStateDescription.BlendState = BlendStates.AlphaBlend;
+pipelineStateDescription.BlendState = BlendStates.NonPremultiplied;
+pipelineStateDescription.BlendState = BlendStates.Opaque;
+
+// サンプルマスクの設定
+// Set the sample mask
+pipelineStateDescription.SampleMask = 0xFFFFFFFF;
+</code></pre>
+<p>独自の深度ステートやブレンドステートを設定することができます。オプションと既定値の一覧については、<a class="xref" href="../../../api/Stride.Graphics.BlendStateDescription.html">BlendStateDescription</a> API ドキュメントを参照してください。</p>
+<!--
+You can set custom depth and blend states. For a list of options and default values, see the @'Stride.Graphics.BlendStateDescription' API documentation.
+-->
+<p><strong>コード：</strong> カスタムブレンドステート</p>
+<!--
+**Code:** Custom blend state
+-->
+<pre><code class="lang-cs">// ターゲットごとのブレンドステートを作成
+// create the object describing the blend state per target
+var blendStateRenderTargetDescription = new BlendStateRenderTargetDescription();
+blendStateRenderTargetDescription.BlendEnable = true;
+blendStateRenderTargetDescription.ColorSourceBlend = Blend.SourceColor;
+// etc.
+
+// BlentStateDescription オブジェクトを作成
+// create the blendStateDescription object
+var blendStateDescription = new BlendStateDescription(Blend.SourceColor, Blend.InverseSourceColor);
+blendStateDescription.AlphaToCoverageEnable = true; // enable alpha to coverage
+blendStateDescription.RenderTargets[0] = blendStateRenderTargetDescription;
+pipelineStateDescription.BlendState = blendStateDescription;
+</code></pre>
+<p>ブレンド係数は <a class="xref" href="../../../api/Stride.Graphics.PipelineState.html">PipelineState</a> の一部ではありません。ブレンド係数は <a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetBlendFactor_Stride_Core_Mathematics_Color4_">SetBlendFactor(Color4)</a> を使って設定します。</p>
+<!--
+The blend factor isn't part of the @'Stride.Graphics.PipelineState'. It's set using @'Stride.Graphics.CommandList.SetBlendFactor(Stride.Core.Mathematics.Color4)'.
+-->
+<p><strong>Code:</strong> ブレンド係数の設定</p>
+<!--
+**Code:** Set the blend factor
+-->
+<pre><code class="lang-cs">CommandList.SetBlendFactor(Color4.White);
+</code></pre>
+<h2 id="エフェクト">エフェクト</h2>
+<!--
+## Effects
+-->
+<p>パイプラインステートには、描画で使用するシェーダーも指定します。
+<a class="xref" href="../../../api/Stride.Graphics.Effect.html">Effect</a> をパイプラインにバインドするには、<a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_EffectBytecode">EffectBytecode</a> と <a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html">PipelineStateDescription</a> の <a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_RootSignature">RootSignature</a> プロパティを、エフェクトの一致する値に設定します。</p>
+<!--
+The pipeline state also includes the shaders you want to use for drawing.
+To bind an @'Stride.Graphics.Effect' to the pipeline, set the @'Stride.Graphics.PipelineStateDescription.EffectBytecode'
+and @'Stride.Graphics.PipelineStateDescription.RootSignature' properties of the @'Stride.Graphics.PipelineStateDescription' to the matching values of the effect.
+-->
+<p><a class="xref" href="../../../api/Stride.Shaders.EffectBytecode.html">EffectBytecode</a> には、実際のシェーダープログラムが含まれています。詳細については、<a href="../effects-and-shaders/index.html">エフェクトとシェーダー</a>を参照してください。</p>
+<!--
+An @'Stride.Shaders.EffectBytecode' contains the actual shader programs. For more information, see [Effects and Shaders](../effects-and-shaders/index.md).
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.RootSignature.html">RootSignature</a> には、エフェクトが必要とするリソースの数と種類が記述されています。次の章では、パイプラインに<a href="resources.html">リソースをバインド</a>する方法について説明します。</p>
+<!--
+The @'Stride.Graphics.RootSignature' describes the number and kind of resources expected by the effect. The next chapter covers how to [bind resources](resources.md) to the pipeline.
+-->
+<p><strong>コード：</strong> エフェクトのバインド</p>
+<!--
+**Code:** Bind an effect
+-->
+<pre><code class="lang-cs">var effectInstance = new EffectInstance(EffectSystem.LoadEffect(&quot;MyEffect&quot;).WaitForResult());
+pipelineStateDescription.EffectBytecode = effectInstance.Effect.Bytecode;
+pipelineStateDescription.RootSignature = effectInstance.RootSignature;
+</code></pre>
+<h2 id="入力レイアウト">入力レイアウト</h2>
+<!--
+## Input layout
+-->
+<p>パイプラインステートには、<a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_InputElements">InputElements</a> と <a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_PrimitiveType">PrimitiveType</a> を介して頂点がデバイスに送られる際のレイアウトを記述します。</p>
+<!--
+The pipeline state describes the layout in which vertices are sent to the device through the @'Stride.Graphics.PipelineStateDescription.InputElements' and @'Stride.Graphics.PipelineStateDescription.PrimitiveType' properties.
+-->
+<p><a href="draw-vertices.html">頂点の描画</a>のページでは、カスタム頂点バッファの作成方法とその <a class="xref" href="../../../api/Stride.Graphics.VertexDeclaration.html">VertexDeclaration</a> について詳しく説明しています。</p>
+<!--
+The [Draw vertices](draw-vertices.md) page describes how to create custom vertex buffers and their @'Stride.Graphics.VertexDeclaration' in more detail.
+-->
+<p><strong>コード：</strong> 入力レイアウトを設定する</p>
+<!--
+**Code:** Set an input layout
+-->
+<pre><code class="lang-cs">VertexDeclaration vertexDeclaration = ...
+pipelineStateDescription.InputElements = vertexDeclaration.CreateInputElements();
+pipelineStateDescription.PrimitiveType = PrimitiveType.TriangleStrip;
+</code></pre>
+<h2 id="出力記述">出力記述</h2>
+<!--
+## Output description
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.PipelineStateDescription.html#Stride_Graphics_PipelineStateDescription_Output">Output</a> プロパティには、バインドされたすべてのレンダリングテクスチャーの数と <a class="xref" href="../../../api/Stride.Graphics.PixelFormat.html">PixelFormat</a> を設定します。</p>
+<!--
+The @'Stride.Graphics.PipelineStateDescription.Output' property of the @'Stride.Graphics.PipelineStateDescription' defines the number and @'Stride.Graphics.PixelFormat' of all bound render textures.
+-->
+<p>レンダーテクスチャーをパイプラインにバインドする方法については、<a href="textures-and-render-textures.html">テクスチャーとレンダーテクスチャー</a>を参照してください。</p>
+<!--
+For information on how to bind render textures to the pipeline, see [Textures and render textures](textures-and-render-textures.md).
+-->
+<p><strong>コード：</strong> 出力記述を作成する</p>
+<!--
+**Code:** Create an output description
+-->
+<pre><code class="lang-cs">var renderOutputDescription = new RenderOutputDescription(GraphicsDevice.Presenter.BackBuffer.Format, GraphicsDevice.Presenter.DepthStencilBuffer.Format);
+pipelineStateDescription.Output = renderOutputDescription;
+</code></pre>
+<p><a class="xref" href="../../../api/Stride.Graphics.RenderOutputDescription.html#Stride_Graphics_RenderOutputDescription_CaptureState_Stride_Graphics_CommandList_">CaptureState(CommandList)</a> を使って、<a class="xref" href="../../../api/Stride.Graphics.CommandList.html">CommandList</a> に最後に設定された出力記述を取得することができます。これは、レンダーターゲットについて前もって知ることができない場合に <a class="xref" href="../../../api/Stride.Graphics.MutablePipelineState.html">MutablePipelineState</a> と組み合わせると、特に便利です。</p>
+<!--
+You can use the @'Stride.Graphics.RenderOutputDescription.CaptureState(Stride.Graphics.CommandList)' to retrieve the output description last set on a @'Stride.Graphics.CommandList'. This is especially useful in combination with @'Stride.Graphics.MutablePipelineState', when the render target might not be known up front.
+-->
+<p><strong>コード：</strong> 出力記述をキャプチャする</p>
+<!--
+**Code:** Capture output description
+-->
+<pre><code class="lang-cs">mutablePipelineState.State.Output.CaptureState(CommandList);
+mutablePipelineState.Update();
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/pipeline-state.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

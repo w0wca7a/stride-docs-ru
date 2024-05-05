@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ジェスチャー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ジェスチャー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/gestures.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ジェスチャー">ジェスチャー</h1>
+
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>ジェスチャとは、あらかじめ定義されている<a href="pointers.html">ポインター</a> パターンです。Stride は、ジェスチャを認識して対応するイベントをトリガーできます。たとえば、戦略ゲームでは、プレイヤーは<strong>ドラッグ</strong> ジェスチャを使用して戦場にユニットをドラッグ アンド ドロップできます。ジェスチャでは 1 本または複数本の指を使用できます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>構成ファイルのすべての長さ、速度、エラー マージンでは、正規化された値を使用する必要があります。</p>
+</div>
+<h2 id="ジェスチャの認識を有効にする">ジェスチャの認識を有効にする</h2>
+<p>ジェスチャの認識には CPU 時間が必要であるため、既定では、入力システムはジェスチャを認識しません。</p>
+<p>ジェスチャの認識を有効にするには:</p>
+<ol>
+<li>認識するジェスチャの構成クラスのインスタンスを作成します。たとえば、ドラッグ ジェスチャの場合は、<a class="xref" href="../../api/Stride.Input.GestureConfigDrag.html">GestureConfigDrag</a> のインスタンスを作成します。</li>
+<li>クラスのパラメーターを構成します。</li>
+<li>ジェスチャの構成を <a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_Gestures">Gestures</a> コレクションに追加します。</li>
+</ol>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>ジェスチャの認識をアクティブにした後では、ジェスチャのパラメーターを変更できません。パラメーターを変更する必要がある場合は、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_Gestures">Gestures</a> コレクションからジェスチャを削除し、新しいパラメーターで新しいエントリを作成する必要があります。</p>
+</div>
+<h3 id="ジェスチャの認識を無効にする">ジェスチャの認識を無効にする</h3>
+<p><a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_Gestures">InputManager.Gestures</a> コレクションからジェスチャを削除します。</p>
+<h2 id="ジェスチャの認識">ジェスチャの認識</h2>
+<p>入力システムは、ジェスチャを検出すると、<a class="xref" href="../../api/Stride.Input.GestureEvent.html">GestureEvent</a> を <a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_GestureEvents">InputManager.GestureEvents</a> のリストに追加します。イベントには、ジェスチャとその状態に関する情報が含まれます (ジェスチャの場所や使用された指の数など)。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>各ジェスチャには、固有のジェスチャ イベント クラスが関連付けられています (後述)。</p>
+</div>
+<p><a class="xref" href="../../api/Stride.Input.GestureEvent.html#Stride_Input_GestureEvent_Type">GestureEvent.Type</a> フィールドは、どのジェスチャが認識されたかを示します。基底ジェスチャ イベントをジェスチャ固有のイベント型にキャストして、イベントに関するジェスチャ型固有の情報を取得できます。</p>
+<p>Stride は同時に複数のジェスチャを検出できるので、イベント リストは 1 回の更新で複数の項目を格納することができます。</p>
+<p>リストは更新のたびにクリアされるので、手動でクリアする必要はありません。</p>
+<h2 id="ジェスチャを構成する">ジェスチャを構成する</h2>
+<p><a class="xref" href="../../api/Stride.Input.GestureConfig.html">GestureConfig</a> クラスでは、次のようなパラメーターを構成できます。</p>
+<ul>
+<li><p>ジェスチャが使用する指の数</p>
+</li>
+<li><p>ジェスチャが使用するタップの回数と時間</p>
+</li>
+<li><p>ジェスチャの方向</p>
+</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>各ジェスチャには、固有の構成パラメーターを含む専用の構成クラスがあります (後述)。</p>
+</div>
+<h2 id="ジェスチャの状態">ジェスチャの状態</h2>
+<p>ジェスチャは常に次の 4 つの状態のいずれかになっています。</p>
+<ul>
+<li><p>開始 (Began)</p>
+</li>
+<li><p>変更 (Changed)</p>
+</li>
+<li><p>終了 (Ended)</p>
+</li>
+<li><p>発生 (Occurred)</p>
+</li>
+</ul>
+<p><strong>単独</strong>ジェスチャ (タップ、フリック、長押し) は常に_発生_状態になっています。<strong>連続</strong>ジェスチャ (ドラッグ、複合) は常に、_開始_状態で開始し、何らかの_変更_状態がそれに続き、_終了_状態で終了します。</p>
+<p>ジェスチャの現在の状態を問い合わせるには、トリガーされたジェスチャ イベントの <a class="xref" href="../../api/Stride.Input.GestureEvent.html#Stride_Input_GestureEvent_State">GestureEvent.State</a> フィールドを使用します。</p>
+<h2 id="ジェスチャの種類">ジェスチャの種類</h2>
+<p>Stride がサポートするジェスチャには大きく分けて次の 2 つの種類があります。</p>
+<ul>
+<li><p><strong>単独</strong>ジェスチャ (タップ、フリック、長押し) は、1 つのイベントをトリガーします。</p>
+<ul>
+<li><p><a href="#Tap">タップ</a></p>
+</li>
+<li><p><a href="#Flick">フリック</a></p>
+</li>
+<li><p><a href="#Long-press">長押し</a></p>
+</li>
+</ul>
+</li>
+<li><p><strong>連続</strong>ジェスチャ (ドラッグ、複合) は、ユーザーがジェスチャの方向を変更したときに一連のイベントをトリガーします。</p>
+<ul>
+<li><p><a href="#Drag">ドラッグ</a></p>
+</li>
+<li><p><a href="#Composite">複合</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="単独ジェスチャ">単独ジェスチャ</h3>
+<h4 id="タップ"><a name="Tap">タップ</a></h4>
+<p><img src="media/gestures_tap_gesture.png" alt="Tap gesture"></p>
+<p>ユーザーは、画面に触れて、すぐに指を離します。</p>
+<p><strong>構成クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureConfigTap.html">GestureConfigTap</a></p>
+<p><strong>イベント クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureEventTap.html">GestureEventTap</a></p>
+<p>画面に触れる指の数をジェスチャの間に変えることはできません。タップに必要な指の数を設定するには、<a class="xref" href="../../api/Stride.Input.GestureConfig.html#Stride_Input_GestureConfig_RequiredNumberOfFingers">RequiredNumberOfFingers</a> を変更します。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>シングル タップとマルチ タップを区別するため、システムはタップ イベントでのレイテンシを使用します。これを無効にするには、<a class="xref" href="../../api/Stride.Input.GestureConfigTap.html#Stride_Input_GestureConfigTap_MaximumTimeBetweenTaps">GestureConfigTap.MaximumTimeBetweenTaps</a> フィールドを <strong>0</strong> に設定します。</p>
+</div>
+<h4 id="フリック"><a name="Flick">フリック</a></h4>
+<p><img src="media/gestures_flick_gesture.png" alt="Flick gesture"></p>
+<p>ユーザーは、画面に触れて、すばやい直線的な移動を行った後、指を離します。</p>
+<p><strong>構成クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureConfigFlick.html">GestureConfigFlick</a></p>
+<p><strong>イベント クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureEventFlick.html">GestureEventFlick</a></p>
+<p>面に触れる指の数をジェスチャの間に変えることはできません。</p>
+<p>フリック ジェスチャの最小の長さを設定するには、<a class="xref" href="../../api/Stride.Input.GestureConfigFlick.html#Stride_Input_GestureConfigFlick_MinimumFlickLength">GestureConfigFlick.MinimumFlickLength</a> を使用します。</p>
+<p>フリックの方向を<strong>上下</strong>または<strong>左右</strong>に制限するには、
+<a class="xref" href="../../api/Stride.Input.GestureConfigFlick.html#Stride_Input_GestureConfigFlick_FlickShape">GestureConfigFlick.FlickShape</a> を使用します。</p>
+<h4 id="長押し"><a name="Long-press">長押し</a></h4>
+<p><img src="media/gestures_long_pres_gesture.png" alt="Long press gesture"></p>
+<p>ユーザーは、画面に触れて、一定の時間、指を離さずに圧力をかけ続けます (既定の時間は 1 秒です)。</p>
+<p><strong>構成クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureConfigLongPress.html">GestureConfigLongPress</a></p>
+<p><strong>イベント クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureEventLongPress.html">GestureEventLongPress</a></p>
+<p>画面に触れる指の数をジェスチャの間に変えることはできません。</p>
+<p>長押しジェスチャで押している最小限の時間の長さを変更するには、<a class="xref" href="../../api/Stride.Input.GestureConfigLongPress.html#Stride_Input_GestureConfigLongPress_RequiredPressTime">GestureConfigLongPress.RequiredPressTime</a> を変更します。</p>
+<h3 id="連続ジェスチャ">連続ジェスチャ</h3>
+<h4 id="ドラッグ"><a name="Drag">ドラッグ</a></h4>
+<p><img src="media/gestures_drag_gesture.png" alt="Drag gesture"></p>
+<p>ユーザーは、画面に触れて、移動を行った後、指を離します。</p>
+<p><strong>構成クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureConfigDrag.html">GestureConfigDrag</a></p>
+<p><strong>イベント クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureEventDrag.html">GestureEventDrag</a></p>
+<p>画面に触れる指の数をジェスチャの間に変えることはできません。</p>
+<p>短いドラッグを検出するには、<a class="xref" href="../../api/Stride.Input.GestureConfigDrag.html#Stride_Input_GestureConfigDrag_MinimumDragDistance">GestureConfigDrag.MinimumDragDistance</a> を小さくします。</p>
+<p>ドラッグの方向を<strong>上下</strong>または<strong>左右</strong>に制限するには、<a class="xref" href="../../api/Stride.Input.GestureConfigDrag.html#Stride_Input_GestureConfigDrag_DragShape">GestureConfigDrag.DragShape</a> を使用します。</p>
+<h4 id="複合"><a name="Composite">複合</a></h4>
+<p><img src="media/gestures_translation_gesture.png" alt="Translation gesture"> <img src="media/gestures_scale_gesture.png" alt="Scale gesture"> <img src="media/gestures_rotation_gesture.png" alt="Rotation gesture"></p>
+<p>ユーザーは、2 本の指で画面に触れて、各指を個別に動かします。</p>
+<p><strong>構成クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureConfigComposite.html">GestureConfigComposite</a></p>
+<p><strong>イベント クラス</strong>: <a class="xref" href="../../api/Stride.Input.GestureEventComposite.html">GestureEventComposite</a></p>
+<p>複合ジェスチャを行うには、正確に 2 本の指で画面に触れる必要があります。システムが 3 つの基本アクションのいずれかを検出すると、複合ジェスチャがトリガーされます。</p>
+<ul>
+<li><em>平行移動</em>: ユーザーは、2 本の指を一緒に同じ方向へ動かします。</li>
+<li><em>拡大縮小</em>: ユーザーは、2 本の指を近付けるように、または離すように動かします。</li>
+<li><em>回転</em>: ユーザーは、2 本の指を中心の周りに回転させます。</li>
+</ul>
+<h2 id="コード例">コード例</h2>
+<h3 id="ジェスチャの認識をアクティブまたは非アクティブにする">ジェスチャの認識をアクティブまたは非アクティブにする</h3>
+<p>認識するジェスチャの構成を作成するには:</p>
+<pre><code class="lang-cs">// 認識するジェスチャの構成を作成する。
+var singleTapConfig = new GestureConfigTap();
+
+// タップ ジェスチャの認識を開始する。
+Input.Gestures.Add(singleTapConfig);
+
+// 認識するジェスチャの構成を作成する。
+var doubleTapConfig = new GestureConfigTap(2, 1);
+
+// ダブル タップ ジェスチャの認識を開始する。
+Input.Gestures.Add(doubleTapConfig);
+
+// タップ ジェスチャの認識を停止する。
+Input.Gestures.Remove(singleTapConfig);
+
+// すべてのジェスチャの認識を停止する。
+Input.Gestures.Clear();
+</code></pre>
+<h3 id="ジェスチャを構成する-1">ジェスチャを構成する</h3>
+<p>各構成クラスには、既定のジェスチャ構成に対応する、パラメーターを持たないコンストラクターがあります。頻繁に変更するパラメーターには、特別なコンストラクターを使用できます。</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>入力システムが壊れる可能性があるため、他のフィールドを変更することはお勧めしません。ただし、必要がある場合は、対応するプロパティを使用して変更できます。</p>
+</div>
+<pre><code class="lang-cs">// ジェスチャの既定の構成。
+var singleTapConfig = new GestureConfigTap();
+
+// 専用のコンストラクターを使用してジェスチャの構成をカスタマイズする。
+var doubleTapConfig = new GestureConfigTap(2, 2);
+
+// 目的のプロパティに直接アクセスしてジェスチャの構成をカスタマイズする。
+// 作業内容について十分に把握すること。これを変更すると入力システムが壊れる可能性がある。
+var noLatencyTap = new GestureConfigTap() { MaximumTimeBetweenTaps= TimeSpan.Zero };
+</code></pre>
+<h3 id="ジェスチャ-イベントにアクセスする">ジェスチャ イベントにアクセスする</h3>
+<p>認識されたジェスチャによってトリガーされたイベントのリストにアクセスするには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_GestureEvents">InputManager.GestureEvents</a> コレクションを使用します。このコレクションは、更新のたびに自動的に作成されます。</p>
+<pre><code class="lang-cs">var currentFrameGestureEvents = Input.GestureEvents;
+</code></pre>
+<h3 id="ジェスチャの種類を識別する">ジェスチャの種類を識別する</h3>
+<p><a class="xref" href="../../api/Stride.Input.GestureEvent.html#Stride_Input_GestureEvent_Type">GestureEvent.Type</a> フィールドを使用してジェスチャの種類を識別した後、それを適切なイベント型にキャストして、イベントに関する他の情報を取得します。</p>
+<pre><code class="lang-cs">foreach( var gestureEvent in Input.GestureEvents)
+{
+   	// イベントがタップ ジェスチャからのものかどうかを確認する
+	if (gestureEvent.Type != GestureType.Tap)
+		continue;
+
+	// 特定のタップ イベント クラスにキャストする。
+	GestureEventTap  tapEvent = (GestureEventTap) gestureEvent;
+
+    // タップ イベント固有のフィールドにアクセスする。
+    log.Info(&quot;Tap position: {0}.&quot;, tapEvent.TapPosition);
+}
+</code></pre>
+<h3 id="ジェスチャの状態を識別する">ジェスチャの状態を識別する</h3>
+<p>ジェスチャ イベントの状態を取得するには、<a class="xref" href="../../api/Stride.Input.GestureEvent.html#Stride_Input_GestureEvent_State">GestureEvent.State</a> フィールドを使用します。</p>
+<pre><code class="lang-cs">switch(compositeGestureEvent.State)
+{
+case GestureState.Began:
+	image.ComputePreview();
+	break;
+case GestureState.Changed:
+	image.TransformPreview(compositeGestureEvent.TotalScale, compositionGestureEvent.TotalRotation);
+	break;
+case GestureState.Ended:
+	image.TransformRealImage(compositeGestureEvent.TotalScale, compositionGestureEvent.TotalRotation);
+	break;
+default:
+	break;
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="pointers.html">ポインター</a></li>
+<li><a href="virtual-buttons.html">仮想ボタン</a></li>
+<li><a href="index.html">入力の概要</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/gestures.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

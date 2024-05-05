@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>グラフィックス コンポジター | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="グラフィックス コンポジター | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/graphics-compositor/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="グラフィックス-コンポジター">グラフィックス コンポジター</h1>
+
+<!--
+# Graphics compositor
+-->
+<p><span class="badge text-bg-primary">上級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Advanced</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>このページは、グラフィックスパイプラインの基本を理解できていることを前提としています。</p>
+</div>
+<!--
+>[!Note]
+>This page requires a basic understanding of graphics pipelines.
+-->
+<p><strong>グラフィックス コンポジター</strong>は、<a href="../../game-studio/scenes.html">シーン</a>のレンダリング方法について整理します。これを使って、レンダリングパイプラインのほぼすべての部分をカスタマイズすることができます。例えば、以下のようなことができます。</p>
+<!--
+The **graphics compositor** organizes how [scenes](../../game-studio/scenes.md) are rendered. You can use it to customize almost every part of the rendering pipeline. For example, you can:
+-->
+<ul>
+<li>1つまたは複数の<a href="../cameras/index.html">カメラ</a>の使用</li>
+<li>エンティティのフィルタリング</li>
+<li>異なるビューポートを持つ1つ以上の<a href="render-textures.html">レンダー テクスチャ</a>へのレンダリング</li>
+<li>HDR または LDR レンダリングの設定</li>
+<li>カメラのレンダリングの前後にレンダーターゲットへ適用する<a href="../post-effects/index.html">ポストエフェクト</a></li>
+<li>レンダーターゲットのクリア、または深度バッファのみのクリア（例：FPS ゲームで常にレンダーターゲットの最前面にレンダリングしたり、UI をレンダリングしたりする場合など）</li>
+<li>スクリプト（または任意のアニメーションシステム）からのコンポジターの変更（例：ポストエフェクトの変更）</li>
+</ul>
+<!--
+- use one or multiple [cameras](../cameras/index.md)
+- filter entities
+- render to one or more [render textures](render-textures.md), with different viewports
+- set HDR or LDR rendering
+- apply [post effects](../post-effects/index.md) to a render target, selected before or after rendering a camera
+- clear a render target or clear only the depth buffer (eg to always render on top of a render target in a FPS game, or render the UI)
+- modify the compositor from scripts (or any animation system), for example to modify post effects
+-->
+<h2 id="グラフィックスコンポジターを作成する">グラフィックスコンポジターを作成する</h2>
+<!--
+## Create a graphics compositor
+-->
+<p>Stride では、プロジェクトを新規作成するときに、グラフィックスコンポジターが含まれます。</p>
+<!--
+Stride includes a graphics compositor when you create a project.
+-->
+<p>別のグラフィックスコンポジターを作成する必要がある場合は、<strong>アセットビュー</strong>で [<strong>Add asset</strong>] をクリックし、[<strong>Miscellaneous</strong>] &gt; [<strong>Graphics compositor</strong>] を選択します。</p>
+<!--
+If you need to create another graphics compositor, in the **Asset View**, click **Add asset** and select **Misc > Graphics compositor**.
+-->
+<p><img src="media/add-graphics-compositor.png" alt="Add graphics compositor"></p>
+<p>2つのプリセットのうちの1つを選ぶことができます。</p>
+<!--
+You can choose one of two presets:
+-->
+<ul>
+<li>Level 10（<a href="../post-effects/index.html">ポストエフェクト</a>で HDR を使用）</li>
+<li>Level 9（ポストエフェクトを使わない LDR を使用）</li>
+</ul>
+<!--
+* Level 10 (HDR with [post effects](../post-effects/index.md))
+* Level 9 (LDR with no post effects)
+-->
+<h2 id="グラフィックスコンポジターを設定する">グラフィックスコンポジターを設定する</h2>
+<!--
+## Set the graphics compositor
+-->
+<p>プロジェクトは複数のグラフィックスコンポジターを持つことができますが、同時に使用できるコンポジターは1つだけです。実行時には、<a href="../../game-studio/game-settings.html">ゲームの設定</a>で指定したグラフィックスコンポジターを使用します。</p>
+<!--
+You can have multiple graphics compositors in your project, but you can only use one compositor at a time. At runtime, Stride uses the graphics compositor you specify in [Game Settings](../../game-studio/game-settings.md).
+-->
+<p><img src="../../game-studio/media/game-settings-graphics-compositor.png" alt="Set default scene"></p>
+<p>実行時に、グラフィックスコンポジターをスクリプトで変更することもできます。</p>
+<!--
+You can also change the graphics compositor at runtime in a script. 
+-->
+<h2 id="グラフィックスコンポジターエディターを開く">グラフィックスコンポジターエディターを開く</h2>
+<!--
+## Open the graphics compositor editor
+-->
+<p>グラフィックスコンポジターのカスタマイズは、<strong>グラフィックスコンポジターエディター</strong>で行います。</p>
+<!--
+You customize the graphics compositor in the **graphics compositor editor**.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>グラフィックスコンポジターエディターは、実験的な機能です。</p>
+</div>
+<!--
+>[!Note]
+>The graphics compositor editor is an experimental feature.
+-->
+<p><strong>アセットビュー</strong>で、<strong>Graphics Compositor</strong> アセットをダブルクリックします。</p>
+<!--
+In the **Asset View** (in the bottom pane by default), double-click the **Graphics Compositor** asset.
+-->
+<p><img src="media/graphics-compositor-asset.png" alt="Graphics Compositor asset"></p>
+<p><strong>グラフィックスコンポジターエディター</strong> が開きます。</p>
+<!--
+The **graphics compositor editor** opens.
+-->
+<p><img src="media/graphics-compositor-editor.png" alt="Graphics Compositor editor"></p>
+<h2 id="ノード">ノード</h2>
+<!--
+## Nodes
+-->
+<p>グラフィックスコンポジターエディターは、<strong>ノード</strong>に分かれています。<strong>プロパティグリッド</strong>で、各ノードのプロパティを設定することができます。</p>
+<!--
+The graphics compositor editor is divided into **nodes**. You can set the properties of each node in the **Property Grid** on the right.
+-->
+<h3 id="エンティティポイント">エンティティポイント</h3>
+<!--
+### Entry points
+-->
+<p><strong>Entry Points</strong> ノードで、各エントリポイントのパイプラインを設定することができます。</p>
+<!--
+In the **Entry Points** node, you configure the pipeline for each entry point.
+-->
+<p><img src="media/entry-points-node.png" alt="Entry points node"></p>
+<p>3つのエントリーポイントがあります。</p>
+<!--
+There are three entry points:
+-->
+<ul>
+<li>ゲームをレンダリングするための &quot;<strong>Game</strong>&quot;</li>
+<li>Game Studio エディターをレンダリングするための &quot;<strong>Editor</strong>&quot;</li>
+<li><a href="../lights-and-shadows/light-probes.html">ライト プローブ</a>や<a href="../textures/skyboxes-and-backgrounds.html">キューブマップ</a>などその他のものをレンダリングするための &quot;<strong>SingleView</strong>&quot;（プロパティグリッドでは <strong>Utility</strong> と表記）</li>
+</ul>
+<!--
+* **Game**, to render your game
+* **Editor**, to render the Game Studio editor
+* **Single view** (referred to as **Utility** in the Property Grid), to render other things, such as [light probes](../lights-and-shadows/light-probes.md) and [cubemaps](../textures/skyboxes-and-backgrounds.md)
+-->
+<p>各エントリーポイントには別々のレンダリングパイプラインを使用できます。例えば、Game と Editor では同じフォワードレンダラーと<a href="../post-effects/index.html">ポスト エフェクト</a>を共有し、SingleView では別のフォワードレンダラーを使用する、といった具合です。</p>
+<!--
+Each entry point can use a separate rendering pipeline. For example, the game and editor might share the same forward renderer and [post-processing effects](../post-effects/index.md) while your single view uses a separate forward renderer.
+-->
+<h4 id="エントリーポイントをレンダラーに接続する">エントリーポイントをレンダラーに接続する</h4>
+<!--
+#### Connect an entry point to a renderer
+-->
+<ol>
+<li><p><strong>Entry points</strong> ノードを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、接続したいエントリポイント（<strong>Editor</strong>, <strong>Game</strong>, <strong>Utility</strong>）の横に、接続先のレンダラーを指定します。</p>
+<p><img src="media/connect-entry-point.png" alt="Select renderer"></p>
+</li>
+</ol>
+<!--
+1. Select the **Entry point** node.
+
+2. In the **Property Grid**, next to the entry point you want to connect (**Editor**, **Game** or **Utility**), select the renderer you want to connect to.
+
+    ![Select renderer](media/connect-entry-point.png)
+-->
+<p>各レンダラーの情報については、<a href="scene-renderers.html">シーン レンダラー</a>をご覧ください。</p>
+<!--
+For information about the different renderers, see [Scene renderers](scene-renderers.md).
+-->
+<h3 id="フォワードレンダラー">フォワードレンダラー</h3>
+<!--
+### Forward renderer
+-->
+<p>一般的な設定では、<strong>フォワードレンダラー</strong>がシーンのほぼすべてをレンダリングします。このレンダーは、次の順序でレンダリングしていきます。</p>
+<!--
+In a typical setup, the **forward renderer** renders almost everything in your scene. It renders, in order:
+-->
+<ol>
+<li>不透明オブジェクト</li>
+<li>透明オブジェクト</li>
+<li><a href="../post-effects/index.html">ポスト エフェクト</a></li>
+</ol>
+<!--
+1. opaque objects
+2. transparent objects
+3. [post effects](../post-effects/index.md)
+-->
+<p>フォワードレンダラーは、<a href="../../virtual-reality/index.html">バーチャル リアリティー</a>のオプションを設定する場所でもあります。フォワードレンダラーのプロパティは、<strong>Forward renderer ノード</strong>で設定します。</p>
+<!--
+The forward renderer is also where you set [virtual reality](../../virtual-reality/index.md) options. You configure the forward renderer properties in the **forward entry node**. 
+-->
+<h3 id="デバッグレンダラー">デバッグレンダラー</h3>
+<!--#
+## Debug renderer
+-->
+<p><strong>デバッグレンダラー</strong>は、スクリプトがデバッグ情報を表示する際に使用します。詳細については、<a href="debug-renderers.html">デバッグ レンダラー</a>を参照してください。</p>
+<!--
+The **debug renderer** is used by scripts to print debug information. For more information, see [Debug renderers](debug-renderers.md).
+-->
+<h3 id="ポストプロセスエフェクト">ポストプロセスエフェクト</h3>
+<!--
+### Post-processing effects
+-->
+<p><strong>Post-processing effects</strong> ノードは、フォワードレンダラーの後ろについて、ゲームのポストエフェクトを制御します。詳細については<a href="../post-effects/index.html">ポストエフェクト</a>を参照してください。</p>
+<!--
+The **post-processing effects** node comes after the forward renderer and controls the post effects in your game. For more information, see [post-processing effects](../post-effects/index.md).
+-->
+<h2 id="ノードを作成する">ノードを作成する</h2>
+<!--
+## Create a node
+-->
+<p>ノードを作成するには、グラフィックスコンポジターエディターを右クリックして、作成するノードの種類を選択します。</p>
+<!--
+To create a node, right-click the graphics compositor editor and select the type of node you want to create:
+-->
+<p><img src="../../virtual-reality/media/create-node.png" alt="Create node"></p>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="../cameras/camera-slots.html">カメラ スロット</a></li>
+<li><a href="scene-renderers.html">シーン レンダラー</a>
+<ul>
+<li><a href="custom-scene-renderers.html">カスタム シーン レンダラー</a></li>
+</ul>
+</li>
+<li><a href="debug-renderers.html">デバッグ レンダラー</a></li>
+</ul>
+<!--
+* [Camera slots](../cameras/camera-slots.md)
+* [Scene renderers](scene-renderers.md)
+    * [Custom scene renders](custom-scene-renderers.md)
+* [Debug renderers](debug-renderers.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/graphics-compositor/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

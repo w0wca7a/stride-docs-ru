@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>パッケージの使用 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="パッケージの使用 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/nuget/consume-packages.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="パッケージの使用">パッケージの使用</h1>
+
+<!--
+# Consume packages
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<h2 id="プロジェクトを-visual-studio-で開く">プロジェクトを Visual Studio で開く</h2>
+<!--
+## Open your project in Visual Studio
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>Game Studio は将来、NuGet パッケージの追加を直接サポートする予定です。</p>
+</div>
+<!--
+> [!Note]
+> Game Studio will later support adding NuGet packages directly.
+-->
+<p>はじめに、すべての変更を保存した後、Visual Studio でプロジェクトを開きます。これは、ツールバーの適切なボタンをクリックすることで簡単に行うことができます。</p>
+<!--
+First of all, after saving all your changes, open your project with Visual Studio. You can easily do this by clicking the appropriate button on the toolbar:
+-->
+<p><img src="../game-studio/media/open-project-in-visual-studio.png" alt="Open project in Visual Studio"></p>
+<h2 id="参照を追加する">参照を追加する</h2>
+<!--
+## Add a reference
+-->
+<ol>
+<li><p><strong>ソリューションエクスプローラー</strong>で、プロジェクトを右クリックして [<strong>NuGet パッケージの管理</strong>] を選択します。</p>
+<p><img src="media/manage-nuget-packages.png" alt="Visual Studio Start button"></p>
+</li>
+<li><p>ここでは、<code>Stride.AssetPack.BuildingBlocks</code> パッケージを使うものとしましょう。</p>
+<ul>
+<li>[<strong>パッケージ ソース</strong>] で <code>nuget.org</code> または <code>すべて</code> を選択します。</li>
+<li>[<strong>プレリリースを含める</strong>] がオンになっていることを確認してください。</li>
+<li>[<strong>参照</strong>] タブに移動します。</li>
+<li>Stride アセットパッケージ（ここでは <strong>Stride.AssetPack.BuildingBlocks</strong>）を [<strong>検索</strong>] し、[<strong>インストール</strong>] を選択します。</li>
+</ul>
+<p><img src="media/install-package.png" alt="Install package"></p>
+</li>
+<li><p>Visual Studio プロジェクトを保存します。</p>
+</li>
+</ol>
+<!--
+1. In the **Solution Explorer**, right-click on the project and click on **Manage NuGet Packages...**
+
+   ![Visual Studio Start button](media/manage-nuget-packages.png)
+
+2. For our example, let's use `Stride.AssetPack.BuildingBlocks` package:
+   * Choose "nuget.org" or "All" as the **Package source**
+   * Make sure **Include prerelease** is checked (if necessary)
+   * Go to the **Browse** tab
+   * **Search** for a Stride asset package (i.e. **Stride.AssetPack.BuildingBlocks**) and select **Install**
+
+   ![Install package](media/install-package.png)
+
+3. Save the Visual Studio project.
+-->
+<h2 id="game-studio-でアセットを使う">Game Studio でアセットを使う</h2>
+<!--
+## Use assets in Game Studio
+-->
+<ol>
+<li><p><strong>Game Studio</strong>で、[<strong>File</strong>] &gt; [<strong>Reload project</strong>] を選択します。</p>
+</li>
+<li><p>これで、参照されているプロジェクトとそのアセットが <strong>ソリューションエクスプローラー</strong> に表示されるようになります。</p>
+<p><img src="media/use-package-from-game-studio.png" alt="Use package"></p>
+</li>
+</ol>
+<!--
+1. In **Game Studio**, go to the **File** menu and select **Reload project**
+
+2. You should now be able to see the referenced project and its assets in **Solution explorer**
+
+   ![Use package](media/use-package-from-game-studio.png)
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>これらのアセットは読み取り専用なので、シーンにドラッグ＆ドロップすることはできません。これは近日中に修正される予定です。
+その間も、アセットセレクターを使って、既存のモデルやマテリアルの参照をアセットパックのものに変更することができます。</p>
+</div>
+<!--
+> [!Note]
+> Those assets are readonly and as such can't be dragged and dropped into the scene. This will be fixed soon.
+> In the meantime, you can still use the asset selector to change an existing model or material reference to one from the asset pack.
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/nuget/consume-packages.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

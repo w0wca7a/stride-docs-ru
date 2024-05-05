@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>プロシージャル アニメーション | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="プロシージャル アニメーション | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/procedural-animation.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="プロシージャル-アニメーション">プロシージャル アニメーション</h1>
+
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p><strong>プロシージャル アニメーション</strong>とは、アニメーションの代替となる方法です。アニメーションを自分で作成する代わりに、エンジン コンポーネントを使用して実行時に 3D モデルをアニメーション化できます。</p>
+<p>場合によっては、これによって一段と効率的で効果的なアニメーションを作成できます。たとえば、プレイヤーが収縮銃でモンスターを撃ったときに発生する収縮効果を考えてみましょう。複雑な収縮アニメーションを作成する代わりに、エンティティ <a class="xref" href="../../api/Stride.Engine.TransformComponent.html">TransformComponent</a> にアクセスし、敵のスケールを必要なサイズまで減らすだけで効果を実現できます。</p>
+<p>次のような複数のコンポーネントにアクセスして、モデルを実行時にアニメーション化できます。</p>
+<ul>
+<li><a class="xref" href="../../api/Stride.Engine.TransformComponent.html">TransformComponent</a></li>
+<li><a class="xref" href="../../api/Stride.Engine.LightComponent.html">LightComponent</a></li>
+<li><a class="xref" href="../../api/Stride.Physics.RigidbodyComponent.html">RigidBodyComponent</a></li>
+</ul>
+<h2 id="コード-サンプル">コード サンプル</h2>
+<pre><code class="lang-cs">public class AnimationScript : StartupScript
+{
+    public override void Start()
+    {
+        // アニメーション クリップを作成する。期間を適切に設定したことを確認する。
+        var animationClip = new AnimationClip { Duration = TimeSpan.FromSeconds(1) };
+
+        // 変形プロパティまでのパスを指定する曲線を追加する。
+        // - キーに対する特別な構文を使用して、コンポーネントにインデックスを設定できる。
+        // - プロパティは、括弧で囲んだ型名で修飾できる。
+        // - 型がシリアル化可能ではない場合、完全修飾名を使用する必要がある。
+
+        animationClip.AddCurve(&quot;［TransformComponent.Key］.Rotation&quot;, CreateRotationCurve());
+
+        // オプション: すべてのアニメーション チャネルを、最適化されてインターリーブされた形式にパックする。
+        animationClip.Optimize();
+
+        // AnimationComponent を現在のエンティティに追加し、カスタム クリップを登録する。
+        const string animationName = &quot;MyCustomAnimation&quot;;
+        var animationComponent = Entity.GetOrCreate&lt;AnimationComponent&gt;();
+        animationComponent.Animations.Add(animationName, animationClip);
+
+        // すぐにアニメーションを再生してループする。
+        var playingAnimation = animationComponent.Play(animationName);
+        playingAnimation.RepeatMode = AnimationRepeatMode.LoopInfinite;
+        playingAnimation.TimeFactor = 0.1f; // 遅くする
+        playingAnimation.CurrentTime = TimeSpan.FromSeconds(0.6f); // 異なる時間に開始する
+    }
+
+    // カスタム リニア回転曲線を設定する。
+    private AnimationCurve CreateRotationCurve()
+    {
+        return new AnimationCurve&lt;Quaternion&gt;
+        {
+            InterpolationType = AnimationCurveInterpolationType.Linear,
+            KeyFrames =
+            {
+                CreateKeyFrame(0.00f, Quaternion.RotationX(0)),
+                CreateKeyFrame(0.25f, Quaternion.RotationX(MathUtil.PiOverTwo)),
+                CreateKeyFrame(0.50f, Quaternion.RotationX(MathUtil.Pi)),
+                CreateKeyFrame(0.75f, Quaternion.RotationX(-MathUtil.PiOverTwo)),
+                CreateKeyFrame(1.00f, Quaternion.RotationX(MathUtil.TwoPi))
+            }
+        };
+    }
+
+    private static KeyFrameData&lt;T&gt; CreateKeyFrame&lt;T&gt;(float keyTime, T value)
+    {
+        return new KeyFrameData&lt;T&gt;((CompressedTimeSpan)TimeSpan.FromSeconds(keyTime), value);
+    }
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="index.html">アニメーション</a></li>
+<li><a href="import-animations.html">アニメーションのインポート</a></li>
+<li><a href="animation-properties.html">アニメーションのプロパティ</a></li>
+<li><a href="set-up-animations.html">アニメーションのセットアップ</a></li>
+<li><a href="preview-animations.html">アニメーションのプレビュー</a></li>
+<li><a href="animation-scripts.html">アニメーションのスクリプト</a></li>
+<li><a href="additive-animation.html">加算アニメーション</a></li>
+<li><a href="custom-blend-trees.html">カスタム ブレンド ツリー</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/procedural-animation.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

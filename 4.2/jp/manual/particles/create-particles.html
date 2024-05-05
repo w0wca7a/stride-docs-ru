@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>パーティクルの作成 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="パーティクルの作成 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/create-particles.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="パーティクルの作成">パーティクルの作成</h1>
+
+<!--
+# Create particles
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><a href="https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%AF%E3%83%AB%E3%83%BB%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">パーティクルシステム</a>を作成するには、シーンまたはエンティティツリーを右クリックして、[<strong>Particle system</strong>] の配下の希望のプリセット（<strong>Empty</strong>, <strong>Simple</strong>, <strong>Fountain</strong>, <strong>Ribbon</strong> のいずれか）を選択します。</p>
+<p><img src="media/particles-reference-editor-1.png" alt="media/particles-reference-editor-1.png"></p>
+<p>Game Studio は、選択されたプリセットから、<strong>Transform</strong> コンポーネントと <strong>Particle System</strong> コンポーネントを持つエンティティを作成します。</p>
+<!--
+Game Studio creates an entity with a **Transform** component and a **Particle System** component with your chosen preset. Particle entities are represented with a flame icon.
+-->
+<p><img src="media/particles-reference-editor-2.png" alt="media/particles-reference-editor-2.png"></p>
+<p>あるいは、既存のエンティティに Particle system コンポーネントを追加することもできます。エンティティを選択した状態で、<strong>プロパティグリッド</strong>で [<strong>Add component</strong>] をクリックし、[<strong>Particles</strong>] &gt; [<strong>Particle system</strong>] を選択します。</p>
+<!--
+Alternatively, you can add a particle component to an existing entity. With the entity selected, in the **Property Grid**, click **Add component** and select **Particle System**.
+-->
+<p><img src="tutorials/media/add-particle-system.png" alt="Add Particle System"></p>
+<p>Game Studio は、エンティティに空のパーティクルシステムを追加します。</p>
+<!--
+Game Studio adds an empty particle system to the entity.
+-->
+<h2 id="transform-コンポーネント">Transform コンポーネント</h2>
+<!--
+## Transform component
+-->
+<p>すべてのエンティティは、Transform コンポーネントを持っています。パーティクル要素の中には、回転やスケーリングなど、Transform コンポーネントの一部を無視するものもあります。例えば、重力はパーティクルシステムの回転に依存すべきものではないため、常に回転は無視されます。しかし、噴水パーティクルシステムでは、パーティクルの初期速度を計算するために、パーティクルシステムの位置を継承します。</p>
+<!--
+All entities have a transform component. Some particle elements ignore some elements of the transform component, such as rotation or scaling. For example, the gravity force shouldn't depend on the rotation of the particle system, and always ignores rotation; however, fountain particle systems inherit the location for the purposes of initial particle velocity.
+-->
+<p>均等なスケーリングのみがサポートされています。Transform コンポーネントに不均等な（同一でない）スケール値を設定した場合は、X 軸のスケール値だけが使用されます。</p>
+<!--
+Only uniform scaling is supported. If you have a non-uniform scale on the transform component, only the X axis is used.
+-->
+<p>2 つのパーティクルシステムで Transform コンポーネントを共有したい場合は、2 つのパーティクルシステムエンティティを作成し、一方をもう一方の子とします。</p>
+<!--
+If you want two particle systems to share a transform component, create two particle system entities and make one a child of the other.
+-->
+<h2 id="particle-system-コンポーネントのプロパティ">Particle system コンポーネントのプロパティ</h2>
+<!--
+## Particle component properties
+-->
+<p>他のエンティティと同様に、パーティクルシステムエンティティを選択した状態で、<strong>プロパティグリッド</strong>でプロパティを編集することができます。</p>
+<!--
+With a particle system entity selected, you can edit its properties in the **Property Grid**, just like any other entity.
+-->
+<p><img src="media/particles-reference-editor-3.png" alt="media/particles-reference-editor-3.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Editor control</td>
+<td>シーンでの作業中に、Game Studio がエディタ上でパーティクルをどのように表示するかを設定します。<strong>Control</strong> で、パーティクルシステムを再生、一時停止、停止することができます。また、パーティクルエフェクトを一定の間隔でリセットすることもできるので、ワンショットのエフェクトをプレビューするのに便利です。Editor control プロパティは、実行時のパーティクルの表示には影響を与えません。</td>
+</tr>
+<tr>
+<td>Thembnail Warm-up</td>
+<td>ウォームアップタイムを 0 より大きい値に設定すると、パーティクルが表示されたときに、すでにアクティブであるかのように表示されます。秒単位で指定します。例えば、ウォームアップタイムを 1 に設定すると、パーティクルエフェクトは、表示されるときにすでに 1 秒間アクティブであるかのように表示されます。これは便利な機能で、例えば火のエフェクトのウォームアップタイムを 0 に設定すると、火はレンダリングの開始と同時にすぐ発火するように見えます。レンダリングの開始時にすでに着火しているように見せたい場合は、ウォームアップタイムを増やします。</td>
+</tr>
+<tr>
+<td>Speed scale</td>
+<td>パーティクルエフェクトのスピードをコントロールします。</td>
+</tr>
+<tr>
+<td>Culling AABB</td>
+<td>パーティクルエフェクトの周囲に、<a href="https://ja.wikipedia.org/wiki/%E8%A1%9D%E7%AA%81%E5%88%A4%E5%AE%9A#%E8%BB%B8%E4%B8%A6%E8%A1%8C%E5%A2%83%E7%95%8C%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9%E6%96%B9%E5%BC%8F%EF%BC%88AABB%E6%96%B9%E5%BC%8F%EF%BC%89">軸並行境界ボックス（axis-aligned bounding box; AABB）</a>が作成されます。ボックスがカメラビューに入っていない場合、Stride はパーティクルエフェクトのレンダリングを行いません。これは、カリングや最適化に役立ちます。<strong>Rotated AABB</strong> は、ボックスの形状を XYZ 座標で指定します。<strong>Uniform AABB</strong> は、指定したスケール（<a href="../game-studio/world-units.html">ワールド単位</a>）の立方体を指定します。シーンエディターで AABB を表示するには、<strong>Debug Draw</strong> をオンにします。</td>
+</tr>
+<tr>
+<td>Emitters</td>
+<td>パーティクルシステムに含まれるエミッター（emitter; 放出器）です。エミッターはリストに表示された順に更新されて描画されますが、その順番を変えることもできます。詳細については<a href="emitters.html">エミッター</a>を参照してください。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property         | Description |
+| ---------------- | -------------
+| Editor control | This changes how Game Studio displays particles while you work on the scene. You can play, pause, and stop the particle system. You can also reset the particle effect at set intervals, which is useful for previewing one-shot effects. The editor controls don't affect how particles are displayed at runtime.
+| Warm-up time  | If you set the warm-up time to a value greater than 0, the particle appears as if it's already active when it appears. This value is in seconds. For example, if you set the warm-up time to 1, the particle effect appears as if it has already been active for 1 second when it appears. This is useful, for example, if you set a fire effect warm-up time to 0, the fire appears to ignite as soon as it's rendered. If you want the fire to appear as if it's already ignited when it's rendered, increase the warm-up time.
+| Speed scale  | Controls the speed of the particle effect.
+| Culling AABB | This creates an axis-aligned bounding box (AABB) around the particle effect. If the bounding box isn't in the camera view, Stride doesn't render the particle effect. This is useful for culling and optimization. **Rotated AABB** sets box shape in XYZ co-ordinates. **Uniform AABB** creates a cube of the scale you specify (in [world units](../game-studio/world-units.md)). To view the AABB in the Scene Editor, select **Debug Draw**.
+| Emitters | The emitters the particle system contains. The emitters are updated and drawn in the order they appear in the list, and can be re-ordered. For more information, see [Emitters](emitters.md).
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="emitters.html">エミッター</a></li>
+<li><a href="shapes.html">シェイプ</a></li>
+<li><a href="materials.html">マテリアル</a></li>
+<li><a href="spawners.html">スポナー</a></li>
+<li><a href="initializers.html">イニシャライザー</a></li>
+<li><a href="updaters.html">アップデーター</a></li>
+</ul>
+<!--
+* [Emitters](emitters.md)
+* [Shapes](shapes.md)
+* [Materials](materials.md)
+* [Spawners](spawners.md)
+* [Initializers](initializers.md)
+* [Updaters](updaters.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/create-particles.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>入力 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="入力 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="入力">入力</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>ユーザーは、ゲームパッド、マウス、キーボードなどの<strong>入力デバイス</strong>を使用して、ゲームやアプリケーションと対話します。すべての対話型アプリケーションは、少なくとも 1 つの入力デバイスをサポートする必要があります。</p>
+<p><img src="media/input_intro.png" alt="Input devices"></p>
+<p>Stride は、スクリプトを使用して入力を完全に処理します。さまざまな入力の種類を処理するため、低レベルと高レベルの API があります。</p>
+<ul>
+<li><p><strong>低レベル</strong>の API はハードウェアに近いので低遅延です。<a href="pointers.html">ポインター</a>、<a href="keyboards.html">キーボード</a>、<a href="mouse.html">マウス</a>、<a href="gamepads.html">ゲームパッド</a>、一部の<a href="sensors.html">センサー</a>からの入力を速く処理できます。</p>
+</li>
+<li><p><strong>高レベル</strong>の API は、ユーザーのために入力を解釈するので、高遅延です。高レベルの API は、<a href="gestures.html">ジェスチャ</a>と一部の<a href="sensors.html">センサー</a>に使用されます。</p>
+</li>
+<li><p>また、一部の<a href="sensors.html">センサー</a>と<a href="virtual-buttons.html">仮想ボタン</a>のための<strong>特殊な API</strong> もあります。</p>
+</li>
+</ul>
+<h2 id="入力を処理する">入力を処理する</h2>
+<p>入力は <a class="xref" href="../../api/Stride.Input.InputManager.html">InputManager</a> クラスで処理します。このクラスには、スクリプトからプロパティとメソッドを使用してアクセスできます。</p>
+<p>特定の入力デバイスが使用できるかどうかを調べるには、対応する <a class="xref" href="../../api/Stride.Input.InputManager.html">InputManager</a> プロパティを使用します。たとえば、マウスが接続されているかどうかを調べるには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_HasMouse">Input.HasMouse</a> を使用します。</p>
+<p>デバイスの使用可能性を調べた後、Stride で入力を処理するには 4 つの方法があります。</p>
+<h3 id="状態を問い合わせる">状態を問い合わせる</h3>
+<p>デジタル キーやボタンの状態 (<em>アップ_または_ダウン</em>) およびアナログ ボタンやセンサーの数値を問い合わせることができます。たとえば、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_DownKeys">DownKeys</a> は、最後の更新で_ダウン_状態であったキーのリストを取得します。</p>
+<p><img src="media/index-state-one-action-between-updates.png" alt="Query key and button states"></p>
+<p><img src="media/index-state-analog-stick-position.png" alt="Analog stick positions"></p>
+<p>更新の間にユーザーが複数のアクションを実行する場合があります。更新の間に状態の変化がなかった場合 (最終結果が同じ)、Stride はアクションを登録しません。</p>
+<p><img src="media/index-state-several-actions-between-updates.png" alt="Several actions between updates"></p>
+<h3 id="状態の変化を問い合わせる">状態の変化を問い合わせる</h3>
+<p>前回の更新以降のボタンやキーの状態の変化を問い合わせることができます。
+この場合は、ボタンやキーのリストを取得するのではなく、個々のボタンとキーごとに問い合わせる必要があります。</p>
+<ul>
+<li><p>デジタル ボタンとキーの場合は、ボタンまたはキーが最後の更新で_押された_、<em>押されている</em>、または_放された_かどうかを問い合わせます。</p>
+<p><img src="media/index-state-change-one-action-between-updates.png" alt="Query key state change"></p>
+</li>
+<li><p>マウスの位置およびマウス ホイールのスクロールの場合は、前回の更新以降の_デルタ値_を問い合わせます。</p>
+<p><img src="media/index-state-change-mouse-wheel-scroll.png" alt="Mouse wheel delta"></p>
+</li>
+</ul>
+<p>2 つの更新の間に、ユーザーが複数のアクションを実行している場合があります。2 つの更新の間に状態の変化がなかった場合 (最終結果が同じ)、Stride はアクションを登録しません。</p>
+<h3 id="イベントのリストを問い合わせる">イベントのリストを問い合わせる</h3>
+<p>ポインター、ジェスチャ、キーボードの場合は、最後の更新で発生したすべてのイベントを問い合わせることができます。</p>
+<p><img src="media/index-events-list-several-actions-between-updates.png" alt="Several actions between updates"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>2 つの更新の間にユーザーが複数のアクションを実行した場合でも、Stride はそのすべてのイベントを登録します。</p>
+</div>
+<h3 id="仮想ボタンを使用する">仮想ボタンを使用する</h3>
+<p><strong>仮想ボタン</strong>を使用して入力を物理キーではなくアクションに関連付けることができ、それによってユーザーが独自のキーを定義できるようにすることができます。詳細については、「<a href="virtual-buttons.html">仮想ボタン</a>」をご覧ください。</p>
+<h2 id="このセクションの内容">このセクションの内容</h2>
+<ul>
+<li><a href="gamepads.html">ゲームパッド</a></li>
+<li><a href="gestures.html">ジェスチャ</a></li>
+<li><a href="keyboards.html">キーボード</a></li>
+<li><a href="mouse.html">マウス</a></li>
+<li><a href="pointers.html">ポインター</a></li>
+<li><a href="sensors.html">センサー</a></li>
+<li><a href="virtual-buttons.html">仮想ボタン</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

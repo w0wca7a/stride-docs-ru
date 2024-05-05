@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>キャラクター | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="キャラクター | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/characters.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="キャラクター">キャラクター</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p><strong>キャラクター</strong> コライダーは、プレイヤーおよび NPC などのスクリプトで制御されたキャラクターに使用されます。<a class="xref" href="../../api/Stride.Physics.CharacterComponent.html">キャラクター コンポーネント</a>であるエンティティは、<a class="xref" href="../../api/Stride.Physics.CharacterComponent.html#Stride_Physics_CharacterComponent_SetVelocity_Stride_Core_Mathematics_Vector3_">SetVelocity</a>、<a class="xref" href="../../api/Stride.Physics.CharacterComponent.html#Stride_Physics_CharacterComponent_Jump">Jump</a>、<a class="xref" href="../../api/Stride.Physics.CharacterComponent.html#Stride_Physics_CharacterComponent_Teleport_Stride_Core_Mathematics_Vector3_">Teleport</a> によってのみ移動できます。</p>
+<h2 id="キャラクター-コンポーネントをエンティティに追加する">キャラクター コンポーネントをエンティティに追加する</h2>
+<ol>
+<li><p><strong>シーン エディター</strong> で、コンポーネントを追加するエンティティを選択します。</p>
+</li>
+<li><p>［Property grid］で［Add component］をクリックして、［Character］を選択します。</p>
+<p><img src="media/add-character-component.png" alt="Add character component"></p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>キャラクター コライダーが他の物理オブジェクトと相互作用するには、コライダー コンポーネントのプロパティでコライダーの形状を設定する必要もあります。ほとんどのキャラクター コライダーには、カプセル形状が適しています。詳細については、「<a href="collider-shapes.html">コライダーの形状</a>」を参照してください。</p>
+</div>
+<h2 id="コンポーネントのプロパティ">コンポーネントのプロパティ</h2>
+<p>キャラクター コンポーネントのプロパティは［Property grid］で調整できます。</p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collision Group</td>
+<td>オブジェクトが属している衝突グループを設定します。</td>
+</tr>
+<tr>
+<td>Can Collide With</td>
+<td>オブジェクトが衝突するグループを設定します。</td>
+</tr>
+<tr>
+<td>Collision events</td>
+<td>これを有効にすると、オブジェクトは衝突イベントを報告します。それをスクリプトで使用できます。物理特性には影響ありません。オブジェクトに対する衝突イベントを使用するスクリプトがない場合は、このオプションを無効にして CPU を節約します。</td>
+</tr>
+<tr>
+<td>Can Sleep</td>
+<td>これを有効にすると、物理オブジェクトが動いていないときは、物理エンジンは物理オブジェクトを処理しません。それによって CPU を節約できます。</td>
+</tr>
+<tr>
+<td>Restitution</td>
+<td>衝突の後で失う、または獲得する運動エネルギーの大きさを設定します。一般的な値は 0 ～ 1 の範囲です。衝突するエンティティの反発プロパティが 0 の場合、エンティティはすべてのエネルギーを失い、衝突と同時に動かなくなります。反発が 1 の場合は、エネルギーを失わず、衝突したときと同じ速さで跳ね返ります。このプロパティを使用して、剛体の「跳ね返り方」を変更します。</td>
+</tr>
+<tr>
+<td>Friction</td>
+<td>表面の摩擦を設定します。</td>
+</tr>
+<tr>
+<td>Rolling Friction</td>
+<td>転がり摩擦を設定します。</td>
+</tr>
+<tr>
+<td>Ccd Motion Threshold</td>
+<td>連続衝突検出 (CCD) を引き継ぐ速度を設定します。CCD は、高速で移動するエンティティ (弾丸など) が誤って他のエンティティを通り抜けないようにします。</td>
+</tr>
+<tr>
+<td>Ccd Swept Sphere Radius</td>
+<td>連続衝突検出の間に 2 つの物理フレームの間の位置を含む境界球面の半径を設定します。</td>
+</tr>
+<tr>
+<td>Gravity</td>
+<td>剛体について、［Override Gravity］が選択されている場合に適用されるカスタム重力ベクトルを設定します。キャラクターの場合は、キャラクターに影響する重力の大きさを指定します。</td>
+</tr>
+<tr>
+<td>Step Height</td>
+<td>キャラクターが一歩で上がることのできる最大の高さです。</td>
+</tr>
+<tr>
+<td>Fall Speed</td>
+<td>最大落下速度です。</td>
+</tr>
+<tr>
+<td>Max Slope</td>
+<td>キャラクターが登ることのできる最大斜度です (度単位)。</td>
+</tr>
+<tr>
+<td>Jump Speed</td>
+<td>跳躍力の大きさです。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="static-colliders.html">静的コライダー</a></li>
+<li><a href="rigid-bodies.html">剛体</a></li>
+<li><a href="collider-shapes.html">コライダーの形状</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/characters.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

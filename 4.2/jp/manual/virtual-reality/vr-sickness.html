@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>VR 酔い | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="VR 酔い | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/virtual-reality/vr-sickness.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="vr-酔い">VR 酔い</h1>
+
+<p>プレイヤーによっては、VR ゲームをプレイすると吐き気や不快感を覚えることがあります。原因は完全にはわかっていませんが、主に、現実の体は静止しているのに仮想環境では動き回っていることが原因であると思われます。</p>
+<p>すべてのプレイヤーについて VR 酔いを完全に防ぐ方法はないかもしれません。ただし、ゲームでの VR 酔いを最小限に抑えるために考慮すべきことがいくつかあります。可能な限り広範囲のプレイヤーでゲームをテストすることをお勧めします。</p>
+<h2 id="カメラの移動">カメラの移動</h2>
+<p>一般に、プレイヤーは頭を動かすことでカメラを制御する必要があります。他の方法 (ゲームパッドやキーボード) でカメラを移動させることが、VR 酔いの最大の原因であると考えられます (特に、水平方向の動き (ヨー) の場合)。</p>
+<h3 id="カメラの移動を無効にする">カメラの移動を無効にする</h3>
+<p>VR デバイス以外の入力によるカメラの移動を無効にするには:</p>
+<ol>
+<li><p>［Asset view］(既定では下部のペイン) で、<strong>Graphics Compositor</strong> アセットをダブルクリックします。</p>
+<p><img src="../graphics/graphics-compositor/media/graphics-compositor-asset.png" alt="Graphics compositor asset"></p>
+<p>Graphics Compositor エディターが開きます。</p>
+</li>
+<li><p>［ForwardRenderer］を選択します。</p>
+<p><img src="media/select-forward-renderer.png" alt="Select forward renderer"></p>
+</li>
+<li><p>［Property grid］(既定では右側) で、［VR Settings］を展開します。</p>
+<p><img src="media/vr-settings.png" alt="VR settings"></p>
+</li>
+<li><p>［Ignore Camera Rotation］を選択します。</p>
+<p><img src="media/ignore-camera-rotation.png" alt="Ignore camera rotation"></p>
+</li>
+</ol>
+<p>Graphics Compositor の詳細については、「<a href="../graphics/graphics-compositor/index.html">Graphics Compositor</a>」を参照してください。</p>
+<h2 id="フレームレート">フレームレート</h2>
+<p>一般に、フレームレートが高いほど、プレイヤーが酔う可能性は低くなります。フレームレートが 60 fps より低くなると、酔う可能性が特に高くなります。</p>
+<h2 id="視覚誘導性自己運動感覚">視覚誘導性自己運動感覚</h2>
+<p>視覚誘導性自己運動感覚とは、環境の変化によって自分が動いているように感じることです。現実世界でも経験することがあります。たとえば、自分が乗っている列車が止まっていても、近くの列車が動いていると、自分の列車が反対方向に動いていると感じることがあります。これが、VR 酔いの原因になることがあります。</p>
+<p>ゲームで視覚誘導性自己運動感覚を減らすには、シンプルなテクスチャを使用し、プレイヤーの移動速度を遅くします。</p>
+<h2 id="加速度">加速度</h2>
+<p>加速度が VR 酔いの原因になることがあります。たとえば、プレイヤーが乗っている列車が加速したり減速したりすると、一定の速度で動いている場合より酔う可能性が高くなります。</p>
+<h2 id="静止基準点">静止基準点</h2>
+<p>プレイヤーのビューに静止基準点を追加すると (HUD や仮想「ヘルメット」など)、酔いの軽減に役立つことがあります。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Virtual_reality_sickness">Virtual reality sickness (Wikipedia)</a>（英語のみ）</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/virtual-reality/vr-sickness.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

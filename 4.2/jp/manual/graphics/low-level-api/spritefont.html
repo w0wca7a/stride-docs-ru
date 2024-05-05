@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>スプライト フォント | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="スプライト フォント | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/spritefont.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="スプライト-フォント">スプライト フォント</h1>
+
+<!--
+# SpriteFont
+-->
+<p><span class="badge text-bg-primary">上級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Advanced</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.SpriteFont.html">SpriteFont</a> クラスは、テキストを描くのに便利なクラスです。<a class="xref" href="../../../api/Stride.Graphics.SpriteBatch.html">SpriteBatch</a> クラスとあわせて使用します。</p>
+<!--
+The @'Stride.Graphics.SpriteFont' class is a convenient way to draw text. It works with the @'Stride.Graphics.SpriteBatch' class.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>カスタムコードをコンポジションに含めるには、すべてのカスタムコードを<a href="../graphics-compositor/custom-scene-renderers.html">カスタム シーン レンダラー</a>に記述する必要があります。</p>
+</div>
+<!--
+>[!Note]
+>You need to put all custom code in a [Custom scene renderer](../graphics-compositor/custom-scene-renderers.md) to include it in the composition.
+-->
+<h2 id="スプライトフォントを読み込む">スプライトフォントを読み込む</h2>
+<!--
+## Load a spriteFont
+-->
+<p>フォントアセットをコンパイルした後は、@'Stride.Core.Serialization.Assets.ContentManager' を使って、<a class="xref" href="../../../api/Stride.Graphics.SpriteFont.html">SpriteFont</a> インスタンスとして読み込むことができます。これは、テキストを表示するためのすべてのオプション（ビットマップ、<a href="https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0">カーニング</a>、行間など）を含んでいます。</p>
+<!--
+After a font asset is compiled it can be loaded as a @'Stride.Graphics.SpriteFont' instance using the @'Stride.Core.Serialization.Assets.ContentManager'. It contains all the options to display a text (bitmaps, kerning, line spacing etc).
+-->
+<p><strong>Code:</strong> スプライトフォントを読み込む</p>
+<!--
+**Code:** Load a SpriteFont
+-->
+<pre><code class="lang-cs">var myFont = Content.Load&lt;SpriteFont&gt;(&quot;MyFont&quot;);
+</code></pre>
+<h2 id="画面にテキストを書く">画面にテキストを書く</h2>
+<!--
+## Write text on screen
+-->
+<p>フォントを読み込んだら、<a class="xref" href="../../../api/Stride.Graphics.SpriteBatch.html">SpriteBatch</a> で任意のテキストを表示することができます。描画を行うのは、@'Stride.Graphics.SpriteBatch.DrawString' メソッドです。スプライトバッチの詳細については、<a href="spritebatch.html">スプライト バッチ</a>を参照してください。</p>
+<!--
+Once the font is loaded, you can display any text with a @'Stride.Graphics.SpriteBatch'. The @'Stride.Graphics.SpriteBatch.DrawString' method performs the draw. For more information about the SpriteBatch, see the [SpriteBatch](spritebatch.md) page.
+-->
+<p><strong>コード：</strong> テキストを書く</p>
+<!--
+**Code:** Write text
+-->
+<pre><code class="lang-cs">// スプライトバッチを作成
+// create the SpriteBatch
+var spriteBatch = new SpriteBatch(GraphicsDevice);
+
+// 開始を忘れないこと
+// don't forget the begin
+spriteBatch.Begin(GraphicsContext);
+ 
+// &quot;Helloworld!&quot; というテキストを、赤字で画面の中央に描画
+// draw the text &quot;Helloworld!&quot; in red from the center of the screen
+spriteBatch.DrawString(myFont, &quot;Helloworld!&quot;, new Vector2(0.5, 0.5), Color.Red);
+
+// 終了を忘れないこと 
+// don't forget the end
+spriteBatch.End();
+</code></pre>
+<p>さまざまなオーバーロードメソッドを使って、テキストの向き、拡大率、深さ、原点などを指定できます。また、テキストに次のような <a class="xref" href="../../../api/Stride.Graphics.SpriteEffects.html">SpriteEffects</a> を適用することもできます。</p>
+<!--
+The various overloads let you specify the text's orientation, scale, depth, origin, etc. You can also apply some @'Stride.Graphics.SpriteEffects' to the text:
+-->
+<ul>
+<li>None（なし）</li>
+<li>FlipHorizontally（水平方向に反転）</li>
+<li>FlipVertically（垂直方向に反転）</li>
+<li>FlipBoth（水平・垂直両方に反転）</li>
+</ul>
+<!--
+- None
+- FlipHorizontally
+- FlipVertically
+- FlipBoth
+-->
+<p><strong>コード：</strong> 高度なテキスト描画</p>
+<!--
+**Code:** Advanced text drawing
+-->
+<pre><code class="lang-cs">// &quot;Hello world!&quot; というテキストを、赤字で画面の中央に、上下逆さまに描く
+// draw the text &quot;Hello world!&quot; upside-down in red from the center of the screen
+spriteBatch.DrawString(myFont, &quot;Hello world!&quot;, new Vector2(0.5, 0.5), Color.Red, 0, new Vector2(0, 0), new Vector2(1,1), SpriteEffects.FlipVertically, 0);
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="spritebatch.html">スプライト バッチ</a></li>
+</ul>
+<!--
+* [SpriteBatch](spritebatch.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/spritefont.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

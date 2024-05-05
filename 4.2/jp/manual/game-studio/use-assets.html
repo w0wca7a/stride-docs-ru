@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>アセットの使用 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="アセットの使用 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/use-assets.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="アセットの使用">アセットの使用</h1>
+
+<p><span class="badge text-bg-primary">初級</span></p>
+<p>アセットを使用するには 3 つの方法があります。</p>
+<ul>
+<li>エンティティ コンポーネントでアセットを参照します</li>
+<li>他のアセットでアセットを参照します</li>
+<li>コードからアセットをロードします</li>
+</ul>
+<h2 id="コンポーネントでアセットを参照する">コンポーネントでアセットを参照する</h2>
+<p>多くの種類のコンポーネントはアセットを使用します。たとえば、モデル コンポーネントはモデル アセットを参照します。</p>
+<p>アセットを使用するコンポーネントの［Property grid］には<strong>アセット ドック</strong>があります。</p>
+<p><img src="media/use-assets-asset-picker-dock.png" alt="Select an asset"></p>
+<p>アセットをエンティティ コンポーネントに追加するには、［Property grid］のコンポーネント プロパティのアセット ドックにアセットをドラッグします。テキスト フィールドまたは空のサムネイルにアセットをドロップできます。</p>
+<p><img src="media/use-assets-drag-and-drop.png" alt="Drag and drop an asset"></p>
+<p>または、<img src="media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p><img src="media/use-assets-asset-picker.png" alt="Select an asset"></p>
+<p>［Select an asset］ウィンドウが開きます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>［Select an asset］ウィンドウには、コンポーネントから予想される種類のアセットだけが表示されます。たとえば、コンポーネントがオーディオ リスナーの場合、ウィンドウにはオーディオ アセットだけが表示されます。</p>
+</div>
+<p>コンポーネントにアセットを追加すると、アセット ドックにアセットの名前とサムネイル画像が表示されます。</p>
+<p><img src="media/asset-displayed.png" alt="Asset displayed"></p>
+<h2 id="他のアセットでアセットを参照する">他のアセットでアセットを参照する</h2>
+<p>アセットでは他のアセットを参照できます。たとえば、モデル アセットでマテリアル アセットを使用する場合があります。</p>
+<p>アセットを空のコンポーネントに追加する (前述) のと同じ方法で、アセットの参照をアセットに追加できます。</p>
+<h2 id="参照をクリアする">参照をクリアする</h2>
+<p>アセットの参照をクリアするには、<strong>アセット ドック</strong>で <img src="media/use-assets-eraser.png" alt="eraser"> (［Clear reference］) をクリックします。</p>
+<p><img src="media/use-eraser.png" alt="Use eraser"></p>
+<h2 id="参照を調べる">参照を調べる</h2>
+<p>Game Studio の右下隅にある［References］で、選択されているアセットでの参照を調べることができます。</p>
+<p>*［Referencees］タブには、選択されているアセットによって参照されているアセットが表示されます。
+*［Referencers］タブには、選択されているアセットを参照しているアセットが表示されます。</p>
+<p><img src="media/use-assets-references-tab.png" alt="References tab"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>［References］タブが表示されない場合は、［View］&gt;［References］に表示されていることを確認します。</p>
+</div>
+<h2 id="コードからアセットをロードする">コードからアセットをロードする</h2>
+<p>実行時にアセットをロードしてスクリプトで使用することができます。</p>
+<h3 id="コード例">コード例</h3>
+<p>このスクリプトは、実行時にモデルをロードして、それをシーンに追加します。</p>
+<pre><code class="lang-cs">// モデルをロードする (URL を有効な URL で置き換える)
+var model = Content.Load&lt;Model&gt;(&quot;AssetFolder/MyModel&quot;);
+
+// シーンに追加する新しいエンティティを作成する
+Entity entity = new Entity(position, &quot;Entity Added by Script&quot;) { new ModelComponent { Model = model } };
+
+// 新しいエンティティをシーンに追加する
+SceneSystem.SceneInstance.RootScene.Entities.Add(entity);
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>アセットの URL を調べるには、Game Studio で、アセットをマウスでポイントします。ツールヒントにアセットの URL が表示されます。  通常、URL の形式は <em>&lt;アセット フォルダー&gt;/&lt;アセット名&gt;</em> です。</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>スクリプトからアセットをロードするときは、次のようにします。</p>
+<ul>
+<li>「<a href="manage-assets.html">アセットを管理する</a>」で説明されているように、アセットをビルドに組み込みます</li>
+<li>シーン内のエンティティにコンポーネントとしてスクリプトを追加します</li>
+</ul>
+</div>
+<h3 id="必要のないアセットをアンロードする">必要のないアセットをアンロードする</h3>
+<p>アセットをコードからロードする場合は、不要になったアセットをアンロードする必要があります。アンロードしないと、アセットはメモリ内に留まり、GPU を浪費します。</p>
+<p>アセットをアンロードするには、<code>Content.Unload(myAsset)</code> を使用します。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-assets.html">アセットを作成する</a></li>
+<li><a href="manage-assets.html">アセットを管理する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/use-assets.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

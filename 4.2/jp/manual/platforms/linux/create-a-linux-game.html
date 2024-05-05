@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Linux 用ゲームの作成 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Linux 用ゲームの作成 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/platforms/linux/create-a-linux-game.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="linux-用ゲームの作成">Linux 用ゲームの作成</h1>
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>以下の説明を読む前に、「<a href="setup-and-requirements.html">Linux - セットアップと要件</a>」の説明に従ってください。</p>
+</div>
+<ol>
+<li><p>Stride Launcher で、新しいゲームを作成し、ターゲット プラットフォームとして Linux を選択します。</p>
+<p><img src="media/platform_choice.png" alt="New Game"></p>
+</li>
+<li><p>Game Studio のプラットフォーム メニューで［Linux］を選択します。</p>
+<p><img src="media/platform_selector.png" alt="Platform Selector"></p>
+</li>
+<li><p><strong>F5</strong> キーを押し、プロジェクトをビルドして実行します。</p>
+</li>
+<li><p>プロジェクトを初めて実行するときは、Linux ホストに関する情報を入力します。</p>
+<p><img src="media/default_credential_dialog.png" alt="Credential Dialog"></p>
+<p>次のように情報を入力します。</p>
+<p><img src="media/filled_credential_dialog.png" alt="Filled Credential Dialog"></p>
+</li>
+<li><p>［Test settings］をクリックして資格情報をテストします。</p>
+<p>エラーが発生した場合は、次のように表示されます。</p>
+<p><img src="media/unreachable_host.png" alt="Invalid Settings"></p>
+<p>資格情報が正しい場合は、次のように表示されます。</p>
+<p><img src="media/successful_login.png" alt="Success"></p>
+<p>［OK］ボタンをクリックして続行します。</p>
+<p>Linux ホストの指定した場所のサブディレクトリに、ファイルがコピーされます。サブディレクトリの名前は、ゲームの名前です。</p>
+<p>問題がある場合は、［Output］ペインで詳細を確認します。</p>
+</li>
+</ol>
+<h2 id="設定">設定</h2>
+<p>資格情報は［Settings］ダイアログで保存されます。</p>
+<p><img src="media/remote_settings.png" alt="Settings Dialog"></p>
+<p>パスワードは、現在のユーザーに対して Microsoft <em>System.Security.Cryptograph.ProtectedData.Protect</em> メソッドを使用して暗号化され、［Settings］には Base64 で保存されたものが表示されます。［Settings］ダイアログでパスワードを変更することはできません。</p>
+<p>ゲームの実行を制御する 2 つの追加設定があります。</p>
+<ul>
+<li><p>［Use CoreCLR］: .NET Core を使用して強制的に実行します。</p>
+</li>
+<li><p>［X Display］: Linux ホストの特定の X ディスプレイで強制的に実行します。</p>
+</li>
+</ul>
+<h2 id="game-studio-の外でコンパイルする">Game Studio の外でコンパイルする</h2>
+<p>他の Stride プロジェクトと同様に、Visual Studio またはコマンド ラインから直接プロジェクトをコンパイルすることもできます。どちらの場合も、有効な構成を選択する必要があります。</p>
+<ul>
+<li>Debug</li>
+<li>Release</li>
+<li>CoreCLR_Debug</li>
+<li>CoreCLR_Release</li>
+</ul>
+<p>Debug と Release のターゲットは Mono です。他のターゲットは .NET Core です。</p>
+<h3 id="visual-studio">Visual Studio</h3>
+<p>プロジェクトを Visual Studio にロードした後、Linux プロジェクトを選択します。［Solution Configurations］ドロップダウン メニューで、有効な Linux の構成を選択します。</p>
+<p><img src="media/vs_configuration_selection.png" alt="Configuration selection"></p>
+<h3 id="msbuild">MSBuild</h3>
+<p>Linux 用にコンパイルするには、コマンド ラインから次のコマンドを使用します。</p>
+<pre><code>msbuild /p:Platform=Linux /p:Configuration=CONFIG YourGame.sln
+</code></pre>
+<p><strong>CONFIG</strong> は有効な Linux の構成です。</p>
+<h2 id="制限事項">制限事項</h2>
+<ul>
+<li><p>ファシリティのデバッグはまだできません</p>
+</li>
+<li><p>レンダリング グラフィックス プラットフォームを切り替えると、ゲームが起動時にハングする可能性があります。これを回避するには、Linux ホストのゲームが展開されているディレクトリで、次のディレクトリを削除します。</p>
+<ul>
+<li><code>cache</code></li>
+<li><code>local</code></li>
+<li><code>roaming</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="setup-and-requirements.html">Linux - セットアップと要件</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/platforms/linux/create-a-linux-game.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

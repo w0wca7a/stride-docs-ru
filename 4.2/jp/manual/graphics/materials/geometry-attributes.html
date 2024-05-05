@@ -1,0 +1,520 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ジオメトリ属性 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ジオメトリ属性 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/geometry-attributes.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ジオメトリ属性">ジオメトリ属性</h1>
+
+<!--
+# Geometry attributes
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>マテリアルの<strong>ジオメトリ</strong>属性は、マテリアルの形状を定義します。</p>
+<!--
+The material **geometry** attributes define the shape of a material.
+-->
+<p><img src="media/geometry-properties.png" alt="Geometry properties"></p>
+<h2 id="テッセレーション">テッセレーション</h2>
+<!--
+## Tessellation
+-->
+<p>リアルタイム<a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%83%83%E3%82%BB%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">テッセレーション</a>では、GPU のハードウェア機能を利用して、三角形を細分化します。これにより、リアリティーが高まり、ジオメトリ表面の歪みが軽減されます。</p>
+<!--
+Real-time tessellation uses a HW feature of the GPU to massively subdivide triangles. This increases the realism and potential of deformations of the surface geometry.
+-->
+<p><strong>なし（None）</strong>、<strong>フラットテッセレーション</strong>、<strong>ポイントノーマルテッセレーション</strong>のいずれかを選択できます。</p>
+<!--
+You can choose **none**, **flat tessellation**, or **point normal tessellation**.
+-->
+<table>
+<thead>
+<tr>
+<th>テッセレーションなし</th>
+<th>フラットテッセレーション</th>
+<th>ポイントノーマルテッセレーション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/material-attributes-2.png" alt="media/material-attributes-2.png"></td>
+<td><img src="media/material-attributes-3.png" alt="media/material-attributes-3.png"></td>
+<td><img src="media/material-attributes-4.png" alt="media/material-attributes-4.png"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| No tessellation  | Flat tessellation | Point normal tessellation 
+| --------------  | -------------- | -------------------- 
+| ![media/material-attributes-2.png](media/material-attributes-2.png)  | ![media/material-attributes-3.png](media/material-attributes-3.png)  | ![media/material-attributes-4.png](media/material-attributes-4.png)
+-->
+<h3 id="フラットテッセレーション">フラットテッセレーション</h3>
+<!--
+### Flat tessellation
+-->
+<p>このオプションは、メッシュを一様にテッセレーションします。</p>
+<!--
+This option tessellates the mesh uniformly.
+-->
+<p><img src="media/material-attributes-5.png" alt="media/material-attributes-5.png"></p>
+<p>次の画像では、フラットテッセレーションが三角形を追加する方法に着目してください。曲線は考慮されていません。</p>
+<!--
+In the images below, notice how the flat tessellation adds extra triangles, but doesn't take the curve into account:
+-->
+<table>
+<thead>
+<tr>
+<th>テッセレーションなし</th>
+<th>フラットテッセレーション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/material-attributes-6.png" alt="media/material-attributes-6.png"></td>
+<td><img src="media/material-attributes-7.png" alt="media/material-attributes-7.png"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| No tessellation  | Flat tessellation  
+| ---------------- | ----------------- 
+| ![media/material-attributes-6.png](media/material-attributes-6.png)  | ![media/material-attributes-7.png](media/material-attributes-7.png)   
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Triangle size</td>
+<td>画面空間単位でのテッセレーションされた三角形のサイズ。</td>
+</tr>
+<tr>
+<td>Adjacent edges average</td>
+<td>隣接するエッジの平均値から三角形のサイズを調整します。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property               | Description      
+| ---------------------- | ------------
+| Triangle size          | The size of a tessellated triangle in screen-space units
+| Adjacent edges average | Adjust the triangle size values from the average of adjacent edges values 
+-->
+<h3 id="ポイントノーマルテッセレーション">ポイントノーマルテッセレーション</h3>
+<!--
+### Point normal tessellation
+-->
+<p>このオプションは、メッシュの法線から得られる曲率を使ってメッシュをテッセレーションします。</p>
+<!--
+This option tessellates the mesh using the curvature provided by the mesh normals.
+-->
+<p><img src="media/material-attributes-8.png" alt="media/material-attributes-8.png"></p>
+<p>次の画像は、ポイントノーマルテッセレーションが、メッシュの曲率を考慮しつつ、追加の三角形を追加する様子を示しています。</p>
+<!--
+The images below show how point normal tessellation adds extra triangles while taking the curvature of the mesh into account:
+-->
+<table>
+<thead>
+<tr>
+<th>テッセレーションなし</th>
+<th>Point normal tessellation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/material-attributes-6.png" alt="media/material-attributes-6.png"></td>
+<td><img src="media/material-attributes-9.png" alt="media/material-attributes-9.png"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| No tessellation | Point normal tessellation 
+| ---------------|  ---------------------- |
+| ![media/material-attributes-6.png](media/material-attributes-6.png)  |![media/material-attributes-9.png](media/material-attributes-9.png)         
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Triangle size</td>
+<td>画面空間単位でのテッセレーションされた三角形のサイズ。</td>
+</tr>
+<tr>
+<td>Adjacent edge average</td>
+<td>隣接するエッジの平均値から、<strong>三角形のサイズ</strong>と<strong>法線の曲率</strong>を調整します。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property               | Description 
+| ---------------------- | ------------
+| Triangle size          | The size of a tessellated triangle in screen-space units
+| Adjacent edge average | Adjust the **triangle size** and **normal curvature** values from the average of adjacent edge values
+-->
+<h2 id="ディスプレースメント">ディスプレースメント</h2>
+<!--
+## Displacement
+-->
+<p><strong>ディスプレースメント（変位）</strong> プロパティでは、<strong>ディスプレースメントマップ</strong>を指定することができます。これは、メッシュのジオメトリを変位させるものです。</p>
+<!--
+Under the **Displacement** properties, you can specify **displacement map**. This displaces the geometry of the mesh.
+-->
+<p><img src="media/material-attributes-10.png" alt="media/material-attributes-10.png"></p>
+<p>ディスプレースメントを適用する段階によって、結果は大きく異なります。</p>
+<!--
+Depending on the stage at which the displacement is applied, the results can be very different:
+-->
+<table>
+<thead>
+<tr>
+<th>頂点シェーダーを使ったディスプレースメント</th>
+<th>ディスプレースメント テッセレーション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/material-attributes-11.png" alt="media/material-attributes-11.png"></td>
+<td><img src="media/material-attributes-12.png" alt="media/material-attributes-12.png"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| Displacement with vertex shader  | Tessellation with displacement  
+| ------| ----------------- |
+| ![media/material-attributes-11.png](media/material-attributes-11.png)  | ![media/material-attributes-12.png](media/material-attributes-12.png)
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Displacement Map</td>
+<td><a href="material-maps.html">マテリアル カラー プロバイダ</a>としてのディスプレースメントテクスチャー</td>
+</tr>
+<tr>
+<td>Intensity</td>
+<td>ディスプレースメント量（変位量）</td>
+</tr>
+<tr>
+<td>Scale &amp; Bias</td>
+<td>これを有効にすると、テクスチャーからの値は <code>0.0</code> から <code>1.0</code> の間の正の値とみなされ、シェーダーは <code>-1.0</code> から <code>1.0</code> の範囲になるようにスケールを適用します。</td>
+</tr>
+<tr>
+<td>Shader Stage</td>
+<td>ディスプレースメントマップを適用するシェーダーステージを、頂点シェーダーとドメインシェーダー（テッセレーションで使用）のどちらにするかを指定します。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property         | Description     
+| ---------------- | ------------ 
+| Displacement Map | The displacement texture as a [material color provider](material-maps.md) 
+| Intensity        | The amount of displacement                                         
+| Scale & Bias     | When enabled, the value coming from the texture is considered a positive value ranging from `0.0` to `1.0` and the shader applies a scale to get the range -1.0 to `1.0`
+| Shader Stage     | Specify which shader stage the displacement map should be applied to: vertex shader or domain shader (used with tessellation)
+-->
+<h2 id="サーフェス">サーフェス</h2>
+<!--
+## Surface
+-->
+<p><img src="media/material-attributes-14.png" alt="media/material-attributes-14.png"></p>
+<p><strong>サーフェス</strong>プロパティでは、<strong>マクロ</strong>のサーフェス法線を定義するための<a href="../textures/normal-maps.html">法線マップ</a>を指定することができます。<strong>法線マップ</strong>は、メッシュの法線のピクセルごとの摂動を表現します。法線マップは、メッシュのバンプやインデントの外観を生成します。</p>
+<!--
+Under the **Surface** properties, you can define a [Normal maps](../textures/normal-maps.md) to define **macro** surface normals. The **normal map** provides per-pixel normal perturbation of the normal of the mesh. Normal maps create the appearance of bumps and indents in the mesh:
+-->
+<table>
+<thead>
+<tr>
+<th>フラット</th>
+<th>法線マップを使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/material-attributes-15.png" alt="media/material-attributes-15.png"></td>
+<td><img src="media/material-attributes-16.png" alt="media/material-attributes-16.png"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| Flat | Using a normal map   
+| -----| ----------- 
+| ![media/material-attributes-15.png](media/material-attributes-15.png)  | ![media/material-attributes-16.png](media/material-attributes-16.png)  
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal map</td>
+<td>法線マップ。</td>
+</tr>
+<tr>
+<td>Scale and offset</td>
+<td>テクスチャーから得た値を <code>0.0</code> から <code>1.0</code> の間の正の値として解釈します。シェーダーは <code>-1.0</code> から <code>1.0</code> の範囲になるようにスケールを適用します。</td>
+</tr>
+<tr>
+<td>Reconstruct Z</td>
+<td>テクスチャーに Z 成分がない場合は、X と Y の成分から再構成します。これは、X<sup>2</sup> + Y<sup>2</sup> + Z<sup>2</sup> = 1 であり、Z は常に正であると仮定しているので、どの法線ベクトルもサーフェスの裏側を指すことはできません。法線マップを圧縮する際、Stride は Z 成分を削除する可能性があるので、このオプションを有効にすることをお勧めします。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property     | Description 
+| ------------ | ---------------
+| Normal map   | The normal map color provider
+| Scale and offset | Interpret values from the texture as positive values ranging from `0.0` to `1.0`. The shader applies a scale to get the range `-1.0` to `1.0`.
+| Reconstruct Z    | If there's no Z component in the texture, reconstruct it from the X and Y components. This assumes that X<sup>2</sup> + Y<sup>2</sup> + Z<sup>2</sup> = 1 and that Z is always positive, so no normal vector can point to the back side of the surface. We recommend you enable this option, as Stride might remove the Z component when you compress normal maps.
+-->
+<p>法線マップの詳細については、<a href="../textures/normal-maps.html">法線マップ</a>を参照してください。</p>
+<!--
+For more information about normal maps, see the [normal maps](../textures/normal-maps.md) page.
+-->
+<h2 id="マイクロサーフェス">マイクロサーフェス</h2>
+<!--
+## Micro surface
+-->
+<p><strong>マイクロサーフェス</strong>設定では、ピクセルごとの光沢情報を提供する<strong>グロス（光沢）マップ</strong>を設定することができます。</p>
+<!--
+Under the **Micro surface** setting, you can provide a **gloss map** to provide per-pixel information for gloss.
+-->
+<p><img src="media/material-attributes-17.png" alt="media/material-attributes-17.png"></p>
+<p><strong>Float</strong> を選択した場合：</p>
+<!--
+If you select **Float**:
+-->
+<ul>
+<li>値が <code>1.0</code> であれば、サーフェスに非常に光沢があることを意味します（粗い法線が乱れてない）。</li>
+<li>値が <code>0.0</code> の場合、サーフェスが非常に粗い（粗い法線が複数の方向に大きく乱れている）ことを意味します。</li>
+</ul>
+<!--
+- a value of `1.0` means the surface is highly glossy (the coarse normal isn't perturbed)
+- a value of `0.0` means the surface is very rough (the coarse normal is highly perturbed in several directions)
+-->
+<p>次のスクリーンショットでは、マテリアルの光沢のレベルを変えて表示しています。</p>
+<!--
+The screenshots below show different levels of gloss on a material:
+-->
+<ul>
+<li>Diffuse = #848484, Lambert</li>
+<li>Specular Metalness = 1.0, GGX</li>
+</ul>
+<!--
+- Diffuse = #848484, Lambert
+- Specular Metalness = 1.0, GGX
+-->
+<table>
+<thead>
+<tr>
+<th>Gloss = 0.0</th>
+<th>0.25</th>
+<th>0.5</th>
+<th>0.8</th>
+<th>1.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/material-attributes-18.png" alt="media/material-attributes-18.png"></td>
+<td><img src="media/material-attributes-19.png" alt="media/material-attributes-19.png"></td>
+<td><img src="media/material-attributes-20.png" alt="media/material-attributes-20.png"></td>
+<td><img src="media/material-attributes-21.png" alt="media/material-attributes-21.png"></td>
+<td><img src="media/material-attributes-22.png" alt="media/material-attributes-22.png"></td>
+</tr>
+</tbody>
+</table>
+<!--
+| Gloss = 0.0 | 0.25 | 0.5  | 0.8  | 1.0 
+| ---------------- | ---- | ---- |----- | ---
+| ![media/material-attributes-18.png](media/material-attributes-18.png)  | ![media/material-attributes-19.png](media/material-attributes-19.png)  | ![media/material-attributes-20.png](media/material-attributes-20.png)  | ![media/material-attributes-21.png](media/material-attributes-21.png)  | ![media/material-attributes-22.png](media/material-attributes-22.png)  
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gloss map</td>
+<td>グロスマップ。</td>
+</tr>
+<tr>
+<td>Invert</td>
+<td>グロス値を反転させます（例: 値が <code>1.0</code> の場合、光沢度は最大ではなく 0 になります）。これは、他のゲームエンジンで使用されているように、光沢値を<strong>粗さ（roughness）</strong> の値に変える効果があります。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property       | Description
+| -------------- | -- |
+| Gloss map | The gloss map color provider
+| Invert         | Inverts the gloss value (eg a value of `1.0` produces zero gloss instead of maximum). This effectively turns the gloss value into a **roughness** value, as used in other game engines
+-->
+<p>ローカルリフレクションを有効にしている場合、ローカルリフレクションのプロパティで指定したしきい値よりも高いグロスマップ値を持つマテリアルにシーンが反映されます。詳細は、<a href="../post-effects/local-reflections.html">ローカルリフレクション</a>を参照してください。</p>
+<!--
+If you have local reflections enabled, the scene is reflected in materials with a gloss map value higher than the threshold you specify in the local reflections properties. For more information, see [Local reflections](../post-effects/local-reflections.md).
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="material-maps.html">マテリアル マップ</a></li>
+<li><a href="material-attributes.html">マテリアル 属性</a>
+<ul>
+<li><a href="shading-attributes.html">シェーディング 属性</a></li>
+<li><a href="misc-attributes.html">その他の属性</a></li>
+<li><a href="clear-coat-shading.html">クリアコートシェーディング</a></li>
+</ul>
+</li>
+<li><a href="material-layers.html">マテリアル レイヤー</a></li>
+<li><a href="material-slots.html">マテリアル スロット</a></li>
+<li><a href="materials-for-developers.html">開発者向けのマテリアル情報</a></li>
+<li><a href="../effects-and-shaders/custom-shaders.html">カスタムシェーダー</a></li>
+</ul>
+<!--
+* [Material maps](material-maps.md)
+* [Material attributes](material-attributes.md)
+    * [Shading attributes](shading-attributes.md)
+    * [Misc attributes](misc-attributes.md)
+    * [Clear-coat shading](clear-coat-shading.md)
+* [Clear-coating shading](clear-coat-shading.md)
+* [Material layers](material-layers.md)
+* [Material slots](material-slots.md)
+* [Materials for developers](materials-for-developers.md)
+* [Custom shaders](../effects-and-shaders/custom-shaders.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/geometry-attributes.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

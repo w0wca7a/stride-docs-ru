@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>チュートリアル: トリガーをスクリプトにする | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="チュートリアル: トリガーをスクリプトにする | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/script-a-trigger.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="チュートリアル-トリガーをスクリプトにする">チュートリアル: トリガーをスクリプトにする</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p>このチュートリアルでは、通過するボールのサイズを 2 倍にする<a href="triggers.html">トリガー</a>を作成します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>このチュートリアルのスクリーンショットとビデオは、前のバージョンの Stride を使用して作成されました。そのため、UI の一部および既定のスカイボックスと球体は、お使いのバージョンと異なる場合があります。</p>
+</div>
+<h2 id="1-跳ね返るボールを作成する">1. 跳ね返るボールを作成する</h2>
+<p>「<a href="create-a-bouncing-ball.html">跳ね返るボールを作成する</a>」チュートリアルの説明に従います。空中からボールが落下し、地面にぶつかって跳ね返る、簡単なシーンが作成されます。</p>
+<h2 id="2-反発を設定する">2. 反発を設定する</h2>
+<p>このチュートリアルでは、地面と球体の反発係数を両方とも 0.9 に設定します。したがって、ボールはとてもよく跳ね返ります。このようにすると、ボールがトリガー領域に何度も出入りするので、トリガーの効果がよくわかります。</p>
+<ol>
+<li><p><strong>球体</strong>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］の［Rigidbody］で、［Restitution］を <em>0.9</em> に設定します。</p>
+<p><img src="media/physics-tutorials-rigidbody-restitution.png" alt="Set restitution for a sphere"></p>
+</li>
+<li><p><strong>地面</strong>エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］の［Static Collider］で、［Restitution］を <em>0.9</em> に設定します。</p>
+<p><img src="media/physics-tutorials-static-collider-restitution.png" alt="Set restitution for the ground"></p>
+</li>
+</ol>
+<h2 id="3-トリガーを追加する">3. トリガーを追加する</h2>
+<p>次に、ボールと地面の間にトリガーを追加し、ボールがそこを通過するようにします。</p>
+<ol>
+<li><p><strong>シーン エディター</strong>で、白いプラス ボタン (［Create new entity］) をクリックして、［Empty entity］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-add-new-entity.png" alt="Create new entity"></p>
+<p>既定の <strong>Entity</strong> という名前のエンティティがシーンに追加されます。</p>
+</li>
+<li><p>このエンティティをトリガーにするので、わかりやすいように名前を［Trigger］に変更します。</p>
+</li>
+<li><p>このトリガーは動く必要がないので、静的コライダーにします。［Property grid］で［Add component］をクリックして、［Static Collider］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-bouncing-ball-add-collider-component.png" alt="Add Static collider component"></p>
+</li>
+<li><p>［Property grid］で［Static Collider］コンポーネントを展開してプロパティを表示します。</p>
+</li>
+<li><p>［Is Trigger］チェックボックスをオンにします。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-is-trigger-checkbox.png" alt="Check 'Is trigger'"></p>
+<p>これにより、コライダーがトリガーになります。つまり、オブジェクトはそれを通り抜けることができますが、その場合でもコードはオブジェクトを検出します。</p>
+</li>
+<li><p>トリガーに形状を与える必要があります。［Collider Shapes］の隣の <img src="../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、［Box］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-add-box-shape-to-a-trigger.png" alt="Add collider shape"></p>
+<p>トリガーの形状がボックスになります。</p>
+<p><img src="media/physics-tutorials-added-trigger-area.png" alt="Added trigger"></p>
+</li>
+<li><p>トリガーの領域を大きくします。［Property grid］の［Transform］コンポーネントのプロパティで、［Scale］を <em>X:2, Y:2, Z:2 に設定します。</em></p>
+<p><img src="media/physics-tutorials-create-a-trigger-scale-trigger.png" alt="Scale a trigger"></p>
+<p>トリガーのサイズが 2 倍になります。</p>
+<p><img src="media/physics-tutorials-added-trigger-doubled-area.png" alt="Added trigger"></p>
+</li>
+</ol>
+<h2 id="4-トリガーにモデルを設定する">4. トリガーにモデルを設定する</h2>
+<p>現状では、トリガーは実行時には目に見えません。トリガーの動作がよくわかるように、トリガーを透明なボックスにします。このようにしてもトリガーの動作に影響はありません。実行時にトリガーの場所がはっきりわかるようになるだけです。</p>
+<ol>
+<li><p>新しい手続き型モデル アセットを作成します。そのためには、［Asset view］で［Add asset］をクリックし、［Models］&gt;［Cube］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-add-a-model.png" alt="Add a model asset"></p>
+</li>
+<li><p>新しい空のマテリアル アセットを作成します。そのためには、［Asset view］で［Add asset］をクリックし、［Materials］&gt;［Material］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-add-a-material-asset.png" alt="Add a material asset"></p>
+</li>
+<li><p>マテリアルの名前を変更して見分けやすくします。右クリックして［Rename］を選択し、新しい名前 (たとえば <em>Transparent</em>) を入力します。</p>
+</li>
+<li><p><strong>トリガー</strong> エンティティを選択します。［Property grid］で［Add component］をクリックして、［Model］を選択します。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-add-a-model-component.png" alt="Add a model component"></p>
+<p>モデル コンポーネントがエンティティに追加されます。</p>
+</li>
+<li><p>［Model］で <img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (［Pick an asset up］) をクリックします。</p>
+<p><img src="media/physics-tutorials-pick-an-asset-up.png" alt="Pick an asset up"></p>
+</li>
+<li><p>ステップ 1 で作成した［Cube］モデルを選択し、［OK］をクリックします。</p>
+<p><img src="media/physics-tutorials-select-cube-model.png" alt="Select Cube model"></p>
+</li>
+<li><p>［Property grid］の［Model］&gt;［Materials］で、<img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (［Pick an asset up］) をクリックします。</p>
+<p><img src="media/physics-tutorials-material-asset-picker.png" alt="Select material"></p>
+</li>
+<li><p>ステップ 2 で作成した <strong>Transparent</strong> マテリアルを選択し、［OK］をクリックします。</p>
+<p><img src="media/physics-tutorials-select-transparent-material.png" alt="Select material"></p>
+</li>
+<li><p>［Asset view］で、<strong>Transparent</strong> マテリアル アセットを選択します。</p>
+<p><img src="media/physics-tutorials-select-material-asset.png" alt="Select material in Asset View"></p>
+</li>
+<li><p>［Property grid］の［Misc］&gt;［Transparency］で、［Blend］を選択します。</p>
+<p><img src="media/physics-tutorials-set-blend.png" alt="Select Blend"></p>
+</li>
+<li><p>既定では、［Alpha］は 1 に設定されています。これではマテリアルは完全に不透明になります。不透明度を 50% にするため、［Alpha］を 0.5 に設定します。</p>
+<p><img src="media/physics-tutorials-set-blend-alpha.png" alt="Select Blend"></p>
+<p>これで、実行時にトリガー領域が表示されるようになります。</p>
+</li>
+</ol>
+<h2 id="5-トリガーを配置する">5. トリガーを配置する</h2>
+<p>落下するボールが通過するように、地面と球体の間にトリガーを配置する必要があります。</p>
+<p>［Property grid］の［Transform］で、［Position］を <em>X:0, Y:3, Z:0 に設定します。</em></p>
+<p>トリガー エンティティが地面と球体の間に配置されました。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-trigger-between-ground-and-sphere.png" alt="Trigger between ground and sphere"></p>
+<h2 id="6-スクリプトで球体のサイズを変更する">6. スクリプトで球体のサイズを変更する</h2>
+<p>この状態でプロジェクトを実行すると (<strong>F5</strong> キー)、ボールはトリガーを通過して落下しますが、何も起こりません。</p>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/bouncing-ball-with-trigger-no-effect.png">
+   <source src="media/bouncing-ball-with-trigger-no-effect.mp4" type="video/mp4">
+</video>
+</p>
+<p>トリガーに入ったらボールのサイズを変更するスクリプトを記述します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>スクリプトの詳細については、「<a href="../scripts/index.html">スクリプト</a>」を参照してください。</p>
+</div>
+<ol>
+<li><p>［Asset view］で［Add asset］をクリックし、［Scripts］ &gt;［Async Script］の順に選択します。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-add-async-script.png" alt="Use a script"></p>
+</li>
+<li><p>［Create a script］ダイアログで、スクリプトの名前を「<em>Trigger</em>」に設定して、［Create script］をクリックします。</p>
+<p>2a.スクリプトを保存するかどうかを確認するメッセージが表示されたら、［Save］をクリックします。</p>
+<p>2b.アセンブリを再ロードするかどうかを確認するメッセージが表示されたら、［Reload］をクリックします。</p>
+</li>
+<li><p>スクリプトを開き、内容を以下のコードに置き換えて、ファイルを保存します。</p>
+<pre><code class="lang-cs">using Stride.Engine;
+using Stride.Physics;
+using System.Threading.Tasks;
+using Stride.Core.Mathematics;
+
+namespace TransformTrigger
+// このスクリプトには好みで任意の名前空間を使用できる。
+{
+    public class Trigger : AsyncScript
+    {
+        public override async Task Execute()
+        {
+            var trigger = Entity.Get&lt;PhysicsComponent&gt;();
+            trigger.ProcessCollisions = true;
+
+            // 状態マシンを開始する
+            while (Game.IsRunning)
+            {
+                // 1.エンティティがトリガーと衝突するのを待つ
+                var firstCollision = await trigger.NewCollision();
+
+                var otherCollider = trigger == firstCollision.ColliderA
+                    ? firstCollision.ColliderB
+                    : firstCollision.ColliderA;
+                otherCollider.Entity.Transform.Scale = new Vector3(2.0f, 2.0f, 2.0f);
+
+                // 2.エンティティがトリガーから出るのを待つ
+                Collision collision;
+
+                do
+                {
+                    collision = await trigger.CollisionEnded();
+                }
+                while (collision != firstCollision);
+
+                otherCollider.Entity.Transform.Scale= new Vector3(1.0f, 1.0f, 1.0f);
+            }
+        }
+    }
+}
+</code></pre>
+<p>このコードは、トリガーに入ってきたすべてのエンティティのサイズ (スケール) を 2 倍にします。エンティティがトリガーから出るときには、元のサイズに戻します。</p>
+</li>
+<li><p>アセンブリを再ロードします。</p>
+</li>
+</ol>
+<h2 id="7-スクリプトを追加する">7. スクリプトを追加する</h2>
+<p>最後に、このスクリプトをコンポーネントとしてトリガー エンティティに追加します。</p>
+<ol>
+<li><p><strong>Game Studio</strong> で <strong>Trigger</strong> エンティティを選択します。</p>
+</li>
+<li><p>［Property grid］で［Add component］をクリックして、<strong>Trigger</strong> スクリプトを選択します。</p>
+<p><img src="media/physics-tutorials-create-a-trigger-add-script-component-to-entity.png" alt="Add script component to entity"></p>
+</li>
+</ol>
+<h2 id="8-プロジェクトを実行する">8. プロジェクトを実行する</h2>
+<p>プロジェクトを実行して (<strong>F5</strong> キー)、トリガーの動作を確認します。</p>
+<p>ボールが落下し、トリガーを通過するときに 2 倍のサイズになり、トリガーを抜けると、通常のサイズに戻ります。</p>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/bouncing-ball-with-trigger-scaled_first_frame.png">
+   <source src="media/bouncing-ball-with-trigger-scaled.mp4" type="video/mp4">
+</video>
+</p>
+<h2 id="その他のアイデア">その他のアイデア</h2>
+<p>スクリプトを変更して、球体がトリガーに入ったときに他の処理を行うことができます。</p>
+<p>たとえば、球体エンティティのマテリアルを切り替えることができます。次のスクリプトは、Sphere エンティティのマテリアルを <strong>Sphere Material</strong> から <strong>Ground Material</strong> に切り替えて、元に戻します。</p>
+<pre><code class="lang-cs">using Stride.Engine;
+using Stride.Physics;
+using System.Threading.Tasks;
+using Stride.Core.Mathematics;
+using Stride.Rendering;
+
+namespace TransformTrigger
+// このスクリプトには好みで任意の名前空間を使用できる。
+{
+    public class Trigger : AsyncScript
+    {
+        private Material material1;
+        private Material material2;
+
+        public override async Task Execute()
+        {
+            var trigger = Entity.Get&lt;PhysicsComponent&gt;();
+            trigger.ProcessCollisions = true;
+
+            // マテリアルがロードされていることを確認する
+            material1 = Content.Load&lt;Material&gt;(&quot;Sphere Material&quot;);
+            material2 = Content.Load&lt;Material&gt;(&quot;Ground Material&quot;);
+
+            // 状態マシンを開始する
+            while (Game.IsRunning)
+            {
+                // 1. エンティティがトリガーと衝突するのを待つ
+                var firstCollision = await trigger.NewCollision();
+
+                var otherCollider = trigger == firstCollision.ColliderA ? firstCollision.ColliderB : firstCollision.ColliderA;
+
+                // 2. エンティティのマテリアルを変更する
+                otherCollider.Entity.Get&lt;ModelComponent&gt;().Materials[0] = material2;
+
+                // 3. エンティティがトリガーから出るのを待つ
+                Collision collision;
+
+                do
+                {
+                    collision = await trigger.CollisionEnded();
+                }
+                while (collision != firstCollision);
+
+                // 4. マテリアルを元のものに戻す
+                otherCollider.Entity.Get&lt;ModelComponent&gt;().Materials[0] = material1;
+            }
+        }
+
+        public override void Cancel()
+        {
+            Content.Unload(material1);
+            Content.Unload(material2);
+        }
+    }
+}
+</code></pre>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/bouncing-ball-with-trigger-material_first_frame.png">
+   <source src="media/bouncing-ball-with-trigger-material.mp4" type="video/mp4">
+</video>
+</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-a-bouncing-ball.html">チュートリアル: 跳ね返るボールを作成する</a></li>
+<li><a href="colliders.html">コライダー</a></li>
+<li><a href="collider-shapes.html">コライダーの形状</a></li>
+<li><a href="../scripts/index.html">スクリプト</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/script-a-trigger.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

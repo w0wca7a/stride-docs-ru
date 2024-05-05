@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>低レベル API | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="低レベル API | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="低レベル-api">低レベル API</h1>
+
+<!--
+# Low-level API
+-->
+<p><span class="badge text-bg-primary">上級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Advanced</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.GraphicsDevice.html">GraphicsDevice</a> クラスは、ゲームの表示の中心となるクラスです。リソースを作成したり、画面に画像を表示したりすることに使われます。<a class="xref" href="../../../api/Stride.Engine.Game.html">Game</a> クラスと <a class="xref" href="../../../api/Stride.Engine.ScriptComponent.html">ScriptComponent</a> クラスのメンバーです。</p>
+<!--
+The @'Stride.Graphics.GraphicsDevice' class is the central class for displaying your game. It's used to create resources and present images on the screen. You can access it as a member of the @'Stride.Engine.Game' and @'Stride.Engine.ScriptComponent' classes.
+-->
+<p>描画、グラフィックスの状態設定、リソースの使用などのアクションは、<a class="xref" href="../../../api/Stride.Graphics.CommandList.html">CommandList</a> オブジェクトを使って記録され、後にデバイスで実行されます。</p>
+<!--
+Actions such as drawing, setting graphics states and using resources are recorded using @'Stride.Graphics.CommandList' objects for later execution by the device.
+-->
+<p>多くのコマンドリストを同時に記録することができます（例えば、スレッドごとに1つずつ記録する）。既定のコマンドリストは、<a class="xref" href="../../../api/Stride.Engine.Game.html">Game</a> の <a class="xref" href="../../../api/Stride.Games.GameBase.html#Stride_Games_GameBase_GraphicsContext">GraphicsContext</a> のメンバーです。</p>
+<!--
+Many command lists can be filled at the same time (eg one per thread). A default command list is available as member of the @'Stride.Games.GameBase.GraphicsContext' of your @'Stride.Engine.Game'.
+-->
+<p>メソッドでは、これらのオブジェクトは通常、<a class="xref" href="../../../api/Stride.Rendering.RenderContext.html">RenderContext</a>や<a class="xref" href="../../../api/Stride.Rendering.RenderDrawContext.html">RenderDrawContext</a>などのコンテキストを通じて提供されます。</p>
+<!--
+In methods, these objects are typically provided through contexts such as @'Stride.Rendering.RenderContext' and @'Stride.Rendering.RenderDrawContext'.
+-->
+<p>描画を行うには、以下のような複数のステップが必要です。</p>
+<!--
+Performing any drawing requires multiple steps, including:
+-->
+<ul>
+<li>テクスチャーを<a href="textures-and-render-textures.html">レンダーテクスチャー</a>として設定し、クリアして、ビューポートとシザーを設定する。</li>
+<li>グラフィックス <a href="pipeline-state.html">パイプラインステート</a>の設定には、入力の記述、シェーダー、深度ステンシル、ブレンディング、ラスタライザーなどが含まれます。</li>
+<li>定数バッファやテクスチャーなどの<a href="resources.html">リソース バインディング</a>。</li>
+<li>組込みプリミティブやカスタム頂点バッファを使った<a href="draw-vertices.html">頂点の描画</a>。</li>
+</ul>
+<!--
+* setting textures as [render textures](textures-and-render-textures.md), clearing them, and setting viewports and scissors
+* setting up the graphics [pipeline state](pipeline-state.md), including input description, shaders, depth-stencil, blending, rasterizer, etc
+* binding [resources](resources.md), such as constant buffers and textures
+* [drawing vertices](draw-vertices.md) using built-in primitives or custom vertex buffers
+-->
+<h2 id="このセクションの内容">このセクションの内容</h2>
+<!--
+## In this section
+-->
+<ul>
+<li><a href="draw-vertices.html">頂点の描画</a></li>
+<li><a href="pipeline-state.html">パイプライン ステート</a></li>
+<li><a href="resources.html">リソース バインディング</a></li>
+<li><a href="spritebatch.html">スプライト バッチ</a></li>
+<li><a href="spritefont.html">スプライト フォント</a></li>
+<li><a href="textures-and-render-textures.html">テクスチャーとレンダーテクスチャー</a></li>
+</ul>
+<!--
+* [Draw vertices](draw-vertices.md)
+* [Pipeline state](pipeline-state.md)
+* [Resources](resources.md)
+* [SpriteBatch](spritebatch.md)
+* [SpriteFont](spritefont.md)
+* [Textures and render textures](textures-and-render-textures.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>マテリアル レイヤー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="マテリアル レイヤー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/material-layers.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="マテリアル-レイヤー">マテリアル レイヤー</h1>
+
+<!--
+# Material layers
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>マテリアルのレイヤーを組み合わせて、より複雑なマテリアルを作ることができます。例えば、次のスクリーンショットは、錆のマテリアル（左）と金のマテリアル（右）を合成したもの（中）を示しています。</p>
+<!--
+You can combine layers of materials to build more complex materials. For example, this screenshot shows the blending of a rust material (left) with a gold material (right):
+-->
+<p><img src="media/material-layers-2.png" alt="media/material-layers-2.png"></p>
+<p>次の図は、上のスクリーンショットで合成されたマテリアルの定義を示しています。</p>
+<!--
+This diagram shows the definition of the materials blended in the screenshot above:
+-->
+<p><img src="media/material-layers-3.png" alt="media/material-layers-3.png"></p>
+<h2 id="ブレンドマップ">ブレンドマップ</h2>
+<!--
+## Blend maps
+-->
+<p><strong>ブレンドマップ</strong>は、Game Studio がレイヤーを合成する方法を決めるための<a href="material-maps.html">マテリアル マップ</a>です。例えば、テクスチャーをブレンドマップとして使用することができます。</p>
+<!--
+**Blend maps** are [material maps](material-maps.md) that determine how Game Studio blends layers. For example, you can use a texture as a blend map:
+-->
+<p><img src="media/blend-map-diagram.png" alt="Blend map diagram"></p>
+<p><img src="media/blend-map-diagram2.png" alt="Blend map diagram"></p>
+<p>ブレンドマップのテクスチャーが、合成後のパターンとどのように対応しているかに注目してください。</p>
+<!--
+Note how the blend map texture corresponds to the patterning on the result.
+-->
+<p>ブレンドマップは、他のマテリアルマップと同じように機能します。詳細については、<a href="material-maps.html">マテリアルマップ</a>を参照してください。</p>
+<!--
+Blend maps work the same way as any other kind of material map. For more information, see [Material maps](material-maps.md).
+-->
+<h2 id="シェーディングモデル">シェーディングモデル</h2>
+<!--
+## Shading models
+-->
+<p>Stride では、マテリアルのシェーディングモデル（例：ディフューズモデル、スペキュラモデルなど）が同じであるか否かによって、マテリアルの合成方法が変わります。</p>
+<!--
+Stride blends materials differently depending on whether their shading models (eg diffuse models, specular models, etc) are different.
+-->
+<p>シェーディングモデルが<strong>同じ</strong>であるマテリアルを合成する場合、Stride はマテリアルの<strong>属性</strong>を収集し、そのシェーディングモデルをすべてのマテリアルに適用します。これにより、GPU を節約することができます。</p>
+<!--
+If you blend materials that have **identical** shading models, Stride collects the **attributes** of the materials, then applies the shading models to all of them. This saves GPU.
+-->
+<p>マテリアルが<strong>異なる</strong>シェーディングモデルを持っている場合、Stride は各マテリアルのシェーディングモデルをそのマテリアル属性に適用し、結果を合成します。これはより多くの GPU パワーを消費します。</p>
+<!--
+If the materials have **different** shading models, Stride applies each material's shading models to that material's attributes, then blends the results. This uses more GPU.
+-->
+<h2 id="レイヤーを追加する">レイヤーを追加する</h2>
+<!--
+## Add a layer
+-->
+<ol>
+<li><p>レイヤーを追加したいマテリアルを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>Layers</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button">（<strong>追加</strong>）をクリックします。</p>
+<p><img src="media/add-a-layer.png" alt="Add a layer"></p>
+<p>Game Studio は、マテリアルにレイヤーを追加します。</p>
+<p><img src="media/empty-layer.png" alt="Empty layer"></p>
+</li>
+<li><p>レイヤーの横にある <img src="../../game-studio/media/hand-icon.png" alt="Hand icon">（<strong>アセットの選択</strong>）をクリックします。</p>
+<p><strong>Select an asset</strong> ウィンドウが開きます。</p>
+<p><img src="media/material-asset-picker.png" alt="Select an asset"></p>
+</li>
+<li><p>レイヤーとして追加したいマテリアルを指定し、[<strong>OK</strong>] をクリックします。</p>
+<p>Game Studio は、マテリアルをレイヤーとして追加します。</p>
+<p><img src="media/added-layer.png" alt="Added layer"></p>
+</li>
+<li><p><strong>Blend Map</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（(<strong>置換</strong>）をクリックし、レイヤーの合成に使用したいブレンドマップの種類を選択します。ブレンドマップの詳細については、<a href="material-maps.html">マテリアルマップ</a>を参照してください。</p>
+<p><img src="media/select-blend-map.png" alt="Select blend map"></p>
+</li>
+</ol>
+<!--
+1. Select the material you want to add a layer to.
+
+2. In the **Property Grid** (on the right by default), next to **Layers**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**).
+
+    ![Add a layer](media/add-a-layer.png)
+
+    Game Studio adds a layer to the material.
+
+    ![Empty layer](media/empty-layer.png)
+
+3. Next to the layer, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+
+    The **Select an asset** window opens.
+
+    ![Select an asset](media/material-asset-picker.png)
+
+4. Specify a material you want to add as a layer and click **OK**.
+
+    Game Studio adds the material as a layer.
+    
+    ![Added layer](media/added-layer.png)
+
+5. Next to **Blend Map**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and select the type of blend map you want to use to blend the layers. For more information about blend maps, see [Material maps](material-maps.md).
+
+    ![Select blend map](media/select-blend-map.png)
+-->
+<p>Game Studio では、指定したブレンドマップを使ってマテリアルレイヤーを合成します。必要な数だけレイヤーを追加することができます。</p>
+<!--
+Game Studio blends the material layers using the blend map you specified. You can add as many layers as you need.
+-->
+<h2 id="レイヤープロパティ">レイヤープロパティ</h2>
+<!--
+## Layer properties
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>このレイヤーに合成されているマテリアル</td>
+</tr>
+<tr>
+<td>Blend Map</td>
+<td>このレイヤーと上のレイヤーを合成するための<a href="material-maps.html">ブレンドマップ</a></td>
+</tr>
+<tr>
+<td>Layer Overrides</td>
+<td>レイヤーのマテリアルの全テクスチャの UV に適用される <strong>UV スケール</strong>（オクルージョンマップを除く）</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property        | Description 
+| --------------- | --------------- 
+| Material        | The material blended in this layer
+| Blend Map       | The [blend map](material-maps.md) used to blend this layer with the layer above
+| Layer Overrides |  **UV Scale**: A UV scale applied to all textures UV of the material of the layer (excluding the occlusion map)
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="material-maps.html">マテリアルマップ</a></li>
+<li><a href="material-attributes.html">マテリアル属性</a></li>
+<li><a href="material-slots.html">マテリアルスロット</a></li>
+<li><a href="materials-for-developers.html">開発者向けのマテリアル情報</a></li>
+</ul>
+<!--
+* [Material maps](material-maps.md)
+* [Material attributes](material-attributes.md)
+* [Material slots](material-slots.md)
+* [Materials for developers](materials-for-developers.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/material-layers.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

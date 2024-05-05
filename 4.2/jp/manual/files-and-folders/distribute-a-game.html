@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ゲームの配布 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ゲームの配布 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/files-and-folders/distribute-a-game.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ゲームの配布">ゲームの配布</h1>
+
+<p>ゲームを公開する準備ができたら、Visual Studio でリリース ビルドを作成して、それを配布します。</p>
+<h2 id="1-リリース-ビルドを作成する">1. リリース ビルドを作成する</h2>
+<ol>
+<li><p>以前にリリース モードでゲームをビルドしてある場合は、プロジェクト フォルダー (例：<em>MyGame/Bin/MyPlatform/Release/</em>) で、<em>Data</em> フォルダーを削除します。このフォルダーには、古いバージョンのアセットなど、必要のないファイルが含まれていることがあるので、最初から再度ビルドするのが最も簡単な方法です。</p>
+</li>
+<li><p>Game Studio でプロジェクトを開きます。</p>
+</li>
+<li><p>ツール バーのドロップダウン メニューをクリックして、［Visual Studio］を選択します。</p>
+<p><img src="media/open-in-visual-studio.png" alt="Open in VS"></p>
+<p>プロジェクトが Visual Studio で開きます。</p>
+</li>
+<li><p>Visual Studio で、［ソリューション構成］ドロップダウン メニューから［リリース］を選択します。</p>
+<p><img src="media/select-release.png" alt="Select release"></p>
+</li>
+<li><p>［ソリューション プラットフォーム］ドロップダウン メニューから、ビルドを作成する対象のプラットフォームを選択します。</p>
+<p><img src="media/select-platform.png" alt="Select platform"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Stride プロジェクトに追加したプラットフォームに対してのみ、ビルドを作成できます。これを行う方法については、「<a href="../platforms/add-or-remove-a-platform.html">プラットフォームを追加または削除する</a>」を参照してください。</p>
+<p>Android または iOS 用にビルドするには、Xamarin が必要です。Xamarin は Visual Studio のライセンスに含まれます。Visual Studio 2017 で Xamarin をインストールする方法については、<a href="https://docs.microsoft.com/ja-jp/visualstudio/cross-platform/setup-and-install">この MSDN ページ</a>を参照してください。</p>
+</div>
+</li>
+<li><p>［ビルド］で［ソリューションのビルド］を選択します。</p>
+<p><img src="media/build-solution.png" alt="Build solution"></p>
+<p>プロジェクトのバイナリ フォルダー (例：<em>MyGame/Bin/MyPlatform/Release</em>) に、リリース ビルドが作成されます。</p>
+</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>［リリース］フォルダーをさらにわかりやすい名前 (ゲームのタイトルなど) に変更してもかまいません。</p>
+</div>
+<h2 id="2-不要なファイルを削除する">2. 不要なファイルを削除する</h2>
+<p>プロジェクトの bin フォルダーのリリース フォルダー (<em>MyGame/Bin/MyPlatform/Release</em> など) では、以下の不要なファイルを削除できます。</p>
+<ul>
+<li><p><code>.pdb</code> ファイル (デバッグ情報)</p>
+</li>
+<li><p><code>.xml</code> ファイル (API ドキュメント)</p>
+</li>
+<li><p>ファイル名に <code>vshost</code> が含まれるファイル (例: <code>MyGame.vshost.exe</code>、<code>MyGame5.vshost.exe.manifest</code>)</p>
+</li>
+<li><p><code>x64</code>、<code>x86</code>、<code>data</code> 以外のフォルダー</p>
+</li>
+<li><p>カスタム構成ファイル (つまり、Stride で作成されないファイル) など、他の必要のないファイル</p>
+</li>
+</ul>
+<h2 id="3-ゲームを配布する">3. ゲームを配布する</h2>
+<p>リリース ビルドを作成した後は、目的に最も適した方法で配布します。</p>
+<p>Stride で作成されたゲームを Windows で実行するには、次のものが必要です。</p>
+<ul>
+<li><p>.NET 4.6.1</p>
+</li>
+<li><p>DirectX11 (Windows 10 以降に含まれます)、OpenGL、または Vulkan</p>
+</li>
+<li><p>Visual C++ 2015 ランタイム (Visual Studio でのプロジェクトのプロパティの設定に応じて、x86 および x64 のどちらか一方または両方)</p>
+</li>
+</ul>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="../platforms/add-or-remove-a-platform.html">プラットフォームを追加または削除する</a></li>
+<li><a href="version-control.html">バージョン管理</a></li>
+<li><a href="project-structure.html">プロジェクトの構造</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/files-and-folders/distribute-a-game.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

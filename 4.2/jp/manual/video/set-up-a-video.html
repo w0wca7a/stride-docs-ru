@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ビデオのセットアップ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ビデオのセットアップ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/video/set-up-a-video.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ビデオのセットアップ">ビデオのセットアップ</h1>
+
+<!--
+# Set up a video
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Programmer</span>
+<span class="badge text-bg-success">Designer</span>
+-->
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/video-thumbnail.jpg">
+   <source src="media/video-in-game.mp4" type="video/mp4">
+</video>
+</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Stride はほとんどの主要なビデオフォーマットをサポートしていますが、それらは <code>.mp4</code> に変換されます。コンパイル時間を短縮するために、最初から <code>.mp4</code> ファイルを使用することをお勧めします。そうすれば、Stride がそれらを変換する必要がなくなります。</p>
+</div>
+<!--
+>[!Note]
+>Stride supports most major video formats, but converts them to `.mp4`. To reduce compilation time, we recommend you use `.mp4` files so Stride doesn't have to convert them.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>今のところ、Stride は iOS プラットフォームではビデオをサポートしていません。</p>
+</div>
+<!--
+>[!Note]
+>Currently, Stride doesn't support video on iOS platforms.
+-->
+<h2 id="1-ビデオアセットを追加する">1. ビデオアセットを追加する</h2>
+<!--
+## 1. Add a video asset
+-->
+<p>ゲームでビデオを使う前に、<a href="../game-studio/assets.html">アセット</a>としてインポートする必要があります。</p>
+<!--
+Before you can use a video in your game, you need to import it as an [asset](../game-studio/assets.md). 
+-->
+<ol>
+<li><p>ビデオファイルを、<strong>エクスプローラー</strong>から<strong>アセットビュー</strong>にドラッグします。</p>
+<p>または、<strong>アセットビュー</strong>で [<strong>Add asset</strong>] をクリックし、[<strong>Media</strong>] &gt; [<strong>Video</strong>] を選択し、追加したいビデオを選択して [<strong>Open</strong>] をクリックします。</p>
+<p><img src="media/add-video-asset.png" alt="Add video asset"></p>
+</li>
+<li><p>ビデオがオーディオトラックを持っている場合は、ビデオとオーディオを同時にインポートするか、あるいはビデオからオーディオをインポートすることができます。</p>
+<p><img src="media/import-from-video.png" alt="Import video"></p>
+</li>
+<li><p>[<strong>OK</strong>] をクリックします。</p>
+<p>Stride は、ビデオをアセットとして<strong>アセットビュー</strong>に追加します。ビデオファイルからオーディオトラックをインポートした場合は、Stride はそれらを独立した<a href="../audio/index.html">オーディオ</a>アセットとして追加します。</p>
+<p><img src="media/video-and-audio-assets.png" alt="Video and audio assets"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>今のところ、アセットプレビューでビデオをプレビューすることはできません。</p>
+</div>
+<p>ビデオアセットのプロパティの詳細については、<a href="video-properties.html">ビデオのプロパティ</a>を参照してください。</p>
+</li>
+</ol>
+<!--
+1. Drag the video file from **Explorer** into the **Asset View**.
+
+    Alternatively, in the **Asset View**, click **Add asset** and select **Media > Video**, then browse to the video you want to add and click **Open**.
+
+    ![Add video asset](media/add-video-asset.png)
+
+2. If the video has audio tracks, you can import these at the same time, or import just the audio from the video.
+
+    ![Import video](media/import-from-video.png)
+
+3. Click **OK**.
+
+    Stride adds the video as an asset in the **Asset View**. If you imported audio tracks from the video file, Stride adds them as separate [audio assets](../audio/index.md).
+
+    ![Video and audio assets](media/video-and-audio-assets.png)
+
+    >[!Note]
+    >Currently, you can't preview videos in the Asset Preview.
+
+    For information about video asset properties, see [Video properties](video-properties.md).
+-->
+<h2 id="2-ビデオコンポーネントを追加する">2. ビデオコンポーネントを追加する</h2>
+<!--
+## 2. Add a video component
+-->
+<ol>
+<li><p><strong>シーンエディター</strong>で、ビデオコンポーネントを追加する先となるエンティティを選択または作成します。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>通常は、ビデオを再生するためのテクスチャーを持つエンティティにビデオコンポーネントを追加するのが最も簡単です。そうすることで、シーンが整理しやすくなります。</p>
+</div>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、[<strong>Add component</strong>] をクリックし、[<strong>Video</strong>] &gt; [<strong>Video</strong>] を選択します。</p>
+<p><img src="media/add-component.png" alt="Add video component"></p>
+<p>Stride は、エンティティに<strong>ビデオコンポーネント</strong>を追加します。</p>
+<p><img src="media/video-component.png" alt="Video component"></p>
+</li>
+<li><p><strong>Video</strong> プロパティの <strong>Source</strong> で、ビデオアセットを選択します。</p>
+<p><img src="media/video-source.png" alt="Video source"></p>
+</li>
+<li><p><strong>Target</strong> プロパティで、ビデオの表示に使用するテクスチャを選択します。</p>
+<p><img src="media/video-target.png" alt="Video target"></p>
+<p>モデルは、このテクスチャーをビデオの表示に使います。</p>
+<p>ビデオが再生されていないときには、Stride はそのテクスチャを代わりに表示します。</p>
+</li>
+</ol>
+<!--
+1. In the **Scene Editor**, select or create an entity to add a video component to.
+
+    >[!Tip]
+    >It's usually simplest to add the component to the same entity that has the texture plays the video. This just makes it easier to organize your scene.
+
+2. In the **Property Grid**, click **Add component** and select **Video**.
+
+    ![Add video component](media/add-component.png)
+
+    Stride adds a **video component** to the entity.
+
+    ![Video component](media/video-component.png)
+
+3. In the **Video** properties, under **Source**, select the video asset.
+
+    ![Video source](media/video-source.png)
+
+4. Under **Target**, select the texture you want to display the video from.
+
+    ![Video target](media/video-target.png)
+
+    Models that use this texture will display the video.
+
+    When the video isn't playing in your scene, Stride displays the texture instead. 
+-->
+<h2 id="3-ビデオを再生するスクリプトを作成する">3. ビデオを再生するスクリプトを作成する</h2>
+<!--
+## 3. Create a script to play the video
+-->
+<p>ビデオコンポーネントをセットアップした後に、<a href="../scripts/index.html">スクリプト</a>で以下のように再生します。</p>
+<pre><code class="lang-cs">myVideoComponent.Instance.Play();
+</code></pre>
+<h3 id="その他の関数">その他の関数</h3>
+<!--
+### Other functions
+-->
+<ul>
+<li><code>LoopRange</code>: ループ範囲（<code>PlayRange</code> で指定した範囲内である必要があります）。</li>
+<li><code>IsLooping</code>: ビデオを無限にループします。</li>
+<li><code>SpeedFactor</code>: 再生速度。通常の速度は <code>1</code> です。</li>
+<li><code>PlayState</code>: 現在のビデオ再生状態（<code>playing</code>, <code>paused</code>, <code>stopped</code> のいずれか)。</li>
+<li><code>Duration</code>: ビデオの長さ。</li>
+<li><code>CurrentTime</code>: 現在の再生時刻（ビデオの先頭から）。</li>
+<li><code>Volume</code>: オーディオの音量。</li>
+<li><code>PlayRange</code>: ビデオの開始時刻と終了時刻。</li>
+<li><code>Play/Pause/Stop</code>: ビデオを再生、一時停止、停止します。</li>
+<li><code>Seek</code>: 指定時刻に移動します。</li>
+</ul>
+<!--
+* `LoopRange`: The looping range (must be an area in the video in `PlayRange`)
+* `IsLooping`: Loop the video loop infinitely
+* `SpeedFactor`: Set the video play speed. `1` is normal speed.
+* `PlayState`: The current video play state (`playing`, `paused` or `stopped`)
+* `Duration`: The duration of the video
+* `CurrentTime`: The current play time in the video
+* `Volume`: The audio volume
+* `PlayRange`: The video start and end time
+* `Play/Pause/Stop`: Play, pause, or stop the video
+* `Seek`: Seek to a given time
+-->
+<h3 id="サンプルスクリプト">サンプルスクリプト</h3>
+<!--
+### Example script
+-->
+<pre><code class="lang-cs">{
+    public class VideoScript : StartupScript
+    {
+        // Game Studioは、このスクリプトで宣言したパブリックメンバーフィールドとプロパティを表示します。
+        // Game Studio displays the public member fields and properties you declare in this script
+
+        public override void Start()
+        {
+            // スクリプトの初期化。
+            // Initialization of the script.
+            Entity.Get&lt;VideoComponent&gt;().Instance.Play();
+        }
+    }
+}
+</code></pre>
+<h2 id="4-エンティティにスクリプトを追加する">4. エンティティにスクリプトを追加する</h2>
+<!--
+## 4. Add the script to the entity
+-->
+<ol>
+<li><p><strong>シーンエディター</strong>で、ビデオコンポーネントを持つエンティティを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、[<strong>Add component</strong>] をクリックし、ビデオスクリプトを選択します。</p>
+<p><img src="media/add-video-script.png" alt="My video script"></p>
+<p>Stride は、そのスクリプトをコンポーネントとして追加します。</p>
+<p><strong>プロパティグリッド</strong>で、コンポーネントのプロパティで<a href="../scripts/public-properties-and-fields.html">スクリプトで定義したpublic変数</a>を調整することができます。</p>
+<p><img src="media/video-script-properties.png" alt="Properties"></p>
+</li>
+</ol>
+<!--
+1. In the **Scene Editor**, select the entity that has the video component.
+
+2. In the **Property Grid**, click **Add component** and select the video script.
+
+    ![My video script](media/add-video-script.png)
+
+    Stride adds the script as a component.
+
+    You can adjust [public variables you define in the script](../scripts/public-properties-and-fields.md) in the **Property Grid** under the script component properties.
+
+    ![Properties](media/video-script-properties.png)
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="video-properties.html">ビデオのプロパティ</a></li>
+</ul>
+<!--
+* [Video properties](video-properties.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/video/set-up-a-video.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>既定値の変更が実行時に無視される | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="既定値の変更が実行時に無視される | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/troubleshooting/default-value-changes-ignored-at-runtime.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="既定値の変更が実行時に無視される">既定値の変更が実行時に無視される</h1>
+
+<p>スクリプトをコンポーネントとしてプロジェクトに追加すると、［Property grid］にそのパブリック変数が一覧表示されます。これらは、実行時に使用される値です。</p>
+<p>しかし、その後、スクリプトで既定値を変更した場合、コンポーネントは新しい値に更新されません。</p>
+<p>たとえば、スクリプトに既定値が <code>5.0f</code> である変数 <code>SpeedFactor</code> が含まれるものとします。このスクリプトをコンポーネントとしてプロジェクトに追加します。その後、スクリプトで <code>SpeedFactor</code> 変数の既定値を <code>6.0f</code> に変更し、スクリプトを保存して、プロジェクトを実行します。この場合、コンポーネントはスクリプトによる変更で更新されず、変数 <code>SpeedFactor</code> の値は <code>5.0f</code> のままです。</p>
+<h2 id="修正方法">修正方法</h2>
+<p>プロジェクトで、スクリプト コンポーネントをいったん削除して追加しなおします。</p>
+<p>または、コンポーネントのプロパティの値をスクリプトで変更した後で Game Studio によってそれが更新されるようにしたい場合は、追加コードで行うことができます。これを適用するプロパティごとに新しいコード行を追加する必要があります。</p>
+<ol>
+<li><p>スクリプトの先頭に <code>using System.ComponentModel</code> を追加します。</p>
+</li>
+<li><p>更新する変数の上に、<code>［DefaultValue()］</code> を追加します。たとえば、変数が <code>SpeedFactor</code> の場合は、次のようにします。</p>
+</li>
+</ol>
+<pre><code class="lang-cs">[DefaultValue(6.0f)]
+public float SpeedFactor { get; set; } = 6.0f;
+</code></pre>
+<p>値を変更するときは、<code>SpeedFactor</code> と <code>DefaultValue</code> の両方を同じ値に更新します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>これは両方向には動作しません。［Property grid］で <code>DefaultValue</code> 以外の値を設定した場合、Game Studio は値をアセットに保存して、実行時に既定値をオーバーライドします。</p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/troubleshooting/default-value-changes-ignored-at-runtime.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

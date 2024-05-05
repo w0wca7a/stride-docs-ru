@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ロギング | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ロギング | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/troubleshooting/logging.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ロギング">ロギング</h1>
+
+<!--
+# Logging
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><a class="xref" href="../../api/Stride.Engine.ScriptComponent.html#Stride_Engine_ScriptComponent_Log">Log</a> クラスを使うと、ゲームの実行中に、ゲームに関する情報を<strong>ログ</strong>に記録することができます。</p>
+<!--
+You can **log** information about your game while it runs using [Log](xref:Stride.Engine.ScriptComponent.Log).
+-->
+<p>自動的に情報を取得する<a href="profiling.html">プロファイリング</a>とは異なり、独自のログメッセージを作成し、それをいつトリガーするかを決めるのはあなた自身です。例えば、キャラクターが特定のアクションを行ったときにトリガーされるログメッセージを作成することができます。これは、ゲームのパフォーマンスを調査するのに役立ちます。</p>
+<!--
+Unlike [profiling](profiling.md), which retrieves information automatically, it's up to you to create your own log messages and define when they're triggered. For example, you can create a log message that triggers when a character performs a certain action. This is useful to investigate how your game is performing.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>リリースモードでゲームをビルドすると、ログの記録が無効になります。</p>
+</div>
+<!--
+>[!Note]
+>Logging is disabled when you build the game in release mode.
+-->
+<p>ロギングを使用し、デバッグモードでゲームを実行すると、Stride は、ロギング情報を表示する 2 つ目のウィンドウでコンソールを開きます。メッセージは、レベルごとに色分けされます。
+モジュールの名前（ログメッセージを含むスクリプトなど）が、かっこ内に表示されます。続いてログレベル（<strong>Warning</strong>, <strong>Error</strong> など）、そしてログメッセージが表示されます。</p>
+<!--
+When you use logging and run your game in debug mode, Stride opens a console in a second window to display logging information. The messages are color-coded by level. 
+The name of the module (such as the script containing the log message) is displayed in brackets. This is followed by the log level (eg **Warning**, **Error**, etc), then the log message.
+-->
+<p><img src="media/logging-in-console.png" alt="Logging in console"></p>
+<p>コンソールには、自分のスクリプトだけでなく、すべてのモジュールからのログメッセージが表示されます。例えば、<a class="xref" href="../../api/Stride.Core.Serialization.Contents.ContentManager.html">ContentManager</a> からのメッセージも表示されます。</p>
+<!--
+The console displays log messages from all modules, not just your own scripts. For example, it also displays messages from the @'Stride.Core.Serialization.Contents.ContentManager'.
+-->
+<p>Visual Studio からゲームを実行した場合、ログメッセージは、代わりに Visual Studio の<strong>出力</strong>ウィンドウに表示されます。</p>
+<!--
+If you run your game from Visual Studio, log messages are shown in the Visual Studio **Output** window instead.
+-->
+<p><img src="media/log-output-in-visual-studio.png" alt="Log output window"></p>
+<h2 id="ログレベル">ログレベル</h2>
+<!--
+## Log levels
+-->
+<p>ログメッセージには 6 つのレベルがあり、重大度に応じて使い分けられます。</p>
+<!--
+There are six levels of log message, used for different levels of severity.
+-->
+<table>
+<thead>
+<tr>
+<th>ログレベル</th>
+<th>色</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debug</td>
+<td>灰</td>
+<td>高度なデバッグを目的としたステップバイステップの情報</td>
+</tr>
+<tr>
+<td>Verbose</td>
+<td>白</td>
+<td>詳細情報</td>
+</tr>
+<tr>
+<td>Info</td>
+<td>緑</td>
+<td>一般的な情報</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>黄</td>
+<td>問題を引き起こすかもしれないマイナーなエラー</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>赤</td>
+<td>エラー</td>
+</tr>
+<tr>
+<td>Fatal</td>
+<td>赤</td>
+<td>ゲームをクラッシュさせる深刻なエラー</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Log level | Color | Description
+|-----------|-------|-----
+| Debug | Gray | Step-by-step information for advanced debugging purposes
+| Verbose | White | Detailed information
+| Info | Green | General information
+| Warning | Yellow | Minor errors that might cause problems
+| Error | Red |Errors
+| Fatal | Red | Serious errors that crash the game
+-->
+<p>既定では、ログは <strong>Info</strong> レベル以上のメッセージを表示します。つまり、既定では <strong>Debug</strong>, <strong>Verbose</strong> のメッセージは表示されません。これを変更するには、後述する <strong>最小レベルの設定</strong> を参照してください。</p>
+<!--
+By default, the log displays messages for the level **Info** and higher. This means it doesn't display **Debug** or **Verbose** messages. To change this, see **Set the minimum level** below.
+-->
+<h2 id="ログメッセージを出力する">ログメッセージを出力する</h2>
+<!--
+## Write a log message
+-->
+<p>ログを出力したいコードが含まれるスクリプトで、次のように記述します。</p>
+<!--
+In the script containing code you want to log, write:
+-->
+<pre><code class="lang-cs">Log.Debug(&quot;My log message&quot;);
+</code></pre>
+<p><code>Debug</code> の部分を、ログメッセージに使用するレベルで置き換えることができます（先述の <strong>ログレベル</strong> を参照）。</p>
+<!--
+You can replace `Debug` with the level you want to use for the log message (see **Log levels** above).
+-->
+<p>これを <code>if</code> 文と組み合わせることで、特定の条件を満たしたときにメッセージをログに残すことができます（後述する <strong>サンプルスクリプト</strong> を参照）。</p>
+<!--
+You can combine this with `if` statements to log this message under certain conditions (see **Example script** below).
+-->
+<h2 id="ログレベルを設定する">ログレベルを設定する</h2>
+<!--
+## Set the log level
+-->
+<p>ログに出力する最小のレベルを設定することができます。例えば、<strong>Warning</strong> 以上の厳しいメッセージだけを表示したい場合は、次のようにします。</p>
+<!--
+You can set a minimum log level to display. For example, if you only want to see messages as severe as **Warning** or higher, use:
+-->
+<pre><code class="lang-cs">Log.ActivateLog(LogMessageType.Warning);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>これはグローバルな設定ではありません。設定したログレベルは、設定したスクリプトでのみ適用されます。</p>
+</div>
+<!--
+>[!Note]
+>This isn't a global setting. The log level you set only applies to the script you set it in.
+-->
+<h3 id="実行時にログレベルを変更する">実行時にログレベルを変更する</h3>
+<!--
+### Change the log level at runtime
+-->
+<pre><code class="lang-cs">((Game)Game).ConsoleLogLevel = LogMessageType.myLogLevel;
+</code></pre>
+<h3 id="特定のログを無効にする">特定のログを無効にする</h3>
+<!--
+### Disable a specific log
+-->
+<pre><code class="lang-cs">GlobalLogger.GetLogger(&quot;RouterClient&quot;).ActivateLog(LogMessageType.Debug, LogMessageType.Fatal, false); 
+// RouterClient モジュールのロギングを無効化
+// Disables logging of the RouterClient module
+</code></pre>
+<h3 id="コンソールでのロギングを無効化する">コンソールでのロギングを無効化する</h3>
+<!--
+### Disable logging in the console
+-->
+<pre><code class="lang-cs">((Game)Game).ConsoleLogMode = ConsoleLogMode.None;
+</code></pre>
+<h3 id="ログファイルを作成する">ログファイルを作成する</h3>
+<!--
+### Create a log file
+-->
+<p>ログ出力をテキストファイルに保存するには、<code>Start</code> メソッドに以下のコードを追加します。</p>
+<!--
+To save the log output to a text file, add this code to the `Start` method:
+-->
+<pre><code class="lang-cs">var fileWriter = new TextWriterLogListener(new FileStream(&quot;myLogFile.txt&quot;, FileMode.Create));
+GlobalLogger.GlobalMessageLogged += fileWriter;
+</code></pre>
+<p>これにより、プロジェクトの Debug フォルダにファイルが作成されます。（例：<em>MyGame\MyGame\Bin\Windows\Debug\myLogFile.txt</em>）</p>
+<!--
+This creates a file in the Debug folder of your project (eg *MyGame\MyGame\Bin\Windows\Debug\myLogFile.txt*).
+-->
+<h2 id="サンプルスクリプト">サンプルスクリプト</h2>
+<!--
+## Example script
+-->
+<p>次のスクリプトは、<code>MyTexture</code> テクスチャーが読み込まれたかどうかを確認する例です。
+テクスチャーが読み込まれたとき、ログはデバッグメッセージ（<code>Log.Error</code>）を表示します。
+読み込まれなかったときは、ログはエラーメッセージ（<code>Log.Debug</code>）を記録します。</p>
+<!--
+The following script checks that the texture `MyTexture` is loaded. When the texture loads, the log displays a debug message (`Log.Error`). If it doesn't load, the log records an error message (`Log.Debug`).
+-->
+<pre><code class="lang-cs">using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Stride.Core.Diagnostics;
+using Stride.Core.Mathematics;
+using Stride.Input;
+using Stride.Engine;
+using Stride.Graphics;
+
+namespace MyGame
+{
+    public class Script : SyncScript
+    {
+		public Texture myTexture;
+
+        public override void Start()
+        {
+            // Initialization of the script.
+            Log.ActivateLog(LogMessageType.Debug);
+            Log.Debug(&quot;Start loading MyTexture&quot;);
+
+            myTexture = Content.Load&lt;Texture&gt;(&quot;MyTexture&quot;);
+            if (myTexture == null)
+            {
+                Log.Error(&quot;MyTexture not loaded&quot;);
+            }
+            else
+            {
+                Log.Debug(&quot;MyTexture loaded successfully&quot;);
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="debug-text.html">デバッグ テキスト</a></li>
+<li><a href="profiling.html">プロファイリング</a></li>
+<li><a href="../scripts/index.html">スクリプト</a></li>
+</ul>
+<!--
+* [Debug text](debug-text.md)
+* [Profiling](profiling.md)
+* [Scripts](../scripts/index.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/troubleshooting/logging.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

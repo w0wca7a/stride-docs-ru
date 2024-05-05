@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>オーディオ エミッター | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="オーディオ エミッター | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/audio/audio-emitters.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="オーディオ-エミッター">オーディオ エミッター</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p><a class="xref" href="../../api/Stride.Audio.AudioEmitter.html">オーディオ エミッター コンポーネント</a>は、<a href="spatialized-audio.html">空間オーディオ</a>を作成するために使用されるオーディオを生成します。任意のエンティティにオーディオ エミッター コンポーネントを追加できます。</p>
+<p><a href="audio-listeners.html">オーディオ リスナー</a>がオーディオ エミッターに近づいたり離れたりすると、サウンドのピッチとボリュームが変化します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+</div>
+<p>オーディオ エミッターからのオーディオを聴くには、シーン内に少なくとも 1 つの <a class="xref" href="../../api/Stride.Audio.AudioListener.html">AudioListenerComponent</a> が必要です。</p>
+<h2 id="1-オーディオ-エミッター-アセットをセットアップする">1. オーディオ エミッター アセットをセットアップする</h2>
+<ol>
+<li><p>［Scene view］で、オーディオ エミッターにするエンティティを選択します。</p>
+<p><img src="media/audio-add-audiolistener-component-select-entity.png" alt="Select an entity"></p>
+</li>
+<li><p>［Property grid］で［Add component］をクリックして、［Audio Emitter］を選択します。</p>
+<p><img src="media/audio-add-audioemitter-component-select-entity.png" alt="Add AudioEmitter Component"></p>
+<p>次に、サウンドをエミッターに追加する必要があります。</p>
+</li>
+<li><p>［Audio Emitter］で <img src="../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、サウンドの名前を指定します。</p>
+<p><img src="media/audio-play-audioemitter-component-add-new-entry.png" alt="Add New Sound Entry"></p>
+</li>
+<li><p>［Asset view］から、前のステップで追加したサウンドに、サウンド アセットをドラッグ アンド ドロップします。</p>
+<p><img src="media/audio-play-drag-and-drop-audio-asset.gif" alt="Drag and drop a sound asset"></p>
+<p>または、<img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p><img src="media/audio-play-audioemitter-component-pick-an-asset.png" alt="Pick up an asset"></p>
+<p>サウンド アセットを選択します。</p>
+<p><img src="media/audio-play-audioemitter-component-add-select-audio-asset.png" alt="Select sound asset"></p>
+</li>
+<li><p>ステップ 3 と 4 を繰り返して、必要なサウンド アセットをすべて追加します。</p>
+</li>
+<li><p>このオーディオ エミッターのプロパティを構成します。</p>
+<p><img src="media/audio-emitter-properties.png" alt="Audio emitter properties"></p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use HRTF</td>
+<td>頭部伝達関数 (HRTF) を有効にします。これを有効にすると、サウンドは 3D 空間内の特定のポイントから発しているように聞こえ、バイノーラル オーディオが合成されます。詳細については、「<a href="hrtf.html">HRTF</a>」を参照してください。</td>
+</tr>
+<tr>
+<td>Directional factor</td>
+<td>オーディオの指向性を示します。値は 0 (最小) ～ 1 (最大) です。0 に設定すると、オーディオはすべての方向から放射されます。この設定は、スライダーまたは数値で制御できます。</td>
+</tr>
+<tr>
+<td>Environment</td>
+<td>オーディオの残響タイプです。実際の環境の残響をシミュレートします (小、中、大、アウトドア)。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-オーディオを再生するスクリプトを作成する">2. オーディオを再生するスクリプトを作成する</h2>
+<p>次に、サウンド アセットの再生と構成を行うスクリプトを作成する必要があります。</p>
+<ol>
+<li><p>スクリプトでは、使用する各サウンドに対して <a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html">AudioEmitterSoundController</a> をインスタンス化する必要があります。</p>
+<p>たとえば、2 つのサウンド <strong>MySound1</strong> と <strong>MySound2</strong> がある場合は次のようになります。</p>
+<pre><code class="lang-cs"> AudioEmitterComponent audioEmitterComponent = Entity.Get&lt;AudioEmitterComponent&gt;();
+ AudioEmitterSoundController mySound1Controller = audioEmitterComponent［&quot;MySound1&quot;］;
+ AudioEmitterSoundController mySound2Controller = audioEmitterComponent［&quot;MySound2&quot;］;
+</code></pre>
+</li>
+<li><p><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html">AudioEmitterSoundController</a> の次のプロパティとメソッドを使用して、オーディオを再生および構成します。</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>プロパティ/メソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_IsLooping">IsLooping</a></td>
+<td>オーディオをループします。<a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_PlayAndForget">PlayAndForget()</a> が true に設定されている場合は、何も行いません。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_Pitch">Pitch</a></td>
+<td>サウンドのピッチ (周波数) を取得または設定します。空間オーディオの場合は注意して使用する必要があります。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_PlayState">PlayState</a></td>
+<td>オーディオ エミッター サウンド コントローラーの現在の状態を取得します。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_Volume">Volume</a></td>
+<td>オーディオのボリュームです。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_Pause">Pause()</a></td>
+<td>オーディオを一時停止します。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_Play">Play()</a></td>
+<td>オーディオを再生します。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_PlayAndForget">PlayAndForget()</a></td>
+<td>オーディオを 1 回再生してから、メモリをクリアします。発砲音のような短いサウンドに便利です。<a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_IsLooping">IsLooping</a> をオーバーライドします。</td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html#Stride_Audio_AudioEmitterSoundController_Stop">Stop()</a></td>
+<td>オーディオを停止します。</td>
+</tr>
+</tbody>
+</table>
+<p>次に例を示します。</p>
+<pre><code class="lang-cs">mySound1Controller.IsLooping = true;
+mySound1Controller.Pitch = 2.0f;
+mySound1Controller.Volume = 0.5f;
+mySound1Controller.Play();
+</code></pre>
+<p>このサウンドは、元のサウンドの 2 倍のピッチと半分のボリュームでループします。詳細については、<a class="xref" href="../../api/Stride.Audio.AudioEmitterSoundController.html">AudioEmitterSoundController Stride API のドキュメント</a>を参照してください。</p>
+<h2 id="3-オーディオ-エミッター-エンティティにスクリプトを追加する">3. オーディオ エミッター エンティティにスクリプトを追加する</h2>
+<p>Game Studio では、スクリプトは［Add component］の下にコンポーネントとして一覧表示されます。オーディオ エミッター エンティティにスクリプトを追加します。</p>
+<ol>
+<li><p>［Scene view］で、オーディオ エミッターにするエンティティを選択します。</p>
+<p><img src="media/audio-add-audiolistener-component-select-entity.png" alt="Select an entity"></p>
+</li>
+<li><p>［Add component］をクリックしてスクリプトを選択します。</p>
+<p><img src="media/add-sound-script.png" alt="Add audio script"></p>
+</li>
+</ol>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="spatialized-audio.html">空間オーディオ</a></li>
+<li><a href="audio-listeners.html">オーディオ リスナー</a></li>
+<li><a href="global-audio-settings.html">グローバル オーディオ設定</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/audio/audio-emitters.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

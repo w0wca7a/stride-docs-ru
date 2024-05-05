@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>アーキタイプ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="アーキタイプ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/archetypes.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="アーキタイプ">アーキタイプ</h1>
+
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p><strong>アーキタイプ</strong>とは、自身から<strong>派生</strong>するアセットのプロパティを制御するマスター アセットです。派生アセットは、アセットの「リミックス」バージョンを作成するときに便利です。</p>
+<p>たとえば、<em>Metal</em> という名前のマテリアル アセットを共有する 3 つの球体エンティティがあるものとします。Metal アセットには、色や光沢度などのプロパティがあります。</p>
+<p><img src="media/archetypes-three-spheres-metal.png" alt="Three metal spheres"></p>
+<p><strong>Metal</strong> アセットのプロパティを変更すると、3 つの球体すべてに適用されます。たとえば、色プロパティを変更すると、3 つの球体すべての色が変わります。</p>
+<p><img src="media/archetypes-three-spheres-gold.png" alt="Three gold spheres"></p>
+<p>次に、<em>1 つ</em>の球体だけの色を変更し、他のプロパティは同じままにしたいものとします。その場合は、マテリアル アセットを複製し、その色を変更して、新しいアセットを 1 つの球体だけに適用することで実現できます。しかし、後で<em>すべての</em>球体の別のプロパティを変更しようとすると、両方のアセットを変更する必要があります。これでは時間がかかり、間違うおそれもあります。</p>
+<p>もっとよい方法は、アーキタイプから新しいアセットを派生することです。派生アセットはアーキタイプからプロパティを継承し、必要に応じて個別のプロパティをオーバーライドできます。たとえば、球体のマテリアル アセットを派生して、その色をオーバーライドできます。その後、アーキタイプの光沢度を変更すると、3 つの球体すべての光沢度が変わります。</p>
+<p><img src="media/archetypes-three-spheres.png" alt="Create derived asset"></p>
+<p>アーキタイプからアセットを派生し、さらにその派生アセットから別のアセットを派生することができます。このようにすると、アセットのさまざまなレイヤーを作成して、プロジェクトを整理することができます。</p>
+<pre><code class="lang-cs">Archetype
+    Derived asset
+        Derived asset
+</code></pre>
+<h2 id="アーキタイプからアセットを派生する">アーキタイプからアセットを派生する</h2>
+<p>［Asset view］で、新しいアセットの派生元にするアセットを右クリックし、［Create derived asset］を選択します。</p>
+<p><img src="media/archetypes-create-derived-asset.png" alt="Create derived asset"></p>
+<p>新しい<strong>派生アセット</strong>がプロジェクトに追加されます。このアセットは、プロパティを<strong>アーキタイプ</strong>アセットから派生しています。</p>
+<p>派生アセットのプロパティでは、アーキタイプ アセットが［Archetype］に表示されます。</p>
+<p><img src="media/archetypes-archetype-in-property-grid.png" alt="Derived asset in Property Grid"></p>
+<p>［Property grid］でアーキタイプ アセットを右クリックし、［Select the referenced asset］を選択して、アーキタイプ アセットをすばやく選択できます。</p>
+<p><img src="media/archetypes-select-the-referenced-asset.png" alt="Select referenced asset"></p>
+<h3 id="オーバーライドされたプロパティ">オーバーライドされたプロパティ</h3>
+<p>［Property grid］では、派生アセットのプロパティのうち、アーキタイプと異なるものがわかるように表示されます。<strong>オーバーライド</strong>された<strong>固有</strong>のプロパティは<strong>白</strong>で、<strong>継承</strong>されている (同じ) プロパティは<strong>グレー</strong>で表示されます。</p>
+<p>次のスクリーンショットでは、［Diffuse Map］プロパティはオーバーライドされています。それ以外のプロパティは継承されています。</p>
+<p><img src="media/archetypes-overriden-properties-appear-white.png" alt="Overridden properties are white"></p>
+<h3 id="プロパティをアーキタイプの値にリセットする">プロパティをアーキタイプの値にリセットする</h3>
+<p>派生アセットのオーバーライドされた固有のプロパティを、アーキタイプの値にリセットできます。そのためには、オーバーライドされたプロパティを右クリックして、［Reset to base value］を選択します。</p>
+<p><img src="media/archetypes-reset-property-to-base-value.png" alt="Reset to base value"></p>
+<h3 id="アーキタイプをクリアする">アーキタイプをクリアする</h3>
+<p>アーキタイプと派生アセットの間のリンクは削除できます。つまり、派生アセットはアーキタイプに対する変更を継承しなくなり、完全に独立したアセットになります。</p>
+<p>そのためには、［Asset view］で派生アセットを右クリックし、［Clear archetype］を選択します。</p>
+<p><img src="media/archetypes-clear-archetypes.png" alt="Clear archetype"></p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="assets.html">アセット</a></li>
+<li><a href="prefabs/index.html">プレハブ</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/archetypes.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

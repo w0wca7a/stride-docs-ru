@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Документация по игровому движку Stride | Stride Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Документация по игровому движку Stride | Stride Docs ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="документация-по-игровому-движку-stride">Документация по игровому движку Stride</h1>
+
+<p>Добро пожаловать в документацию по игровому движкуStride, специально разработанную для разработчиков игр, создателей визуальных эффектов и всех пользователей мощного <a href="https://www.stride3d.net/">игрового движка Stride</a>. Этот ресурс содержит подробные примеры, подробное руководство пользователя и подробные ссылки на API, которые помогут вам воплотить в жизнь ваши идеи разработки игр с помощью движка Stride.
+Независимо от того, новичок ли вы в Stride или хотите отточить свои навыки, вы найдете все, что вам нужно, прямо здесь. Погрузитесь в игру и давайте создадим что-то необыкновенное!</p>
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title h5">📚 Руководство пользователя</h2>
+                <p class="card-text">Узнайте, как создавать проекты и выполнять задачи в Stride, с помощью наших пошаговых руководств.</p>
+            </div>
+            <p class="px-3 mb-4"><a class="stretched-link" href="manual/index.html">Ознакомится с руководством пользователя Stride</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title h5">🎓 Примеры</h2>
+                <p class="card-text">Изучите ряд руководств по игровому движку Stride. Наши текущие уроки включают в себя: <a href="tutorials/gamestudio/index.html">Game Studio</a>, <a href="tutorials/csharpbeginner/index.html">C# для начинающих</a> и <a href="tutorials/csharpintermediate/index.html">C# для продвинутых</a>.</p>
+            </div>
+            <p class="px-3 mb-4"><a class="" href="tutorials/index.html">Ознакомится с примерами Stride</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title h5">📝 Релизы</h2>
+                <p class="card-text">Узнайте о последних функциях и улучшениях Stride, а также предыдущих версиях.</p>
+            </div>
+            <p class="px-3 mb-4"><a class="stretched-link" href="ReleaseNotes/index.html">Просмотр примечаний к выпускам Stride</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title h5">🌟 Вклад</h2>
+                <p class="card-text">Присоединяйтесь к нашему энергичному сообществу авторов и внесите свой вклад в развитие Stride. Независимо от того, улучшаете ли вы <a href="contributors/engine/index.html">движок</a>, <a href="contributors/documentation/index.html">документацию</a>, или <a href="contributors/website/index.html">веб-сайт</a>, ваш вклад формирует будущее Stride.</p>
+            </div>
+            <p class="px-3 mb-4"><a class="" href="contributors/index.html">Начните вносить вклад в Stride</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title h5">🔧 Справка по API</h2>
+                <p class="card-text">Получите доступ к документации по API Stride, в которой описаны методы, свойства и другая важная информация.</p>
+            </div>
+            <p class="px-3 mb-4"><a class="stretched-link" href="api/index.html">Справочник по Stride API</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title h5">🔍 Диагностика</h2>
+                <p class="card-text">В мире разработки игр неожиданное поведение является распространенной проблемой. Диагностические инструменты Stride созданы, чтобы помочь вам быстро и эффективно диагностировать и решить эти проблемы.</p>
+            </div>
+            <p class="px-3 mb-4"><a class="stretched-link" href="diagnostics/index.html">Ознакомьтесь с диагностикой</a></p>
+        </div>
+    </div>
+</div>
+<h2 id="-скачать-pdf-версии">📥 Скачать PDF-версии</h2>
+<p>Вы можете скачать PDF-версии различных разделов документации Stride:</p>
+<ul>
+<li><a href="manual/stride-manual.pdf">Руководство пользователя Stride</a>: (Размер файла: 82MB)</li>
+<li><a href="tutorials/stride-tutorials.pdf">Примеры Stride</a>: (Размер файла: 13MB)</li>
+<li><a href="contributors/contributing-in-stride.pdf">Вклад в Stride</a>: (Размер файла: 8MB)</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Обратите внимание: хотя наша документация на английском языке активно обновляется, переводы не всегда могут быть актуальными. Мы рекомендуем пользователям, владеющим английским языком, обращаться к оригиналу для получения последней информации. Чтобы помочь с переводами или сообщить о неточностях, посетите наш GitHub или форумы сообщества. Ваш вклад неоценим!</p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

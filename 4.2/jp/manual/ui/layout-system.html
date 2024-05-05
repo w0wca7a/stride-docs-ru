@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>レイアウト システム | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="レイアウト システム | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/layout-system.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="レイアウト-システム">レイアウト システム</h1>
+
+<!--
+# Layout system
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Programmer</span>
+<span class="badge text-bg-success">Designer</span>
+-->
+<p>Stride UI のレイアウトシステムは、Windows Presentation Foundation（WPF）に似ています。WPF のレイアウトシステムの詳細については、<a href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/layout">MSDNドキュメント</a>を参照してください。WPF のドキュメントの多くは、Stride のレイアウトシステムにも当てはまります。</p>
+<!--
+The Stride UI layout system is similar to Windows Presentation Foundation (WPF). For more information about the WPF layout system, see the [MSDN documentation](https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/layout). Much of the WPF documentation also applies to the Stride layout system.
+-->
+<p>Stride UI システムのすべての <a class="xref" href="../../api/Stride.UI.UIElement.html">UIElement</a> には、それを取り巻く矩形があり、レイアウトで使用されます。Stride は、<a class="xref" href="../../api/Stride.UI.UIElement.html">UIElement</a> の要件、利用可能な画面スペース、制約、マージン、余白、および <a class="xref" href="../../api/Stride.UI.Panels.Panel.html">Panel</a> 要素の特別な動作（特定の方法で子を配置する）に従って、レイアウトを計算します。</p>
+<!--
+Every @'Stride.UI.UIElement' in the Stride UI system has a surrounding rectangle used in layouts. Stride computes layouts according to the @'Stride.UI.UIElement' requirement, available screen space, constraints, margins, padding, and the special behavior of @'Stride.UI.Panels.Panel' elements (which arrange children in specific ways). 
+-->
+<p>レイアウトシステムは、このデータを再帰的に処理して、UI システム内のすべての <a class="xref" href="../../api/Stride.UI.UIElement.html">UIElement</a> の位置とサイズを計算します。</p>
+<!--
+Processing this data recursively, the layout system computes a position and size for every @'Stride.UI.UIElement' in the UI system.
+-->
+<h2 id="measure-と-arrange">Measure と Arrange</h2>
+<!--
+## Measure and arrange
+-->
+<p>Stride では、レイアウトの処理を 2 つのパスで再帰的に行います。<a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Measure_Stride_Core_Mathematics_Vector3_">Measure</a> と <a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Arrange_Stride_Core_Mathematics_Vector3_System_Boolean_">Arrange</a> です。</p>
+<!--
+Stride performs the layout process recursively in two passes: [Measure](xref:Stride.UI.UIElement.Measure(Stride.Core.Mathematics.Vector3)) and [Arrange](xref:Stride.UI.UIElement.Arrange(Stride.Core.Mathematics.Vector3,System.Boolean)).
+-->
+<h3 id="measure">Measure</h3>
+<!--
+### Measure
+-->
+<p><a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Measure_Stride_Core_Mathematics_Vector3_">Measure</a> パスでは、各要素は、<a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Width">Width</a>, <a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Height">Height</a>, <a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Margin">Margin</a>などのプロパティに従って、<a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_DesiredSize">DesiredSize</a> を再帰的に計算します。</p>
+<!--
+In the [Measure](xref:Stride.UI.UIElement.Measure(Stride.Core.Mathematics.Vector3)) pass, each element recursively computes its [DesiredSize](xref:Stride.UI.UIElement#Stride_UI_UIElement_DesiredSize) according to the properties you set, such as @'Stride.UI.UIElement.Width', @'Stride.UI.UIElement.Height', and @'Stride.UI.UIElement.Margin'.
+-->
+<p>一部の <a class="xref" href="../../api/Stride.UI.Panels.Panel.html">Panel</a> 要素は、<a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Measure_Stride_Core_Mathematics_Vector3_">Measure</a> を再帰的に呼び出して、子要素の <a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_DesiredSize">DesiredSize</a> を決定し、それに従って動作します。</p>
+<!--
+Some @'Stride.UI.Panels.Panel' elements call [Measure](xref:Stride.UI.UIElement.Measure(Stride.Core.Mathematics.Vector3)) recursively to determine the  [DesiredSize](xref:Stride.UI.UIElement#Stride_UI_UIElement_DesiredSize) of their children, and act accordingly.
+-->
+<h3 id="arrange">Arrange</h3>
+<!--
+### Arrange
+-->
+<p><a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Arrange_Stride_Core_Mathematics_Vector3_System_Boolean_">Arrange</a> パスは、以下のプロパティを考慮して、要素を配置します。</p>
+<!--
+The [Arrange](xref:Stride.UI.UIElement.Arrange(Stride.Core.Mathematics.Vector3,System.Boolean)) pass arranges the elements, taking into account:
+-->
+<ul>
+<li><a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Margin">Margin</a></li>
+<li><a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Width">Width</a></li>
+<li><a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Height">Height</a></li>
+<li><a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_HorizontalAlignment">HorizontalAlignment</a></li>
+<li><a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_VerticalAlignment">VerticalAlignment</a></li>
+<li><a class="xref" href="../../api/Stride.UI.Panels.Panel.html">Panel</a></li>
+<li>specific <a class="xref" href="../../api/Stride.UI.UIElement.html#Stride_UI_UIElement_Arrange_Stride_Core_Mathematics_Vector3_System_Boolean_">Arrange</a> rules</li>
+</ul>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/layout">MSDN WPF：レイアウト</a></li>
+<li><a href="ui-pages.html">UI ページ</a></li>
+<li><a href="ui-libraries.html">UI ライブラリ</a></li>
+<li><a href="ui-editor.html">UI エディター</a></li>
+<li><a href="add-a-ui-to-a-scene.html">シーンに UI を追加する</a></li>
+</ul>
+<!--
+ * [MSDN WPF layout documentation](https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/layout)
+ * [UI pages](ui-pages.md)
+ * [UI libraries](ui-libraries.md)
+ * [UI editor](ui-editor.md)
+ * [Add a UI to a scene](add-a-ui-to-a-scene.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/layout-system.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

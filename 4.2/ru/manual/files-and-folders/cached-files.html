@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Cached files | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Cached files | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/files-and-folders/cached-files.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="cached-files">Cached files</h1>
+
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
+</div>
+<p>When you build your project, Stride caches the assets and code in folders inside the project.</p>
+<p>You might want to clean the cache if:</p>
+<ul>
+<li><p>the cache is taking up too much space on disk</p>
+</li>
+<li><p>assets don't update in-game after you edit or delete them</p>
+</li>
+</ul>
+<h2 id="clean-the-cache-from-visual-studio">Clean the cache from Visual Studio</h2>
+<ol>
+<li><p>To clean the code cache, under <strong>Build</strong>, select <strong>Clean Solution</strong>.</p>
+<p><img src="media/clean-solution.png" alt="Clean solution"></p>
+</li>
+<li><p>If you have the <a href="../get-started/visual-studio-extension.html">Stride Visual Studio extension</a> installed, you can also clean the asset cache. <strong>Using VS 2022</strong>: To do this, under Extensions &gt; <strong>Stride</strong>, select <strong>Clean intermediate assets for Solution</strong>.</p>
+<p><img src="media/clean-assets.png" alt="Clean solution"></p>
+</li>
+<li><p>Rebuild the project to rebuild the cache from scratch.</p>
+</li>
+</ol>
+<h2 id="clean-the-cache-manually">Clean the cache manually</h2>
+<p>If cleaning the cache from Visual Studio doesn't work, try deleting the files manually.</p>
+<ol>
+<li><p>Delete the following folders:</p>
+<ul>
+<li><p>the binary cache: <em>~/MyGame/MyGame/Bin</em></p>
+</li>
+<li><p>the asset cache: <em>~/MyGame/MyGame/Cache</em></p>
+</li>
+<li><p>the <strong>obj</strong> folders in the platform folders for your game (eg <em>~/MyGame.iOS/obj</em>)</p>
+</li>
+</ul>
+</li>
+<li><p>If you're developing for iOS, on your Mac, also delete: <em>~/Library/Caches/Xamarin/mtbs/builds/MyGame</em></p>
+</li>
+<li><p>Rebuild the project to rebuild the cache from scratch.</p>
+</li>
+</ol>
+<h2 id="clear-the-game-studio-caches">Clear the Game Studio caches</h2>
+<p>In addition to the caches Stride creates for your project, Game Studio keeps caches for the editor.</p>
+<h3 id="asset-cache">Asset cache</h3>
+<p>To speed up asset loading in the editor, Game Studio saves a cache of asset references. It contains data about every asset ever loaded in every project. This means it can grow very large over time.</p>
+<p>By default, the folder is in: <em>%temp%/Stride</em></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>To check or change where Game Studio saves the cache, see <strong>Edit &gt; Settings &gt; Environment &gt; Build cache directory.</strong>
+<img src="media/settings-window.png" alt="Settings"></p>
+</div>
+<p>To clean the cache, delete the folder and run Game Studio again.</p>
+<h3 id="settings-cache">Settings cache</h3>
+<p>Game Studio saves editor information (such as window positions and recently-opened projects) in: <em>%AppData%/Stride</em></p>
+<p>Game Studio also saves information about open tabs and the editor camera position in the <code>.sdpkg.user</code> file in the project folder (eg <em>~/MyGame/MyGame/MyGame.sdpkg.user</em>).</p>
+<p>These files are small, but you might want to delete them if you get Game Studio into a bad state. Deleting them doesn't affect anything in your project.</p>
+<p>After you delete cache files, when you start Game Studio, it builds a new cache using the default settings.</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>You can also reset the Game Studio layout without clearing the cache in <strong>Edit &gt; Settings &gt; Interface &gt; Reset Game Studio layout</strong>.
+<img src="media/game-studio-layout-reset-button.png" alt="Reset Game Studio layout"></p>
+</div>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="project-structure.html">Project structure</a></li>
+<li><a href="version-control.html">Version control</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/files-and-folders/cached-files.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

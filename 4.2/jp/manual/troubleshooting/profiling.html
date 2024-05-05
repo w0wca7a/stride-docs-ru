@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>プロファイリング | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="プロファイリング | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/troubleshooting/profiling.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="プロファイリング">プロファイリング</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>プロジェクトを<strong>プロファイリング</strong>して、実行時のパフォーマンスをチェックし、問題を発見できます。Stride のプロファイラーや、Visual Studio のパフォーマンス プロファイラーなどの外部プロファイリング ツールを使用できます。</p>
+<p><img src="media/profiling.png" alt="Profiling"></p>
+<h2 id="stride-のプロファイル">Stride のプロファイル</h2>
+<p>Stride のプロファイラーは、実行時のパフォーマンス コストの変化を表示します。これは、ボトルネックを特定して根本原因を明らかにするのに役立ちます。</p>
+<p>スクリプトをシーンに追加することによって、プロジェクトをプロファイリングできます。</p>
+<ol>
+<li>［Asset view］で、<img src="media/profiling-add-new-asset-button.png" alt="Add new asset button"> をクリックして［Scripts］&gt;［Game Profiler］を選択します。</li>
+</ol>
+<p><img src="media/profiling-add-game-profiler-script.png" alt="Add Game Profiler script"></p>
+<ol start="2">
+<li><p>［New script］ダイアログが開きます。既定の情報のままにします。</p>
+<p><img src="media/game-profiler-script-wizard.png" alt="New script"></p>
+<p>GameProfiler スクリプトがプロジェクトに追加されます。</p>
+</li>
+<li><p>スクリプトを保存するかどうかを確認するメッセージが表示されたら、［Save］をクリックします。</p>
+</li>
+<li><p>アセンブリを再ロードするかどうかを確認するメッセージが表示されたら、［Reload］をクリックします。</p>
+</li>
+<li><p>［Scene view］でエンティティを選択します。使用するエンティティはどれでもかまいません。</p>
+</li>
+<li><p>［Property grid］で、［Add component］をクリックし、<strong>GameProfiler</strong> を選択します(これは、ステップ 1 と 2 で追加したスクリプトです)。</p>
+<p><img src="media/profiling-add-game-profiler-script-component.png" alt="Add script component to entity"></p>
+<p>コンポーネントとしてエンティティに GameProfiler スクリプトがアタッチされます。</p>
+</li>
+<li><p>プロジェクトをビルドして、アプリケーションを実行します。</p>
+</li>
+<li><p>実行時に<strong>左 Ctrl + 左 Shift + P</strong> キーを押してプロファイラーを起動します。</p>
+<p><img src="media/profiling-profiler-at-runtime.jpg" alt="Profiler at runtime"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>プロファイラーが表示するデータの種類を変更できます。詳細については、<a class="xref" href="../../api/Stride.Core.Diagnostics.Profiler.html">Stride プロファイラー API のドキュメント</a>を参照してください。</p>
+</div>
+</li>
+</ol>
+<h2 id="外部プロファイリング-ツールを使用する">外部プロファイリング ツールを使用する</h2>
+<p>外部プロファイリング ツールを使用して、プロジェクトをプロファイリングできます。</p>
+<table>
+<thead>
+<tr>
+<th>プロファイラー</th>
+<th>種類</th>
+<th>プラットフォーム</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://msdn.microsoft.com/ja-jp/library/mt210448.aspx">Visual Studio プロファイラー</a></td>
+<td>Visual Studio の機能</td>
+<td>デスクトップとモバイル</td>
+</tr>
+<tr>
+<td><a href="https://www.xamarin.com/profiler">Xamarin プロファイラー</a></td>
+<td>Xamarin Studio で配布されるスタンドアロン ツール</td>
+<td>モバイル</td>
+</tr>
+<tr>
+<td><a href="https://renderdoc.org/builds">RenderDoc</a></td>
+<td>スタンドアロン</td>
+<td>デスクトップとモバイル</td>
+</tr>
+</tbody>
+</table>
+<h3 id="visual-studio-プロファイラーを使用する">Visual Studio プロファイラーを使用する</h3>
+<p>Visual Studio には、一般的なパフォーマンスの問題を識別できる強力な組み込みプロファイリング ツールがあります。</p>
+<ol>
+<li><p>Visual Studio で、プロジェクト ソリューション (<code>.sln</code>) ファイルを開きます。</p>
+</li>
+<li><p>プロファイラーを開くには、<strong>Alt + F2</strong> キーを押すか、タスク バーで［分析］&gt;［パフォーマンス プロファイラー］をクリックします。</p>
+<p><img src="media/profiling-profiling-in-visual-studio-start-profiler.png" alt="Launch Visual Studio profiler"></p>
+</li>
+<li><p>［プロファイラー］ウィンドウで、実行するプロファイリング ツールを選択します。</p>
+<p><img src="media/profiling-profiling-in-visual-studio-gpu-cpu-profiling-launch.png" alt="Launch Visual Studio profiler"></p>
+<p>複数のプロファイリング ツールを同時に実行できます。</p>
+</li>
+<li><p>プロファイラーを起動するには、［パフォーマンス プロファイラー］タブの下部で、［開始］をクリックします。</p>
+<p><img src="media/profiler-start-button.png" alt="Profiler Start button"></p>
+<p>Visual Studio がアプリケーションを実行して、プロファイリングを開始します。</p>
+</li>
+</ol>
+<p>Visual Studio プロファイラーの詳細については、<a href="https://msdn.microsoft.com/ja-jp/library/mt210448.aspx">MSDN のドキュメント</a>を参照してください。</p>
+<h2 id="よくあるボトルネック">よくあるボトルネック</h2>
+<p>CPU と GPU は異なる種類のデータを処理するので、通常、ボトルネックの原因になっている部分を識別するのは簡単です。</p>
+<p>GPU のほとんどの問題は、ポストエフェクト、ライティング、シャドウ、テッセレーションなど、処理量の多いレンダリング手法をアプリケーションが使用すると発生します。問題を識別するには、レンダリング機能を無効にします。</p>
+<p>CPU のボトルネックであると思われる場合は、シーンの複雑さを減らします。</p>
+<p>グラフィックスの場合:</p>
+<ul>
+<li>ゲームの解像度を下げます。</li>
+<li>ポストエフェクトの品質を下げます。</li>
+<li>ライトの数およびシャドウ マップのサイズを減らします。</li>
+<li>シャドウ マップのサイズを小さくします。</li>
+<li>カリング技法を使用して、レンダリングされるオブジェクトと頂点の数を減らします。</li>
+</ul>
+<p>テクスチャの場合:</p>
+<ul>
+<li>低速のデバイスでは圧縮されたテクスチャを使用します。</li>
+<li>個別の画像ではなく、スプライト シートを使用します。</li>
+<li>異なるテクスチャではなく、テクスチャ アトラスを使用します。</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/troubleshooting/profiling.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

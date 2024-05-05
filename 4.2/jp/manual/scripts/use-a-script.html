@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>スクリプトの使用 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="スクリプトの使用 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/scripts/use-a-script.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="スクリプトの使用">スクリプトの使用</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>スクリプトを使用するには、エンティティにコンポーネントとしてスクリプトを追加します。スクリプトの追加は、Game Studio またはコードで行うことができます。アタッチされているエンティティがロードされると、スクリプトが実行されます。</p>
+<p>1 つのスクリプトを、必要な数のエンティティに追加できます。また、複数のスクリプトを 1 つのエンティティに追加できます。この場合は、スクリプトの複数のインスタンスが作成されます。つまり、同じスクリプトが<a href="public-properties-and-fields.html">パブリック プロパティとフィールド</a>に異なる値を持つことができます。</p>
+<h2 id="game-studio-でスクリプトを追加する">Game Studio でスクリプトを追加する</h2>
+<p>Game Studio でエンティティにスクリプトを追加するには 2 つの方法があります。</p>
+<p>*［Asset view］からエンティティのプロパティにスクリプトをドラッグします
+*［Property grid］でスクリプトを追加します</p>
+<h3 id="ドラッグ-アンド-ドロップ">ドラッグ アンド ドロップ</h3>
+<ol>
+<li><p><strong>エンティティ ツリー</strong> (既定では左側) またはシーンで、スクリプトを追加するエンティティを選択します。</p>
+</li>
+<li><p>［Solution explorer］(既定では左下) で、スクリプトが含まれるアセンブリを選択します。［Asset view］にスクリプトが表示されます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>スクリプトはアセットの一種ですが、［Assets］フォルダーには保存されません。代わりに、［.Game］フォルダーに保存されます。詳細については、「<a href="../files-and-folders/project-structure.html">プロジェクトの構造</a>」を参照してください。</p>
+</div>
+</li>
+<li><p>［Asset view］から［Property grid］にスクリプトをドラッグします。</p>
+<p>スクリプトがエンティティに追加されます。</p>
+</li>
+</ol>
+<p>###［Property grid］でスクリプトを追加する</p>
+<ol>
+<li><p><strong>シーン エディター</strong> で、スクリプトを追加するエンティティを選択します。</p>
+<p><img src="media/select-entity.png" alt="Select an entity"></p>
+</li>
+<li><p>［Property grid］(既定では右側) で、［Add component］をクリックし、追加するスクリプトを選択します。</p>
+<p><img src="media/add-script-component.png" alt="Add script component"></p>
+<p>スクリプトがエンティティに追加されます。</p>
+</li>
+</ol>
+<h2 id="コードからスクリプトを追加する">コードからスクリプトを追加する</h2>
+<p>次のコードは、スクリプトをエンティティに追加します。</p>
+<pre><code class="lang-cs">// myEntity はシーン内の既存のエンティティ、myAsyncScript はエンティティに追加するスクリプト
+myEntity.Add(new myAsyncScript());
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="types-of-script.html">スクリプトの種類</a></li>
+<li><a href="create-a-script.html">スクリプトを作成する</a></li>
+<li><a href="public-properties-and-fields.html">パブリック プロパティとフィールド</a></li>
+<li><a href="scheduling-and-priorities.html">スケジュール設定と優先順位</a></li>
+<li><a href="events.html">イベント</a></li>
+<li><a href="debugging.html">デバッグ</a></li>
+<li><a href="preprocessor-variables.html">プリプロセッサ変数</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/scripts/use-a-script.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

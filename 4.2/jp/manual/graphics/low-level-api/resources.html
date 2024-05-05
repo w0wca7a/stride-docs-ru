@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>リソース バインディング | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="リソース バインディング | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/resources.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="リソース-バインディング">リソース バインディング</h1>
+
+<!--
+# Resource binding
+-->
+<p><span class="badge text-bg-primary">上級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Advanced</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p><a href="../effects-and-shaders/index.html">エフェクト</a>を使った<a href="draw-vertices.html">頂点の描画</a>を行う場合、シェーダーは次のような特定のリソースが利用可能であることが期待されます。</p>
+<!--
+When [drawing vertices](draw-vertices.md) using an [effect](../effects-and-shaders/index.md), the shaders expect certain resources to be available, including:
+-->
+<ul>
+<li>テクスチャーとバッファ</li>
+<li>サンプラー</li>
+<li>定数バッファ</li>
+</ul>
+<!--
+- textures and buffers
+- samplers
+- constant buffers
+-->
+<h2 id="自動リソースバインディング">自動リソースバインディング</h2>
+<!--
+## Automatic resource binding
+-->
+<p><a class="xref" href="../../../api/Stride.Rendering.EffectInstance.html">EffectInstance</a> クラスは、読み込まれたエフェクトから列挙されるリソースの詳細を処理します。</p>
+<!--
+The @'Stride.Rendering.EffectInstance' class handles the details of enumerating these resources from a loaded effect as well as binding them.
+-->
+<p>また、エフェクトは <a class="xref" href="../../../api/Stride.Graphics.RootSignature.html">RootSignature</a> を公開しており、これを<a href="pipeline-state.html">パイプライン ステート</a>として設定する必要があります。
+そして、<a class="xref" href="../../../api/Stride.Rendering.ParameterCollection.html">ParameterCollection</a> に基づいて、定数バッファを満たし、リソースをバインドすることができます。</p>
+<!--
+It exposes the @'Stride.Graphics.RootSignature', which has to be set as [pipeline state](pipeline-state.md),
+and allows to fill constant buffers and bind resources based on a @'Stride.Rendering.ParameterCollection'.
+-->
+<p><strong>コード：</strong> EffectInstance を使用する</p>
+<!--
+**Code:** Using an EffectInstance
+-->
+<pre><code class="lang-cs">// EffectInstance を作成しパイプラインの設定に使う
+// Create a EffectInstance and use it to set up the pipeline
+var effectInstance = new EffectInstance(EffectSystem.LoadEffect(&quot;MyEffect&quot;).WaitForResult());
+pipelineStateDescription.EffectBytecode = effectInstance.Effect.Bytecode;
+pipelineStateDescription.RootSignature = effectInstance.RootSignature;
+
+// 定数バッファを更新しリソースをバインドする
+// Update constant buffers and bind resources
+effectInstance.Apply(context.GraphicsContext);
+</code></pre>
+<h2 id="手動リソースバインディング">手動リソースバインディング</h2>
+<!--
+## Manual resource binding
+-->
+<p>さらに最適化されたコードが必要な場合（例：<a href="../rendering-pipeline/index.html">レンダリング パイプライン</a>）、定数バッファの更新とリソースバインディングを手動で行うことができます。</p>
+<!--
+When more optimized code is required (eg in the [rendering pipeline](../rendering-pipeline/index.md)), constant buffer updates and resource binding can be done manually.
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/resources.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

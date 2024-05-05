@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ゲームの設定 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ゲームの設定 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/game-settings.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ゲームの設定">ゲームの設定</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p>ゲームのグローバルな設定は、<strong>Game Settings</strong> アセットで構成できます。既定では、Game Settings アセットはプロジェクトの［Assets］フォルダーに格納されます。</p>
+<h2 id="ゲームの設定を編集する">ゲームの設定を編集する</h2>
+<ol>
+<li><p>［Solution explorer］(既定では左下のペイン) で、［Assets］フォルダーを選択します。</p>
+<p><img src="media/select-asset-folder.png" alt="Select Assets folder asset"></p>
+</li>
+<li><p>［Asset view］(既定では下部のペイン) で、［Game Settings］アセットを選択します。</p>
+<p><img src="media/select-game-settings-asset.png" alt="Select Game Settings asset"></p>
+</li>
+<li><p>［Property grid］(既定では右側のペイン) で、［Game Settings］のプロパティを編集します。</p>
+<p><img src="media/game-settings.png" alt="Game settings"></p>
+</li>
+</ol>
+<h2 id="既定のシーン">既定のシーン</h2>
+<p>プロジェクトには複数のシーンを作成できます。<strong>既定のシーン</strong> は、Stride が実行時にロードするシーンです。</p>
+<p>既定のシーンを設定するには:</p>
+<ol>
+<li><p>［Game Settings］のプロパティで、［Default Scene］の隣の <img src="media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p><img src="media/game-settings-default-scene.png" alt="Set default scene"></p>
+<p>［Select an asset］ウィンドウが開きます。</p>
+</li>
+<li><p>既定のシーンを選択し、［OK］をクリックします。</p>
+</li>
+</ol>
+<p>シーンの詳細については、「<a href="manage-scenes.html">シーンを管理する</a>」を参照してください。</p>
+<h2 id="graphics-compositor">Graphics Compositor</h2>
+<p>プロジェクトでは複数の Graphics Compositor を使用できますが、一度に使用できるのは 1 つだけです。</p>
+<p>Graphics Compositor を設定するには:</p>
+<ol>
+<li><p>［Game Settings］のプロパティで、［Graphics Compositor］の隣の <img src="media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p><img src="media/game-settings-graphics-compositor.png" alt="Set default scene"></p>
+<p>［Select an asset］ウィンドウが開きます。</p>
+</li>
+<li><p>［Graphics Compositor］を選択して、［OK］をクリックします。</p>
+</li>
+</ol>
+<p>詳細については、「<a href="../graphics/graphics-compositor/index.html">Graphics Compositor</a>」を参照してください。</p>
+<h2 id="スプラッシュ画面">スプラッシュ画面</h2>
+<p><strong>スプラッシュ画面</strong> とは、ゲームの開始時に表示される画面です。既定は Stride のスプラッシュ画面です。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Splash Screen は、ゲームがリリース モードでビルドされている場合にのみ表示されます。</p>
+</div>
+<p><img src="media/splash-screen.png" alt="Settings"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texture</td>
+<td>スプラッシュ画面として表示される画像 (会社のロゴなど) です。既定値は <em>StrideDefaultSplashScreen</em> です。</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>スプラッシュ画面がフェードインする色です。既定値は黒  (<em>#FF000000</em>) です。</td>
+</tr>
+</tbody>
+</table>
+<p>詳細については、「<a href="/splash-screen.md">スプラッシュ画面</a>」を参照してください。</p>
+<h2 id="レンダリングの設定">レンダリングの設定</h2>
+<p><img src="media/rendering-settings.png" alt="Rendering settings"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default Back Buffer Width</td>
+<td>デバイスの比率および解像度によっては、オーバーライドされている場合があります。Windows では、これはウィンドウのサイズです。Android/iOS では、これはオフスクリーン ターゲットの解像度です。</td>
+</tr>
+<tr>
+<td>Default Back Buffer Height</td>
+<td>デバイスの比率および解像度によっては、オーバーライドされている場合があります。Windows では、これはウィンドウのサイズです。Android/iOS では、これはオフスクリーン ターゲットの解像度です。</td>
+</tr>
+<tr>
+<td>Adapt Back Buffer To Screen</td>
+<td>画面の比率に合わせてバック バッファーの比率を調整します。</td>
+</tr>
+<tr>
+<td>Default Graphics Profile</td>
+<td>プロジェクトで必要なグラフィックス機能レベルです。</td>
+</tr>
+<tr>
+<td>Color Space</td>
+<td>レンダリングに使用される色空間 (ガンマまたはリニア) です。この設定は、実行時のゲーム、および Game Studio での要素の表示方法に影響します。</td>
+</tr>
+<tr>
+<td>Display Orientation</td>
+<td>ゲームの表示の向きです (既定、縦、左横、右横)。</td>
+</tr>
+<tr>
+<td>Target graphics platform</td>
+<td>プロジェクトのビルド対象のターゲット プラットフォームです。これを［Default］に設定すると、最も適切なプラットフォームが選択されます。詳細については、「<a href="../platforms/change-the-graphics-platform.md">グラフィックス プラットフォームを変更する</a>」を参照してください。</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<h5>Tip</h5>
+<p>プロジェクトが使用している既定のプラットフォームを確認するには、コード (スクリプト内など) にブレーク ポイントを追加し、プロジェクトを実行して、<a class="xref" href="../../api/Stride.Graphics.GraphicsDevice.html#Stride_Graphics_GraphicsDevice_Platform">GraphicsDevice.Platform</a> 変数の値を調べます。</p>
+</div>
+<h2 id="エディターの設定">エディターの設定</h2>
+<p>エディターの設定は、シーン エディターでのエンティティの表示方法を制御します。実行時のゲームには影響ありません。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Game Studio によるエンティティの表示方法は、［Rendering settings］の［Color space］の設定によっても影響を受けます。</p>
+</div>
+<p><img src="media/editor-settings.png" alt="Editor settings"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rendering mode</td>
+<td>サムネイルおよびアセット プレビューのレンダリング方法です。</td>
+</tr>
+<tr>
+<td>Animation Frame Rate</td>
+<td>Game Studio で表示されるアニメーションのフレーム レートです。アニメーション データには影響ありません。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="テクスチャの設定">テクスチャの設定</h2>
+<p><img src="media/texture-settings.png" alt="Texture settings"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texture Quality</td>
+<td>テクスチャをエンコードするときのテクスチャの品質です。［Fast］は CPU の使用量は最小ですが、品質は最低です。品質を高くすると、ターゲット プラットフォームによってはビルドが遅くなる場合があります。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="物理特性の設定">物理特性の設定</h2>
+<p><img src="media/physics-settings.png" alt="Physics settings"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flags</td>
+<td>［CollisionsOnly］は、衝突を除く<a href="../physics/index.html">物理特性</a>を無効にします。たとえば、このオプションを有効にすると、オブジェクトは重力によっては動きませんが、手動で動かした場合はやはり衝突します。［ContinuousCollisionDetection］は、高速で移動するエンティティが誤って他のエンティティを通り抜けないようにします。NOTE: ここで示されている他のフラグは、現在、Stride では有効ではありません。</td>
+</tr>
+<tr>
+<td>Max Sub Steps</td>
+<td>物理特性エンジンが速度低下を補償するために 1 フレームで実行できるシミュレーションの最大回数です。</td>
+</tr>
+<tr>
+<td>Fixed Time Step</td>
+<td>物理特性シミュレーション フレームの長さ (秒単位) です。既定値は 0.016667 です (1 秒の 60 分の 1)。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="オーディオの設定">オーディオの設定</h2>
+<p><img src="media/audio-settings.png" alt="Audio settings"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HRTF Support</td>
+<td>HRTF オーディオを有効にします。HRTF が有効になっているオーディオ エミッターだけが HRTF オーディオを生成することに注意してください。詳細については、「<a href="../audio/hrtf.html">HRTF</a>」を参照してください。</td>
+</tr>
+</tbody>
+</table>
+<p>オーディオの詳細については、「<a href="../audio/index.html">オーディオ</a>」を参照してください。</p>
+<h2 id="ナビゲーションの設定">ナビゲーションの設定</h2>
+<p><img src="media/navigation-settings.png" alt="Navigation settings"></p>
+<h3 id="動的ナビゲーション-メッシュのプロパティ">動的ナビゲーション メッシュのプロパティ</h3>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enabled</td>
+<td>ナビゲーション メッシュが割り当てられていないナビゲーション コンポーネントで動的ナビゲーションを有効にします。</td>
+</tr>
+<tr>
+<td>Included collision groups</td>
+<td>動的に生成されるナビゲーション メッシュが使用する衝突グループを設定します。既定では、メッシュはすべての衝突グループを使用します。</td>
+</tr>
+<tr>
+<td>Build settings</td>
+<td>動的に生成されるナビゲーション メッシュの高度な設定です。</td>
+</tr>
+</tbody>
+</table>
+<p>詳細については、「<a href="../navigation/dynamic-navigation.html">動的ナビゲーション</a>」を参照してください。</p>
+<h3 id="ナビゲーション-グループのプロパティ">ナビゲーション グループのプロパティ</h3>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item</td>
+<td>グループの名前です。</td>
+</tr>
+<tr>
+<td>Height</td>
+<td>このグループ内のエンティティの高さです。エンティティは、天井がこの値より低いエリアには入ることができません。</td>
+</tr>
+<tr>
+<td>Maximum climb height</td>
+<td>このグループのエンティティが登ることのできる最大の高さです。</td>
+</tr>
+<tr>
+<td>Maximum slope</td>
+<td>このグループのエンティティが登ることのできる最大の斜度 (度単位) です。エンティティは、この値より急なスロープを登り降りできません。</td>
+</tr>
+<tr>
+<td>Radius</td>
+<td>この値が大きいほど、エンティティが使用するナビゲーション メッシュの面積が大きくなります。エンティティは Radius の 2 倍より小さいギャップを通り抜けることはできません。</td>
+</tr>
+</tbody>
+</table>
+<p>詳細については、「<a href="../navigation/index.html">ナビゲーション</a>」を参照してください。</p>
+<h2 id="オーバーライド">オーバーライド</h2>
+<p>特定のプラットフォーム、グラフィックス、API などについて、設定をオーバーライドできます。たとえば、プラットフォームごとにテクスチャの品質を変えることができます。</p>
+<ol>
+<li><p>［GameSettings］アセットを選択し、［Property grid］の［Overrides］で <img src="media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックします。</p>
+<p><img src="../platforms/media/add-override.png" alt="Select graphics platform"></p>
+<p>オーバーライドが追加されます。</p>
+</li>
+<li><p>新しいオーバーライドの［Platforms］で、オーバーライドを適用するプラットフォームを選択します。必要なだけいくつでも選択できます。</p>
+<p><img src="../platforms/media/select-override-platform.png" alt="Select graphics platform override"></p>
+</li>
+<li><p><strong>オプション</strong>: このオーバーライドを特定の GPU プラットフォームに対してのみ適用するには、［Specific Filter］ドロップダウン リストから選択します。</p>
+<p><img src="media/specific-filter.png" alt="Specific filter"></p>
+<p>［Platform Filters］(後の「<strong>プラットフォーム フィルターを追加する</strong>」を参照) で、このリストに GPU プラットフォームを追加できます。</p>
+</li>
+<li><p>［Configuration］ドロップダウン メニューで、オーバーライドする設定の種類を選択します (［Editor Settings］、［Texture Settings］、［Rendering Settings］、[Physics Settings］)。</p>
+<p><img src="../platforms/media/select-override-configuration.png" alt="Select graphics platform override"></p>
+</li>
+<li><p>オーバーライドするオプションを設定します。</p>
+</li>
+</ol>
+<h3 id="プラットフォーム-フィルターを追加する">プラットフォーム フィルターを追加する</h3>
+<p>オーバーライドを設定するときの特定のプラットフォーム フィルターとして、［Platform Filters］で項目を選択できます (前記の説明を参照)。</p>
+<p><img src="media/specific-filter.png" alt="Specific filter"></p>
+<ol>
+<li><p>［Game Settings］アセットを選択し、［Property grid］で［Platform Filters］を展開します。</p>
+<p>使用できるプラットフォーム フィルターのリストが表示されます。</p>
+<p><img src="media/list-of-platform-filters.png" alt="List of platform filters"></p>
+</li>
+<li><p>リストの下部で、［Add to Platform Filters］をクリックします。</p>
+<p>新しい空の項目が追加されます。</p>
+</li>
+<li><p>項目のフィールドに、追加する GPU フィルターを入力します。</p>
+<p><img src="media/add-platform-filter-name.png" alt="Type platform filter"></p>
+</li>
+</ol>
+<p>プラットフォーム フィルターを追加した後は、［Overrides］で<strong>特定のフィルター</strong>としてそれを選択できます。</p>
+<p><img src="media/new-GPU-in-override-list.png" alt="Override"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>新しいフィルターがリストに表示されない場合は、オーバーライドを削除し、再度追加してください。</p>
+</div>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="assets.html">アセット</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/game-settings.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

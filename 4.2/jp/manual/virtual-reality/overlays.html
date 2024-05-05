@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>オーバーレイ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="オーバーレイ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/virtual-reality/overlays.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="オーバーレイ">オーバーレイ</h1>
+
+<p>VR ゲームでは、<a href="../graphics/textures/index.html">テクスチャ</a> (<a href="../graphics/graphics-compositor/render-textures.html">レンダー テクスチャ</a>を含む) をプレイヤーの正面に浮動表示されるオーバーレイとして表示できます。これは、UI に特に有効です。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>ゲームを VR デバイスで実行していない場合は、オーバーレイを表示できません。これは、VR デバイス自体がオーバーレイを作成するためです。</p>
+</div>
+<p>ここでは、オーバーレイを追加する方法について説明します。<strong>UI</strong> をオーバーレイに表示するには、UI をレンダー テクスチャにレンダリングし、レンダー テクスチャをオーバーレイに表示する必要があります。方法については、「<a href="display-a-UI-in-an-overlay.html">UI をオーバーレイに表示する</a>」を参照してください。</p>
+<h2 id="オーバーレイを追加する">オーバーレイを追加する</h2>
+<ol>
+<li><p>［Asset view］(既定では下部のペイン) で、<strong>Graphics Compositor</strong> アセットをダブルクリックします。</p>
+<p><img src="../graphics/graphics-compositor/media/graphics-compositor-asset.png" alt="Graphics compositor asset"></p>
+<p>Graphics Compositor エディターが開きます。</p>
+<p>Graphics Compositor の詳細については、「<a href="../graphics/graphics-compositor/index.html">Graphics Compositor</a>」を参照してください。</p>
+</li>
+<li><p>Graphics Compositor エディターで、<strong>フォワード レンダラー</strong> ノードを選択します。</p>
+<p><img src="media/select-forward-renderer.png" alt="Select forward renderer"></p>
+</li>
+<li><p>［Property grid］(既定では右側) で、［VR Settings］を展開します。</p>
+<p><img src="media/vr-settings.png" alt="VR settings"></p>
+</li>
+<li><p>［Overlays］の隣の <img src="../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックします。</p>
+<p>新しいオーバーレイがリストに追加されます。</p>
+<p><img src="media/add-overlay.png" alt="Add VR item"></p>
+</li>
+<li><p>［Texture］の隣の <img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p>［Select an asset］ウィンドウが開きます。</p>
+<p><img src="../graphics/graphics-compositor/media/select-render-frame.png" alt="Select render texture"></p>
+</li>
+<li><p>オーバーレイに表示するテクスチャを選択し、［OK］をクリックします。</p>
+</li>
+</ol>
+<p>ゲームは、VR デバイスのオーバーレイに UI をレンダリングできる状態になりました。</p>
+<h2 id="複数のオーバーレイ">複数のオーバーレイ</h2>
+<p>必要なだけいくつでもオーバーレイを追加できます。別のオーバーレイを追加するには、［Add to overlays］<img src="../game-studio/media/green-plus-icon.png" alt="Green plus button"> をクリックして、上のステップ 4 以降の手順に従います。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>オーバーレイがユーザー ビューでオーバーラップしている場合は、リストで最初にあるオーバーレイが手前に表示されます。</p>
+</div>
+<h2 id="オーバーレイのプロパティ">オーバーレイのプロパティ</h2>
+<p><img src="media/overlay-properties.png" alt="Overlay properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Texture</td>
+<td>オーバーレイに表示されるテクスチャです。</td>
+</tr>
+<tr>
+<td>Local position</td>
+<td>ユーザーを基準とするオーバーレイの位置です。</td>
+</tr>
+<tr>
+<td>Local rotation</td>
+<td>ユーザーを基準とするオーバーレイの回転です。</td>
+</tr>
+<tr>
+<td>Surface size</td>
+<td>ワールド単位 (メートル) でのオーバーレイのサイズです。</td>
+</tr>
+<tr>
+<td>Follows head</td>
+<td>ユーザーの頭部に従うので、オーバーレイは常に視野内にあります。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vr-テンプレート">VR テンプレート</h2>
+<p>VR ゲームに実装された UI オーバーレイの例については、Stride に付属する VR テンプレートを参照してください。</p>
+<p><img src="media/template-virtual-reality.png" alt="VR template"></p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="display-a-UI-in-an-overlay.html">UI をオーバーレイに表示する</a></li>
+<li><a href="../graphics/graphics-compositor/render-textures.html">レンダー ターゲット</a></li>
+<li><a href="../graphics/graphics-compositor/index.html">Graphics Compositor</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/virtual-reality/overlays.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

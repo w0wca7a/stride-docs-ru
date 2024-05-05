@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>プレハブの編集 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="プレハブの編集 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/prefabs/edit-prefabs.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="プレハブの編集">プレハブの編集</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p>プレハブは <strong>プレハブ エディター</strong>で編集できます。</p>
+<h2 id="プレハブ-エディターを開く">プレハブ エディターを開く</h2>
+<p>［Asset view］からプレハブ エディターを開くには:</p>
+<ul>
+<li><p>編集するプレハブを右クリックして、［Edit asset］を選択します。</p>
+<p><img src="media/edit-prefab-with-edit-asset-button.png" alt="Right-click prefab"></p>
+</li>
+<li><p>または、編集するプレハブをダブルクリックします。</p>
+<p><img src="media/open-prefab-editor.gif" alt="Double-click prefab"></p>
+</li>
+</ul>
+<p><strong>シーン エディター</strong>からプレハブ エディターを開くには、プレハブ インスタンスの任意の子を右クリックして、［Open prefab in editor］を選択します。</p>
+<p><img src="media/use-prefabs-prefab-open-prefab-from-prefab-instance.png" alt="Open prefab in editor"></p>
+<h2 id="プレハブ-エディターを使用する">プレハブ エディターを使用する</h2>
+<p><img src="media/prefab-editor.png" alt="Edit prefabs"></p>
+<p>プレハブ エディターの機能はシーン エディターと似ています。たとえば、以下のことを実行できます。</p>
+<ul>
+<li>エンティティを追加および削除します</li>
+<li>変換ギズモを使用して、エンティティを平行移動、回転、拡大縮小します</li>
+<li>エンティティの間に親子関係を作成します</li>
+<li>エンティティのコンポーネント (スクリプト、マテリアル、モデル、アニメーションなど) を追加および変更します</li>
+</ul>
+<p>エンティティの管理の詳細については、「<a href="../add-entities.html">シーンを設定する</a>」を参照してください。</p>
+<p><img src="media/prefab-editor.png" alt="Prefab editor"></p>
+<p>プレハブ エディターでプレハブを編集すると、シーン内のプレハブのインスタンスに変更が<strong>リアルタイム</strong>で適用されます。</p>
+<p>このビデオでは、プレハブを変更したときに起きることを示しています。左側はシーン エディターで、右側はプレハブ エディターです。</p>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/edit-prefab-and-update-instances.jpg">
+   <source src="media/edit-prefab-and-update-instances.mp4" type="video/mp4">
+</video>
+</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="index.html">プレハブの索引</a></li>
+<li><a href="create-a-prefab.html">プレハブを作成する</a></li>
+<li><a href="index.html">プレハブを使用する</a></li>
+<li><a href="nested-prefabs.html">入れ子になったプレハブ</a></li>
+<li><a href="override-prefab-properties.html">プレハブのプロパティをオーバーライドする</a></li>
+<li><a href="prefab-models.html">プレハブ モデル</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/prefabs/edit-prefabs.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

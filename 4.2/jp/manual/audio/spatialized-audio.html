@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>空間オーディオ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="空間オーディオ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/audio/spatialized-audio.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="空間オーディオ">空間オーディオ</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p><strong>空間オーディオ</strong>は <strong>3D オーディオ</strong>とも呼ばれ、3 次元のサウンドをシミュレートします。
+これにより、<a href="non-spatialized-audio.html">非空間オーディオ</a>よりはるかに現実的なオーディオが作成されます。</p>
+<p>現実の世界で聞こえる音は、ボリューム、周囲の環境 (洞窟、小さい部屋など)、音源の位置と動きなどの要因によって影響を受けます。たいていは、音がどちらから聞こえてきて、音源が動いているかどうかが、だいたいわかります。</p>
+<p><img src="media/audio-index-spatialized-audio.png" alt="Spatialized audio"></p>
+<p>たとえば、動いている物体から聞こえてくる音の周波数 (ピッチ) は、観察者の位置によって異なります (<a href="https://en.wikipedia.org/wiki/Doppler_effect">ドップラー効果</a>)。近づいている音源からの音は、遠ざかっている音源からの音より、周波数が高くなります。</p>
+<p><img src="media/audio-index-play-audio-doppler-effect.png" alt="Doppler effect"></p>
+<p>リアルな 3D オーディオをシミュレートするため、Stride はシーン内にある次の 2 つのエンティティの位置を追跡しています。</p>
+<ul>
+<li><strong><a href="audio-emitters.html">オーディオ エミッター</a></strong>: オーディオを生成します</li>
+<li><strong><a href="audio-listeners.html">オーディオ リスナー</a></strong>: オーディオ エミッターによって生成されたサウンドを聴きます</li>
+</ul>
+<p>シーン内の空間オーディオを聴くには、オーディオ エミッターとオーディオ リスナーの両方が必要です。</p>
+<p>空間オーディオは、プラットフォーム、デスクトップ、VR ゲームのサウンド エフェクトに広く利用されています。たとえば、銃の発砲音や、キャラクターの足音などです。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>空間オーディオは、非空間オーディオより多くの CPU を使用します。</p>
+</div>
+<h2 id="空間オーディオを有効にする">空間オーディオを有効にする</h2>
+<p><a href="import-audio.html">サウンド アセットをインポートする</a>ときに、アセットの種類として［Spatialized Sound］を選択します。</p>
+<p>アセットの［Property grid］で空間オーディオに設定することもできます。</p>
+<ol>
+<li><p>［Asset View］で［Audio Asset］を選択します。</p>
+</li>
+<li><p>［Property grid］で、［Spatialized］チェック ボックスをオンにします。</p>
+<p><img src="media/audio-asset-properties-property-grid-spatialized-sound.png" alt="Select spatialized sound"></p>
+</li>
+</ol>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Stride は空間オーディオをモノラル (単一チャンネル) オーディオとして処理します。ソース ファイルが変更されることはありません。</p>
+</div>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="audio-emitters.html">オーディオ エミッター</a></li>
+<li><a href="audio-listeners.html">オーディオ リスナー</a></li>
+<li><a href="hrtf.html">HRTF</a></li>
+<li><a href="global-audio-settings.html">グローバル オーディオ設定</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/audio/spatialized-audio.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

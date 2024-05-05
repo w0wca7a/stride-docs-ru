@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>シェーダークラス、ミックスイン、継承 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="シェーダークラス、ミックスイン、継承 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../../favicon.ico">
+      <link rel="stylesheet" href="../../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../../toc.html">
+      <meta name="docfx:tocrel" content="../../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/shading-language/shader-classes-mixins-and-inheritance.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="シェーダークラスミックスイン継承">シェーダークラス、ミックスイン、継承</h1>
+
+<!--
+# Shader classes, mixins and inheritance
+-->
+<p>Stride シェーディング言語（SDSL）は、HLSL を拡張し、より C# の構文や概念に近いものになっています。この言語はオブジェクト指向です。</p>
+<!--
+Stride Shading Language (SDSL) is an extension of HLSL, which makes it closer to C# syntax and concepts. The language is object-oriented:
+-->
+<ul>
+<li>シェーダークラスはコードの基礎となるものです。</li>
+<li>シェーダークラスにはメソッドとメンバーが含まれます。</li>
+<li>シェーダークラスは継承可能で、メソッドはオーバーライド可能です。</li>
+<li>メンバーの型をシェーダークラスにすることができます。</li>
+</ul>
+<!--
+- shader classes are the foundation of the code
+- shader classes contain methods and members
+- shader classes can be inherited, methods can be overridden
+- member types can be shader classes
+-->
+<p>SDSL では、独自の方法で多重継承を実現しています。継承は<a href="https://ja.wikipedia.org/wiki/Mixin">ミックスイン</a>で行われるので、継承の順番が重要になります。</p>
+<!--
+SDSL uses an original way to handle multiple inheritance. Inheritance is performed through mixins, so the order of inheritance is crucial:
+-->
+<ul>
+<li>継承の順番によってメソッドの実際の実装を定義します（最後のオーバーライド）。</li>
+<li>ミックスインが継承の中で何度も現れた場合は、最初に現れたものだけを考慮します（メンバーやメソッドも考慮します）。</li>
+<li>メソッドの直前の実装を呼び出すには、<code>base.&lt;メソッド名&gt;(&lt;引数&gt;)</code> を使います。</li>
+</ul>
+<!--
+- the order of inheritance defines the actual implementation of a method (the last override)
+- if a mixin appears several times in the inheritance, only the first occurrence is taken into account (as well as its members and methods)
+- to can call the previous implementation of a method, use `base.<method name>(<arguments>)`
+-->
+<h2 id="キーワード">キーワード</h2>
+<!--
+## Keywords
+-->
+<p>SDSL では、HLSL のキーワードに新たなキーワードを追加しています。</p>
+<!--
+SDSL uses the keywords as HLSL, and adds new ones:
+-->
+<ul>
+<li><code>stage</code>: メソッドとメンバーのキーワードです。このキーワードは、メソッドやメンバが一度だけ定義され、コンポジション内で同一であることを確認します。</li>
+<li><code>stream</code>: メンバーのキーワードです。このメンバーは、シェーダーのすべてのステージでアクセス可能になります。詳細については、<a href="automatic-shader-stage-input-output.html">シェーダーステージ入出力の自動管理</a>を参照してください。</li>
+<li><code>streams</code>: シェーダーのいくつかのステージにまたがって必要とされる変数を格納するグローバル構造体のようなものです。詳細については、<a href="automatic-shader-stage-input-output.html">シェーダーステージ入出力の自動管理</a>を参照してください。</li>
+<li><code>override</code>: メソッドのキーワードです。このキーワードがない場合、コンパイラはエラーを返します。</li>
+<li><code>abstract</code>: メソッド宣言の前で使用されます（メソッドの本体はありません）。</li>
+<li><code>clone</code>: メソッドのキーワードです。シェーダークラスの継承ツリーにこのキーワードを持つメソッドが複数回現れている場合、継承の各レベルでメソッドのインスタンスを、1つではなく複数作成することを強制します。詳細については、<a href="composition.html">コンポジション</a>を参照してください。</li>
+<li><code>Input</code>: ジオメトリシェーダーとテッセレーションシェーダーのためのキーワードです。詳細については、<a href="shader-stages.html">シェーダー ステージ</a>を参照してください。</li>
+<li><code>Output</code>: ジオメトリシェーダーとテッセレーションシェーダーのためのキーワードです。詳細については、<a href="shader-stages.html">シェーダー ステージ</a>を参照してください。</li>
+<li><code>Input2</code>: テッセレーションシェーダーのためのキーワードです。詳細については、<a href="shader-stages.html">シェーダー ステージ</a>.</li>
+<li><code>Constants</code>: テッセレーションシェーダーのためのキーワードです。詳細については、<a href="shader-stages.html">シェーダー ステージ</a>.</li>
+</ul>
+<!--
+- `stage`: method and member keyword. This keyword makes sure the method or member is only defined once and is the same in the compositions.
+- `stream`: member keyword. The member is accessible at every stage of the shader. For more information, see [Automatic shader stage input/out](automatic-shader-stage-input-output.md).
+- `streams`: sort of global structure storing variables needed across several stages of the shader. For more information, see [Automatic shader stage input/out](automatic-shader-stage-input-output.md).
+- `override`: method keyword. If this keyword is missing, the compilation returns an error.
+- `abstract`: used in front of a method declaration (without a body).
+- `clone`: method keyword. When a method appears several times in the inheritance tree of a shader class, this keyword forces the creation of multiple instances of the method at each level of the inheritance instead of one. For more information, see [Composition](composition.md).
+- `Input`: for geometry and tessellation shaders. For more information, see [Shader stages](shader-stages.md).
+- `Output`: for geometry and tessellation shaders. For more information, see [Shader stages](shader-stages.md).
+- `Input2`: for tessellation shaders. For more information, see [Shader stages](shader-stages.md).
+- `Constants`: for tessellation shaders. For more information, see [Shader stages](shader-stages.md).
+-->
+<h2 id="抽象メソッドabstract">抽象メソッド（abstract）</h2>
+<!--
+## Abstract methods
+-->
+<p>SDSL では、抽象メソッドが利用できます。抽象メソッドには <code>abstract</code> キーワードを付ける必要があります。抽象メソッドは、実装しなくても、シェーダークラスから継承することができます。この場合、コンパイラはシンプルで無害な警告を出すことでしょう。ただし、コンパイルエラーを防ぐためには、最終的なシェーダーでそれを実装しなければなりません。</p>
+<!--
+Abstract methods are available in SDSL. They should be prefixed with the `abstract` keyword. You can inherit from a shader class with abstract methods without having to implement them; the compiler will simply produce a harmless warning. However, you should implement it in your final shader to prevent a compilation error.
+-->
+<h2 id="アノテーション">アノテーション</h2>
+<!--
+## Annotations
+-->
+<p>HLSL と同様に、SDSL でもアノテーションが利用できます。最も役立つものをいくつか挙げます。</p>
+<!--
+Like HLSL, annotations are available in SDSL. Some of the most useful ones are:
+-->
+<ul>
+<li><code>[Color]</code>：float4 変数に付けます。このエフェクトパラメータのキーの型は、<code>Vector4</code> ではなく <code>Color4</code> になります。また、この変数を色として扱うよう Game Studio に指示することで、Game Studio 上で編集できるようになります。</li>
+<li><code>[Link(...)]</code>：値を設定するために使用するエフェクトパラメータのキーを指定します。ただし、独立したデフォルトのキーが作成されます。</li>
+<li><code>[Map(...)]</code>：値を設定するために使用するエフェクトパラメータのキーを指定します。新しいパラメーターキーは作成されません。</li>
+<li><code>[RenameLink]</code>：エフェクトパラメータのキーの作成を回避します。<code>[Link()]</code> と一緒に使ってください。</li>
+</ul>
+<!--
+- `[Color]` for float4 variables. The ParameterKey will have the type `Color4` instead of `Vector4`. It also specifies to Game Studio that this variable should be treated as a color, so you can edit it in Game Studio.
+- `[Link(...)]` specifies which ParameterKey to use to set this value. However, an independent default key is still created.
+- `[Map(...)]` specifies which ParameterKey to use to set this value. No new ParameterKey is created.
+- `[RenameLink]` prevents the creation of a ParameterKey. It should be used with `[Link()]`.
+-->
+<h3 id="サンプルコードアノテーション">サンプルコード：アノテーション</h3>
+<!--
+### Example code: annotations
+-->
+<pre><code class="lang-cs">shader BaseShader
+{
+	[Color] float4 myColor;
+ 
+	[Link(&quot;ProjectKeys.MyTextureKey&quot;)]
+	[RenameLink]
+	Texture2D texture;
+ 
+	[Map(&quot;Texturing.Texture0&quot;)] Texture2D defaultTexture;
+};
+</code></pre>
+<h2 id="サンプルコード継承">サンプルコード：継承</h2>
+<!--
+## Example code: inheritance
+-->
+<pre><code class="lang-cs">shader BaseInterface
+{
+	abstract float Compute();
+};
+ 
+shader BaseShader : BaseInterface
+{
+	float Compute()
+	{
+		return 1.0f;
+	}
+};
+ 
+shader ShaderA : BaseShader
+{
+	override void Compute()
+	{
+		return 2.0f;
+	}
+};
+ 
+shader ShaderB : BaseShader
+{
+	override void Compute()
+	{
+		float prevValue = base.Compute();
+		return (5.0f + prevValue);
+	}
+};
+</code></pre>
+<h3 id="サンプルコード-継承順序の重要性">サンプルコード： 継承順序の重要性</h3>
+<!--
+### Example code: the importance of inheritance order
+-->
+<p><code>ShaderA</code> と <code>ShaderB</code> の継承順序を変えるとどうなるかに注目してください。</p>
+<!--
+Notice what happens when we change the inheritance order between `ShaderA` and `ShaderB`.
+-->
+<pre><code class="lang-cs">shader MixAB : ShaderA, ShaderB
+{
+};
+ 
+shader MixBA : ShaderB, ShaderA
+{
+};
+ 
+// 結果コード（イメージ表現）
+// Resulting code (representation)
+
+shader MixAB : BaseInterface, BaseShader, ShaderA, ShaderB
+{
+	float Compute()
+	{
+		// BaseShader から取得
+		// code from BaseShader
+		float v0 = 1.0f;
+ 
+		// ShaderA から取得
+		// code from ShaderA
+		float v1 = 2.0f;
+ 
+		// ShaderB から取得
+		// code from ShaderB
+		float prevValue = v1;
+		float v2 = 5.0f + prevValue;
+ 
+		return v2; // = 7.0f
+	}
+};
+
+shader MixBA : BaseInterface, BaseShader, ShaderA, ShaderB
+{
+	float Compute()
+	{
+		// BaseShader から取得
+		// code from BaseShader
+		float v0 = 1.0f;
+
+		// ShaderB から取得
+		// code from ShaderB
+		float prevValue = v0;
+		float v1 = 5.0f + prevValue;
+		
+		// ShaderA から取得
+		// code from ShaderA
+		float v2 = 2.0f;
+
+		return v2; // = 2.0f
+	}
+};
+</code></pre>
+<h2 id="静的呼び出し">静的呼び出し</h2>
+<!--
+## Static calls
+-->
+<p>シェーダーを継承せずに、そのシェーダーの変数を使ったり、メソッドを呼び出したりすることもできます。これを行うには、<code>&lt;shader_name&gt;.&lt;変数またはメソッド名&gt;</code>を使用します。これは静的呼び出しと同じように動作します。</p>
+<!--
+You can also use a variable or call a method from a shader without having to inherit from it. To do this, use `<shader_name>.<variable or method_name>`. It behaves the same way as a static call. 
+-->
+<p>シェーダークラスの変数を使うメソッドを静的に呼び出すと、シェーダーはコンパイルされないということに注意してください。これはシェーダーの一部だけを使用するのに便利な方法ですが、最適化ではありません。シェーダーコンパイラは、すでに不要な変数を自動的に削除しています。</p>
+<!--
+Note that if you statically call a method that uses shader class variables, the shader won't compile. This is a convenient way to only use a part of a shader, but this isn't an optimization. The shader compiler already automatically removes any unnecessary variables.
+-->
+<h3 id="サンプルコード静的呼び出し">サンプルコード：静的呼び出し</h3>
+<!--
+### Code example: static calls
+-->
+<pre><code class="lang-cs">shader StaticClass
+{
+	float StaticValue;
+	float StaticMethod(float a)
+	{
+		return 2.0f * a;
+	}
+
+	// このメソッドは a を使う
+	// this method uses a
+	float NonStaticMethod()
+	{
+		return 2.0f * StaticValue;
+	}
+};
+
+// このシェーダークラスは問題ありません。
+// this shader class is fine
+shader CorrectStaticCallClass
+{
+	float Compute()
+	{
+		return StaticClass.StaticValue * StaticMethod(5.0f);
+	}
+};
+
+// 呼び出しが静的でないため、このシェーダークラスはコンパイルされません。
+// this shader class won't compile since the call is not static
+shader IncorrectStaticCallClass 
+{
+	float Compute()
+	{
+		return StaticClass.NonStaticMethod();
+	}
+};
+ 
+// 修正方法のひとつ
+// one way to fix this
+shader IncorrectStaticCallClassFixed : StaticClass
+{
+	float Compute()
+	{
+		return NonStaticMethod();
+	}
+};
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="../effect-language.html">エフェクト言語</a></li>
+<li><a href="index.html">シェーディング言語</a>
+<ul>
+<li><a href="composition.html">コンポジション</a></li>
+<li><a href="templates.html">テンプレート</a></li>
+<li><a href="automatic-shader-stage-input-output.html">シェーダー ステージ入出力の自動管理</a></li>
+<li><a href="shader-stages.html">シェーダー ステージ</a></li>
+</ul>
+</li>
+</ul>
+<!--
+* [Effect language](../effect-language.md)
+* [Shading language index](index.md)
+    - [Composition](composition.md)
+    - [Templates](templates.md)
+    - [Shader stage input/output automatic management](automatic-shader-stage-input-output.md)
+	- [Shader stages](shader-stages.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/effects-and-shaders/shading-language/shader-classes-mixins-and-inheritance.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

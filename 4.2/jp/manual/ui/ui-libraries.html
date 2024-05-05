@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>UI ライブラリ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="UI ライブラリ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/ui-libraries.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ui-ライブラリ">UI ライブラリ</h1>
+
+<!--
+# UI libraries
+-->
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<!--
+<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Designer</span>
+-->
+<p><strong>UI ライブラリ</strong>には、グリッド、ボタン、スライダーなどの <strong>UI エレメント</strong>が含まれており、<a href="ui-pages.html">UI ページ</a>で利用・再利用することができます。</p>
+<!--
+**UI libraries** contain **UI elements** such as grids, buttons, sliders and so on that you can use and re-use in your [UI pages](UI-pages.md). 
+-->
+<p>Stride プロジェクトは、UI エレメントの<strong>標準ライブラリ</strong>が含まれています。
+カスタムエレメントを使って、独自のライブラリを作ることもできます。</p>
+<!--
+Stride projects include a **standard library** of UI elements. You can create your own libraries of custom elements too.
+-->
+<p><img src="media/UI-library.png" alt="UI library"></p>
+<p>UI ライブラリは、シーンエディターの<a href="../game-studio/prefabs/index.html">プレハブ</a>に似ています。独自のエレメントを作成し、カスタム UI ライブラリに保存し、複数の UI ページで必要なところに使用することができます。また、<a href="../game-studio/prefabs/nested-prefabs.html">入れ子になったプレハブ</a>のように、他のライブラリの中にライブラリを入れ子にすることもできます。</p>
+<!--
+UI libraries are similar to [prefabs](../game-studio/prefabs/index.md) in the Scene Editor; you can create your own elements, save them in a custom UI library, and then use them wherever you need across multiple UI pages. You can also nest libraries inside other libraries, just like [nested prefabs](../game-studio/prefabs/nested-prefabs.md).
+-->
+<p>実行時に、UI ライブラリのルートを再構築して、既存の UI ツリーに挿入することもできます。</p>
+<!--
+At runtime, you can re-instantiate UI library roots and insert them into an existing UI tree.
+-->
+<h2 id="ui-ライブラリを作成する">UI ライブラリを作成する</h2>
+<!--
+## Create a UI library
+-->
+<p><strong>アセットビュー</strong>で、[<strong>Add asset</strong>] &gt; [<strong>UI</strong>] &gt; [<strong>UI library</strong>] をクリックします。</p>
+<!--
+In the **Asset View**, click **Add asset > UI > UI library**.
+-->
+<p><img src="media/add-ui-library.png" alt="Add UI library"></p>
+<p>Game Studio は、UI ライブラリを<strong>アセットビュー</strong>に追加します。</p>
+<!--
+Game Studio adds the UI library to the **Asset View**.
+-->
+<p><img src="media/added-ui-library.png" alt="Added UI library"></p>
+<p>また、既成の UI 要素から UI ライブラリを作成することもできます。</p>
+<!--
+Alternatively, to create a UI library from an existing UI element:
+-->
+<ol>
+<li><p>UI ライブラリを作成する基にしたい要素を選択します。</p>
+</li>
+<li><p>右クリックして、[<strong>Create library from selection</strong>] を選択します。</p>
+</li>
+</ol>
+<!--
+1. Select the elements you want to create a UI library from.
+
+2. Right-click and select **Create library from selection**.
+-->
+<p><img src="media/create-library-from-selection.png" alt="Added UI library"></p>
+<p>Game Studio は、選択された要素のコピーし、ライブラリを作成します。</p>
+<!--
+Game Studio creates a library with a copy of the elements you selected.
+-->
+<h2 id="ui-ライブラリをコードで割り当てる">UI ライブラリをコードで割り当てる</h2>
+<!--
+## Assign a UI library in code
+-->
+<pre><code class="lang-cs">// このプロパティは、Game Studio の UI ライブラリアセットから割り当てることができます。
+// This property can be assigned from a UI library asset in Game Studio
+public UILibrary MyLibrary { get; set; }
+
+public Button CreateButton()
+{
+    // &quot;MyButton&quot; という名前の Button 型（または Button から派生した型）のルート要素があると仮定します。
+    // assuming there is a root element named &quot;MyButton&quot; of type (or derived from) Button
+    var button = MyLibrary.InstantiateElement&lt;Button&gt;(&quot;MyButton&quot;);
+
+    // &quot;MyButton&quot; という名前のルートがライブラリに存在しない場合、あるいは型が一致しない場合は、
+    // 前述のメソッドは null を返します。
+    // if there is no root named &quot;MyButton&quot; in the library or the type does not match,
+    // the previous method will return null
+    if (button != null)
+    {        
+        // Click イベントにデリゲートを登録します。
+        // attach a delegate to the Click event
+        button.Click += delegate
+        {
+            // ここで何かの作業をします。
+            // do something here...
+        };
+    }
+
+    return button;
+}
+</code></pre>
+<p>UI ページには、ルート要素が 1 つかありません。
+UI ライブラリは、複数のルート要素を持つことができます。</p>
+<!--
+UI pages have only one root element. UI libraries can have multiple root elements.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="ui-pages.html">UI ページ</a></li>
+<li><a href="ui-editor.html">UI エディター</a></li>
+<li><a href="add-a-ui-to-a-scene.html">シーンに UI を追加する</a></li>
+<li><a href="layout-system.html">レイアウト システム</a></li>
+</ul>
+<!--
+* [UI pages](ui-pages.md)
+* [UI editor](ui-editor.md)
+* [Add a UI to a scene](add-a-ui-to-a-scene.md)
+* [Layout system](layout-system.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/ui-libraries.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

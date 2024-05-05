@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>シーン レンダラー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="シーン レンダラー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/graphics-compositor/scene-renderers.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="シーン-レンダラー">シーン レンダラー</h1>
+
+<!--
+# Scene renderers
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Designer</span>
+-->
+<p><strong>シーンレンダラー</strong>を使うと、レンダリングの <strong>収集(collect)</strong> と <strong>描画(draw)</strong> のフェーズをカスタマイズすることができます。これらのフェーズの詳細については、<a href="../rendering-pipeline/render-features.html">レンダーの機能</a>を参照してください。</p>
+<!--
+**Scene renderers** let you customize the **collect** and **draw** phases of the rendering. For more information about these stages, see [Render features](../rendering-pipeline/render-features.md). 
+-->
+<p>シーンレンダラーの選択は、<strong>Entry Points</strong> ノードのプロパティで行います。</p>
+<!--
+You select scene renderers in the **entry points** node properties.
+-->
+<p><img src="media/connect-entry-point.png" alt="Select renderer"></p>
+<p>レンダラーの選択については、<a href="index.html">グラフィックス コンポジター</a>を参照してください。</p>
+<!--
+For more information about selecting renderers, see the [Graphics compositor](index.md) page.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>今のところは、<strong>すべての</strong>レンダラーは、カメラを持っているか、カメラを持っているレンダラーの子でなければなりません。これは、シングルステージレンダラー（UI のレンダリングなど）のように、必ずしもカメラを使用しないレンダラーでも同様です。</p>
+</div>
+<!--
+>>[!Note]
+>Currently, **all** renderers must have a camera, or be a child of a renderer that has a camera. This applies even to renderers that don't necessarily use cameras, such as the single stage renderer (eg to render a UI).
+-->
+<h2 id="クリアする">クリアする</h2>
+<!--
+## Clear
+-->
+<p>単色でフレームをクリアします。</p>
+<!--
+Clears a frame, with a solid color.
+-->
+<p><img src="media/clear-renderframe-1.png" alt="Clear properties"></p>
+<h3 id="プロパティ">プロパティ</h3>
+<!--
+### Properties
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clear flags</td>
+<td>クリアする対象（<strong>Color only</strong>, <strong>Depth only</strong>, <strong>Color and depth</strong> のいずれか）。</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>色テクスチャーのクリアに使用される色（<strong>Clear Flags</strong> が <strong>Color</strong> または <strong>Color and depth</strong> の場合のみ有効）。</td>
+</tr>
+<tr>
+<td>Depth value</td>
+<td>深度テクスチャーのクリアに使用される深度値。</td>
+</tr>
+<tr>
+<td>Stencil value</td>
+<td>ステンシルテクスチャーのクリアに使用されるステンシル値。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property      | Description              
+| ------------- | ----------
+| Clear flags   | <br><p>What to clear in the render frame (**Color only**, **Depth only**, or **Color and depth**)
+| Color         | The color used to clear the color texture of the render frame. Only valid when **Clear Flags** is set to **Color** or **Color and depth**
+| Depth value   | The depth value used to clear the depth texture of the render frame
+| Stencil value | The stencil value used to clear the stencil texture of the render frame
+-->
+<h2 id="カメラ-レンダラー">カメラ レンダラー</h2>
+<!--
+## Camera renderer
+-->
+<p><a href="../cameras/camera-slots.html">カメラスロット</a>のビューをレンダリングするには、<a class="xref" href="../../../api/Stride.Rendering.Compositing.SceneCameraRenderer.html#Stride_Rendering_Compositing_SceneCameraRenderer_Child">Child</a> を使用します。<strong>レンダーカメラ</strong>は、シーン内の<a href="../cameras/index.html">カメラ</a>から、表示用の入力を受け取ります。</p>
+<!--
+Uses @'Stride.Rendering.Compositing.SceneCameraRenderer.Child' to render a view from a [camera slot](../cameras/camera-slots.md). The **render camera** renderer takes the input from a [camera](../cameras/index.md) in the scene so it can be displayed somewhere.
+-->
+<p><img src="media/render-camera-1.png" alt="Camera renderer properties"></p>
+<h3 id="プロパティ-1">プロパティ</h3>
+<!--
+### Properties
+-->
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td>レンダリングに使用する<a href=".../cameras/camera-slots.md">カメラスロット</a>。</td>
+</tr>
+<tr>
+<td>Child</td>
+<td>カメラ用のレンダラー（フォワードレンダラーやカスタムレンダラーなど）。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property      | Description                                                             
+| ------------- | ----------
+| Camera        | Specify a [camera slot](../cameras/camera-slots.md) to render from
+| Child         | Specify a renderer for the camera (eg a forward renderer or a custom renderer)
+-->
+<h2 id="シーン-レンダラー-コレクション">シーン レンダラー コレクション</h2>
+<!--
+## Scene renderer collection
+-->
+<p><strong>シーンレンダラーコレクション</strong>は、複数のレンダラー（カメラレンダラーやレンダーテクスチャーなど）を、順番に実行します。これにより、1つのエントリポイントに複数のレンダラーを設定することができます。このコレクションには、必要な数だけレンダラーを追加できます。</p>
+<!--
+The **scene renderer collection** executes multiple renderers (eg camera renderer, render texture, etc) in sequence. This lets you set multiple renderers for an entry point. You can add as many renderers to the collection as you need.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>Stride は、レンダラーをリスト順に実行します。</p>
+</div>
+<!--
+>[!Note]
+>Stride executes the renderers in list order.
+-->
+<p>コレクションにレンダラーを追加するには、<strong>Children</strong> の横にある <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button">（<strong>追加</strong>）をクリックし、追加したいレンダラーを選択します。</p>
+<!--
+To add a renderer to the collection, next to **Children**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**) and select the renderer you want to add.
+-->
+<p><img src="media/add-renderer-to-scene-renderer-collection.png" alt="Add to scene collection"></p>
+<h2 id="フォワード-レンダラー">フォワード レンダラー</h2>
+<!--
+## Forward renderer
+-->
+<p>一般的な設定では、シーンのほぼすべてのレンダリングに<strong>フォワードレンダラー</strong>を使用します。レンダリングする順番は次の通りです。</p>
+<!--
+In a typical setup, the **forward renderer** renders almost everything in your scene. It renders, in order:
+-->
+<ol>
+<li>不透明オブジェクト</li>
+<li>透明オブジェクト</li>
+<li><a href="../post-effects/index.html">ポストエフェクト</a></li>
+</ol>
+<!--
+1. opaque objects
+2. transparent objects
+3. [post effects](../post-effects/index.md)
+-->
+<p>フォワードレンダラーは、VRオプションを設定する場所でもあります。詳しくは、<a href="../../virtual-reality/index.html">バーチャルリアリティー</a>をご覧ください。</p>
+<!--
+The forward renderer is also where you set VR options. For more information, see [Virtual reality](../../virtual-reality/index.md). 
+-->
+<p>フォワードレンダラーのプロパティは、<strong>フォワードレンダラーノード</strong>で設定します。</p>
+<!--
+You configure the forward renderer properties in the **forward entry node**. 
+-->
+<h2 id="シングルステージレンダラー">シングルステージレンダラー</h2>
+<!--
+## Single stage renderer
+-->
+<p><img src="media/single-stage-renderer.png" alt="Single stage renderer"></p>
+<h2 id="アスペクト比強制変更シーンレンダラー">アスペクト比強制変更シーンレンダラー</h2>
+<!--
+## Force aspect ratio scene renderer
+-->
+<p><a class="xref" href="../../../api/Stride.Rendering.Compositing.ForceAspectRatioSceneRenderer.html">ForceAspectRatioSceneRenderer</a> を使用して、アスペクト比を強制することができます。その比率が画面と異なる場合には<a href="https://ja.wikipedia.org/wiki/%E3%83%AC%E3%82%BF%E3%83%BC%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9_(%E6%98%A0%E5%83%8F%E6%8A%80%E8%A1%93)">レターボックス</a>が適用されます。これは、<strong>レンダーカメラ</strong>の前に使用します。</p>
+<!--
+Uses @'Stride.Rendering.Compositing.ForceAspectRatioSceneRenderer' to force an aspect ratio and applies a letterbox if the ratio is different from the screen. Use this before the **render camera**.
+-->
+<p><img src="media/force-aspect-ratio-properties.png" alt="Force aspect ratio"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Child</td>
+<td>カメラ用のレンダラー（フォワードレンダラーやカスタムレンダラーなど）</td>
+</tr>
+<tr>
+<td>Fixed aspect ratio</td>
+<td>ビューに設定するアスペクト比</td>
+</tr>
+<tr>
+<td>Force aspect ratio</td>
+<td>オンにすると強制アスペクト比が有効</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property      | Description                                                             
+| ------------- | ----------
+| Child         | Specify a renderer for the camera (eg a forward renderer or a custom renderer)
+| Fixed aspect ratio | The aspect ratio to force the view to
+| Force aspect ratio | Enable forced aspect ratio
+-->
+<h2 id="レンダー-テクスチャー">レンダー テクスチャー</h2>
+<!--
+## Render texture
+-->
+<p>レンダーテクスチャーにレンダリングを行い、それをシーンに表示することができます（例：防犯カメラの映像をスクリーンに表示する）。詳細については、<a href="render-textures.html">レンダー テクスチャー</a>を参照してください。</p>
+<!--
+Renders to a render texture, which you can display in your scene (eg to display security camera footage on a screen). For more information, see [Render textures](render-textures.md).
+-->
+<p><img src="media/render-texture-scene-renderer-properties.png" alt="Render texture properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Child</td>
+<td>カメラ用のレンダラー（フォワードレンダラーやカスタムレンダラーなど）</td>
+</tr>
+<tr>
+<td>Render texture</td>
+<td>レンダリング先のテクスチャー</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property      | Description                                                             
+| ------------- | ----------
+| Child         | Specify a renderer for the camera (eg a forward renderer or a custom renderer)
+| Render texture| Specify a texture to render to
+-->
+<h2 id="レンダー-マスク">レンダー マスク</h2>
+<!--
+## Render mask
+-->
+<p><img src="media/change-render-mask.png" alt="Render mask"></p>
+<p><strong>レンダーマスク</strong>は、レンダリングするグループをフィルタリングします。これを使うと、特定のモデルだけをレンダリングすることができます。詳細については、<a href="render-groups-and-masks.html">レンダーグループとレンダーマスク</a>を参照してください。</p>
+<!--
+The **render mask** filters which groups are rendered. You can use it to only render particular models. For more information, see [Render groups and render masks](render-groups-and-masks.md)
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="index.html">グラフィックス コンポジター</a></li>
+<li><a href="../cameras/camera-slots.html">カメラ スロット</a></li>
+<li><a href="custom-scene-renderers.html">カスタム シーン レンダラー</a></li>
+<li><a href="debug-renderers.html">デバッグ レンダラー</a></li>
+<li><a href="render-groups-and-masks.html">レンダーグループとレンダーマスク</a></li>
+</ul>
+<!--
+* [Graphics compositor](index.md)
+* [Camera slots](../cameras/camera-slots.md)
+* [Custom scene renders](custom-scene-renderers.md)
+* [Debug renderers](debug-renderers.md)
+* [Render groups and render masks](render-groups-and-masks.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/graphics-compositor/scene-renderers.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

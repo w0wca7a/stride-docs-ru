@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>UI | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="UI | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ui">UI</h1>
+
+<p>Stride には、洗練されたユーザーインターフェースを構築するための UI エディターとレイアウトシステムが搭載されています。解像度には依存せず、2D と 3D に対応しています。</p>
+<!--
+Stride features a UI editor and layout system you can use to build sophisticated user interfaces. It supports 2D and 3D independently of resolution.
+-->
+<p><img src="media/ui-editor.png" alt="UI editor"></p>
+<p>Stride では、<code>UIPageAsset</code> と <code>UILibraryAsset</code> という 2 種類の UI アセットを使います。ランタイムでは、それぞれ <code>UIPage</code> と <code>UILibrary</code> に対応します。</p>
+<!--
+Stride uses two types of UI asset: `UIPageAsset` and `UILibraryAsset`. Their runtime counterparts are `UIPage` and `UILibrary` respectively.
+-->
+<p>描画の呼び出し回数を減らすために、Stride は複数の要素をスプライト バッチ レンダラーで描画します。</p>
+<!--
+To reduce the number of draw calls, Stride draws multiple elements using a sprite batch renderer.
+-->
+<h2 id="コントロール">コントロール</h2>
+<!--
+## Controls
+-->
+<p>Stride には、以下のような多くの UI コントロールコンポーネントが搭載されています。</p>
+<!--
+Stride features many UI control components, including:
+-->
+<ul>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ImageElement.html">ImageElement</a></li>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ContentControl.html">ContentControl</a>
+<ul>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ScrollViewer.html">ScrollViewer</a></li>
+<li><a class="xref" href="../../api/Stride.UI.Controls.Button.html">Button</a>
+<ul>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ToggleButton.html">ToggleButton</a></li>
+</ul>
+</li>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ContentDecorator.html">ContentDecorator</a></li>
+</ul>
+</li>
+<li><a class="xref" href="../../api/Stride.UI.Controls.TextBlock.html">TextBlock</a>
+<ul>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ScrollingText.html">ScrollingText</a></li>
+</ul>
+</li>
+<li><a class="xref" href="../../api/Stride.UI.Controls.EditText.html">EditText</a> (displays soft keyboard on mobile devices)</li>
+<li><a class="xref" href="../../api/Stride.UI.Panels.Panel.html">Panel</a>
+<ul>
+<li><a class="xref" href="../../api/Stride.UI.Panels.StackPanel.html">StackPanel</a> (supports virtualization)</li>
+<li><a class="xref" href="../../api/Stride.UI.Panels.Grid.html">Grid</a></li>
+<li><a class="xref" href="../../api/Stride.UI.Panels.UniformGrid.html">UniformGrid</a></li>
+<li><a class="xref" href="../../api/Stride.UI.Panels.Canvas.html">Canvas</a></li>
+</ul>
+</li>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ScrollBar.html">ScrollBar</a></li>
+<li><a class="xref" href="../../api/Stride.UI.Controls.ModalElement.html">ModalElement</a></li>
+</ul>
+<p>自分で作成することも可能です。</p>
+<!--
+You can also create your own.
+-->
+<h2 id="サンプルプロジェクト">サンプルプロジェクト</h2>
+<!--
+## Sample project
+-->
+<p>スクリプトがなければ、UI は単なる画像です。これをインタラクティブ（対話的）にするには、スクリプトを追加します。</p>
+<!--
+Without scripts, UIs are simply non-interactive images. To make them interactive, add a script.
+-->
+<p>Stride で実装されている UI の例として、Stride に同梱されている <strong>game menu UI</strong> サンプルがあります。</p>
+<!--
+For an example of a UI implemented in Stride, see the **game menu UI** sample included with Stride.
+-->
+<p><img src="media/ui-sample-project.png" alt="Sample UI project"></p>
+<h2 id="このセクションの内容">このセクションの内容</h2>
+<!--
+## In this section
+-->
+<ul>
+<li><a href="ui-pages.html">UI ページ</a></li>
+<li><a href="ui-libraries.html">UI ライブラリ</a></li>
+<li><a href="ui-editor.html">UI エディター</a></li>
+<li><a href="add-a-ui-to-a-scene.html">シーンに UI を追加する</a></li>
+<li><a href="layout-system.html">レイアウト システム</a></li>
+</ul>
+<!--
+* [UI pages](ui-pages.md)
+* [UI libraries](ui-libraries.md)
+* [UI editor](ui-editor.md)
+* [Add a UI to a scene](add-a-ui-to-a-scene.md)
+* [Layout system](layout-system.md)
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="../virtual-reality/display-a-UI-in-an-overlay.html">オーバーレイへの UI の表示</a></li>
+</ul>
+<!--
+* [VR — Display a UI in an overlay](../virtual-reality/display-a-ui-in-an-overlay.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/ui/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

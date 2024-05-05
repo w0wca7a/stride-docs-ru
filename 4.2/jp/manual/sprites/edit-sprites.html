@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>スプライトの編集 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="スプライトの編集 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/sprites/edit-sprites.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="スプライトの編集">スプライトの編集</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p><a href="import-sprite-sheets.html">スプライト シートをインポート</a>した後は、専用の<strong>スプライト エディター</strong>を使用して、スプライト シート内のスプライトを選択できます。</p>
+<p>また、他のアセットと同じように、［Property grid］でスプライトのプロパティを編集できます。</p>
+<h2 id="スプライト-エディターを開く">スプライト エディターを開く</h2>
+<p>スプライト エディターを開くには、［Asset view］でスプライト シート アセットをダブルクリックします。</p>
+<p>スプライト シートがスプライト エディターで開きます。</p>
+<p><img src="media/sprite-editor.png" alt="Sprite Editor"></p>
+<h3 id="スプライト-シートの種類を設定する">スプライト シートの種類を設定する</h3>
+<p>スプライト シートに含まれるのがゲームプレイ スプライト (<strong>Sprite2D</strong>) か UI スプライト (<strong>UI</strong>) かを設定できます。この設定は実行時のスプライトのレンダリング方法には影響を与えませんが、後の「<strong>スプライトのプロパティ</strong>」で説明するように、設定できるプロパティが少し異なります。スプライト シートの種類はいつでも変更できます。</p>
+<p><img src="media/sprite2D-UI.png" alt="Choose Sprite 2D or UI"></p>
+<h3 id="スプライトを追加する">スプライトを追加する</h3>
+<ol>
+<li><p>［Add empty sprite］ボタンをクリックします。</p>
+<p><img src="media/add-sprite-button.png" alt="Add sprite"></p>
+<p>空のスプライトがリストに追加されます。</p>
+</li>
+<li><p>右側の［Property grid］の［Source］フィールドで、スプライトを格納するスプライト シートを指定します。</p>
+</li>
+</ol>
+<div class="TIP">
+<h5>Tip</h5>
+<p>リストの他のスプライトと同じスプライト シートから新しいスプライトを作成する場合は、通常、既存のスプライトを複製すると時間がかかりません。スプライトを複製するには、スプライトを選択し、［Duplicate selected sprites］をクリックするか、<strong>Ctrl + D</strong> キーを押します。</p>
+<p><img src="media/duplicate-selected-sprites.png" alt="Duplicate selected sprites"></p>
+</div>
+<h3 id="スプライト-リスト">スプライト リスト</h3>
+<p>スプライト エディターの左側には、プロジェクト内のスプライトが一覧表示されます。各スプライトには、インデックス番号が付いています (1 番目のインデックスは <em>［0］</em>、2 番目のインデックスは <em>［1］</em>、以下同様)。これらのインデックスを、スクリプトで使用できます (「<a href="use-sprites.html">スプライトを使用する</a>」を参照)。</p>
+<p><img src="media/sprite-list.png" alt="Sprite list"></p>
+<p>スプライトの順序 (したがってインデックス番号) を変更するには、<img src="media/move-sprite-up-and-down.png" alt="Move selected sprite up/down"> (［Move selected sprite up/down］) ボタンを使用します。たとえば、<em>［1］ Sprite</em> を下に移動すると、<em>［2］ Sprite</em> になります。</p>
+<p>リストに表示されるスプライトの名前を変更するには、スプライトをダブルクリックして新しい名前を入力します。</p>
+<h3 id="テクスチャ領域を設定する">テクスチャ領域を設定する</h3>
+<p>スプライト シートで長方形の<strong>テクスチャ領域</strong>を定義することにより、スプライトを作成します。</p>
+<p><img src="media/select-sprite.png" alt="Select a sprite region"></p>
+<p>そのための方法は、Magic Wand ツールを使用する、領域のエッジを手動で設定する、スプライトのプロパティでピクセル座標を指定する、の 3 種類です。</p>
+<h4 id="magic-wand-を使用する">Magic Wand を使用する</h4>
+<p><strong>Magic Wand</strong> は、スプライトを囲むテクスチャ領域を自動的に選択します。通常、これはスプライトを選択する最も迅速な方法です。</p>
+<p><img src="media/magic-wand.gif" alt="Magic wand"></p>
+<p>Magic Wand を選択または選択解除するには、スプライト エディターのツールバーのアイコンをクリックするか、<strong>M</strong> キーを押します。</p>
+<p><img src="media/select-magic-wand.png" alt="Select Magic Wand"></p>
+<p>Magic Wand がテクスチャ領域を識別する方法を選択するには、ツールバーの<strong>ドロップダウン リスト</strong>を使用します。</p>
+<p><img src="media/magic-wand-select-transparency-or-color-key.png" alt="Select transparency or color key"></p>
+<ul>
+<li><p>［Use transparency］: Magic Wand は、非透明領域のエッジを、テクスチャ領域のエッジとして扱います。たとえば、スプライトが透明なスペースで囲まれている場合、透明なスペースのエッジにテクスチャ領域が設定されます。</p>
+</li>
+<li><p>［Use color key］: Magic Wand は、スプライト エディターの［Color key］で設定されている色を使用してテクスチャ領域を識別します。たとえば、スプライトが完全な黒 (#FF000000) で囲まれている場合、完全な黒をカラー キーとして設定すると、完全な黒のスペースのエッジにテクスチャ領域が設定されます。</p>
+</li>
+</ul>
+<h4 id="テクスチャ領域を手動で設定する">テクスチャ領域を手動で設定する</h4>
+<p>テクスチャ領域のエッジをドラッグすることにより、手動で領域を変更できます。</p>
+<p>
+    <video autoplay="" loop="" class="responsive-video" poster="media\select-sprite-borders.jpg">
+       <source src="media/select-sprite-borders.mp4" type="video/mp4">
+    </video>
+</p>
+<p>####［Property grid］でテクスチャ領域を設定する</p>
+<p>［Property grid］の［Texture Region］で、テクスチャ領域のピクセル座標を定義できます。［X］は左のエッジ、［Y］は上のエッジ、［Z］は右のエッジ、［W］は下のエッジです。</p>
+<p><img src="media/set-texture-region-in-property-grid.png" alt="Set texture region in property grid"></p>
+<h4 id="スプライト-シート全体をスプライトに使用する">スプライト シート全体をスプライトに使用する</h4>
+<p>スプライト シート全体の画像をスプライトに使用する場合は、ツールバーの［Use whole image for this sprite］をクリックして簡単に設定できます。これは、スプライト シートのスプライトが 1 つだけの場合に便利です。</p>
+<p><img src="media/use-entire-sprite-sheet.png" alt="Use entire sprite sheet"></p>
+<h3 id="透明性を設定する">透明性を設定する</h3>
+<p>既定では、スプライト シートの透明な領域は実行時に透明として扱われます。代わりに、キー カラーを透明として設定できます。そのためには、［Use color key］を選択して色を定義します。たとえば、完全な黒 (#FF000000) を設定すると、実行時には完全な黒の領域が透明になります。</p>
+<p><img src="media/color-key.png" alt="Select color key"></p>
+<p><strong>カラー ピッカー</strong> ツールを使用してスプライト シートから色を選択することもできます。</p>
+<p><img src="media/color-picker.png" alt="Color picker"></p>
+<h2 id="スプライトのプロパティ">スプライトのプロパティ</h2>
+<p>個別のスプライトのプロパティは［Property grid］で設定できます。</p>
+<p><img src="media/adjust-frame-properties.png" alt="Adjust frame properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>スプライト シートのパスです。</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>このスプライトの名前です。スプライト エディターのスプライト リストでスプライトをダブルクリックして、名前を編集することもできます。</td>
+</tr>
+<tr>
+<td>Texture Region</td>
+<td>このスプライトに使用されるスプライト シートの領域です。</td>
+</tr>
+<tr>
+<td>Pixels Per Unit</td>
+<td>シーンでの単位を表すピクセルの数です。この値が大きいほど、シーンにレンダリングされるスプライトは小さくなります。</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>［Rotated90］を選択すると、実行時にスプライトは 90 度回転されます。</td>
+</tr>
+<tr>
+<td>Center</td>
+<td>スプライトの中心の位置です (ピクセル単位)。既定の中心は <strong>0, 0</strong> です。NOTE: このプロパティは、スプライト エディターでスプライト シートの種類が［Sprite2D］に設定されている場合にのみ使用できます。</td>
+</tr>
+<tr>
+<td>Center From Middle</td>
+<td>選択すると、［Center］プロパティの値はスプライトの真ん中からのスプライトの中心のオフセットを表します。NOTE: このプロパティは、スプライト エディターでスプライト シートの種類が［Sprite2D］に設定されている場合にのみ使用できます。</td>
+</tr>
+<tr>
+<td>Borders</td>
+<td>スプライトの境界 (拡大されたときに変形しない領域) のサイズです (ピクセル単位)。［X］は左の境界、［Y］は上、［Z］は右、［W］は下です。詳細については、「<a href="set-sprite-borders.html">スプライトの境界を設定する</a>」を参照してください。NOTE: このプロパティは、左側でスプライト シートが［UI］に設定されている場合にのみ使用できます。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="スプライト-シートのプロパティ">スプライト シートのプロパティ</h2>
+<p>スプライト シート アセット全体のプロパティを設定することもできます。プロパティにアクセスするには:</p>
+<p>*［Asset view］でスプライト シート アセットを選択し、［Property grid］でプロパティを設定します。</p>
+<ul>
+<li><p>または、スプライト エディターで［Sprite sheet properties］をクリックします。</p>
+<p><img src="media/sprite-sheet-properties-button.png" alt="Sprite sheet properties button"></p>
+</li>
+</ul>
+<p>多くのプロパティは、テクスチャのプロパティと同じです。</p>
+<p><img src="media/sprite-sheet-properties.png" alt="Sprite sheet properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sheet Type</td>
+<td>このスプライト シートが、2D スプライトまたは UI 要素のどちらに使用されるか。［Sprite sheet for UI］を選択した場合は、スプライトで<a href="set-sprite-borders.html">スプライトの境界</a>を定義できます。</td>
+</tr>
+<tr>
+<td>Color Key Color</td>
+<td>実行時に透明として使用される色です。これは、［Color Key Enabled］が選択されている場合にのみ適用されます。</td>
+</tr>
+<tr>
+<td>Color Key Enabled</td>
+<td>［Color Key Color］プロパティで設定されている色を、実行時に透明として使用します。それ以外の場合は、スプライト シートの透明領域を代わりに使用します</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>スプライト シートのすべてのスプライトを圧縮するテクスチャ形式です (［Compressed］、［32 bits］、［16 bits］、または [AsIs］)。</td>
+</tr>
+<tr>
+<td>ColorSpace</td>
+<td>スプライト シート内のスプライトの色空間です (［Auto］、［Linear］、または [Gamma］)。</td>
+</tr>
+<tr>
+<td>Alpha</td>
+<td>スプライト シート内のすべてのスプライトが変換されるテクスチャのアルファ形式です (［None］、［Mask］、［Explicit］、［Interpolated］、または [Auto］)。</td>
+</tr>
+<tr>
+<td>Generate Mipmaps</td>
+<td>スプライト シートのすべてのスプライトに対してミップマップが生成されます。</td>
+</tr>
+<tr>
+<td>Premultiply Alpha</td>
+<td>画像のすべての色成分にアルファの色成分が事前に乗算されます。</td>
+</tr>
+<tr>
+<td>Allow Multipacking</td>
+<td>スプライトが 1 つのアトラスに収まらない場合、複数のアトラス テクスチャを生成します。</td>
+</tr>
+<tr>
+<td>Allow Rotations</td>
+<td>スプライト シート内でスプライトが回転されてスペースが最適化されます。実行時のスプライトの表示方法には影響ありません。</td>
+</tr>
+<tr>
+<td>Border Size</td>
+<td>スプライトを囲む境界のサイズです (ピクセル単位)。これは、スプライト シートの副次的影響を防ぎます。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="import-sprite-sheets.html">スプライト シートをインポートする</a></li>
+<li><a href="set-sprite-borders.html">スプライトの境界を設定する</a></li>
+<li><a href="use-sprites.html">スプライトを使用する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/sprites/edit-sprites.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

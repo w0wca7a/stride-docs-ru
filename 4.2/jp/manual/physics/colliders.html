@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>コライダー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="コライダー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/colliders.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="コライダー">コライダー</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p>プロジェクトで物理特性を使用するには、<strong>コライダー</strong> コンポーネントをエンティティに追加します。</p>
+<p>コライダーは、物理オブジェクトの形状とルールを定義します。コライダーには 3 つの種類があります。</p>
+<ul>
+<li><a href="static-colliders.html">静的コライダー</a>は動きません (壁、床、重いオブジェクトなど)</li>
+<li><a href="rigid-bodies.html">剛体</a>は、衝突や重力などの力によって動き回ります (ボール、銃身など)</li>
+<li><a href="characters.html">キャラクター</a>は、ユーザーの入力によって制御されます (プレイヤー キャラクター)</li>
+</ul>
+<p>また、以下のことが可能です。</p>
+<ul>
+<li><a href="collider-shapes.html">コライダー コンポーネントの形状</a>を設定します</li>
+<li><a href="triggers.html">トリガー</a>を作成し、オブジェクトがそれを通り抜けたことを検出します</li>
+<li><a href="constraints.html">制約</a>によってコライダーの動きを制限します</li>
+</ul>
+<h2 id="コライダーが相互作用する方法">コライダーが相互作用する方法</h2>
+<p>コライダーは次の表に従って相互作用します。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>運動学的オブジェクト</th>
+<th>運動学的トリガー</th>
+<th>剛体コライダー</th>
+<th>剛体トリガー</th>
+<th>静的コライダー</th>
+<th>静的トリガー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>運動学的オブジェクト</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突および動的</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+</tr>
+<tr>
+<td>運動学的トリガー</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+</tr>
+<tr>
+<td>剛体コライダー</td>
+<td>衝突および動的</td>
+<td>衝突</td>
+<td>衝突および動的</td>
+<td>衝突</td>
+<td>衝突および動的</td>
+<td>衝突</td>
+</tr>
+<tr>
+<td>剛体トリガー</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+</tr>
+<tr>
+<td>静的コライダー</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突および動的</td>
+<td>衝突</td>
+<td>なし</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>静的トリガー</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>衝突</td>
+<td>なし</td>
+<td>なし</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>「衝突」は、衝突情報とイベントのみを示します。つまり、衝突はコードで検出されますが、オブジェクトが相互に衝突することはありません (動的な反応はなし)。</p>
+</li>
+<li><p>「動的」とは、衝突情報とイベントに加えて動的な反応の両方を意味します (つまり、コライダーは通過するのではなく相互に衝突します)。</p>
+</li>
+</ul>
+<p>たとえば、剛体コライダーは静的コライダーと動的に衝突します (つまり相互に衝突する)。ただし、オブジェクトがトリガーと動的に衝突することはありません。コードで衝突が検出されますが、オブジェクトは通過するだけです。</p>
+<h2 id="シーン-エディターでコライダーを表示する">シーン エディターでコライダーを表示する</h2>
+<p>既定では、コライダーはシーン エディターには表示されません。表示するには次のようにします。</p>
+<ol>
+<li><p>Game Studio ツールバーの右上にある［Display gizmo options］アイコンを表示します。</p>
+<p><img src="media/display-gizmo-options.png" alt="Display gizmo options"></p>
+</li>
+<li><p>［Physics］を選択します。</p>
+<p><img src="media/display-physics-option.png" alt="Display physics option"></p>
+</li>
+</ol>
+<p>シーン エディターにコライダーの形状が表示されます。</p>
+<p><img src="media/display-physics.png" alt="Display physics"></p>
+<h2 id="実行時にコライダーを表示する">実行時にコライダーを表示する</h2>
+<p>実行時にコライダーを表示できます。これは、物理特性に関する問題のデバッグに便利です。そのためには、次のようにします。</p>
+<p><code> this.GetSimulation().ColliderShapesRendering = true; </code></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>無限平面に対するコライダーの形状は常に表示されません。</p>
+</div>
+<h3 id="キーボード-ショートカット">キーボード ショートカット</h3>
+<p>キーボード ショートカットで実行時にコライダーの形状の表示/非表示を切り替えるには、<strong>Debug physics shapes</strong> スクリプトを使用します。</p>
+<ol>
+<li><p>［Asset view］で［Add asset］をクリックします。</p>
+</li>
+<li><p>［Scripts］&gt;［Debug physics shapes］の順に選択します。</p>
+<p><img src="media/add-debug-physics-shapes-script.png" alt="Add debug physics shape script"></p>
+</li>
+<li><p>Game Studio のツールバーで、［Reload game assemblies and update scripts］をクリックします。</p>
+<p><img src="../platforms/media/reload-assemblies.png" alt="Reload assemblies"></p>
+</li>
+<li><p><strong>Debug physics shapes</strong> スクリプトをコンポーネントとしてシーン内のエンティティに追加します。どのエンティティでもかまいません。</p>
+<p><img src="media/add-debug-physics-shapes-component.png" alt="Add debug physics shapes script component"></p>
+</li>
+</ol>
+<p>スクリプトがコライダーの形状の可視性を<strong>左 Shift + 左 Ctrl + P</strong> にバインドするので、実行時にオン/オフを切り替えられるようになります。スクリプトを編集して、別のキーの組み合わせにバインドできます。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="collider-shapes.html">コライダーの形状</a></li>
+<li><a href="static-colliders.html">静的コライダー</a></li>
+<li><a href="rigid-bodies.html">剛体</a></li>
+<li><a href="kinematic-rigid-bodies.html">運動学的剛体</a></li>
+<li><a href="simulation.html">シミュレーション</a></li>
+<li><a href="tutorials.html">物理特性のチュートリアル</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/physics/colliders.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>シーンの作成 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="シーンの作成 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/create-a-scene.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="シーンの作成">シーンの作成</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">レベル デザイナー</span></p>
+<p>新しいプロジェクトを作成すると、初期シーンが作成されて、ライト、カメラ、スカイボックスなどの基本的なエンティティが設定されます。</p>
+<p>他のアセットと同じようにシーンを作成できます。シーンは複雑なアセットなので、専用のエディターである<strong>シーン エディター</strong>があります。</p>
+<h2 id="シーンを作成する">シーンを作成する</h2>
+<ol>
+<li><p>［Asset view］(既定では下部のペイン) で［Add asset］をクリックして、［Scenes］を選択します。</p>
+<p><img src="media/add-scene.png" alt="Add a scene"></p>
+</li>
+<li><p>適切な<strong>シーン テンプレート</strong>を選択します。</p>
+<table>
+<thead>
+<tr>
+<th>テンプレート</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Empty scene</td>
+<td>エンティティまたは事前構成済みのレンダリング パイプラインがない空のシーン</td>
+</tr>
+<tr>
+<td>Scene with HDR pipeline</td>
+<td>基本的なエンティティを含み、HDR レンダリング用に事前に構成されているシーン</td>
+</tr>
+<tr>
+<td>Scene with LDR pipeline</td>
+<td>基本的なエンティティを含み、LDR レンダリング用に事前に構成されているシーン</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<h2 id="シーン-エディターでシーンを開く">シーン エディターでシーンを開く</h2>
+<p>［Asset view］で次のいずれかを行います。</p>
+<p><img src="media/open-scene-from-asset-view.png" alt="Select a scene in the asset view"></p>
+<ul>
+<li>シーン アセットをダブルクリックします</li>
+<li>アセットを右クリックして、［Edit asset］を選択します</li>
+<li>アセットを選択して、<strong>Ctrl + Enter</strong> キーを押します</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>複数のシーンを同時に開くことができます。</p>
+</div>
+<h2 id="シーン-エディターを使用する">シーン エディターを使用する</h2>
+<p><img src="media/create-a-scene-default-scene-editor.png" alt="Scene editor"></p>
+<p><strong>シーン エディターのタブ</strong> (A) には、開いているシーンの名前が表示されます。タブを使用して、表示するシーンを切り替えることができます。</p>
+<p><strong>エンティティ ツリー</strong> (B) には、シーンに含まれるエンティティの階層が表示されます。同じエンティティ階層が実行時に適用されます。エンティティ ツリーを使用して、エンティティの参照、選択、名前の変更、整理を行うことができます。</p>
+<p><strong>ツール バー</strong> (C) を使用すると、エンティティを修正し、シーン エディターの表示を変更できます。</p>
+<p><strong>メイン ウィンドウ</strong> (D) には、シーンの簡潔な表現が表示され、その内部にエンティティが配置されています。形状を持たないエンティティ (E) は、<strong>2D ギズモ</strong>で表されます。たとえば、カメラはカメラ アイコンで表されます。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="navigate-in-the-scene-editor.html">シーン エディター内を移動する</a></li>
+<li><a href="manage-scenes.html">シーンを管理する</a></li>
+<li><a href="load-scenes.html">シーンをロードする</a></li>
+<li><a href="add-entities.html">エンティティを追加する</a></li>
+<li><a href="manage-entities.html">エンティティを管理する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/create-a-scene.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

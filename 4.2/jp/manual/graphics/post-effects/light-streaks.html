@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ライトストリーク | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ライトストリーク | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/post-effects/light-streaks.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ライトストリーク">ライトストリーク</h1>
+
+<!--
+# Light streaks
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Artist</span>
+-->
+<p><strong>ライトストリーク（Light streaks）</strong> エフェクトは、<a href="bloom.html">ブルームエフェクト</a>と同様に、<a href="bright-filter.html">明度フィルター</a>の結果を利用して、明るい部分をある方向に沿ってにじませるものです。光点から星型のビームが発生します。</p>
+<!--
+Similar to the [bloom effect](bloom.md), the **light streak** effect uses the result of the [bright filter](bright-filter.md) to make the bright areas bleed along a direction. It creates star-pattern beams from the light point.
+-->
+<p><img src="media/light-streaks-1.png" alt="media/light-streaks-1.png"></p>
+<h2 id="プロパティ">プロパティ</h2>
+<!--
+## Properties
+-->
+<p><img src="media/light-streaks-2.png" alt="media/light-streaks-2.png"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amount</td>
+<td>ライトストリークの強さ。</td>
+</tr>
+<tr>
+<td>Streak Count</td>
+<td>輝点から放たれるビームの数。数が多いほど、パフォーマンスコストが高くなります。</td>
+</tr>
+<tr>
+<td>Attenuation</td>
+<td>ストリークに沿って光が減衰する速さ（0 ならすぐに減衰し、1 ならまったく減衰しません） 。</td>
+</tr>
+<tr>
+<td>Phase</td>
+<td>星型パターンの位相（角度）</td>
+</tr>
+<tr>
+<td>Color Aberration Strength</td>
+<td>ストリークに沿った色収差の強さ。<br><img src="media/light-streaks-3.png" alt="media/light-streaks-3.png"> <br>ストリークが複数の色（黄、紫、緑、ピンク）を含んでいることに注目してください。</td>
+</tr>
+<tr>
+<td>Is Anamorphic</td>
+<td>ハリウッド作品で広く使用されている<a href="https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%8A%E3%83%A2%E3%83%AB%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%83%AC%E3%83%B3%E3%82%BA">アナモルフィックレンズ</a>をシミュレートします。<br><img src="media/light-streaks-4.png" alt="media/light-streaks-4.png"> <br> この図では、位相（phase）が 0 である 2 本のライトストリークを使い、アナモルフィックモードを有効にして、明度フィルターの結果を水平方向にわずかに歪ませています。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property                  | Description   
+| ------------------------- | ---------------- 
+| Amount                    | Strength of the light streak
+| Streak Count              | Number of beams emitted by a bright point. The more streaks, the higher the performance cost.
+| Attenuation               | How fast the light attenuates along a streak (0 for immediate attenuation, 1 for no attenuation)  
+| Phase                     | Phase (angle) of the star-like pattern
+| Color Aberration Strength | Strength of the color aberration along the streaks. <br>![media/light-streaks-3.png](media/light-streaks-3.png) <br>Notice the streaks involve multiple colors (yellow, purple, green, pink).                                        
+| Is Anamorphic             | Simulates the behavior of anamorphic lenses, widely used in Hollywood productions. <br>![media/light-streaks-4.png](media/light-streaks-4.png) <br> The effect above is achieved by using two light streaks with a phase of 0, enabling anamorphic mode, and slightly distorting the bright pass result horizontally.                                                                         
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="anti-aliasing.html">アンチエイリアシング</a></li>
+<li><a href="outline.html">アウトライン</a></li>
+<li><a href="ambient-occlusion.html">アンビエント オクルージョン</a></li>
+<li><a href="bloom.html">ブルーム</a></li>
+<li><a href="bright-filter.html">明度フィルター</a></li>
+<li><a href="color-transforms/index.html">色変換</a></li>
+<li><a href="depth-of-field.html">被写界深度</a></li>
+<li><a href="lens-flare.html">レンズ フレア</a></li>
+</ul>
+<!--
+* [Anti-aliasing](anti-aliasing.md)
+* [Outline](outline.md)
+* [Ambient occlusion](ambient-occlusion.md)
+* [Bloom](bloom.md)
+* [Bright filter](bright-filter.md)
+* [Color transforms](color-transforms/index.md)
+* [Depth of field](depth-of-field.md)
+* [Lens flare](lens-flare.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/post-effects/light-streaks.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

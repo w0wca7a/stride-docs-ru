@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>プレハブ プロパティのオーバーライド | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="プレハブ プロパティのオーバーライド | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/prefabs/override-prefab-properties.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="プレハブ-プロパティのオーバーライド">プレハブ プロパティのオーバーライド</h1>
+
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p>プレハブのインスタンスでプロパティを変更した場合、そのインスタンスはプレハブからそのプロパティに対する変更を継承しなくなります。これは<strong>オーバーライド</strong>と呼ばれます。</p>
+<p><img src="media/create-manage-prefabs-how-prefabs-work.png" alt="How prefabs work"></p>
+<p>次のビデオで、<strong>Lamp</strong> プレハブには、<strong>Boxes</strong> の親に属する複数の箱エンティティが含まれます。インスタンスから箱を削除すると、そのインスタンスのみが影響を受けます。右側に表示されているプレハブは変更されません。</p>
+<p>プレハブで <strong>Boxes</strong> の親に別の箱を追加しても、オーバーライドされたインスタンスには表示されません。これは、<strong>Boxes</strong> の親をインスタンスから削除したためです。</p>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/delete-boxes-from-prefab-instance.jpg">
+   <source src="media/delete-boxes-from-prefab-instance.mp4" type="video/mp4">
+</video>
+</p>
+<h2 id="オーバーライドされたプロパティを表示する">オーバーライドされたプロパティを表示する</h2>
+<p>［Property grid］では、プレハブのインスタンスのどのプロパティが、プレハブの元の値と異なるかを確認できます。</p>
+<ul>
+<li><p><strong>オーバーライド</strong>された<strong>固有</strong>のプロパティは<strong>白と太字</strong>で表示されます。</p>
+<p><img src="media/use-prefabs-overriden-properties-appear-white.png" alt="Overridden properties are white"></p>
+</li>
+<li><p><strong>同じ</strong>プロパティは<strong>グレー</strong>で表示されます。</p>
+<p><img src="media/use-prefabs-identical-properties-appear-gray.png" alt="Identical properties are gray"></p>
+</li>
+</ul>
+<h3 id="プロパティをプレハブの値にリセットする">プロパティをプレハブの値にリセットする</h3>
+<p>オーバーライドされたプロパティを親プレハブの値にリセットするには、プロパティを右クリックして［Reset to base value］をクリックします。</p>
+<p><img src="media/use-prefabs-reset-property-to-base-value.png" alt="Reset to base value"></p>
+<h2 id="例">例</h2>
+<p>この例では、未来風の街灯柱のプレハブを使用します。</p>
+<p><img src="media/lamppost-prefab.jpg" alt="Lamppost"></p>
+<p>この街灯柱プレハブは、主柱、支柱、スポット ライトの 3 つのエンティティで構成されます。これらは、プレハブ エディターのエンティティ ツリーに一覧表示されます。</p>
+<p><img src="media/lamppost-prefab-entities.png" alt="Add entities"></p>
+<p>街灯柱プレハブの 5 つのインスタンスをシーンに追加してみましょう。</p>
+<p><img src="media/lamppost-prefab-instances.jpg" alt="Five lampposts"></p>
+<p>そして、インスタンスの 1 つを変更します。シーン エディターで、1 つの<strong>スポット ライト</strong> エンティティを選択し、スポット ライト コンポーネントのプロパティで、色を赤に変更します。［Properties grid］に、変更された［Color］プロパティが<strong>太字の白</strong>で表示されます。これは、そのプロパティがプレハブのプロパティをオーバーライドしていることを意味します。</p>
+<p><img src="media/override-prefab-property.png" alt="Overridden property"></p>
+<p>これを［Scene view］で確認できます。</p>
+<p><img src="media/pink-lamppost-prefab.jpg" alt="Pink spotlight"></p>
+<p>次に、プレハブ エディターに戻ってプレハブのスポット ライトの色を緑に変更するとどうなるか見てみましょう。</p>
+<p><img src="media/change-prefab-color-to-green.png" alt="Change color to green"></p>
+<p>街灯柱のうち 4 つは緑のライトになります。オーバーライドされたプロパティはプレハブを変更しても変わらないので、5 番目は赤のままです。</p>
+<p><img src="media/lamppost-prefab-instances-with-override.jpg" alt="Changed colors"></p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="index.html">プレハブの索引</a></li>
+<li><a href="create-a-prefab.html">プレハブを作成する</a></li>
+<li><a href="index.html">プレハブを使用する</a></li>
+<li><a href="edit-prefabs.html">プレハブを編集する</a></li>
+<li><a href="nested-prefabs.html">入れ子になったプレハブ</a></li>
+<li><a href="prefab-models.html">プレハブ モデル</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/prefabs/override-prefab-properties.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

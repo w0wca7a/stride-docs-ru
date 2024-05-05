@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Rendering and Camera | Stride Community resources </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Rendering and Camera | Stride Community resources ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/community-resources/rendering-and-camera.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="rendering-and-camera">Rendering and Camera</h1>
+
+<h2 id="rendering">Rendering</h2>
+<ul>
+<li><a href="https://github.com/Doprez/Stride.DebugShapes">Debug shape render</a>
+<ul>
+<li><a href="https://github.com/profan/XenkoDebugRendering/tree/master/DebugRendering">Old: Debug shape render</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/herocrab/StrideFogOfWarPlus">Fog Of War</a></li>
+<li><a href="https://github.com/SoulRider/StrideOutlineRenderer">Stride Outline Renderer</a></li>
+<li><a href="https://github.com/profan/XenkoByteSized">XenkoByteSized</a> - Various Procedural Renderings</li>
+<li><a href="https://github.com/tebjan/Stride.ShaderExplorer/releases">ShaderExplorerForStride</a> - Explore Stride source shader implementations</li>
+<li><a href="https://github.com/TomGroner/XenkoFlowingWater">FlowingWater</a> - Flowing water shader implementation</li>
+<li><a href="https://github.com/WhyPenguins/XenkoVoxelGI">VoxelGIPrototype</a> - VXGI inspired Global Illumination shaders (merged as of Stride v4beta2)</li>
+<li><a href="https://github.com/jason-wilmans/XenkoVoxelExample">XenkoVoxelExample</a> - minecraft like voxel brick world</li>
+<li><a href="https://github.com/tebjan/Xenko.CustomRootRenderFeature">CustomRootRenderer</a> - Render custom shaders correctly into a scene</li>
+<li><a href="https://github.com/herocrab/StrideFogOfWarPlus">StrideFogOfWarPlus</a> - Moba/Platformer/RTS FogOfWar System (no LoS)</li>
+<li><a href="https://github.com/herocrab/StrideTriplanarShader">StrideTriplanarShader</a> - Triplanar Shader for Stride</li>
+<li><a href="https://github.com/herocrab/StrideMeshOutlineRenderFeature">StrideMeshOutlineRenderFeature</a> - Mesh Outline Render Feature</li>
+<li><a href="https://github.com/Basewq/XenkoProofOfConcepts/tree/master/ObjectInfoRenderTargetExample">Object Info Render Target Example</a> - Renders object information onto a render target</li>
+<li><a href="https://github.com/Basewq/XenkoProofOfConcepts/tree/master/ScreenSpaceDecalExample">Screen Space Decal Example</a> - Screen space projected decal system</li>
+<li><a href="https://github.com/Basewq/XenkoProofOfConcepts/tree/master/ScreenSpaceDecalRootRendererExample">Screen Space Decal Root Renderer Example</a> - Screen space projected decal system using RootRenderFeature</li>
+<li><a href="https://github.com/johang88/TR.Stride">TR.Stride</a>
+<ul>
+<li>TR.Stride.Atmosphere - Implementation of UE4 atmosphere rendering</li>
+<li>TR.Stride.Ocean - Ocean Water rendering</li>
+<li>TR.Stride.Terrain- Height Map Terrain</li>
+<li>TR.Stride.Gameplay - Manage save games</li>
+</ul>
+</li>
+<li><a href="https://github.com/ykafia/UnrealMotion">UnrealMotion</a> - Unreal engine motion blur for Stride</li>
+</ul>
+<h2 id="camera">Camera</h2>
+<ul>
+<li><a href="https://github.com/herocrab/StrideCameraController">Camera controller</a></li>
+<li><a href="https://github.com/profan/XenkoByteSized">XenkoByteSized</a> - Split Screen</li>
+<li><a href="https://github.com/spasarto/Stride3dSplitScreen">Stride3dSplitScreen</a> - Another Split Screen</li>
+<li><a href="https://github.com/herocrab/StrideCameraController">StrideCameraController</a> - Swapping Cameras/Resident Evil Style</li>
+<li><a href="https://gist.github.com/ykafia/371b310de1ba7bb8ab3d2feffce2a190">CameraFollow.cs</a></li>
+<li><a href="https://github.com/profan/XenkoByteSized#xenkobytesizedsplitscreen">SplitScreen</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/en/community-resources/rendering-and-camera.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

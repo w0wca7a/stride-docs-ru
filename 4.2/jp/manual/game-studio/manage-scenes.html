@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>シーンの管理 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="シーンの管理 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/manage-scenes.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="シーンの管理">シーンの管理</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p>シーンとエンティティは階層状になっており、先頭に<strong>ルート シーン</strong>があります。この階層は、シーン エディターの左側にある<strong>エンティティ ツリー</strong>に表示されます。</p>
+<p><img src="media/scene-hierarchy-tree.png" alt="Scene hierarchy tree"></p>
+<p>ルート シーンには、ゲームのすべてのシーンとエンティティが含まれます。他のシーンやエンティティが使用する共通エンティティも含まれます (［game logic］スクリプトなど)。</p>
+<p><img src="media/scene-hierarchy-diagram.png" alt="Scene hierarchy diagram"></p>
+<p>シーンはそれぞれ異なるフォルダーに保持されます。つまり、複数の開発者が他の開発者の作業を上書きすることなく共同作業できます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>シーンを実行時にロードすると、<strong>子シーンは自動的にロードされません</strong>。コードで子シーンをロードする必要があります。詳細については、「<a href="load-scenes.html">シーンをロードする</a>」を参照してください。</p>
+</div>
+<h2 id="親シーンと子シーンを設定する">親シーンと子シーンを設定する</h2>
+<p>親シーンと子シーンの間の関係は、親ではなく子で設定されます。つまり、子シーンは親シーンについて知っていますが、親シーンは子シーンについて知りません。</p>
+<p>シーンを別のシーンの子にするには複数の方法があります。</p>
+<ul>
+<li>シーン エディターの<strong>エンティティ ツリー</strong> (既定では左) で、シーンをそれの親にするシーンにドラッグします。</li>
+</ul>
+<p>*［Asset view］(既定では下部) のシーンを、<strong>エンティティ ツリー</strong>内にある親にするシーンにドラッグします。</p>
+<ul>
+<li><p>シーンの［Property grid］(既定では右) の［Parent］で、そのシーンの親にするシーンを指定します。</p>
+<p><img src="media/properties-parent-scene.png" alt="Properties parent scene"></p>
+</li>
+</ul>
+<h2 id="既定のシーンを設定する">既定のシーンを設定する</h2>
+<p><strong>既定のシーン</strong>は、Stride が実行時にロードするシーンです。既定のシーンは、<a href="game-settings.html">ゲーム設定</a>アセットで設定できます。</p>
+<ol>
+<li><p>［Solution explorer］(既定では左下のペイン) で、［Assets］フォルダーを選択します。</p>
+<p><img src="media/select-asset-folder.png" alt="Select Assets folder asset"></p>
+</li>
+<li><p>［Asset view］(既定では下部のペイン) で、［GameSettings］アセットを選択します。</p>
+<p><img src="media/select-game-settings-asset.png" alt="Select Game Settings asset"></p>
+</li>
+<li><p>［Property grid］(既定では右側のペイン) で、［Default Scene］の隣の <img src="media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p><img src="media/game-settings-default-scene.png" alt="Set default scene"></p>
+<p>［Select an asset］ウィンドウが開きます。</p>
+</li>
+<li><p>既定のシーンを選択し、［OK］をクリックします。</p>
+</li>
+</ol>
+<p>このシーンが実行時にロードされます。</p>
+<p>ゲーム設定アセットの詳細については、「<a href="game-settings.html">ゲームの設定</a>」を参照してください。</p>
+<h2 id="アクティブなシーンを設定する">アクティブなシーンを設定する</h2>
+<p><strong>アクティブなシーン</strong>は、エンティティをシーン エディターにドロップしたときにエンティティが追加されるシーンです。エンティティは子としてアクティブなシーンに追加されます。</p>
+<p>アクティブなシーンを設定するには、<strong>エンティティ ツリー</strong> (既定では左側) でシーンを右クリックして［Set as active scene］を選択します。</p>
+<p><img src="media/set-active-scene.png" alt="Set active scene"></p>
+<p>アクティブなシーンは実行時にどのような影響も及ぼしません。</p>
+<h2 id="シーンとエンティティをロックする">シーンとエンティティをロックする</h2>
+<p>メイン ウィンドウで選択できないように、シーンとエンティティをロックできます。これは、シーンに多くのものが含まれるときに便利です。その場合でも、エンティティ ツリーではシーンとエンティティを選択できます。</p>
+<p>シーンまたはエンティティをロックまたはロック解除するには、エンティティ ツリーで<strong>南京錠</strong>アイコンをクリックします。</p>
+<p><img src="media/lock-scene-or-entity.png" alt="Padlock item"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>シーンをロックすると、そのすべての子シーンとエンティティもロックされます。エンティティと共にをその子エンティティをロックするには、<strong>Ctrl</strong> キーを押しながら南京錠アイコンをクリックします。</p>
+</div>
+<p>ロックされている項目には、<strong>金色の施錠された南京錠</strong>のアイコンがエンティティ ツリーに表示されます。</p>
+<p><img src="media/locked-entity.png" alt="Locked entity"></p>
+<h2 id="シーン-エディターでシーンをロードおよびアンロードする">シーン エディターでシーンをロードおよびアンロードする</h2>
+<p>シーン エディターで、シーンを (そのすべての子シーンおよびエンティティと共に) ロードおよびアンロードできます。エディターでのシーンのアンロードは、たとえば、編集ビューから不要なものを取り除いたり、エディターのパフォーマンスをよくしたりする場合に役に立ちます。</p>
+<p>次のスクリーンショットでは、子シーンをロードした状態とアンロードした状態のルート シーンを示します。ルート シーンには、<a href="../graphics/textures/skyboxes-and-backgrounds.html">スカイボックス</a>、<a href="../scripts/index.html">スクリプト</a>、アステロイド、プレイヤー キャラクターなど、すべてのシーンで使用されるエンティティが含まれます。子シーンは、レベルのセクションです。</p>
+<p><img src="media/scenes-unloaded.jpg" alt="Unloaded and loaded scenes"></p>
+<p>シーンをロードまたはアンロードするには、<strong>シーン エディター</strong>の左側にある<strong>エンティティ ツリー</strong>で、ロードまたはアンロードするシーンの隣にある<strong>目のアイコン</strong>をクリックします。</p>
+<p><img src="media/load-unload-scene-icon.png" alt="Load scene icon"></p>
+<h2 id="シーンを移動する">シーンを移動する</h2>
+<p>シーンはエンティティではないので、変換コンポーネントを持っていません。ただし、［Offset］プロパティを使用して、シーンを移動できます。</p>
+<p><img src="media/scene-offset.png" alt="Scene offset property"></p>
+<p>実行時にシーンを移動するには、以下を使用します。</p>
+<p><code>myScene.Offset = new Vector3(x, y, z);</code></p>
+<p><code>myScene</code> はシーンの名前に、<code>x,y,z</code> はシーンの移動先の XYZ 座標に置き換えます。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-a-scene.html">シーンを作成して開く</a></li>
+<li><a href="navigate-in-the-scene-editor.html">シーン エディター内を移動する</a></li>
+<li><a href="load-scenes.html">シーンをロードする</a></li>
+<li><a href="add-entities.html">エンティティを追加する</a></li>
+<li><a href="manage-entities.html">エンティティを管理する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/manage-scenes.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

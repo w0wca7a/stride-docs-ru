@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>テクスチャーとレンダーテクスチャー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="テクスチャーとレンダーテクスチャー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/textures-and-render-textures.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="テクスチャーとレンダーテクスチャー">テクスチャーとレンダーテクスチャー</h1>
+
+<!--
+# Textures and render textures
+-->
+<p><span class="badge text-bg-primary">上級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Advanced</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>Stride では、<a class="xref" href="../../../api/Stride.Graphics.Texture.html">Texture</a> クラスを使って、コード内でテクスチャーオブジェクトを操作することができます。</p>
+<!--
+Stride uses the @'Stride.Graphics.Texture' class to interact with texture objects in code.
+-->
+<p>テクスチャーへのレンダリングの詳細については、<a href="../graphics-compositor/render-textures.html">レンダーテクスチャー</a>を参照してください。</p>
+<!--
+For more information about rendering to a texture, see [Render textures](../graphics-compositor/render-textures.md).
+-->
+<h2 id="テクスチャーを読み込む">テクスチャーを読み込む</h2>
+<!--
+## Load a texture
+-->
+<p>Stride のアセットからテクスチャーを読み込むには、次の関数を呼び出します。</p>
+<!--
+To load a texture from an asset in Stride, call this function:
+-->
+<pre><code class="lang-cs">// duck.dds（または.pngなど）というテクスチャーを読み込む
+// loads the texture called duck.dds (or .png etc.)
+var myTexture = Content.Load&lt;Texture&gt;(&quot;duck&quot;);
+</code></pre>
+<p>これによって、すべてのフィールドが適切に設定されたテクスチャーオブジェクトが自動的に生成されます。</p>
+<!--
+This automatically generates a texture object with all its fields correctly filled.
+-->
+<h2 id="テクスチャーを作成する">テクスチャーを作成する</h2>
+<!--
+## Create a texture
+-->
+<p>アセットを使わずにテクスチャーを作ることもできます（例：レンダーターゲットとして使用するため）。これを行うには、<a class="xref" href="../../../api/Stride.Graphics.Texture.html">Texture</a> クラスのコンストラクタを呼び出します。利用可能なオプションとパラメータの完全なリストについては、<a class="xref" href="../../../api/Stride.Graphics.Texture.html">Texture</a> クラスのリファレンスをご覧ください。一部、すべてのプラットフォームで利用できるわけではないテクスチャーフォーマットもあります。</p>
+<!--
+You can also create textures without any assets (eg to be used as render target). To do this, call the constructor of the @'Stride.Graphics.Texture' class. See the @'Stride.Graphics.Texture' class reference to get the full list of available options and parameters. Some texture formats might not be available on all platforms.
+-->
+<h3 id="コード-テクスチャーを作成する">コード： テクスチャーを作成する</h3>
+<!--
+### Code: Create a texture
+-->
+<pre><code class="lang-cs">var myTexture = Texture.New2D(GraphicsDevice, 512, 512, false, PixelFormat.R8G8B8A8_UNorm, TextureFlags.ShaderResource);
+</code></pre>
+<h2 id="レンダーテクスチャー">レンダーテクスチャー</h2>
+<!--
+## Render textures
+-->
+<h3 id="レンダーテクスチャーを作成する">レンダーテクスチャーを作成する</h3>
+<!--
+### Create a render target
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.GraphicsPresenter.html">GraphicsPresenter</a> クラスは、常に既定のレンダーターゲットと深度バッファを提供します。これらは、<a class="xref" href="../../../api/Stride.Graphics.GraphicsPresenter.html#Stride_Graphics_GraphicsPresenter_BackBuffer">BackBuffer</a> プロパティおよび <a class="xref" href="../../../api/Stride.Graphics.GraphicsPresenter.html#Stride_Graphics_GraphicsPresenter_DepthStencilBuffer">DepthStencilBuffer</a> プロパティでアクセスできます。プレゼンターは、<a class="xref" href="../../../api/Stride.Graphics.GraphicsDevice.html">GraphicsDevice</a> の @'Stride.GraphicsDevice.Presenter' プロパティとして公開されています。しかし、オフスクリーンレンダリングやポストプロセスを実行するために、独自のバッファを使用したい場合があります。そのため、Stride は、レンダーテクスチャと深度バッファとして機能するテクスチャーを簡単に作成する方法を提供しています。</p>
+<!--
+The @'Stride.Graphics.GraphicsPresenter' class always provides a default render target and a depth buffer. They are accessible through the @'Stride.Graphics.GraphicsPresenter.BackBuffer' and @'Stride.Graphics.GraphicsPresenter.DepthStencilBuffer' properties. The presenter is exposed by the @'Stride.Graphics.GraphicsDevice.Presenter' property of the @'Stride.Graphics.GraphicsDevice'. However, you might want to use your own buffer to perform off-screen rendering or post-processes. As a result, Stride offers a simple way to create textures that can act as render textures and a depth buffers.
+-->
+<h3 id="コード-カスタムのレンダーテクスチャーと深度バッファを作成する">コード： カスタムのレンダーテクスチャーと深度バッファを作成する</h3>
+<!--
+### Code: Create a custom render target and depth buffer
+-->
+<pre><code class="lang-cs">// レンダーターゲット
+// render target
+var myRenderTarget = Texture.New2D(GraphicsDevice, 512, 512, false, PixelFormat.R8G8B8A8_UNorm, TextureFlags.ShaderResource | TextureFlags.RenderTarget);
+ 
+ // 書込可能な深度バッファ
+// writable depth buffer
+var myDepthBuffer = Texture.New2D(GraphicsDevice, 512, 512, false, PixelFormat.D16_UNorm, TextureFlags.DepthStencil);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>レンダーターゲットの動作を有効にする <a class="xref" href="../../../api/Stride.Graphics.TextureFlags.html#Stride_Graphics_TextureFlags_RenderTarget">RenderTarget</a> フラグも忘れないでください。</p>
+<p>PixelFormat が正しいことを確認してください（特に深度バッファの場合）。ターゲットプラットフォームで利用可能なフォーマットであるかどうかに注意してください。</p>
+</div>
+<!--
+>[!Note]
+>Don't forget the flag @'Stride.Graphics.TextureFlags.RenderTarget' to enable the render target behavior.
+>
+>Make sure the PixelFormat is correct, especially for the depth buffer. Be careful of the available formats on the target platform.
+-->
+<h3 id="レンダーターゲットを使う">レンダーターゲットを使う</h3>
+<!--
+### Use a render target
+-->
+<p>これらのバッファが作成されると、それらを、現在のレンダーテクスチャーとして簡単に設定することができます。</p>
+<!--
+Once these buffers are created, you can can easily set them as current render textures.
+-->
+<h3 id="コードレンダーターゲットを使う">コード：レンダーターゲットを使う</h3>
+<!--
+### Code: Use a render target
+-->
+<pre><code class="lang-cs">// レンダーテクスチャーを設定する
+// settings the render textures
+CommandList.SetRenderTargetAndViewport(myDepthBuffer, myRenderTarget);
+
+// 既定のレンダーターゲットを設定する 
+// setting the default render target
+CommandList.SetRenderTargetAndViewport(GraphicsDevice.Presenter.DepthStencilBuffer, GraphicsDevice.Presenter.BackBuffer);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>レンダーターゲットと深度バッファのサイズが同じであることを確認してください。そうでない場合、深度バッファは使用されません。</p>
+</div>
+<!--
+>[!Note]
+>Make sure both the render target and the depth buffer have the same size. Otherwise, the depth buffer isn't used.
+-->
+<p>複数のレンダーテクスチャーを同時に設定することができます。<a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetRenderTargets_Stride_Graphics_Texture_Stride_Graphics_Texture___">SetRenderTargets(Texture, Texture[])</a>と<a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetRenderTargetsAndViewport_Stride_Graphics_Texture_Stride_Graphics_Texture___">SetRenderTargetsAndViewport(Texture, Texture[])</a> メソッドのオーバーロードを参照してください。</p>
+<!--
+You can set multiple render textures at the same time. See the overloads of @'Stride.Graphics.CommandList.SetRenderTargets(Stride.Graphics.Texture,Stride.Graphics.Texture[])' and @'Stride.Graphics.CommandList.SetRenderTargetsAndViewport(Stride.Graphics.Texture,Stride.Graphics.Texture[])' method.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>画面に表示されるのは <a class="xref" href="../../../api/Stride.Graphics.GraphicsPresenter.html#Stride_Graphics_GraphicsPresenter_BackBuffer">BackBuffer</a> だけなので、何かを表示するにはそれをレンダリングする必要があります。</p>
+</div>
+<!--
+>[!Note]
+>Only the @'Stride.Graphics.GraphicsPresenter.BackBuffer' is displayed on screen, so you need to render it to display something.
+-->
+<h3 id="レンダーターゲットをクリアする">レンダーターゲットをクリアする</h3>
+<!--
+### Clear a render target
+-->
+<p>レンダーテクスチャーをクリアするには、<a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_Clear_Stride_Graphics_Texture_Stride_Core_Mathematics_Color4_">Clear(Texture, Color4)</a> メソッドと <a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_Clear_Stride_Graphics_Texture_Stride_Graphics_DepthStencilClearOptions_System_Single_System_Byte_">Clear(Texture, DepthStencilClearOptions, float, byte)</a> メソッドを呼び出します。</p>
+<!--
+To clear render textures, call the @'Stride.Graphics.CommandList.Clear(Stride.Graphics.Texture,Stride.Core.Mathematics.Color4)' and @'Stride.Graphics.CommandList.Clear(Stride.Graphics.Texture,Stride.Graphics.DepthStencilClearOptions,System.Single,System.Byte)' methods.
+-->
+<h3 id="コードターゲットをクリアする">コード：ターゲットをクリアする</h3>
+<!--
+### Code: Clear the targets
+-->
+<pre><code class="lang-cs">CommandList.Clear(GraphicsDevice.Presenter.BackBuffer, Color.Black);
+CommandList.Clear(GraphicsDevice.Presenter.DepthStencilBuffer, DepthStencilClearOptions.DepthBuffer); // only clear the depth buffer 深度バッファのみクリアする
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>フレームごとに <a class="xref" href="../../../api/Stride.Graphics.GraphicsPresenter.html#Stride_Graphics_GraphicsPresenter_BackBuffer">BackBuffer</a> と <a class="xref" href="../../../api/Stride.Graphics.GraphicsPresenter.html#Stride_Graphics_GraphicsPresenter_DepthStencilBuffer">DepthStencilBuffer</a> をクリアすることを忘れないでください。そうしないと、デバイスによっては予期せぬ動作をする可能性があります。フレームの内容をクリアせず維持したい場合は、中間レンダーターゲットを使用してください。</p>
+</div>
+<!--
+>[!Note]
+>Don't forget to clear the @'Stride.Graphics.GraphicsPresenter.BackBuffer' and the @'Stride.Graphics.GraphicsPresenter.DepthStencilBuffer' each frame. If you don't, you might get unexpected behavior depending on the device. If you want to keep the contents of a frame, use an intermediate render target.
+-->
+<h2 id="ビューポート">ビューポート</h2>
+<!--
+## Viewport
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetRenderTargetAndViewport_Stride_Graphics_Texture_Stride_Graphics_Texture_">SetRenderTargetAndViewport(Texture, Texture)</a> は、現在の <a class="xref" href="../../../api/Stride.Graphics.Viewport.html">Viewport</a> をレンダーターゲットの全体サイズに調整します。</p>
+<!--
+@'Stride.Graphics.CommandList.SetRenderTargetAndViewport(Stride.Graphics.Texture,Stride.Graphics.Texture)' adjusts the current @'Stride.Graphics.Viewport' to the full size of the render target.
+-->
+<p>テクスチャーのサブセットにのみレンダリングしたい場合は、<a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetRenderTarget_Stride_Graphics_Texture_Stride_Graphics_Texture_">SetRenderTarget(Texture, Texture)</a> と <a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetViewport_Stride_Graphics_Viewport_">SetViewport(Viewport)</a> を使って、レンダーターゲットとビューポートを別々に設定します。</p>
+<!--
+If you only want to render to a subset of the texture, set the render target and viewport separately using @'Stride.Graphics.CommandList.SetRenderTarget(Stride.Graphics.Texture,Stride.Graphics.Texture)' and @'Stride.Graphics.CommandList.SetViewport(Stride.Graphics.Viewport)'.
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetViewports_Stride_Graphics_Viewport___">SetViewports(Viewport[])</a>と <a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetViewports_System_Int32_Stride_Graphics_Viewport___">SetViewports(int, Viewport[])</a> オーバーロードを使用して、ジオメトリシェーダーで使用する複数のビューポートをバインドすることができます。</p>
+<!--
+You can bind multiple viewports using @'Stride.Graphics.CommandList.SetViewports(Stride.Graphics.Viewport[])' and @'Stride.Graphics.CommandList.SetViewports(System.Int32,Stride.Graphics.Viewport[])' overloads for use with a geometry shader.
+-->
+<h3 id="コードビューポートを設定する">コード：ビューポートを設定する</h3>
+<!--
+### Code: Set the viewports
+-->
+<pre><code class="lang-cs">// フルHDバッファの例
+// example of a full HD buffer
+CommandList.SetRenderTarget(GraphicsDevice.Presenter.DepthStencilBuffer, GraphicsDevice.Presenter.BackBuffer); // no viewport set
+ 
+// フルHDバッファ（1920x1080）の画像の周囲に10ピクセルの境界線があるようにビューポートを設定した例
+// example of setting the viewport to have a 10-pixel border around the image in a full HD buffer (1920x1080)
+var viewport = new Viewport(10, 10, 1900, 1060);
+CommandList.SetViewport(viewport);
+</code></pre>
+<h2 id="シザー">シザー</h2>
+<!--
+## Scissor
+-->
+<p><a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetScissorRectangle_Stride_Core_Mathematics_Rectangle_">SetScissorRectangle(Rectangle)</a> および <a class="xref" href="../../../api/Stride.Graphics.CommandList.html#Stride_Graphics_CommandList_SetScissorRectangles_Stride_Core_Mathematics_Rectangle___">SetScissorRectangles(Rectangle[])</a> メソッドは、シザーを設定します。ビューポートとは異なり、サイズではなく、シザーを定義する頂点の位置の座標を指定する必要があります。</p>
+<!--
+The @'Stride.Graphics.CommandList.SetScissorRectangle(Stride.Core.Mathematics.Rectangle)' and @'Stride.Graphics.CommandList.SetScissorRectangles(Stride.Core.Mathematics.Rectangle[])' methods set the scissors. Unlike the viewport, you need to provide the coordinates of the location of the vertices defining the scissor instead of its size.
+-->
+<h3 id="コードシザーを設定する">コード：シザーを設定する</h3>
+<!--
+### Code: Set the scissor
+-->
+<pre><code class="lang-cs">// 
+// フルHD（1920x1080）のバッファで、画像の周りを10ピクセルずつ切り取るようにシザーを設定した例
+var rectangle = new Rectangle(10, 10, 1910, 1070);
+CommandList.SetScissorRectangles(rectangle);
+ 
+var rectangles = new[] { new Rectangle(10, 10, 1900, 1060), new Rectangle(0, 0, 256, 256) };
+CommandList.SetScissorRectangles(rectangles);
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="../graphics-compositor/render-textures.html">レンダー テクスチャー</a></li>
+</ul>
+<!--
+* [Render textures](../graphics-compositor/render-textures.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/low-level-api/textures-and-render-textures.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

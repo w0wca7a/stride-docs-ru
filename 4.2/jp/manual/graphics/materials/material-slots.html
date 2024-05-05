@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>マテリアルスロット | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="マテリアルスロット | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/material-slots.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="マテリアルスロット">マテリアルスロット</h1>
+
+<!--
+# Material slots
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>モデルは、複数のマテリアルを持つことができます。マテリアルは、モデルの<strong>マテリアルスロット</strong>に設定します。</p>
+<!--
+Models can use multiple materials. You can set the materials in the model's **material slots**.
+-->
+<p><img src="media/material-slots.png" alt="Material slots"></p>
+<p>例えば、このモデルの 2 番目のマテリアルスロットは、バイザーならびに肩と胸のプレートのストライプ部分のマテリアルを指定する場所です。このスロットのマテリアルを変更することで、モデルのこれらの部分で使用されるマテリアルを変更することができます。</p>
+<!--
+For example, the second material slot in this model specifies the material for the visor and the shoulder and chest plate stripes. By changing the material in this slot, we change the material used in these parts of the model.
+-->
+<p><img src="media/model-materials-both.png" alt="Materials"></p>
+<p>マテリアルスロット自体（の数と位置）は、モデルのソースファイル（<code>.fbx</code>、<code>.obj</code> など）で定義されています。Game Studio でマテリアルスロット自体を編集することはできません。変更できるのは各スロットで使用するマテリアルだけです。</p>
+<!--
+The material slots themselves — their number and position — are defined in the model source file (eg  `.fbx`, `.obj`, etc). You can't edit material slots in Game Studio; you can only change which materials are used in each slot.
+-->
+<h2 id="モデルにマテリアルを設定する">モデルにマテリアルを設定する</h2>
+<!--
+## Set materials on a model
+-->
+<p>モデルが使うマテリアルは、次の 2 ヶ所で変更することが可能です。</p>
+<!--
+You can change the materials a model uses in two places:
+-->
+<ul>
+<li><p>モデル自体の <strong>Materials</strong> プロパティ：</p>
+<p><img src="media/model-materials.png" alt="Model materials"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>この設定は、このモデルのすべてのインスタンスに影響します。</p>
+</div>
+</li>
+<li><p>エンティティの<strong>モデルコンポーネント</strong>または<a href="../../game-studio/prefabs/index.html">プレハブ</a>の <strong>Materials</strong> プロパティ：</p>
+<p><img src="media/model-materials-in-entity.png" alt="Model materials on entity"></p>
+<p>この設定は、設定したインスタンスまたはプレハブ<strong>だけ</strong>に適用されます。</p>
+</li>
+</ul>
+<!--
+* Under the **Materials** properties of the model itself:
+
+    ![Model materials](media/model-materials.png)
+
+    >[!Note]
+    >This affects every instance of this model.
+ 
+* In the **model component** of an entity or [prefab](../../game-studio/prefabs/index.md):
+
+    ![Model materials on entity](media/model-materials-in-entity.png)
+
+     This only affects **this** instance or prefab.
+-->
+<h2 id="メッシュとマテリアルスロット">メッシュとマテリアルスロット</h2>
+<!--
+## Meshes and material slots
+-->
+<p>モデリングソフトから取り込んだモデルにはメッシュが含まれています。このとき、マテリアルスロットを介して、メッシュ間でマテリアルを共有することができます。</p>
+<!--
+Models imported from modeling software can contain meshes. Meshes can share materials via material slots.
+-->
+<p><img src="media/material-slot-diagram-1.png" alt="Mesh"></p>
+<p>メッシュとマテリアルスロットの関連付けは、モデルのソースファイルで定義します。これらの関連付けは Game Studio では変更できませんが、実行時にコードから変更することができます。</p>
+<!--
+The association between a mesh and a material slot is defined in the model source file. You can't change these associations in Game Studio, but you can change them in code at runtime.
+-->
+<p>メッシュとマテリアルの関連付けを変更する方法：</p>
+<!--
+To change the association between a mesh and a material, use:
+-->
+<pre><code class="lang-cs">MyModelComponent.Model.Meshes[submeshIndex].MaterialIndex = materialIndex;
+</code></pre>
+<p>マテリアルのリストにマテリアルを追加または変更する方法：</p>
+<!--
+To change or add a material to the list of materials:
+-->
+<pre><code class="lang-cs">MyModelComponent.Materials[ExistingOrNewMaterialIndex] = myMaterial;
+</code></pre>
+<h3 id="メッシュをマージする">メッシュをマージする</h3>
+<!--
+### Merging meshes
+-->
+<p>Stride は、メッシュを持つモデルを描画するとき、各メッシュに対して 1 回ずつ GPU の描画呼び出しを行います。既定では、パフォーマンスを上げるために、ビルド時にマテリアルを共有しているメッシュをマージします。</p>
+<!--
+When Stride draws a model with meshes, it performs one GPU draw call for each mesh. By default, to improve performance, at build time, Stride merges meshes that share materials.
+-->
+<p><img src="media/material-slot-diagram-2.png" alt="Mesh"></p>
+<p>上の例では、5 つのメッシュと 5 回の描画呼び出しがあります。マージ後は、3 つのメッシュと 3 回の描画呼び出しになります。</p>
+<!--
+In the example above, there are five meshes and five draw calls. After merging, there are three meshes and three draw calls.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>Stride は、メッシュをマージする際に、頂点バッファとインデックスバッファをマージします。つまり、実行時にマージ済みメッシュをバラバラに描画することはできず、元のメッシュの位置（変換行列）を変更することもできません。メッシュは、単一のマテリアルと単一の（モデルに対する相対的な）変換行列を持つ単一のメッシュになります。</p>
+</div>
+<!--
+>[!Note]
+>When Stride merges meshes, it merges the vertex and index buffers. This means you can't draw the meshes separately at runtime, and you can't change the original mesh position (transformation matrix). The meshes become a single mesh with a single material and a single transformation matrix (relative to the model).
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>Stride は、メッシュをマージする際に、マテリアルの描画順序を変更します。透明なマテリアルがあると、これにより異なった結果になることがあります。</p>
+</div>
+<!--
+>[!Note]
+>When Stride merges meshes, it changes the draw order of elements. In the case of transparent materials, this can produce different results.
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p><a href="../../physics/collider-shapes.html">モデルから物理コライダーを作成する</a>と、Stride は、モデルの各メッシュに対して別々の<a href="https://ja.wikipedia.org/wiki/%E5%87%B8%E5%8C%85">凸開包</a>を構築します。メッシュがマージされた場合はマテリアルごとに 1 つのメッシュしか残らないので、凸開包もマージ後のメッシュに対して構築されます。</p>
+</div>
+<!--
+>[!Note]
+>When you create a [physics collider from a model](../../physics/collider-shapes.md), Stride builds separate convex hulls for each mesh in the model. If the meshes are merged, only one mesh remains per material, so convex hulls are also built from merged meshes.
+-->
+<h3 id="メッシュのマージを無効化する">メッシュのマージを無効化する</h3>
+<!--
+### Disable mesh merging
+-->
+<p>場合によっては、メッシュのマージを無効にした方がいいかもしれません。</p>
+<!--
+You might want to disable mesh merging if you want to:
+-->
+<ul>
+<li><p>メッシュをアニメーションする場合</p>
+</li>
+<li><p>実行時にメッシュのマテリアルを変更する場合</p>
+</li>
+</ul>
+<!--
+* animate a mesh
+
+* change the material of a mesh at runtime
+-->
+<p>モデル上でメッシュのマージを無効化する方法は、次の通りです。</p>
+<!--
+To disable mesh merging on a model:
+-->
+<ol>
+<li><p>メッシュのマージを無効にしたいモデルを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>Merge meshes</strong> を無効化します。</p>
+<p><img src="media/disable-merge-meshes.png" alt="Disable merge meshes"></p>
+</li>
+</ol>
+<!--
+1. Select the model you want to disable mesh merging for.
+
+2. In the **Property Grid**, disable **Merge meshes**.
+
+    ![Disable merge meshes](media/disable-merge-meshes.png)
+-->
+<h4 id="特定のメッシュのマージを無効化する">特定のメッシュのマージを無効化する</h4>
+<!--
+#### Disable merging for specific meshes
+-->
+<p>特定のメッシュに対してのみマージを無効化するには、それに対応する<strong>ノード</strong>プロパティを指定します。</p>
+<!--
+To disable merging only for specific meshes, enable their corresponding **nodes**.
+-->
+<ol>
+<li><p>無効化したいメッシュを持つモデルを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>の <strong>Skeleton</strong> プロパティで、モデルに関連付けられているスケルトンを確認します。</p>
+<p><img src="media/model-skeleton.png" alt="Model skeleton"></p>
+<p>スケルトンに関する詳細については、<a href="../../animation/index.html">アニメーション</a>を参照してください。</p>
+</li>
+<li><p><strong>アセットビュー</strong>で、そのスケルトンを選択します。</p>
+<p><img src="media/select-model-skeleton.png" alt="Select model skeleton"></p>
+</li>
+<li><p><strong>プロパティグリッド</strong>の <strong>Nodes</strong> プロパティで、マージしたくないメッシュに対応するノードを選択します。</p>
+<p><img src="media/select-model-skeleton-nodes.png" alt="Nodes"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>どのノードがどのメッシュに対応しているかを確認するには、Maya などのモデリングアプリケーションで、モデルのソースファイルを開いてください。</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>実行時にアニメーションする予定のノードを無効にしないようにしてください。</p>
+</div>
+</li>
+</ol>
+<!--
+1. Select the model that contains the meshes.
+
+2. In the **Property Grid**, under **Skeleton**, make sure the model has a skeleton associated with it.
+
+    ![Model skeleton](media/model-skeleton.png)
+
+    For more information about skeletons, see [Animation](../../animation/index.md).
+
+3. In the **Asset View**, select the skeleton.
+
+    ![Select model skeleton](media/select-model-skeleton.png)
+
+4. In the **Property Grid**, under **Nodes**, select the nodes that correspond to the meshes you don't want to merge.
+
+    ![Nodes](media/select-model-skeleton-nodes.png)
+
+    >[!Tip]
+    >To see which nodes correspond to which mesh, open the model source file in a modeling application such as Maya.
+
+    >[!Note]
+    >Make sure you don't disable nodes that are animated at runtime.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="material-maps.html">マテリアルマップ</a></li>
+<li><a href="material-attributes.html">マテリアル属性</a></li>
+<li><a href="material-slots.html">マテリアルスロット</a></li>
+</ul>
+<!--
+* [Material maps](material-maps.md)
+* [Material attributes](material-attributes.md)
+* [Material slots](material-slots.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/material-slots.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

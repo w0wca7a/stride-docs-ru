@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ポストエフェクト | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ポストエフェクト | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/post-effects/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ポストエフェクト">ポストエフェクト</h1>
+
+<!--
+# Post effects
+-->
+<p><strong>ポストエフェクト（Post effects）</strong> は通常、ゲームがフレームのレンダリングを完了した後、UI が描画される前に適用されます。ポストエフェクトは、より自然でリアルな表現や、映画のようなスタイリッシュな効果など、画像の調整や装飾のために使用することができます。</p>
+<!--
+**Post effects** are usually applied after your game has completed the rendering of a frame, but before the UI is drawn. You can use post effects to tune or embellish an image — for example, by producing a more natural, realistic look, or creating stylized cinematic effects.
+-->
+<p><img src="media/post-effects-reference-1.png" alt="media/post-effects-reference-1.png"></p>
+<p>ポストエフェクトは通常、画像に対して適用されます。つまり、頂点やメッシュとは関係ありません。ポストエフェクトは、各ピクセルの色の値のみ（場合によっては深さも）を扱います。</p>
+<!--
+Post effects are usually applied to an image. This means they have no connection with vertices or meshes. They only work with the color values of each pixel (and sometimes their depth).
+-->
+<p>一般的には、以下のような項目でポストエフェクトの設定を行います。</p>
+<!--
+Typically, you set up a post effect by specifying:
+-->
+<ul>
+<li>入力バッファ（色、深度など）</li>
+<li>1 つ以上の出力バッファ</li>
+<li>レンダリングパス内でのポストエフェクトの振る舞いをカスタマイズするパラメータ－</li>
+</ul>
+<!--
+- input buffers (eg color, depth)
+- one or several output buffers
+- parameters to customize the behavior of the post effect during its rendering pass
+-->
+<p>Stride には定義済みのポストエフェクトがいくつか用意されています。また、<a href="color-transforms/custom-color-transforms.html">システムを拡張して独自の色変換エフェクトを作る</a>こともできます。</p>
+<!--
+Stride provides several predefined post effects. You can also [extend the system to create your own color transform effects](color-transforms/custom-color-transforms.md).
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p>深度を考慮したポストエフェクト（<a href="depth-of-field.html">被写界深度</a>、<a href="ambient-occlusion.html">アンビエント オクルージョン</a>、<a href="local-reflections.html">ローカル反射</a>など）では、MSAA（マルチサンプル アンチエイリアシング）が無効になります。</p>
+</div>
+<!--
+>[!Note]
+>Depth-aware post effects ̶  ie [depth of field](depth-of-field.md), ambient occlusion, and [local reflections](local-reflections.md) ̶  nullify MSAA (multisample anti-aliasing).
+-->
+<h2 id="ポストエフェクトの追加と編集">ポストエフェクトの追加と編集</h2>
+<!--
+## Add or edit a post effect
+-->
+<p>ポストエフェクトの追加と編集は、<a href="../graphics-compositor/index.html">グラフィックス コンポジター</a>で行います。</p>
+<!--
+You add and edit post effects in the [graphics compositor](../graphics-compositor/index.md).
+-->
+<ol>
+<li><p><strong>アセットビュー</strong>で、<strong>グラフィックスコンポジター</strong>アセットをダブルクリックします。</p>
+<p><img src="..%5Cgraphics-compositor%5Cmedia%5Cgraphics-compositor-asset.png" alt="Graphics Compositor asset"></p>
+<p>グラフィックスコンポジターエディターが開きます。</p>
+<p><img src="..%5Cgraphics-compositor%5Cmedia%5Cgraphics-compositor-editor.png" alt="Graphics Compositor editor"></p>
+</li>
+<li><p><strong>Post-processing effects</strong> ノードを選択します。</p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Post-processing effects ノードが存在していない場合は、右クリックして [<strong>Create</strong>] &gt; [<strong>post-processing effects</strong>] を選択し、作成してください。そして、新しい<strong>フォワードレンダラー</strong>ノードの <strong>PostEffects</strong> スロットをクリックし、<strong>Post-processing effects</strong> ノードまでドラッグしてください。
+<img src="media/connect-nodes.png" alt="Connect nodes"></p>
+</div>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、使用したいポストエフェクトを有効にします。</p>
+<p><img src="media/post-effect-properties.png" alt="Post effect properties"></p>
+<p>それぞれのポストエフェクトの詳細やプロパティについては、以下のページをご覧ください。</p>
+</li>
+</ol>
+<!--
+1. In the **Asset View** (in the bottom pane by default), double-click the **Graphics Compositor** asset.
+
+    ![Graphics Compositor asset](..\graphics-compositor\media\graphics-compositor-asset.png)
+
+    The graphics compositor editor opens.
+
+    ![Graphics Compositor editor](..\graphics-compositor\media\graphics-compositor-editor.png)
+
+2. Select the **Post-processing effects** node.
+
+    > [!Tip]
+    > If there's no post-process effects node, right-click and select **Create > post-processing effects** to create one. On the new **forward renderer** node, on the **PostEffects** slot, click and drag a link to the **post-processing effects** node.
+    > ![Connect nodes](media/connect-nodes.png)
+
+3. In the **Property Grid** (on the right by default), enable the post effects you want to use and configure their properties.
+
+    ![Post effect properties](media/post-effect-properties.png)
+
+    For details about each post effect and its properties, see the pages below.
+-->
+<h2 id="このセクションの内容">このセクションの内容</h2>
+<!--
+## In this section
+-->
+<ul>
+<li><a href="anti-aliasing.html">アンチエイリアシング</a></li>
+<li><a href="outline.html">アウトライン</a></li>
+<li><a href="ambient-occlusion.html">アンビエント オクルージョン</a></li>
+<li><a href="bloom.html">ブルーム</a></li>
+<li><a href="bright-filter.html">明度フィルター</a></li>
+<li><a href="color-transforms/index.html">色変換</a>
+<ul>
+<li><a href="color-transforms/film-grain.html">フィルム グレイン</a></li>
+<li><a href="color-transforms/gamma-correction.html">ガンマ補正</a></li>
+<li><a href="color-transforms/tonemap.html">トーンマップ</a></li>
+<li><a href="color-transforms/vignetting.html">ヴィネッティング</a></li>
+<li><a href="color-transforms/custom-color-transforms.html">カスタム色変換</a></li>
+</ul>
+</li>
+<li><a href="depth-of-field.html">被写界深度</a></li>
+<li><a href="lens-flare.html">レンズ フレア</a></li>
+<li><a href="light-streaks.html">ライト ストリーク</a></li>
+<li><a href="local-reflections.html">ローカル反射</a></li>
+</ul>
+<!--
+* [Anti-aliasing](anti-aliasing.md)
+* [Outline](outline.md)
+* [Ambient occlusion](ambient-occlusion.md)
+* [Bloom](bloom.md)
+* [Bright filter](bright-filter.md)
+* [Color transforms](color-transforms/index.md)
+    * [Film grain](color-transforms/film-grain.md)
+    * [Gamma correction](color-transforms/gamma-correction.md)
+    * [ToneMap](color-transforms/tonemap.md)
+    * [Vignetting](color-transforms/vignetting.md)
+    * [Custom color transforms](color-transforms/custom-color-transforms.md)
+* [Depth of field](depth-of-field.md)
+* [Lens flare](lens-flare.md)
+* [Light streaks](light-streaks.md)
+* [Local reflections](local-reflections.md)
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="../graphics-compositor/index.html">グラフィックス コンポジター</a></li>
+</ul>
+<!--
+* [Graphics compositor](../graphics-compositor/index.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/post-effects/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

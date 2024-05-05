@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>クリアコート シェーディング | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="クリアコート シェーディング | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/clear-coat-shading.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="クリアコート-シェーディング">クリアコート シェーディング</h1>
+
+<!--
+# Clear-coat shading
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>車の塗装を再現するために、物理ベースレンダリング（PBR）を使った<strong>クリアコートシェーディング</strong>を使用しています。</p>
+<!--
+**Clear-coat shading** uses physically-based rendering to simulate vehicle paint.
+-->
+<p><img src="media/clear-coat-2.jpg" alt="Clear coat"></p>
+<p>実際の車では、下図のように、ボディに3層の塗装が施されているのが一般的です。</p>
+<!--
+Real vehicles typically have three layers of paint applied to the body, as in the diagram below:
+-->
+<p><img src="media/paint-layers.png" alt="Diagram"></p>
+<p>Stride では、シェーディングをシンプルにするために、<strong>ベースコート</strong>（オプションとしてメタルフレークを含む）と<strong>クリアコート</strong>のレイヤーのみをシミュレートします。カメラがマテリアルからどれだけ離れているかによって、Strideは コートのレイヤーを合成します。これにより、メタルフレークの法線マップを起因とする<a href="https://en.wikipedia.org/wiki/Visual_artifact">視覚アーティファクト</a>が軽減されます（カメラがマテリアルから遠ざかると目立ってきます）。</p>
+<!--
+To keep the shading simple, Stride only simulates the **base coat** (including optional metal flakes) and **clear coat** layers. Stride blends the layers depending on how far the camera is from the material. This reduces visual artifacts caused by the metal flake normal map (which becomes more visible as the camera moves away from the material).
+-->
+<p>クリアコートシェーディングには、<a href="material-layers.html">マテリアル レイヤー</a>を使って手動でエフェクトを作ることに比べて、いくつかの利点があります。</p>
+<!--
+Clear-coat shading has several advantages over creating the effect manually with [material layers](material-layers.md):
+-->
+<ul>
+<li>レイヤーは距離に応じて合成されます。</li>
+<li>パフォーマンスが向上します。</li>
+<li>見た目がよくなります。</li>
+</ul>
+<!--
+* layers are blended based on distance
+* increased performance
+* improved visualization
+-->
+<h2 id="クリアコートマテリアルを追加する">クリアコートマテリアルを追加する</h2>
+<!--
+## Add a clear-coat material
+-->
+<p>Stride には、クリアコートマテリアルのテンプレートが含まれています。これをアセットとして追加するには、<strong>アセットビュー</strong>で [<strong>Add asset</strong>] をクリックし、[<strong>Material</strong>] &gt; [<strong>PBR material: clear coar</strong>] を選択します。</p>
+<!--
+Stride includes a clear-coat material template. To add it, in the **Asset View**, click **Add asset** and select **Material > PBR material: clear coat**.
+-->
+<p><img src="media/add-clear-coat.png" alt="Add clear coat"></p>
+<p>また、自分でクリアコートのプロパティを設定することもできます。</p>
+<!--
+Alternatively, to set clear-coat properties yourself:
+-->
+<ol>
+<li><p>クリアコートシェーディングを使用したいマテリアルを選択します。</p>
+</li>
+<li><p><strong>プロパティグリッド</strong>で、<strong>Misc</strong> プロパティの <strong>Clear coat</strong> の横にある <img src="../../game-studio/media/blue-arrow-icon.png" alt="Blue arrow button">（<strong>置換</strong>）をクリックし、<strong>Clear coat</strong> を選択します。</p>
+<p><img src="media/select-clear-coat.png" alt="Select clear coat"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>クリアコートシェーディングを正しく動作させるには、マテリアルの <strong>Shading</strong> プロパティで、<strong>Diffuse</strong>, <strong>Specular</strong>, <strong>Specular model</strong> を有効にする必要があります。</p>
+</div>
+<blockquote>
+<p><img src="media/enable-shading-options.png" alt="Shading options"></p>
+</blockquote>
+</li>
+</ol>
+<!--
+1. Select the material you want to use clear-coat shading.
+
+2. In the Property Grid, under the **Misc** properties, next to **Clear coat**, click ![Blue arrow button](~/manual/game-studio/media/blue-arrow-icon.png) (**Replace**) and choose **Clear coat**.
+
+    ![Select clear coat](media/select-clear-coat.png)
+
+    >[!Note]
+    >For clear-coat shading to work correctly, make sure you enable **Diffuse**, **Specular** and **Specular model** under the material **Shading** properties.
+    
+    >![Shading options](media/enable-shading-options.png)
+-->
+<h2 id="プロパティ">プロパティ</h2>
+<!--
+## Properties
+-->
+<p>クリアコートシェーダーのプロパティは、[<strong>Misc</strong>] &gt; [<strong>Clear coat</strong>] でアクセスできます。これらは3つのパートに分かれています。<strong>ベースペイント</strong>とオプションの<strong>メタルフレーク</strong>はベースコートをシミュレートし、<strong>クリアコート</strong>プロパティはクリアコートをシミュレートします。</p>
+<!--
+You can access the clear-coat shader properties under **Misc > Clear coat**. They're split into three parts: the **base paint** and optional **metal flake** properties simulate the base coat, and the **clear coat** properties simulate the clear coat. 
+-->
+<p>メタルフレークのプロパティは、メタリックペイントエフェクトをシミュレートします。このエフェクトを無効にするには、メタルフレークの法線マップを削除します。</p>
+<!--
+The metal flake properties simulate a metallic paint effect. To disable the effect, remove the metal flake normal map.
+-->
+<p><img src="media/clear-coat-properties.png" alt="Add clear coat"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base paint diffuse map</td>
+<td>ベースペイントレイヤー（最も下のレイヤー）が使用する<a href="shading-attributes.html">ディフューズ マップ</a>です。これによってレイヤーの色が決まります。</td>
+</tr>
+<tr>
+<td>Base paint gloss map</td>
+<td>ベースペイントレイヤーが使用する<a href="geometry-attributes.html">グロス マップ</a>です。コヒーレントな結果を得るためには、<strong>metal flake normal map</strong> をマスクとして使用します。</td>
+</tr>
+<tr>
+<td>Metal flakes diffuse map</td>
+<td>メタルフレークレイヤー（ベースペイントの上にあるレイヤー）が使用する<a href="shading-attributes.html">ディフューズ マップ</a>です。コヒーレントな結果を得るためには、ベースペイントの値に近い値を使用してください。</td>
+</tr>
+<tr>
+<td>Metal flakes gloss map</td>
+<td>メタルフレークレイヤーが使用する<a href="geometry-attributes.html">グロスマップ</a>です。コヒーレントな結果を得るには、<strong>Metal flake normal map</strong> をマスクとして使用します。</td>
+</tr>
+<tr>
+<td>Metal flakes metalness map</td>
+<td>メタルフレークレイヤーが使用する<a href="shading-attributes.html">メタルネス マップ</a>です。最良の結果を得るためには、高い値を使用してください。</td>
+</tr>
+<tr>
+<td>Metal flake normal map</td>
+<td>メタルフレークレイヤーが使用する<a href="../textures/normal-maps.html">法線 マップ</a>です。これにより、フレークのジオメトリが形成されます。メタルフレークの法線マップ（<strong>StrideClearCoatMetalFlakesNM</strong>）は、Stride のアセットパッケージに含まれています。テクスチャの UV スケールが大きい場合は、下の方にある <strong>Use random texture coordinates</strong> を有効にすると、タイリング効果が軽減されます。メタルフレークエフェクトを無効にするには、法線マップを削除します。</td>
+</tr>
+<tr>
+<td>Coat gloss map</td>
+<td>クリアコートレイヤーで使用される<a href="geometry-attributes.html">グロスマップ</a>です。この値を変更すると、さまざまな種類の塗料（マットなど）をシミュレートできます。</td>
+</tr>
+<tr>
+<td>Clear coat metalness map</td>
+<td>クリアコートレイヤーが使用する<a href="shading-attributes.html">メタルネス マップ</a>です。</td>
+</tr>
+<tr>
+<td>Orange peel normal map</td>
+<td>「オレンジの皮」を表現するためにクリアコートレイヤーが使用する<a href="../textures/normal-maps.html">法線マップ</a>です。これは、異なる角度で光を反射して塗装の欠陥をシミュレートすることで、テクスチャがオレンジの皮のようにデコボコしているように見せます。オレンジピール法線マップ(<strong>StrideClearCoatOrangePeelNM</strong>)は、Stride のアセットパッケージに含まれています。</td>
+</tr>
+<tr>
+<td>Layer transition distance</td>
+<td>ベースペイントレイヤーからメタルフレークレイヤーに遷移する際の距離（単位：メートル）です。これにより、メタルフレークの法線マップに起因する視覚アーティファクト（カメラがマテリアルから遠ざかるにつれて目立ちやすくなります）を防ぐことができます。</td>
+</tr>
+</tbody>
+</table>
+<!--
+| Property | Description 
+|------------------------------|----------
+| Base paint diffuse map  |  The [diffuse map](shading-attributes.md) used by the base paint layer (the lowest  layer). This determines the color of the layer.
+| Base paint gloss map |  The [gloss map](geometry-attributes.md) used by the base paint layer. For a coherent result, use the **metal flake normal map** as a mask.         
+| Metal flakes diffuse map  |  The [diffuse map](shading-attributes.md) used by the metal flake layer (the layer above the base paint). For a coherent result, use a value close to the base paint value.
+| Metal flakes gloss map | The [gloss map](geometry-attributes.md) used by the metal flake layer. For a coherent result, use the **metal flake normal map** as a mask. 
+| Metal flakes metalness map | The [metalness map](shading-attributes.md) used by the metal flake layer. For best results, use high values.
+| Metal flake normal map  | The [normal map](../textures/normal-maps.md) used by the metal flake layer. This shapes the flake geometry. A metal flake normal map  (**StrideClearCoatMetalFlakesNM**) is included in the Stride assets package. If the texture has a high UV scale, enable **Use random texture coordinates** below to reduce tiling effects. To disable the metal flakes effect, remove the normal map.
+| Coat gloss map  | The [gloss map](geometry-attributes.md) used by the clear coat layer. Change this value to simulate different kinds of paint (eg matte).
+| Clear coat metalness map  | The [metalness map](shading-attributes.md) used by the clear coat layer
+| Orange peel normal map  | The [normal map](../textures/normal-maps.md) used by the clear coat layer to create an "orange peel" effect. This reflects light in different angles, simulating paint imperfections whereby the texture appears bumpy, like the skin of an orange. An orange peel normal map (**StrideClearCoatOrangePeelNM**) is included in the Stride assets package.
+| Layer transition distance  | The distance (in meters) at which the base paint layer transitions to the metal flake layer. This helps fight visual artifacts caused by the metal flake normal map (which becomes more visible as the camera moves away from the material).
+-->
+<h2 id="タイリングやアーティファクトを低減する">タイリングやアーティファクトを低減する</h2>
+<!--
+## Reduce tiling and artifacts
+-->
+<p>二項演算子を使用するプロパティでは、<strong>正規化された値</strong>（つまり<code>0.0</code>から<code>1.0</code>の間の値）を使用する必要があります。例えば、次のスクリーンショットでは、<strong>Left</strong> 演算子は <code>0.5</code> という値を使用しています。</p>
+<!--
+Properties that use binary operators should use **normalized values** (ie between `0.0` and `1.0`). For example, in the screenshot below, the **left** operator uses a value of `0.5`.
+-->
+<p><img src="media/clear-coat-binary-operator.png" alt="Binary operator"></p>
+<p>値を <code>1.0</code> 以上に設定すると、次の画像のように、タイリングアーチファクトが発生する場合があります（グリッドパターンに着目してください）。</p>
+<!--
+Values over `1.0` might produce tiling artifacts, as in the image below (note the grid pattern):
+-->
+<p><img src="media/clear-coat-artifact1.jpg" alt="Artifact"></p>
+<h3 id="strideclearcoatmetalflakesnm">StrideClearCoatMetalFlakesNM</h3>
+<!--
+### StrideClearCoatMetalFlakesNM
+-->
+<p>Stride のアセットパッケージに含まれるメタルフレーク法線マップ（<strong>StrideClearCoatMetalFlakesNM</strong>）のメタルフレークは、かなり大きいです。このため、以下のようにすることをお勧めします。</p>
+<!--
+The metal flakes in the metal flake normal map included in the Stride assets package (**StrideClearCoatMetalFlakesNM**) are quite large. For this reason, we recommend you: 
+-->
+<ul>
+<li><p>高い <strong>UV スケール係数</strong>を使用してテクスチャーをタイル状にする（それによりフレークを縮小する）。</p>
+</li>
+<li><p><strong>Use random texture coordinates</strong> を有効にして、明らさまなタイリング効果を防ぐ。</p>
+<p><img src="media/use-random-texture-coordinates.png" alt="Use random texture coordinates"></p>
+</li>
+</ul>
+<!--
+* use a high **UV scale factor** which tiles the texture (thereby shrinking the flakes) 
+
+* enable **Use random texture coordinates**, preventing an obvious tiling effect
+
+    ![Use random texture coordinates](media/use-random-texture-coordinates.png)
+-->
+<div class="NOTE">
+<h5>Note</h5>
+<p><strong>Use random texture coordinates</strong> オプションは、コストがかかるため、モバイルプラットフォームでの使用はお勧めできません。</p>
+</div>
+<!--
+>[!Note]
+>The **Use random texture coordinates** option is costly, so we don't recommend you use it for mobile platforms.
+-->
+<p>また、より小さなメタルフレークで密度の高い法線マップを使用する方法もあります。</p>
+<!--
+Alternatively, use a normal map with a higher density of smaller metal flakes.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="material-maps.html">マテリアル マップ</a></li>
+<li><a href="material-attributes.html">マテリアル 属性</a>
+<ul>
+<li><a href="geometry-attributes.html">ジオメトリ 属性</a></li>
+<li><a href="shading-attributes.html">シェーディング 属性</a></li>
+<li><a href="misc-attributes.html">その他の属性</a></li>
+</ul>
+</li>
+<li><a href="material-layers.html">マテリアル レイヤー</a></li>
+<li><a href="material-slots.html">マテリアル スロット</a></li>
+<li><a href="materials-for-developers.html">開発者向けのマテリアル情報</a></li>
+</ul>
+<!--
+* [Material maps](material-maps.md)
+* [Material attributes](material-attributes.md)
+    * [Geometry attributes](geometry-attributes.md)
+    * [Shading attributes](shading-attributes.md)
+    * [Misc attributes](misc-attributes.md)
+* [Material layers](material-layers.md)
+* [Material slots](material-slots.md)
+* [Materials for developers](materials-for-developers.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/graphics/materials/clear-coat-shading.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>チュートリアル: 軌跡の作成 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="チュートリアル: 軌跡の作成 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/tutorials/create-a-trail.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="チュートリアル-軌跡の作成">チュートリアル: 軌跡の作成</h1>
+
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>このチュートリアルでは、パーティクルを使用して、剣を振ったときの<a href="../ribbons-and-trails.html">残影効果</a>を作成する方法を説明します。</p>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-9.jpg">
+   <source src="media/sword-slash-9.mp4" type="video/mp4">
+</video>
+</p>
+<h2 id="1-プロジェクトを作成する">1. プロジェクトを作成する</h2>
+<ol>
+<li><p>Stride Launcher で、［Start］をクリックして、［New Game］を選択します。</p>
+</li>
+<li><p>［Create a new game］ダイアログの［Asset Packs］で、［Animated Models］を選択します。Animated Models パックには、この例で使用するアセットが含まれます(ここではパーティクル効果を最初から作成することに注意してください)。</p>
+<p><img src="media/create-a-new-game.png" alt="Create a new game"></p>
+</li>
+<li><p>プロジェクトの名前を設定し (例：<em>MyTrailEffect</em>)、［OK］をクリックします。いくつかのエンティティを含む簡単なシーンがロードされます。</p>
+</li>
+<li><p>このチュートリアルには<strong>球体</strong>エンティティは必要ないので削除します。</p>
+</li>
+</ol>
+<h2 id="2-モデルとアニメーションをセットアップする">2. モデルとアニメーションをセットアップする</h2>
+<ol>
+<li><p>［Asset view］で［Models］フォルダーを開き、<strong>mannequinModel</strong> をシーンにドラッグ アンド ドロップします。mannequinModel には、この剣撃アニメーションに使用するスケルトン アセットが含まれます。</p>
+</li>
+<li><p>［mannequinModel］を選択し、［Property grid］で［Add component］&gt;［Animations］の順に選択します。アニメーション コンポーネントがモデルに追加されます。</p>
+<p><img src="media/add-animation.png" alt="Add Animations"></p>
+</li>
+<li><p>［Animations］コンポーネントで、<img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックします。</p>
+<p><img src="media/add-new-playing-animation.png" alt="Add a new item to the list"></p>
+</li>
+<li><p>［Clip］の隣の <img src="../../game-studio/media/hand-icon.png" alt="Hand icon"> (［Pick an asset up］) をクリックします。</p>
+<p><img src="media/select-animation-asset.png" alt="Select an animation asset"></p>
+</li>
+<li><p>［Animations］フォルダーを参照し、［Sword_R animation］を選択します。これは、右から左への剣撃のアニメーションです。</p>
+<p><img src="media/select-animation-asset-in-asset-picker.png" alt="Select an animation asset in the Asset Picker"></p>
+</li>
+<li><p>マネキンに武器を持たせます。［Asset view］で［Models］フォルダーを参照し、［SwordModel］をエンティティ ツリーの mannequinModel にドラッグします。SwordModel が <strong>mannequinModel</strong> の子エンティティになります。</p>
+</li>
+<li><p>エンティティ ツリーで［mannequinModel］を展開して子エンティティを表示し、［SwordModel］を選択します。</p>
+<p><img src="media/SwordModel-child-entity.png" alt="SwordModel child entity"></p>
+</li>
+<li><p>右側の［Property grid］で［Add component］をクリックし、［Model Node Link］を選択します。</p>
+<p><img src="media/add-model-node-link.png" alt="Add Model Node Link"></p>
+<p>このコマンドを使用すると、SwordModel を mannequinModel スケルトンのポイントにリンクできます。ターゲットを指定する必要はありません。エンティティは既定で親エンティティ (mannequinModel) を使用します。</p>
+</li>
+<li><p>［Model Node Link］の［Node Name］フィールドで、［weapon_bone_R］を選択します。これにより、右手で武器を使用するスケルトンのポイントにモデルがアタッチされます。</p>
+</li>
+<li><p>ここまでの結果を見てみます。［Play］をクリックしてゲームを実行し、結果を確認します。マウスと WASD キーを使用してカメラを移動し、異なる視点からアニメーションを見ることができることを思い出してください。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-1.jpg">
+   <source src="media/sword-slash-1.mp4" type="video/mp4">
+</video>
+</p>
+<p>剣を振るアニメーションができました。次に、残影効果を追加します。</p>
+<h2 id="3-基本的な残影を作成する">3. 基本的な残影を作成する</h2>
+<p>最初に基本的な残影を作成し、どのように見えるかを確認します。</p>
+<ol>
+<li><p>Game Studio で［SwordModel］を選択します。［Property grid］で［Add component］をクリックして、［Particle System］を選択します。</p>
+<p><img src="media/add-particle-system.png" alt="Add Particle System"></p>
+<p>パーティクル システム コンポーネントがモデルに追加されます。これを使用して残影効果を作成します。</p>
+</li>
+<li><p>［Source］をクリックしてプロパティを展開します。</p>
+<p><img src="media/expand-source-properties.png" alt="Expand Source properties"></p>
+</li>
+<li><p>［Emitters］の隣の <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックします。これにより、新しいパーティクル エミッターが追加されます。</p>
+</li>
+<li><p>エミッターのプロパティで、［Shape］を［Trail］に設定します。</p>
+<p><img src="media/emitter-shape-trail.png" alt="Set Shape to Trail"></p>
+</li>
+<li><p>ここで、Stride のバグのために少し回り道をする必要があります。［Shape］のプロパティで、［Axis］を［Center］に設定します。(シェイプは本当は［Edge］に設定する必要がありますが、［Edge］と［Center］の設定が UI では逆になっています。この問題は Stride 1.9.3 で解決されます。)</p>
+<p><img src="media/set-axis-to-center.png" alt="Set Axis to Center"></p>
+</li>
+<li><p>［Spawners］の隣の <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、［Per frame］を選択します。</p>
+<p><img src="media/add-per-frame-spawner.png" alt="Add per-frame spawner"></p>
+<p>これによりフレーム単位のスポーナーがエミッターに追加され、(たとえば 1 秒ごとではなく) フレームごとに X 個のパーティクルが生成されます。</p>
+</li>
+<li><p>［Initializers］の隣の <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、［Velocity］を選択します。</p>
+<p><img src="media/add-velocity-initializer.png" alt="Add velocity initializer"></p>
+<p>これにより、速度イニシャライザーがエミッターに追加されます。</p>
+<p>この時点で、マネキンを操作してシーン内を移動させ、パーティクルの動作を確認できます。もやっとした煙の塊のように見えます。</p>
+</li>
+<li><p>速度イニシャライザーで、［Velocity min］と［Velocity max］の両方の値を <strong>0, 5, 0</strong> に設定します。</p>
+<p><img src="media/set-velocity-min-and-max.png" alt="Set velocity min and max"></p>
+<p>これにより、パーティクルは Y 軸に制限されて、1 枚の非常に薄い紙のようになります。</p>
+</li>
+<li><p>［Initializers］の隣の <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、［Direction］を選択します。</p>
+<p><img src="media/add-direction-initializer.png" alt="Add direction initializer"></p>
+<p>これにより、方向イニシャライザーがエミッターに追加されます。</p>
+</li>
+<li><p>方向イニシャライザーを展開してプロパティを表示します。［Direction min］と［Direction max］の両方を <strong>0, 0, -1</strong> に設定します。これにより、残影が剣撃アニメーションの方向と一致します。</p>
+</li>
+<li><p>ゲームを実行し、剣撃アニメーションでパーティクルがどのように見えるかを確認します。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-2.jpg">
+   <source src="media/sword-slash-2.mp4" type="video/mp4">
+</video>
+</p>
+<p>残影はできましたが、まだあまりよくありません。長過ぎ、色が同じであり、パーティクルの相互接続がおかしく、消えません。</p>
+<h2 id="4-パーティクルを並べ替える">4. パーティクルを並べ替える</h2>
+<p>パーティクルはビルボードとしてレンダリングされるので、残影のセグメントの相互接続がおかしくなっています。適切な残影効果を作成するには、<strong>生成順序イニシャライザー</strong>を追加することでパーティクルを順序に沿って並べ替える必要があります。</p>
+<ol>
+<li><p>SwordModel のプロパティでの［Particle System］&gt;［Source］&gt;［Emitters］で、［Initializers］の隣の <img src="../../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、［Spawn Order］を選択します。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>［Spawn Order (Parent)］または［Spawn Order (Group)］を選択しないように注意してください。</p>
+</div>
+<p><img src="media/add-spawn-order-initializer.png" alt="Add spawn-order initializer"></p>
+<p>これにより、生成順序イニシャライザーがエミッターに追加されます。プロパティはありませんが、パーティクルに SpawnID が設定されるので、それを使用して並べ替えることができます。</p>
+</li>
+<li><p>［Emitters］の［Sorting］で、［ByOrder］を選択します。</p>
+<p><img src="media/sort-by-order.png" alt="Sort by order"></p>
+</li>
+<li><p>［Initalizers］の［Velocity］イニシャライザーで、［Velocity min］と［Velocity max］の値をどちらも <strong>0,0.5,0</strong> に変更します。</p>
+<p><img src="media/change-velocity.png" alt="Change velocity"></p>
+</li>
+<li><p>ゲームを実行します。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-3.jpg">
+   <source src="media/sword-slash-3.mp4" type="video/mp4">
+</video>
+</p>
+<p>パーティクルがまとまって動くようになりました。</p>
+<h2 id="5-長さを変更する">5. 長さを変更する</h2>
+<p>SwordModel のプロパティの［Particle System］&gt;［Source］&gt;［Emitters］で、［Lifespan］を <strong>0.2, 0.2</strong> に変更します。</p>
+<p><img src="media/change-emitter-lifespan.png" alt="Change emitter lifespan"></p>
+<p>シーン内でマネキンを動かして、残影が前より早く消えるようになったことを確認します。</p>
+<h2 id="6-テクスチャを追加する">6. テクスチャを追加する</h2>
+<p>色を修正するため、パーティクルに「衝撃波」 テクスチャを適用します。</p>
+<p><img src="media/swoosh.png" alt="Swoosh.png texture"></p>
+<ol>
+<li><p>上のテクスチャ画像 (<strong>swoosh.png</strong>) をディスクに保存します。</p>
+</li>
+<li><p>テクスチャをプロジェクトにインポートします。そのためには、［Asset view］で［Add asset］&gt;［Textures］&gt;［Color］の順にクリックし、<strong>swoosh.png</strong> を選択します。</p>
+<p><img src="media/add-texture.png" alt="Add a texture"></p>
+</li>
+<li><p>［SwordModel］のプロパティで、［Emitters］&gt;［Material］の順に展開します。<img src="../../game-studio/media/hand-icon.png" alt="Hand icon"> (［Pick an asset up］) をクリックします。［Textures］フォルダーを参照して、<strong>swoosh.png</strong> を選択します。</p>
+<p><img src="media/add-material.png" alt="Add material texture"></p>
+</li>
+<li><p>［Alpha-Add］バーを <strong>1</strong> に設定して、100% 放射性にします。</p>
+<p><img src="media/alpha-add.png" alt="Alpha add bar"></p>
+</li>
+<li><p>［Particle emitter］のプロパティで、［Shape］を展開し、［UV Coords］を［Stretched］に、［UV Factor］を <strong>1</strong> に設定します。</p>
+<p><img src="media/UV-coords-and-factor.png" alt="Set UV"></p>
+</li>
+<li><p>［UV Rotate］を展開します。［Clockwise］で、90 度を選択します。これによりテクスチャが時計方向に 90 度回転し、「衝撃波」の線が右を向くようになります。</p>
+<p><img src="media/rotate-material.png" alt="Rotate material"></p>
+</li>
+<li><p>ゲームを実行します。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-4.jpg">
+   <source src="media/sword-slash-4.mp4" type="video/mp4">
+</video>
+</p>
+<p>完成に近づいています。しかし、まだ残影が消えないので、剣の一部であるように見えます。マネキンが剣を振ったら効果が表示されて、振り終わったら表示されなくなるようにする必要があります。</p>
+<h2 id="7-パーティクル効果をプレハブにする">7. パーティクル効果をプレハブにする</h2>
+<p>これまでは、パーティクル効果を剣にコンポーネントとしてアタッチすることで作成してきました。今度は、効果を剣から切り離し、自由に有効および無効にできる独立したエンティティにします。そのためには、プレハブを作成します。プレハブの詳細については、<a href="../../game-studio/prefabs/index.html">プレハブのドキュメント</a>を参照してください。</p>
+<ol>
+<li><p>［SwordModel］を右クリックして、［Create prefab from selection］を選択します。</p>
+<p><img src="media/create-prefab-from-selection.png" alt="Create prefab from selection"></p>
+<p>［SwordModel］からプレハブが作成されて、［Asset view］に追加されます。選択したものからプレハブを作成すると、これまでに設定したオプションを簡単にコピーできます。</p>
+</li>
+<li><p>［SwordModel］自体はプレハブにしません。それを単にテンプレートとして使用し、それからプレハブを作成します。新しいパーティクル効果プレハブとは切り離す必要があるので、右クリックして［Break link to prefab］を選択します。</p>
+<p><img src="media/break-link-to-prefab.png" alt="Break link to prefab"></p>
+</li>
+<li><p>適切な名前を付けると何事も容易になるので、プレハブの名前を「<em>SwordTrail</em>」に変更します。そのためには、［Asset view］で <strong>SwordModel</strong> プレハブを右クリックし、［Rename］を選択して「<em>SwordTrail</em>」と入力します。</p>
+<p><img src="media/rename-prefab.png" alt="Rename prefab"></p>
+</li>
+<li><p><strong>SwordTrail</strong> プレハブをダブルクリックして、プレハブ エディターで開きます。ここでプレハブをカスタマイズします。</p>
+<p><img src="media/prefab-editor.png" alt="Prefab editor"></p>
+</li>
+<li><p>プレハブに含まれるエンティティは SwordModel の 1 つだけです。すぐにモデルではなくなるので、このエンティティの名前を <em>SwordTrail</em> に変更します (属しているプレハブと同じ名前)。</p>
+</li>
+<li><p><strong>SwordTrail</strong> エンティティから［Model］および［Model Node Link］コンポーネントを削除します。これらはもう必要ありません。このプレハブはパーティクル効果になります。</p>
+</li>
+<li><p>同じ理由で、［Particle System］&gt;［Source］&gt;［Emitters］&gt;［Initializers］から［Velocity］イニシャライザーを削除します。ここでは、プレハブ効果を静的に設定します。</p>
+<p><img src="media/delete-velocity-initializer.png" alt="Delete velocity initializer"></p>
+</li>
+<li><p><strong>SwordTrail</strong> のプロパティの［Particle System］&gt;［Source］&gt;［Emitters］&gt;［Spawners］で、［Loop］を［One shot］に設定し、［Duration］を <strong>0.2, 0.2</strong> に変更します。</p>
+<p><img src="media/initializers-loop.png" alt="Set the initializer loop and duration"></p>
+</li>
+<li><p>パーティクル効果用に独立したプレハブを作成したので、剣モデルにパーティクル効果を残しておく必要はありません。メイン シーンで［SwordModel］を選択し、［Particle System］コンポーネントを削除します。</p>
+</li>
+</ol>
+<h2 id="8-スクリプトで効果のプレハブを制御する">8. スクリプトで効果のプレハブを制御する</h2>
+<p>剣の残影効果のプレハブを作成しました。次に、スクリプトを使用して、マネキンが剣を振るたびに効果を生成し、数フレーム後に効果を削除します。</p>
+<ol>
+<li><p>Visual Studio でプロジェクトを開きます。それには、Game Studio で Visual Studio アイコン (［Open in IDE］) をクリックします。</p>
+<p><img src="media/open-visual-studio.png" alt="Open Visual Studio"></p>
+</li>
+<li><p>Visual Studio でゲーム プロジェクトを右クリックし、［追加］&gt;［新しいアイテム］を選択します。[名前］フィールドにスクリプトの名前として「<em>SpawnTrail</em>」と入力し、［追加］をクリックします。</p>
+</li>
+<li><p>スクリプトの内容を、スクリプト <a href="https://github.com/SiliconStudio/stride-docs/blob/master-1.9/manual/particles/tutorials/media/SpawnTrail.cs">SpawnTrail.cs</a> のコードに置き換えます。</p>
+<p>これは、Stride に含まれるプレハブ インスタンス スクリプトを変更したものです。イベントまたはキーの押下をリッスンするのではなく、剣撃アニメーションのようなアニメーションの変化をリッスンします。</p>
+</li>
+<li><p>スクリプトで、<code>namespace</code> が正しいことを確認します。これは通常、Stride プロジェクトの名前 (<em>MyTrailEffect</em> など) と一致します。</p>
+<p><img src="media/script-namespace.png" alt="Namespace"></p>
+</li>
+<li><p>スクリプトと Visual Studio プロジェクトを保存します (<strong>Ctrl + Shift + S</strong>)。</p>
+</li>
+<li><p>Game Studio でアセンブリを再ロードします。</p>
+<p><img src="media/reload-assemblies.png" alt="Reload assemblies"></p>
+</li>
+<li><p>［MainScene］で［SwordModel］を選択します。</p>
+<p><img src="media/select-swordmodel.png" alt="Select SwordModel"></p>
+</li>
+<li><p>SwordModel のプロパティで、［Add component］をクリックし、<strong>SpawnTrail</strong> スクリプトを選択します。コンポーネントとしてスクリプトが追加されます。</p>
+<p><img src="media/add-script-component.png" alt="Add script component"></p>
+</li>
+<li><p><strong>SpawnTrail</strong> コンポーネントのプロパティで、［Source］の隣の <img src="../../game-studio/media/hand-icon.png" alt="Hand icon"> (［Pick an asset up］) をクリックします。</p>
+<p><img src="media/select-asset-for-script.png" alt="Select a source"></p>
+</li>
+<li><p>エンティティ ピッカーで、<strong>SwordTrail</strong> プレハブを選択します。</p>
+<p><img src="media/select-swordtrail-prefab-as-asset.png" alt="Select the swordtrail prefab"></p>
+</li>
+<li><p>SpawnTrail コンポーネントの［Animation］フィールドで、手のアイコン (［Pick an asset up］) をクリックします。    ［Select an asset］ウィンドウが開きます。</p>
+</li>
+</ol>
+<p>左側のペインで <strong>mannequinModel</strong> を選択して［OK］をクリックします。</p>
+<pre><code>![Pick mannequin model in Entity Picker](media/pick-mannequin-model.png)
+</code></pre>
+<ol start="12">
+<li>ゲームを実行します。</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-5.jpg">
+   <source src="media/sword-slash-5.mp4" type="video/mp4">
+</video>
+</p>
+<p>スクリプトにより、剣撃アニメーションが開始するとパーティクル効果が表示され、終了すると表示されなくなります。</p>
+<h2 id="9-残影の開始時刻を調整する">9. 残影の開始時刻を調整する</h2>
+<ol>
+<li><p><strong>Sword_R</strong> アニメーション アセットを選択し、右下の［Asset preview］で剣撃アニメーションを確認します(［Asset preview］が表示されない場合は、［View］&gt;［Asset preview］を選択します)。</p>
+<p>［Asset preview］にアニメーションの秒数が表示されます。よく見ると、アニメーションが開始してから約 0.1 秒経つまで、マネキンは剣を振り下ろし始めていないことがわかります。そこで、マネキンが剣を振るのと同時に残影効果が生成されるように設定します。</p>
+</li>
+<li><p>［SwordModel］を選択します。</p>
+</li>
+<li><p><strong>SpawnTrail</strong> のプロパティで、［Start time］を 0.06 に設定します。つまり、剣撃アニメーションが開始してから 0.06 秒経つまで残影効果は生成されず、わずかですがより自然に見えます。好みに合わせて自由に試してみてください。</p>
+</li>
+<li><p>ゲームを実行して結果を確認します。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-6.jpg">
+   <source src="media/sword-slash-6.mp4" type="video/mp4">
+</video>
+</p>
+<p>残影効果が若干滑らかではなく、「クモの巣」効果が発生していることに気付くかもしれません。さらに曲げてみましょう。</p>
+<h2 id="10-残影を曲線にする">10. 残影を曲線にする</h2>
+<ol>
+<li><p><strong>SwordTrail</strong> プレハブの <strong>SwordTrail</strong> エンティティの［Particle System］&gt;［Source］&gt;［Emitters］&gt;［Shape］で、［Smoothing］を［Best］に、［Segments］を <strong>5</strong> に設定します。</p>
+<p><img src="media/smoothing-best.png" alt="Smoothing and segments"></p>
+<p>これにより、残影のパーティクルの間に 3 つの頂点が追加されます。はるかに滑らかな効果を作るには、これで十分です。</p>
+</li>
+<li><p>ゲームを実行します。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-7.jpg">
+   <source src="media/sword-slash-7.mp4" type="video/mp4">
+</video>
+</p>
+<p>剣の柄がある内側の曲線は前より滑らかになりました。しかし、剣の先端の曲線はまだ滑らかではありません。</p>
+<p><img src="media/smoothing.png" alt="Smoothed and unsmoothed areas"></p>
+<p>より目立つ剣の先端の効果を滑らかにする必要があります。そのためには、パーティクルの向きを反転します。</p>
+<ol>
+<li><p><strong>SwordTrail</strong> プレハブの［Transform］コンポーネントのプロパティで、［Position］を <strong>0, 0, -1</strong> に変更します。</p>
+<p><img src="media/swordtrail-position.png" alt="Swordtrail position"></p>
+<p>このようにすると、パーティクル効果の開始位置が剣の先端に移動します。</p>
+</li>
+<li><p>ゲームを実行します。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-8.jpg">
+   <source src="media/sword-slash-8.mp4" type="video/mp4">
+</video>
+</p>
+<p>新しい問題が発生しています。パーティクル効果を剣の先端に移動したため、パーティクルが先端から飛び散っています。パーティクルの向きを逆にして、剣の刃に沿って柄の方に動くようにする必要があります。</p>
+<ol start="6">
+<li><p>［Particle System］&gt;［Source］&gt;［Emitters］&gt;［Initializers］の［Direction］イニシャライザーで、［Direction min］と［Direction max］をどちらも <strong>0, 0, 1</strong> に変更します。これで残影の方向が逆になります。</p>
+<p><img src="media/initializer-direction.png" alt="Initializer direction"></p>
+</li>
+<li><p>ゲームを実行します。</p>
+</li>
+</ol>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-9.jpg">
+   <source src="media/sword-slash-9.mp4" type="video/mp4">
+</video>
+</p>
+<p>以上で終了です。残影効果を一から作成しました。後は自分でいろいろ試してください。</p>
+<h2 id="サンプル-プロジェクト">サンプル プロジェクト</h2>
+<p>複数のパーティクル効果が組み合わせた、さらに精巧な残影の例を次に示します。</p>
+<p>
+<video autoplay="" loop="" class="responsive-video" poster="media/sword-slash-10.jpg">
+   <source src="media/sword-slash-10.mp4" type="video/mp4">
+</video>
+</p>
+<p>動作を確認する場合は、<a href="media/MyTrailEffect.zip">プロジェクト ファイルをダウンロード</a>して実行してみてください。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="custom-particles.html">チュートリアル: カスタム パーティクル</a></li>
+<li><a href="inheritance.html">チュートリアル: 継承</a></li>
+<li><a href="lasers-and-lightning.html">チュートリアル: レーザーと稲光</a></li>
+<li><a href="../index.html">パーティクル</a></li>
+<li><a href="../create-particles.html">パーティクルを作成する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/tutorials/create-a-trail.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

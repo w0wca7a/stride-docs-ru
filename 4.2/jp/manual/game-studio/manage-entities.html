@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>エンティティの管理 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="エンティティの管理 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/manage-entities.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="エンティティの管理">エンティティの管理</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">レベル デザイナー</span></p>
+<p>ゲームのレベルを構築するには、シーンのエンティティを平行移動 (移動)、回転、サイズ変更する必要があります。これらの操作は<strong>変換</strong>と呼ばれます。</p>
+<h2 id="変換ギズモ">変換ギズモ</h2>
+<p>変換ギズモは、<strong>シーン エディターのツールバー</strong>から選択できます。</p>
+<p><img src="media/manage-entities-in-scene-gizmos.png" alt="Transformation gizmo toolbox"></p>
+<p>または、<strong>Space</strong> キーを押してギズモ間を切り替えることができます。</p>
+<p>次の 3 種類の変換ギズモがあります。</p>
+<ul>
+<li><img src="media/manage-entities-in-scene-translation-gizmo.png" alt="Translation gizmo icon"> <strong>平行移動ギズモ</strong>は、エンティティを移動します。</li>
+<li><img src="media/manage-entities-in-scene-rotation-gizmo.png" alt="Rotation gizmo icon"> <strong>回転ギズモ</strong>は、エンティティを回転します。</li>
+<li><img src="media/manage-entities-in-scene-scale-gizmo.png" alt="Scale gizmo icon"> <strong>拡大縮小ギズモ</strong>は、エンティティのサイズを変更します。</li>
+</ul>
+<p>選択されている変換ギズモは、エンティティの原点に表示されます。</p>
+<p><img src="media/manage-entities-transformation-gizmo.png" alt="Transformation gizmos in the scene"></p>
+<h3 id="平行移動ギズモ">平行移動ギズモ</h3>
+<p>平行移動ギズモを選択するには、シーン エディターのツールバーで <img src="media/manage-entities-in-scene-translation-gizmo.png" alt="Translation gizmo icon"> アイコンをクリックするか、<strong>W</strong> キーを押します。</p>
+<p>平行移動ギズモは、シーン内のエンティティを、選択された軸に沿って移動 (<strong>平行移動</strong>) します。</p>
+<ul>
+<li>X 軸に沿ってエンティティを移動するには、<strong>赤</strong>の矢印でエンティティをドラッグします。</li>
+<li>Y 軸に沿って (上下に) エンティティを移動するには、<strong>緑</strong>の矢印でエンティティをドラッグします。</li>
+<li>Z 軸に沿ってエンティティを移動するには、<strong>青</strong>の矢印でエンティティをドラッグします。</li>
+<li>3D で自由にエンティティを移動するには、中央の球体でエンティティをドラッグします。</li>
+</ul>
+<video controls="" autoplay="" loop="" height="360" width="480">
+                <source src="media/manage-entities-in-scene-translation-gizmo.mp4" type="video/mp4">
+</video>
+<h3 id="回転ギズモ">回転ギズモ</h3>
+<p>回転ギズモを選択するには、シーン エディターのツールバーで <img src="media/manage-entities-in-scene-rotation-gizmo.png" alt="Rotation gizmo icon"> アイコンをクリックするか、<strong>E</strong> キーを押します。</p>
+<p>回転ギズモは、シーン内のエンティティを、選択された軸を中心にして回転します。</p>
+<ul>
+<li>X 軸を中心にしてエンティティを回転するには (ピッチ)、<strong>赤</strong>のリングでエンティティをドラッグします。</li>
+<li>Y 軸を中心にしてエンティティを回転するには (ヨー)、<strong>緑</strong>のリングでエンティティをドラッグします。</li>
+<li>Z 軸を中心にしてエンティティを回転するには (ロール)、<strong>青</strong>のリングでエンティティをドラッグします。</li>
+</ul>
+<video controls="" autoplay="" loop="" height="360" width="480">
+                <source src="media/manage-entities-in-scene-rotation-gizmo.mp4" type="video/mp4">
+</video>
+<h3 id="拡大縮小ギズモ">拡大縮小ギズモ</h3>
+<p>拡大縮小ギズモを選択するには、シーン エディターのツールバーで <img src="media/manage-entities-in-scene-scale-gizmo.png" alt="Scale gizmo icon"> アイコンをクリックするか、<strong>R</strong> キーを押します。</p>
+<p>拡大縮小ギズモは、1 つの軸に沿って (エンティティの 1 方向への「伸長」または「圧縮」)、またはすべての軸に沿って (エンティティの形状を変えずに拡大または縮小)、エンティティのサイズを変更します。</p>
+<ul>
+<li>X 軸の方向にエンティティのサイズを変更するには、<strong>赤</strong>のリングでエンティティをドラッグします。</li>
+<li>Y 軸の方向にエンティティのサイズを変更するには、<strong>緑</strong>のリングでエンティティをドラッグします。</li>
+<li>Z 軸の方向にエンティティのサイズを変更するには、<strong>青</strong>のリングでエンティティをドラッグします。</li>
+<li>すべての軸の方向にエンティティのサイズを変更するには、中央の球体でエンティティをドラッグします。</li>
+</ul>
+<video controls="" autoplay="" loop="" height="360" width="480">
+                <source src="media/manage-entities-in-scene-scale-gizmo.mp4" type="video/mp4">
+</video>
+<div class="NOTE">
+<h5>Note</h5>
+<p>拡大縮小ギズモは、<strong>ローカル</strong>座標系 (後述) でのみ動作します。拡大縮小ギズモを選択すると、ローカル座標に切り替わります。</p>
+</div>
+<h2 id="ギズモの座標系を変更する">ギズモの座標系を変更する</h2>
+<p>ギズモ座標の動作を変更できます。</p>
+<ol>
+<li>ギズモ座標を変更するエンティティを選択します。</li>
+<li>シーン エディターのツールバーで、使用する座標系を選択します。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>座標系</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/manage-entities-in-scene-wsc.png" alt="World coordinates"> ワールド座標</td>
+<td>変換にワールド座標を使用します。X、Y、Z 軸はすべてのエンティティについて同じです。</td>
+</tr>
+<tr>
+<td><img src="media/manage-entities-in-scene-osc.png" alt="Local coordinates"> ローカル座標</td>
+<td>変換にローカル座標を使用します。軸の向きは、選択されているエンティティと同じ方向になります。</td>
+</tr>
+<tr>
+<td><img src="media/manage-entities-in-scene-csc.png" alt="Camera coordinates"> カメラ座標</td>
+<td>変換に現在のカメラ座標を使用します。軸の向きは、エディターのカメラと同じ方向になります。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="変換をグリッドにスナップする">変換をグリッドにスナップする</h2>
+<p>変換をグリッドに「スナップ」できます。つまり、エンティティに適用する変換の大きさを、指定した値の最も近い倍数に丸めることができます。たとえば、回転のスナップ値を 10 に設定した場合、エンティティは 10 の倍数 (0、10、20、30 など) で回転します。</p>
+<p>シーン ビューのツールバーで、ギズモごとにスナップ値を変更できます。スナップ値は、シーン内のすべてのエンティティに適用されます。次に例を示します。</p>
+<table>
+<thead>
+<tr>
+<th>アイコン</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="media/manage-entities-in-scene-snap-translation.png" alt=""></td>
+<td>平行移動を 1 の倍数にスナップします</td>
+</tr>
+<tr>
+<td><img src="media/manage-entities-in-scene-snap-rotation.png" alt=""></td>
+<td>回転を 22.5 の倍数にスナップします</td>
+</tr>
+<tr>
+<td><img src="media/manage-entities-in-scene-snap-scale.png" alt=""></td>
+<td>拡大縮小を 1.1 の倍数にスナップします</td>
+</tr>
+</tbody>
+</table>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-a-scene.html">シーンを作成して開く</a></li>
+<li><a href="navigate-in-the-scene-editor.html">シーン エディター内を移動する</a></li>
+<li><a href="load-scenes.html">シーンをロードする</a></li>
+<li><a href="add-entities.html">エンティティを追加する</a></li>
+<li><a href="manage-entities.html">エンティティを管理する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/manage-entities.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

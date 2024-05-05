@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>コードからのモデルの作成 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="コードからのモデルの作成 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/scripts/create-a-model-from-code.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="コードからのモデルの作成">コードからのモデルの作成</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>実行時にスクリプトでモデルを作成できます。次のように複数の方法で行うことができます。</p>
+<ul>
+<li><p>アセットからモデルを作成します</p>
+</li>
+<li><p>手続き型モデルを作成します</p>
+</li>
+<li><p>モデルを含むプレハブをインスタンス化します (「<a href="../game-studio/prefabs/use-prefabs.html">プレハブを使用する</a>」を参照)</p>
+</li>
+</ul>
+<h2 id="アセットからモデルを作成する">アセットからモデルを作成する</h2>
+<ol>
+<li><p>新しい空の同期スクリプトを作成します。詳細については、「<a href="create-a-script.html">スクリプトを作成する</a>」を参照してください。</p>
+<p><img src="media/create-a-script-script-asset-selection.png" alt="Create a script"></p>
+</li>
+<li><p>スクリプトで、アセットの URL を使用してモデルをロードします。次に例を示します。</p>
+<pre><code class="lang-cs">// 新しいエンティティを作成してシーンに追加する。
+ var entity = new Entity();
+ SceneSystem.SceneInstance.RootScene.Entities.Add(entity);
+
+// ゲーム ファイルに含まれるモデルを追加する。
+ var modelComponent = entity.GetOrCreate&lt;ModelComponent&gt;();
+ modelComponent.Model = Content.Load&lt;Model&gt;(&quot;MyFolder/MyModel&quot;);
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>モデルのアセット URL を調べるには、［Asset view］でモデルをポイントします。
+<img src="media/get-asset-url.png" alt="(Get asset URL"></p>
+</div>
+</li>
+<li><p>スクリプトを<strong>スクリプト コンポーネント</strong>としてシーンのエンティティに追加します。使用するエンティティはどれでもかまいません。方法については、「<a href="use-a-script.html">スクリプトを使用する</a>」を参照してください。</p>
+<p><img src="media/create-model-from-code-add-script-component.png" alt="Add script component to entity"></p>
+</li>
+<li><p>［Asset view］で、実行時に作成するモデルを右クリックして、［Include in build as root asset］を選択します。</p>
+<p><img src="media/create-model-from-code-include-in-build-as-root-asset.png" alt="Include in build as root asset"></p>
+<p>これで、実行時にスクリプトでアセットを使用できるようになります。詳細については、「<a href="../game-studio/manage-assets.html">アセットを管理する</a>」を参照してください。</p>
+</li>
+</ol>
+<h2 id="手続き型モデルを作成する">手続き型モデルを作成する</h2>
+<ol>
+<li><p>新しい空の同期スクリプトを作成します。詳細については、「<a href="create-a-script.html">スクリプトを作成する</a>」を参照してください。</p>
+<p><img src="media/create-model-from-code-add-new-script.gif" alt="Add new script"></p>
+</li>
+<li><p>スクリプトを<strong>スクリプト コンポーネント</strong>としてシーンのエンティティに追加します。使用するエンティティはどれでもかまいません。方法については、「<a href="use-a-script.html">スクリプトを使用する</a>」を参照してください。</p>
+<p><img src="media/create-model-from-code-add-script-component.png" alt="Add script component to entity"></p>
+</li>
+<li><p>スクリプトで、空のエンティティと空のモデルをインスタンス化します。次に例を示します。</p>
+<pre><code class="lang-cs">// エンティティを作成してシーンに追加する。
+var entity = new Entity();
+SceneSystem.SceneInstance.RootScene.Entities.Add(entity);
+
+// モデルを作成し、モデル コンポーネントに割り当てる。
+var model = new Model();
+entity.GetOrCreate&lt;ModelComponent&gt;().Model = model;  
+</code></pre>
+</li>
+<li><p>スクリプトで、組み込みの幾何学的プリミティブ (球や立方体など) を使用して手続き型モデルを作成します。次に例を示します。</p>
+<pre><code class="lang-cs">// 幾何学的プリミティブ (球や立方体など) を使用してメッシュを 1 つ以上追加する。
+var meshDraw = GeometricPrimitive.Sphere.New(GraphicsDevice).ToMeshDraw();
+
+var mesh = new Mesh { Draw = meshDraw };
+model.Meshes.Add(mesh);
+</code></pre>
+<p>または、独自の頂点バッファーとインデックス バッファーを使用してメッシュを作成します。次に例を示します。</p>
+<pre><code class="lang-cs">// または、独自の頂点バッファーとインデックス バッファーを使用してメッシュを作成する。
+mesh = new Mesh { Draw = new MeshDraw { /* 頂点バッファーとインデックス バッファーのセットアップ */ } };
+model.Meshes.Add(mesh);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>頂点バッファーとインデックス バッファーをセットアップする方法については、「<a href="../graphics/low-level-api/draw-vertices.html">頂点の描画</a>」を参照してください。</p>
+</div>
+</li>
+</ol>
+<p>最後に、モデルに 1 つ以上のマテリアルを指定する必要があります。これを行うには 2 つの方法があります。</p>
+<h3 id="オプション-1-コードでマテリアルをロードする">オプション 1: コードでマテリアルをロードする</h3>
+<ol>
+<li><p>コードで 1 つ以上のマテリアルをロードして、モデルに追加します。モデルは複数のマテリアルを使用できるので (モデル内のメッシュごとに 1 つ)、<a class="xref" href="../../api/Stride.Rendering.Mesh.html#Stride_Rendering_Mesh_MaterialIndex">Mesh.MaterialIndex</a> を使用して、リストのどのマテリアルをどのメッシュに使用するかを指定します。</p>
+<p>次に例を示します。</p>
+<pre><code class="lang-cs">// 1 つ以上のマテリアルを追加する。モデルで複数のマテリアルが使用されている場合は (メッシュごとに 1 つ)、Mesh.MaterialIndex でリストのマテリアルとメッシュの対応を指定する。
+Material material = Content.Load&lt;Material&gt;(&quot;MyFolder/MyMaterial&quot;);
+model.Materials.Add(material);
+</code></pre>
+</li>
+<li><p>［Asset view］で、スクリプトで使用するすべてのマテリアル アセットを右クリックし、［<code>Include in build as root asset</code>］を選択する。</p>
+<p><img src="media/create-model-from-code-include-material-in-build-as-root-asset.png" alt="Include in build as root asset"></p>
+<p>これで、実行時にスクリプトでアセットを使用できるようになります。詳細については、「<a href="../game-studio/manage-assets.html">アセットを管理する</a>」を参照してください。</p>
+</li>
+</ol>
+<h3 id="オプション-2-コードで新しいマテリアルを作成する">オプション 2: コードで新しいマテリアルを作成する</h3>
+<p>次に例を示します。</p>
+<pre><code class="lang-cs">    // マテリアルを作成する (赤い拡散色など)。
+    var materialDescription = new MaterialDescriptor
+    {
+        Attributes =
+	    {
+	        DiffuseModel = new MaterialDiffuseLambertModelFeature(),
+	        Diffuse = new MaterialDiffuseMapFeature(new ComputeColor { Key = MaterialKeys.DiffuseValue })
+	    }
+    };
+    var material = Material.New(GraphicsDevice, materialDescription);
+    material.Parameters.Set(MaterialKeys.DiffuseValue, Color.Red);
+    model.Materials.Add(material);
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-a-script.html">スクリプトを作成する</a></li>
+<li><a href="use-a-script.html">スクリプトを使用する</a></li>
+<li><a href="../game-studio/prefabs/use-prefabs.html">プレハブを使用する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/scripts/create-a-model-from-code.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

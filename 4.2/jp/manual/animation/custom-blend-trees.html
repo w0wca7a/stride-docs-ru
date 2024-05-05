@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>カスタム ブレンド ツリー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="カスタム ブレンド ツリー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/custom-blend-trees.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="カスタム-ブレンド-ツリー">カスタム ブレンド ツリー</h1>
+
+<p><span class="badge text-bg-primary">上級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p><a class="xref" href="../../api/Stride.Engine.AnimationComponent.html">AnimationComponent</a> には、<a class="xref" href="../../api/Stride.Engine.AnimationComponent.html#Stride_Engine_AnimationComponent_BlendTreeBuilder">AnimationComponent.BlendTreeBuilder</a> プロパティがあります。再生されるアニメーション、アニメーションのブレンド方法、アニメーションの重みを全面的に制御したい場合は、<code>IBlendTreeBuilder</code> から継承するスクリプトを作成し、アニメーション コンポーネントの BlendTreeBuilder に割り当てます。</p>
+<p>アニメーション コンポーネントは、更新されるときに、アニメーション自体を更新するのではなく、スクリプトで <code>void BuildBlendTree(FastList&lt;AnimationOperation&gt; animationList)</code> を呼び出します。これにより、アニメーション クリップ、速度、ブレンドの任意の組み合わせを選択できますが、重労働をすべてスクリプト側で行う必要があるため、困難さも増します。</p>
+<p>Stride に含まれるテンプレート ［First-person shooter］、［Third-person platformer］、[Top-down RPG］は、カスタム ブレンド ツリーを使用する方法の例です。</p>
+<h2 id="コード-サンプル">コード サンプル</h2>
+<pre><code class="lang-cs">public class AnimationBlendTree : SyncScript, IBlendTreeBuilder
+{
+    /// &lt;summary&gt;
+    /// アニメーション コンポーネントが必要
+    /// &lt;/summary&gt;
+    [Display(&quot;Animation Component&quot;)]
+    public AnimationComponent AnimationComponent { get; set; }
+
+    [Display(&quot;Walk&quot;)]
+    public AnimationClip AnimationWalk { get; set; }
+
+    [Display(&quot;Run&quot;)]
+    public AnimationClip AnimationRun { get; set; }
+
+    [Display(&quot;Lerp Factor&quot;)]
+    public float LerpFactor = 0.5f;
+
+    private AnimationClipEvaluator animEvaluatorWalk;
+    private AnimationClipEvaluator animEvaluatorRun;
+    private double currentTime = 0;
+
+    public override void Start()
+    {
+        base.Start();
+
+        // 重要なステップ
+        // カスタム ブレンド ツリー ビルダーを設定することにより、アニメーション システムの既定の動作を上書きできる。
+        // 代わりに、BuildBlendTree(FastList&lt;AnimationOperation&gt; blendStack) がフレームごとに呼び出される。
+        // Update() でアニメーションの状態を更新した後、
+        // 新しいアニメーションの状態 (スタック = ブレンド ツリー) をアニメーション システムに渡す必要がある。
+        AnimationComponent.BlendTreeBuilder = this;
+
+        // アニメーション システムを上書きするときは、使用するクリップごとに AnimationClipEvaluator を作成する必要がある。
+        animEvaluatorWalk = AnimationComponent.Blender.CreateEvaluator(AnimationWalk);
+        animEvaluatorRun = AnimationComponent.Blender.CreateEvaluator(AnimationRun);
+    }
+
+    public override void Cancel()
+    {
+        // スクリプトをキャンセルするときは、Start() - AnimationClipEvaluators で作成されたすべてのアニメーション リソースを忘れずに解放する。
+        AnimationComponent.Blender.ReleaseEvaluator(animEvaluatorWalk);
+        AnimationComponent.Blender.ReleaseEvaluator(animEvaluatorRun);
+    }
+
+    public override void Update()
+    {
+        // アニメーションは描画されるときにのみ更新されるので、UpdateTime ではなく DrawTime を使用する。
+        var time = Game.DrawTime;
+
+        // この更新関数は、異なる期間のアニメーションを考慮し、
+        // ブレンドされた最大期間を基準にして現在時間を維持する。
+        long blendedMaxDuration = (long)MathUtil.Lerp(AnimationWalk.Duration.Ticks, AnimationRun.Duration.Ticks, LerpFactor);
+
+        var currentTicks = TimeSpan.FromTicks((long)(currentTime * blendedMaxDuration));
+
+        currentTicks = blendedMaxDuration == 0
+            ? TimeSpan.Zero
+            : TimeSpan.FromTicks((currentTicks.Ticks + (long)(time.Elapsed.Ticks)) % blendedMaxDuration);
+
+        currentTime = ((double)currentTicks.Ticks / (double)blendedMaxDuration);
+    }
+
+    /// AnimationComponent を評価する必要があるときは、フレームごとに BuildBlendTree がアニメーション システムから呼び出される。
+    /// この関数は、カスタム ブレンド ツリーを設定することで、AnimationComponent の既定の動作を上書きする。
+    public void BuildBlendTree(FastList&lt;AnimationOperation&gt; blendStack)
+    {
+        var timeWalk = TimeSpan.FromTicks((long) (currentTime * AnimationWalk.Duration.Ticks));
+        var timeRun  = TimeSpan.FromTicks((long) (currentTime * AnimationRun.Duration.Ticks));
+
+        // アニメーション ブレンド ツリーを作成する (スタック)
+        blendStack.Add(AnimationOperation.NewPush(animEvaluatorWalk, timeWalk));    // 指定された時間に評価されるようにアニメーションの状態をプッシュする。
+        blendStack.Add(AnimationOperation.NewPush(animEvaluatorRun, timeRun));      // 指定された時間に評価されるように別のアニメーションの状態をプッシュする。
+        blendStack.Add(AnimationOperation.NewBlend(AnimationBlendOperation.LinearBlend, LerpFactor));   // 最後の 2 つの状態をポップして、係数とブレンドし、結果をプッシュして戻す。
+
+        // 注意
+        // ブレンディング操作はスタック内にレイアウトされるので、この方法で操作をパックする必要がある。
+        // 一般に、深度優先でバイナリ ツリーをトラバースし、処理済みのノードを*離れる*ときに操作を追加することで十分である。
+        // 非バイナリ ツリーの場合、ブレンディング係数に適切に重みを付ける必要もある。
+
+        // 終了
+        // スタックの先頭には、アニメーション化されたモデルに使用される最終的な状態が含まれるようになっている。
+    }
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="index.html">アニメーション</a></li>
+<li><a href="import-animations.html">アニメーションのインポート</a></li>
+<li><a href="animation-properties.html">アニメーションのプロパティ</a></li>
+<li><a href="set-up-animations.html">アニメーションのセットアップ</a></li>
+<li><a href="preview-animations.html">アニメーションのプレビュー</a></li>
+<li><a href="animation-scripts.html">アニメーションのスクリプト</a></li>
+<li><a href="additive-animation.html">加算アニメーション</a></li>
+<li><a href="procedural-animation.html">プロシージャル アニメーション</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/custom-blend-trees.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>センサー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="センサー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/sensors.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="センサー">センサー</h1>
+
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p>プロジェクトの入力デバイスとして、ジャイロスコープや加速度計などのさまざまな<strong>センサー</strong>を使用できます。センサーはモバイル ゲームでよく使用されます。</p>
+<p>センサーにアクセスして以下のことを行うには、<a class="xref" href="../../api/Stride.Input.InputManager.html">InputManager</a> を使用します。</p>
+<ul>
+<li>センサーが Stride でサポートされているかどうかを調べる</li>
+<li>センサーを無効にする</li>
+<li>センサーのデータを取得する</li>
+</ul>
+<p>Stride は、<em>Orientation</em>、<em>Accelerometer</em>、<em>UserAcceleration</em>、<em>Gravity</em>、<em>Compass</em>、<em>Gyroscope</em> の 6 種類のセンサーからデータを取得できます。これらのセンサーは <a class="xref" href="../../api/Stride.Input.ISensorDevice.html">ISensorDevice</a> を継承します。</p>
+<p>センサーの種類ごとに、既定のインスタンスが作成されます。各インスタンスには、<a class="xref" href="../../api/Stride.Input.InputManager.html">InputManager</a> からアクセスできます。</p>
+<p>センサーは状態に基づきます。各センサー インスタンスは、フレームごとに自動的に更新され、直前の更新でのセンサーの値を格納しています。</p>
+<p>たとえば、加速度計にアクセスするには、以下を使用します。</p>
+<pre><code class="lang-cs">var accelerometer = Input.Accelerometer;
+</code></pre>
+<h2 id="センサーが使用できるかどうかを調べる">センサーが使用できるかどうかを調べる</h2>
+<p>センサーの値を取得する前に、デバイスでセンサーを使用できるかどうかを確認します。そのためには、使用するセンサーが null ではないことを調べます。たとえば、コンパスが使用できるかどうかを調べるには、次のようにします。</p>
+<pre><code class="lang-cs">var hasCompass = Input.Compass != null;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>デバイスがセンサーをネイティブにサポートしていない場合、Stride はデバイスの他のセンサーを使用して列挙を試みます。</p>
+</div>
+<h2 id="センサーを有効にする">センサーを有効にする</h2>
+<p>センサー データの取得と更新には多大な CPU 時間を要するので、既定では、使用可能なすべてのセンサーが無効になっています。</p>
+<p>センサーを有効にするには、<a class="xref" href="../../api/Stride.Input.ISensorDevice.html#Stride_Input_ISensorDevice_IsEnabled">IsEnabled</a> を <code>true</code> に設定します。センサーが必要ない場合は、このプロパティを <code>false</code> に設定して無効にします。</p>
+<h2 id="方向センサーを使用する">方向センサーを使用する</h2>
+<p><strong>方向センサー</strong>は、重力と地球の北極を基にして、<strong>デバイスの向き</strong>を示します。デバイスの Y 軸が磁北と一致し、Z 軸が重力と一致している場合、方向は null になります。方向データを使用して、ゲームのさまざまなアクションを制御できます。</p>
+<p><img src="media/sensor-overview-orientation-sensor.png" alt="Orientation sensor"></p>
+<p>デバイスの現在の方向を取得するには、<a class="xref" href="../../api/Stride.Input.InputManager.html#Stride_Input_InputManager_Orientation">Input.Orientation</a> を使用します。</p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+<th>宣言</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.IOrientationSensor.html#Stride_Input_IOrientationSensor_Roll">Roll</a></td>
+<td>X 軸を中心とする回転です。</td>
+<td><code>public float Roll { get; }</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.IOrientationSensor.html#Stride_Input_IOrientationSensor_Pitch">Pitch</a></td>
+<td>Y 軸を中心とする回転です。</td>
+<td><code>public float Pitch { get; }</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.IOrientationSensor.html#Stride_Input_IOrientationSensor_Yaw">Yaw</a></td>
+<td>Z 軸を中心とする回転です。</td>
+<td><code>public float Yaw { get; }</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.IOrientationSensor.html#Stride_Input_IOrientationSensor_RotationMatrix">Rotation Matrix</a></td>
+<td>デバイスの回転です。</td>
+<td><code>public Matrix RotationMatrix { get; }</code></td>
+</tr>
+<tr>
+<td><a class="xref" href="../../api/Stride.Input.IOrientationSensor.html#Stride_Input_IOrientationSensor_Quaternion">Quaternion</a></td>
+<td>デバイスの方位と回転です。</td>
+<td><code>public Quaternion Quaternion { get; }</code></td>
+</tr>
+</tbody>
+</table>
+<p>次に例を示します。</p>
+<pre><code class="lang-cs">  var orientation = Input.Orientation.Quaternion;
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Stride は、ピッチ/ヨー/ロール、回転マトリックス、または四元数の形式で方位を提供します。<a href="https://en.wikipedia.org/wiki/Gimbal_lock">ジンバル ロック</a> による悪影響がないので、四元数形式を使用することをお勧めします。</p>
+</div>
+<h2 id="運動センサー">運動センサー</h2>
+<p><strong>運動センサー</strong>は、傾斜、振動、揺動などの<strong>加速力</strong>を測定します。Stride では 3 種類の運動センサーがサポートされています。</p>
+<ul>
+<li><strong>Accelerometer</strong>: <strong>未加工の加速度</strong>を測定します</li>
+<li><strong>Gravity</strong>: 重力のみを測定します</li>
+<li><strong>UserAcceleration</strong>: ユーザーによって適用された加速度のみを測定します</li>
+</ul>
+<p>センサーは、物理的関係 <code>Accelerometer = Gravity + UserAcceleration</code> を使用します。</p>
+<p><img src="media/sensor-overview-accelerometer-acceleration-gravity.png" alt="Motion sensors"></p>
+<p>運動センサーには、デバイスでの現在の<strong>加速度ベクトル</strong>を指定する 1 つのフィールドがあります。加速度の測定単位は<strong>メートル毎秒毎秒</strong>です。</p>
+<p>次の図は、スマートフォンおよびタブレットでの加速度の測定に Stride が使用する<strong>座標基底</strong>を示したものです。</p>
+<p><img src="media/sensor-overview-accelerometer-sensor.png" alt="Accelerometer"></p>
+<h3 id="加速度計を使用する">加速度計を使用する</h3>
+<p><strong>加速度計</strong>は、デバイスに加えられた未加工の加速度を測定します。これには、<strong>重力</strong>と<strong>ユーザー加速度</strong>が含まれます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>ユーザーが力を加えていない場合、<strong>デバイスの加速度</strong>は<strong>重力</strong>と等しくなります。</p>
+</div>
+<p>未加工の加速度を取得するには、<a class="xref" href="../../api/Stride.Input.IAccelerometerSensor.html#Stride_Input_IAccelerometerSensor_Acceleration">Accelerometer.Acceleration</a> を使用します。次に例を示します。</p>
+<pre><code>var acceleration = Input.Accelerometer.Acceleration;
+</code></pre>
+<h3 id="ユーザー加速度センサーを使用する">ユーザー加速度センサーを使用する</h3>
+<p><strong>ユーザー加速度センサー</strong>は加速度計と似ていますが、ユーザーによって加えられた加速度<strong>だけ</strong> (重力加速度を除いたもの) を測定します。</p>
+<p>ユーザー加速度を取得するには、<a class="xref" href="../../api/Stride.Input.IUserAccelerationSensor.html#Stride_Input_IUserAccelerationSensor_Acceleration">UserAcceleration.Acceleration</a> を使用します。次に例を示します。</p>
+<pre><code class="lang-cs">var userAcceleration = Input.UserAcceleration.Acceleration;
+</code></pre>
+<h3 id="重力センサーを使用する">重力センサーを使用する</h3>
+<p>重力センサーは、デバイスに加えられている重力 (メートル毎秒毎秒) の向きと大きさを示す 3D ベクトルを提供します。</p>
+<p>重力ベクトルを取得するには、<a class="xref" href="../../api/Stride.Input.IGravitySensor.html">GravitySensor</a> を使用します。次に例を示します。</p>
+<pre><code class="lang-cs"> var gravityVector = Input.Gravity.Vector;
+</code></pre>
+<h3 id="コンパス-センサーを使用する">コンパス センサーを使用する</h3>
+<p><strong>コンパス</strong>は、デバイスの先端の方向と<strong>北極</strong>の方向がなす角度を示します。これは、たとえば、回転やデジタル マップの位置合わせに役立ちます。</p>
+<p><img src="media/sensor-overview-compasss.png" alt="Compass"></p>
+<p>この角度を取得するには、<a class="xref" href="../../api/Stride.Input.ICompassSensor.html#Stride_Input_ICompassSensor_Heading">CompassSensor.Heading</a> を使用します。次に例を示します。</p>
+<pre><code class="lang-cs">var heading = Input.Compass.Heading;
+</code></pre>
+<h3 id="ジャイロスコープを使用する">ジャイロスコープを使用する</h3>
+<p>ジャイロスコープは、デバイスの<strong>回転速度</strong> (<strong>ラジアン/秒</strong>) を測定します。</p>
+<p><img src="media/sensor-overview-gyroscope-sensor.png" alt="Gyroscope"></p>
+<p>回転速度を取得するには、<a class="xref" href="../../api/Stride.Input.IGyroscopeSensor.html#Stride_Input_IGyroscopeSensor_RotationRate">GyroscopeSensor.RotationRate</a> を使用します。次に例を示します。</p>
+<pre><code class="lang-cs">  var rotationRate = Input.Gyroscope.RotationRate;
+  var rotationSpeedX =  rotationRate.X;
+  var rotationSpeedY =  rotationRate.Y;
+  var rotationSpeedZ =  rotationRate.Z;
+</code></pre>
+<h2 id="コード例">コード例</h2>
+<pre><code class="lang-cs">public class SensorScript : AsyncScript
+{
+	public override async Task Execute()
+	{
+		// センサーを使用できるかどうかを調べる
+		if(Input.Accelerometer != null)
+			return;
+
+		// センサーをアクティブにする
+		Input.Accelerometer.IsEnabled = true;
+
+		while (Game.IsRunning)
+		{
+			// 現在の加速度を読み取る
+			var accel = Input.Accelerometer.Acceleration;
+
+			// 必要な処理を実行する...
+			await Script.NextFrame();
+		}		
+		// 使用した後でセンサーを無効にする
+		Input.Accelerometer.IsEnabled = false;
+	}
+}
+</code></pre>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="gestures.html">ジェスチャ</a></li>
+<li><a href="pointers.html">ポインター</a></li>
+<li><a href="index.html">入力の概要</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/input/sensors.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

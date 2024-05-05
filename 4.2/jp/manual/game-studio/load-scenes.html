@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>実行時にシーンをロードおよびアンロードする | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="実行時にシーンをロードおよびアンロードする | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/load-scenes.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="実行時にシーンをロードおよびアンロードする">実行時にシーンをロードおよびアンロードする</h1>
+
+<p>次のコードでは、3 つのシーンがロードされ、子として追加されます。</p>
+<pre><code class="lang-cs">var myChildScene0 = Content.Load&lt;Scene&gt;(url0);
+var myChildScene1 = Content.Load&lt;Scene&gt;(url1);
+var myChildScene2 = Content.Load&lt;Scene&gt;(url2);
+
+myParentScene.Children.Add(myChildScene0);
+myParentScene.Children.Add(myChildScene1);
+myChildScene1.Add(myChildScene2);
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>ロードするすべてのシーンが<strong>ルート アセット</strong> (［Asset View］で青いアイコンで示されているもの) としてビルドに含まれることを確認してください。</p>
+</div>
+<blockquote>
+<p><img src="media/scenes-included-in-root.png" alt="Scenes included in root"></p>
+</blockquote>
+<blockquote>
+<p>シーンをビルドに追加するには、［Asset view］で、シーン アセットを右クリックして［Include in build as root asset］を選択します。</p>
+</blockquote>
+<blockquote>
+<p>ビルドへのアセットの追加の詳細については、「<a href="manage-assets.html">アセットを管理する</a>」を参照してください。</p>
+</blockquote>
+<p>シーンの階層の詳細については、「<a href="manage-scenes.html">シーンを管理する</a>」を参照してください。</p>
+<h2 id="シーンストリーマー-スクリプト">シーンストリーマー スクリプト</h2>
+<p>Stride には、<a href="../physics/triggers.html">トリガー</a>を使用してシーンをロードする Scene Streaming スクリプトも含まれます。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Scene Streaming スクリプトは例として含まれています。シーンをロードする方法として常に最適であるとは限りません。必要に応じて自由に変更してください。</p>
+</div>
+<h3 id="シーンストリーマー-スクリプトを追加する">シーンストリーマー スクリプトを追加する</h3>
+<p>Scene Streaming スクリプトを追加するには、［Asset view］(既定では下部のペイン) で、［Add asset］をクリックし、［Scripts］&gt;［Scene streamer］を選択します。</p>
+<p><img src="media/scene-streaming-script.png" alt="Scene streamer script"></p>
+<p>プロジェクトのアセットに Scene Streaming スクリプトが追加されます。</p>
+<h3 id="シーンストリーマー-スクリプトを使用する">シーンストリーマー スクリプトを使用する</h3>
+<ol>
+<li><p>トリガー エンティティを作成します。これが実行時にトリガーされると、シーンがロードされます。トリガーの作成の詳細については、「<a href="../physics/triggers.html">トリガー</a>」を参照してください。</p>
+<p>エンティティがトリガーされる方法はコライダーのプロパティで定義されています。詳細については、「<a href="../physics/colliders.html">コライダー</a>」を参照してください。</p>
+</li>
+<li><p>エンティティを作成して、シーンをロードする場所に配置します。</p>
+</li>
+<li><p>エンティティを選択し、［Property grid］(既定では右側) で［Add component］をクリックして、［SceneStreaming］スクリプトを選択します。</p>
+<p><img src="media/add-scene-streaming-script.png" alt="Add script"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>コンポーネントの一覧にシーン ストリーマー スクリプトが表示されない場合は、アセンブリを再ロードしてください。</p>
+</div>
+<p>コンポーネントとしてエンティティにスクリプトが追加されます。</p>
+<p><img src="media/scene-streaming-script-properties.png" alt="Scene streamer properties"></p>
+</li>
+<li><p>［Url］で、ロードするシーンの URL を指定します。</p>
+</li>
+<li><p>［Trigger］で、ステップ 1 で作成したエンティティを指定します。</p>
+</li>
+</ol>
+<p>実行時に、ステップ 1 で作成したトリガーがトリガーされると、ステップ 4 で指定したシーンがロードされます。</p>
+<h3 id="シーンストリーマー-スクリプトのプロパティ">シーンストリーマー スクリプトのプロパティ</h3>
+<p><img src="media/scene-streaming-script-properties.png" alt="Scene streamer properties"></p>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pre Load Depth</td>
+<td>シーンのロードを開始するポイント (<a href="world-units.html">ワールド単位</a>)。たとえば、<em>2.5</em> と指定すると、プレイヤーがトリガー領域に 2.5 単位入った時点で、シーンのロードが開始します。</td>
+</tr>
+<tr>
+<td>Load Depth</td>
+<td>シーンがまだロードされていない場合、シーンのロードを終了するためにゲームがフリーズするポイント (<a href="world-units.html">ワールド単位</a>)。たとえば、<em>5</em> と指定すると、プレイヤーがトリガー領域に 5 単位入った時点で、ゲームがフリーズします。</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>スクリプトの優先順位。詳細については、「<a href="../scripts/scheduling-and-priorities.html">スケジュールと優先順位</a>」を参照してください。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="../physics/colliders.html">コライダー</a></li>
+<li><a href="../physics/triggers.html">トリガー</a></li>
+<li><a href="create-a-scene.html">シーンを作成して開く</a></li>
+<li><a href="navigate-in-the-scene-editor.html">シーン エディター内を移動する</a></li>
+<li><a href="manage-scenes.html">シーンを管理する</a></li>
+<li><a href="add-entities.html">エンティティを追加する</a></li>
+<li><a href="manage-entities.html">エンティティを管理する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/load-scenes.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

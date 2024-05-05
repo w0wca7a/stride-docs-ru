@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>アニメーションのセットアップ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="アニメーションのセットアップ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/set-up-animations.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="アニメーションのセットアップ">アニメーションのセットアップ</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">デザイナー</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<p><a href="import-animations.html">アニメーション アセットをインポート</a>した後は、それをエンティティに追加し、スクリプトで再生する必要があります。</p>
+<h2 id="1-アニメーション-アセットをエンティティに追加する">1. アニメーション アセットをエンティティに追加する</h2>
+<ol>
+<li><p><strong>シーン エディター</strong>で、アニメーション化するエンティティを選択します。</p>
+<p><img src="media/select-entity.png" alt="Select an entity"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>エンティティをアニメーション化するには、エンティティにモデル コンポーネントが含まれる必要があります。</p>
+</div>
+</li>
+<li><p>［Property grid］で、［Add component］をクリックし、［Animations］を選択します。</p>
+<p><img src="media/select-animation-component.png" alt="Select an entity"></p>
+<p>アニメーション コンポーネントがエンティティに追加されます。</p>
+</li>
+<li><p>アニメーション コンポーネントのプロパティで、［Animations］の隣の <img src="../game-studio/media/green-plus-icon.png" alt="Green plus button"> (［Add a new item to the list］) をクリックして、新しいアニメーションをライブラリに追加します。</p>
+</li>
+<li><p>アニメーションの名前を入力して、Enter キーを押します。</p>
+<p><img src="media/add-animation.png" alt="Add animation"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>後でスクリプトを使用してアニメーションを再生するときは、アニメーション アセットの名前では<strong>なく</strong>、この名前を使用します。識別しやすくするため、アニメーションにはアニメーション アセットと同じ名前を付けることをお勧めします。</p>
+</div>
+</li>
+<li><p><img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (［Select an asset］) をクリックします。</p>
+<p><img src="media/pick-asset-up.png" alt="Pick asset up"></p>
+<p>［Select an asset］ウィンドウが開きます。</p>
+</li>
+<li><p>追加するアニメーション アセットを参照し、［Ok］をクリックします。</p>
+<p><img src="media/asset-picker.png" alt="Select an asset"></p>
+<p>アニメーション アセットがエンティティに追加されます。</p>
+<p><img src="media/animation-asset-added.png" alt="Animation asset added"></p>
+</li>
+</ol>
+<p>必要なだけいくつでもアニメーションをアニメーション コンポーネントに追加できます。［Property grid］にはアニメーションがアルファベット順に一覧表示されます。</p>
+<p><img src="media/animations-list.png" alt="Animations list"></p>
+<h2 id="2-アニメーションを再生するスクリプトを作成する">2. アニメーションを再生するスクリプトを作成する</h2>
+<p>エンティティにアニメーションを追加した後は、<a href="../scripts/index.html">スクリプト</a>でアニメーションを再生する必要があります。</p>
+<h3 id="サンプル-スクリプト">サンプル スクリプト</h3>
+<pre><code class="lang-cs">    public class SimpleAnimationScript : StartupScript
+    {
+        public override void Start()
+        {
+            Entity.Get&lt;AnimationComponent&gt;().Play(&quot;Walk&quot;);
+        }
+    }
+</code></pre>
+<p>このスクリプトは、エンティティのアニメーション コンポーネントで［Walk］という名前のアニメーションを探します。</p>
+<p>アニメーション スクリプトの作成の詳細については、「<a href="animation-scripts.html">アニメーションのスクリプト</a>」を参照してください。</p>
+<h2 id="3-スクリプトをエンティティに追加する">3. スクリプトをエンティティに追加する</h2>
+<ol>
+<li><p><strong>シーン エディター</strong>で、アニメーション化するエンティティを選択します。</p>
+<p><img src="media/select-entity.png" alt="Select an entity"></p>
+</li>
+<li><p>［Property grid］で［Add component］をクリックして、追加するアニメーション スクリプトを選択します。</p>
+<p><img src="media/add-animation-script-component.png" alt="Select an entity"></p>
+</li>
+</ol>
+<p>コンポーネントとしてスクリプトが追加されます。［Property grid］のスクリプト コンポーネントのプロパティで、<a href="../scripts/public-properties-and-fields.html">スクリプトで定義したパブリック変数</a>を調整できます。</p>
+<p><img src="media/animations-setup3.png" alt="Select an entity"></p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="index.html">アニメーション</a></li>
+<li><a href="import-animations.html">アニメーションのインポート</a></li>
+<li><a href="animation-properties.html">アニメーションのプロパティ</a></li>
+<li><a href="preview-animations.html">アニメーションのプレビュー</a></li>
+<li><a href="animation-scripts.html">アニメーションのスクリプト</a></li>
+<li><a href="additive-animation.html">加算アニメーション</a></li>
+<li><a href="procedural-animation.html">プロシージャル アニメーション</a></li>
+<li><a href="custom-blend-trees.html">カスタム ブレンド ツリー</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/animation/set-up-animations.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

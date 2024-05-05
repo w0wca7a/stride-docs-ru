@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>チュートリアル: 継承 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="チュートリアル: 継承 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/tutorials/inheritance.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="チュートリアル-継承">チュートリアル: 継承</h1>
+
+<!--
+# Tutorial: Inheritance
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>このチュートリアルでは、他のパーティクルから位置や色などの属性を <strong>継承（inheritance）</strong> したパーティクルを作成する方法を説明します。</p>
+<!--
+This tutorial explains how to create particles which inherit one or more attributes, such as position or color, from other particles.
+-->
+<h2 id="サンプル">サンプル</h2>
+<!--
+## Sample
+-->
+<p>これからテクニックを紹介していくに当たって、新しい <strong>Sample.Particles</strong> プロジェクトを作成し、<strong>ChildParticles</strong> シーンを開いてください。</p>
+<!--
+To see some of the techniques described on this page implemented in a project, create a new **Sample: Particles** project and open the **ChildParticles** scene.
+-->
+<p><img src="media/select-particles-sample-project.png" alt="Particles sample project"></p>
+<h2 id="継承元">継承元</h2>
+<!--
+## Inheriting position
+-->
+<p>継承を、親と子のパーティクルで考えてみると分かりやすいでしょう。</p>
+<!--
+It helps if you think about inheritance in terms of parent and child particles. 
+-->
+<p>例えば、<strong>Sample.Particles</strong> プロジェクトの <strong>ChildParticles</strong> シーンで、<strong>Fireworks</strong> エンティティを確認してみましょう。</p>
+<!--
+For example, in the **ChildParticles** scene in the **Sample: Particles** project, check out the **Fireworks** entity.
+-->
+<p>2 つのエミッターが含まれています。パーティクルは親エミッターを名前で参照するので、最初のエミッターには <strong>Emitter Name</strong> プロパティが設定されています。名前は任意ですが、他のエミッターがこのエミッターのパーティクルを参照できるようにするためには必須です。</p>
+<!--
+It contains two emitters. Particles reference parent emitters by name, so in the first emitter you can see we've set the **Emitter Name** property. It's an optional name, but it's required if you want other emitters to be able to reference this emitter's particles.
+-->
+<p>2 つ目のエミッターでは、新しいイニシャライザー <strong>Position from parent</strong> を作成します。これにより、最初のエミッターのパーティクルを参照し、その位置を使って子パーティクルを初期化することができます。<strong>Parent emitter</strong> 属性には、最初のエミッターの名前（<em>Parent</em>）を記載します。この結果、生成されたそれぞれの子パーティクルに対して親パーティクルがランダムに割り当てられ、その位置が子パーティクルにコピーされます。</p>
+<!--
+In the second emitter we create a new initializer, **Position from parent**. This lets us reference the first emitter's particles and use their position to initialize the child particles. In the **Parent emitter** attribute we put the first emitter's name (*Parent*). This randomly assigns a parent particle for each child particle spawned and copy its position to the child particle. 
+-->
+<p><strong>Parent Offset</strong> シードは、複数の属性を継承する場合に、フィールドにマッチします。例えば、（ランダムに選ばれた）同一の親パーティクルから <strong>Position</strong> と <strong>Color</strong> の両方を継承したい場合には、<em>Parent Offset</em> シードを同じ値に設定しておく必要があります。また、両方のイニシャライザーの <em>Parent Offset</em> シードを異なる値にすることもできます。この場合、ある親パーティクルの位置から生成された子パーティクルで、別のランダムな親パーティクルから色を継承することができます。通常は同じにしておきたいところですが、場合によっては混ぜた方がいいかもしれません。</p>
+<!--
+The **Parent Offset** seed matches fields when more than one attributes are inherited. For example, if you want to inherit both **Position** and **Color** from the same parent particle (chosen at random) you should make the *Parent Offset* seed the same. Alternatively, you can make the *Parent Offset* seed for both initializers different, in which case particles spawning from one parent's position can inherit their color from a different random particle. Usually, you want to keep them the same, but in some cases you might want to mix them.
+-->
+<p><img src="media/particles-tutorials-inheritance-1.png" alt="media/particles-tutorials-inheritance-1.png"></p>
+<p>ご覧のように、この種の継承では生成数や最大パーティクル数などのパラメータを制御できず、非常にランダムになります。ほとんどのエフェクトはこれで十分ですが、パーティクルをもっと直接コントロールしたい場合もあります。</p>
+<!--
+As you can see, this kind of inheritance doesn't control spawn count, maximum particles, or any other parameters, and is very random. For most effects it's sufficient, but sometimes you want more direct control over the particles.
+-->
+<h2 id="コントロールされた継承controlled-inheritance">コントロールされた継承（Controlled inheritance）</h2>
+<!--
+## Controlled inheritance
+-->
+<p>特定の親パーティクルから一定数のパーティクルを産み出すとき、それらのパーティクルは産み出した親パーティクルの属性だけを継承するようにしたい場合があります。</p>
+<!--
+On occasion you will want to spawn a certain number of particles from a specific parent and have those particles only inherit attributes from the parent particle that spawned them.
+-->
+<p>これを行うには、子エミッターのスポナーとして <strong>From parent</strong> タイプを選択します。そして、親エミッターの名前を <strong>Parent emitter</strong> 欄に記入します。</p>
+<!--
+To do this, choose a spawner for the child emitter from type **From parent**. Fill in the parent emitter's name in the **Parent emitter** field.
+-->
+<p><strong>Spawn Control Group</strong> フィールドは、パーティクルがコントロール情報を保存する方法を決定します。スポーン情報を取得するためには、後ですべてのイニシャライザーに同じコントロールグループを割り当てる必要があります。</p>
+<!--
+The **Spawn Control Group** determines how the particles save their control information. You need to assign the same control group on all initializers later in order to retrieve the spawning information.
+-->
+<p>コントロールグループは 4 つまで設定できます。異なる条件でパーティクルを生成する場合や、同じ親から 2 つ以上の異なる子パーティクルを生成する場合は、それらが混ざらないように、異なるコントロールグループを割り当ててください。</p>
+<!--
+There can be up to 4 control groups. If you spawn particles based on different conditions, or spawn more than two different child particles from the same parent, assign them different control groups so they don't get mixed up.
+-->
+<p><strong>Particle Spawn Trigger</strong> フィールドは、親側のトリガー条件であり、パーティクルを生み出すかどうかの条件を指定します。<strong>None</strong> のままだとパーティクルが生成されないので、<strong>On Hit</strong> または <strong>Lifetime</strong> を指定します。</p>
+<!--
+The **Particle Spawn Trigger** is the triggering condition on the parent side, which determines if particles should be spawned. If you leave it as **None**, no particles are spawned, so set it to **On Hit** or **Lifetime**.
+-->
+<p><strong>On hit</strong> は、<a href="../../physics/colliders.html">コライダー</a>が割り当てられた親パーティクルに対して機能し、サーフェスに当たるたびにトリガーされます。</p>
+<!--
+**On hit** works for parent particles with a [collider](../../physics/colliders.md) assigned, and triggers every time they hit the surface.
+-->
+<p><strong>Lifetime</strong> は親パーティクルの相対的なライフタイムに基づいており、ライフタイムが制限内であれば、フレームごとにトリガーされます。2 つのスライダーがあり、どのポイントからどのポイントまでパーティクルを生み出すかをコントロールできます。また、それらを逆にすることで、生成条件を逆にすることもできます。例えば、ライフタイムの条件が (0.9 - 1.0) のパーティクルは、ライフタイムの最後の 10 % でのみ子パーティクルを生成します。</p>
+<!--
+**Lifetime** is based on the parent particle's relative lifetime, and triggers every frame the lifetime is within the limits. There are two sliders to control from which point to which point particles should be spawned. Alternatively, you can reverse them to reverse the spawning condition. For example, a particle with lifetime condition (0.9 - 1.0) only spawns child particles in the last 10% of its lifetime.
+-->
+<p>最後に、<strong>Particles/trigger</strong> フィールドは、条件が満たされるたびにいくつのパーティクルが生成されるかを指定します。</p>
+<!--
+Finally, the **Particles/trigger** determines how many particles are spawned each time the condition is met.
+-->
+<p>子エミッターの場合、エミッターが放てるパーティクルの最大数をコントロールするのは良い方法です。特に、コリジョンヒットなどの非決定論的なケースで有効です。</p>
+<!--
+For child emitters, it's good practice to control the maximum number of particles the emitter can have, especially for non-deterministic cases, such as the collision hit.
+-->
+<h3 id="決定論determinism">決定論（Determinism）</h3>
+<p>イニシャライザーでは、スポナーのコントロールグループに対応する <strong>Spawn Control Group</strong> 値を選択します。これにより、イニシャライザーはトリガーによって生成されたパーティクルのみを強制的に動作させ、その他のパーティクルはスキップさせることができます（複数のスポナーが割り当てられている場合）。</p>
+<!--
+On the initializers, choose a **Spawn Control Group** corresponding to the spawner's control group. This forces the initializers to only work for particles spawned with the triggering condition, skipping the rest (if more than one spawner is assigned).
+-->
+<h2 id="リボンと軌跡">リボンと軌跡</h2>
+<!--
+## Ribbons and trails
+-->
+<p><a href="../ribbons-and-trails.html">リボンと軌跡</a>の描画は、パーティクルの生成順序に依存しているため、最初のうちは設定が少し難しいです。親パーティクルの場合は、親パーティクルの生成順序にも依存するようになります。</p>
+<ol>
+<li><p>親パーティクルに <strong>Spawn Order</strong> タイプのイニシャライザーを追加します。これは、子パーティクルで使用されます。</p>
+</li>
+<li><p>子エミッターでは、すべてのスポナーを削除し、[<strong>From parent</strong>] タイプのスポナーを 1 つだけ追加します。子パーティクルの生成をコントロールして、すべての子パーティクルが親パーティクルの後ろのリボンに適切にグループ化されるようにします。システムにランダムな動作を追加する別のスポナーを追加すると、リボンが間違った方法で接続されてしまいます。トリガー条件は <strong>Lifetime</strong> に設定します。</p>
+</li>
+<li><p>再び<strong>子エミッター</strong>側に戻り、<strong>Order from parent</strong> タイプのイニシャライザーを追加します。これは、パーティクルに生成順序を割り当てるだけでなく、親によって子をグループ化します。この順序を使用するように <strong>Sort</strong> を設定し、リボンのシェイプビルダーを割り当てると、各軌跡がそれを生成した親パーティクルの後ろに適切にグループ化されているのがわかるでしょう。</p>
+</li>
+</ol>
+<!--
+1. Add a **Spawn Order** initializer to the parent. It will be used in the children particles.
+
+2. On the child emitter, remove all spawners and add only one, **From parent**. You want to control the spawning of the children particles so all particles can be properly grouped in a ribbon behind the parent particle. If you add another spawner that adds random behavior to the system, the ribbons will connect in the wrong way. Set the triggering condition to **Lifetime**.
+
+3. On the **child emitter** side again, add an **Order from parent** initializer. This assigns a spawning order to the particles, but also groups them by parent. If you set the **Sort** to use this order and assign a ribbon shape builder, you'll see how each trail is properly grouped behind the parent particle that spawned it.
+-->
+<h2 id="円運動circular-behavior">円運動（Circular behavior）</h2>
+<!--
+## Circular behavior
+-->
+<p>パーティクルのエミッターは、互いに輪状に属性を継承したり、同じエミッターのパーティクルから属性を継承したりすることがあります。これにより、ランダムな効果や「揺れ」のある効果が現れ、興味深いものとなります。</p>
+<!--
+Particle emitters can inherit attributes circularly from each other, or even inherit attributes from particles in the same emitter. This can produce random or "swingy" effects, but can be interesting.
+-->
+<p><strong>Colliding Particles</strong> パーティクル エンティティ（<strong>Sample: Particles</strong> プロジェクトの <strong>MainScene</strong> 内にあります）では、パーティクルは衝突時に生成されますが、親エミッターは同じです。つまり、パーティクルがサーフェスに衝突するたびに、同じ種類のパーティクルが増えるということです。これを実現するには、2 つの重要な要素があります。</p>
+<!--
+In the **Colliding Particles** particle entity (in the **MainScene** of the **Sample: Particles** project), you can see that particles are spawned on hit, but the parent emitter is the same. This means that each time a particle hits the surface, it produces more of the same kind. There are two important elements which allow this to happen. 
+-->
+<p>まず、2 つのスパナーを使います。1 つは 1 秒間に数個のパーティクルを生成し、これがシステムを構成する初期要素となります。もう 1 つのスポナーでは、衝突時により多くのパーティクルを生成し、コントロールグループを使用します。</p>
+<!--
+First, we have two spawners. One spawns a small number of particles per second, which give us the initial elements to populate the system. The other spawner spawns more particles on hit and uses a control group.
+-->
+<p>次に、2 つの <strong>Position</strong> タイプのイニシャライザーを使います。最初のものは、パーティクルを出現させたい位置を割り当てます。これはすべてのパーティクル（親から生成されたものも含む）に適用されるので、このままにしておくと、パーティクルがサーフェスに衝突するたびに、初期位置からさらなるパーティクルが発射されます。</p>
+<!--
+Second, we have two **Position** initializers. The first assigns a position where we want the particles to appear. It works over all particles (even those spawned from parents), so if you leave it like this, it will fire more particles from the initial position every time they hit the surface. 
+-->
+<p>2 つ目のイニシャライザーは <strong>Position from parent</strong> タイプで、パーティクルの位置を <strong>On hit</strong> スポナーと同じコントロールグループを使って初期化します。<strong>Position from parent</strong> はパーティクルの位置をコントロールグループにより上書きし、<strong>Per second</strong> タイプのスポナーから生成されたパーティクルはそのままにしておきます。これにより、1 つの射出点から常に少数のパーティクルが発生し、サーフェスに当たるたびに雪崩のように増殖していきます。</p>
+<!--
+The second initializer is **Position from parent** and initializes the particle positions using the same control group as the **On hit** spawner. The **Position from parent** overwrites the positions for the particles with control group, leaving the particles spawned from the **Per second** spawner untouched. This creates a small number of particles constantly coming from a single entry point and multiplying like an avalanche every time they hit the surface.
+-->
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="create-a-trail.html">チュートリアル: 軌跡の作詞</a></li>
+<li><a href="custom-particles.html">チュートリアル: カスタムパーティクル</a></li>
+<li><a href="lasers-and-lightning.html">チュートリアル: レーザーと稲光</a></li>
+<li><a href="../index.html">パーティクル</a></li>
+<li><a href="../create-particles.html">パーティクルの作成</a></li>
+</ul>
+<!--
+* [Tutorial: Create a trail](create-a-trail.md)
+* [Tutorial: Custom particles](custom-particles.md)
+* [Tutorial: Lasers and lightning](lasers-and-lightning.md)
+* [Particles](../index.md)
+* [Create particles](../create-particles.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/tutorials/inheritance.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Stride のインストール | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Stride のインストール | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/get-started/install-stride.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="stride-のインストール">Stride のインストール</h1>
+
+<p><span class="badge text-bg-primary">初級</span></p>
+<ol>
+<li><p>Stride インストーラー (<strong>StrideSetup.exe</strong>) を <a href="http://stride3d.net/download/">Stride の Web サイト</a>からダウンロードします。</p>
+</li>
+<li><p><strong>StrideSetup.exe</strong> ファイルをダブルクリックします。</p>
+<p><strong>Stride セットアップ ウィザード</strong>が開きます。</p>
+</li>
+<li><p>Stride には .NET Framework 4.7.2 が必要です。ない場合は、インストールを求めるメッセージが表示されます。</p>
+<p><img src="media/prerequisites-installer.png" alt="Prerequisites installer"></p>
+<p>［Next］をクリックしてプロンプトに従います。</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>または、<a href="https://www.microsoft.com/ja-jp/download/details.aspx?id=53345">.NET Framework を Microsoft ダウンロード センターからダウンロード</a>して、Stride インストーラーを再実行してもかまいません。</p>
+</div>
+</li>
+<li><p><strong>Stride セットアップ ウィザード</strong>が開きます。</p>
+<p><img src="media/install-stride-setup-wizard.png" alt="Stride Setup Wizard"></p>
+<p>［Next］をクリックします。</p>
+<p>［Stride License Agreement］ウィンドウが開きます。</p>
+<p><img src="media/install-stride-license-agreement.png" alt="Stride license agreement window"></p>
+<p>［Accept］をクリックします。</p>
+</li>
+<li><p>［Stride installation type］ウィンドウが開きます。</p>
+<p><img src="media/install-stride-installation-type.png" alt="Stride installation type window"></p>
+<p>インストールの種類を選択し、［Next］をクリックします。</p>
+</li>
+<li><p>［Select installation folder］ウィンドウが開きます。</p>
+<p><img src="media/install-stride-select-installation-folder.png" alt="Select installation folder window"></p>
+<p>Stride をインストールするフォルダーを選択し、［Next］をクリックします。</p>
+</li>
+<li><p>［Create application shortcuts］ウィンドウが開きます。</p>
+<p><img src="media/install-stride-create-application-shortcuts.png" alt="Create application shortcuts window"></p>
+<p>作成するショートカットを選択し、［Next］をクリックします。</p>
+</li>
+<li><p>［Ready to Install］ウィンドウが開きます。</p>
+<p><img src="media/install-stride-ready-to-install.png" alt="Ready to install window"></p>
+<p>［Install］をクリックします。</p>
+</li>
+<li><p>インストールが開始します。</p>
+<p><img src="media/install-stride-installation-status.png" alt="Installation status"></p>
+<p>インストーラーが閉じた後、選択した場所にショートカットが作成されて、<strong>Stride Launcher</strong> が開きます。</p>
+<p><img src="media/stride-launcher.png" alt="Stride Launcher"></p>
+<p>最新バージョンの Stride のインストールを求めるメッセージが表示されます。</p>
+<p><img src="media/stride-launcher-install-last-version.png" alt="No version installed"></p>
+<p>［Yes］をクリックします。</p>
+</li>
+<li><p>Visual Studio 統合をインストールするかどうかの確認を求めるメッセージが表示されます。Visual Studio 統合機能を使用すると、Visual Studio から直接シェーダーを編集でき、構文の強調表示、検証でのライブ コード分析、エラー チェック、ナビゲーションなどが提供されます。統合機能のインストールは必須ではありませんが、インストールすることをお勧めします。</p>
+<p><img src="media/install-VS-plug-in-prompt.png" alt="Install Visual Studio integration"></p>
+</li>
+<li><p>Stride によるコンピューターの変更の許可を求めるメッセージが表示されます。</p>
+<p><img src="media/prerequsites-installer2.png" alt="Prerequisites installer"></p>
+</li>
+</ol>
+<p>［Yes］をクリックします。</p>
+<ol start="12">
+<li><p>前提条件である <strong>Visual C++ 再頒布可能パッケージ</strong>がインストールされているかどうかがチェックされます。インストールされていない場合は、メッセージに従ってインストールします。</p>
+</li>
+<li><p>前提条件である <strong>Visual Studio Build Tools</strong> がインストールされているかどうかがチェックされます。Visual Studio がある場合は、既にインストールされています。インストールされていない場合は、メッセージに従ってインストールします。</p>
+<p><img src="media/installing-vs-build-tools.png" alt="Installing VS build tools"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Windows は Visual Studio インストーラーを使用して <strong>Visual Studio Build Tools</strong> をインストールしますが、Visual Studio はインストールしません。</p>
+</div>
+</li>
+</ol>
+<p>Stride がインストールされて使用できる状態になります。</p>
+<div class="NOTE">
+<h5>Note</h5>
+</div>
+<blockquote>
+<p>前提条件をインストールしないと、Stride は動きません。その場合は、前提条件を個別にダウンロードしてインストールできます。方法については、「<a href="../troubleshooting/stride-doesnt-run.html">トラブルシューティング — Stride が実行しない</a>」を参照してください。</p>
+</blockquote>
+<blockquote>
+<p>または、Stride をアンインストールし、Stride インストーラーを再実行して、メッセージが表示されたら前提条件をインストールします。</p>
+</blockquote>
+<h2 id="次に学習すること">次に学習すること</h2>
+<ul>
+<li><a href="launch-stride.html">Stride を起動する</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/get-started/install-stride.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

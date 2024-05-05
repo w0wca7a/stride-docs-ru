@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>アセット マネージャー | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="アセット マネージャー | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/engine/assets/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="アセット-マネージャー">アセット マネージャー</h1>
+
+<!--
+# Asset manager
+-->
+<div class="WARNING">
+<h5>Warning</h5>
+<p>このセクションの内容はもう古いので、参考程度に使ってください。</p>
+</div>
+<!--
+>[!Warning]
+>This section is out of date. For now, you should only use it for reference.
+-->
+<h1 id="アセット">アセット</h1>
+<!--
+# Assets
+-->
+<p>Game Studio でアセットを作成する場合、@'Stride.Core.Serialization.Assets.AssetManager' がアセットのロード、アンロード、保存を担当するクラスになります。</p>
+<!--
+After creating your assets in Game Studio, @'Stride.Core.Serialization.Assets.AssetManager' is the class responsible for loading, unloading and saving assets.
+-->
+<h2 id="作成">作成</h2>
+<!--
+## Creating
+-->
+<p>通常は、Game Studio で直接アセットを作成します。</p>
+<!--
+You usually create assets directly in Game Studio.
+-->
+<p>その URL は、Game Studio における名前（フォルダを含む）と一致します。</p>
+<!--
+Their URL will match the name (including folder) in Game Studio.
+-->
+<p>URL の例：</p>
+<ul>
+<li>knight （メインアセットフォルダーに knight.fbx を直接インポートした場合）</li>
+<li>level1/room1 （level1 を作成し、その中に room1.fbx をインポートした場合）</li>
+</ul>
+<p>詳細については、<a href="../../game-studio/assets.html">アセット</a>を参照してください。</p>
+<!--
+Examples of URLs:
+
+- knight (user imports knight.fbx directly in main asset folder)
+- level1/room1 (user creates level1 and import room1.fbx inside)
+
+For more information, see [Assets](../../game-studio/assets.md) for more details.
+-->
+<h2 id="ロード">ロード</h2>
+<!--
+## Loading
+-->
+<p>アセットのロードは、@'Stride.Core.Serialization.Assets.AssetManager' クラスを使って行います。</p>
+<!--
+Loading an asset should be done with the help of @'Stride.Core.Serialization.Assets.AssetManager' class:
+-->
+<pre><code class="lang-cs">// ファイルからアセットを直接ロード
+var texture = Content.Load&lt;Texture&gt;(&quot;texture1&quot;);
+
+// シーンアセットをロード
+var scene = Content.Load&lt;Scene&gt;(&quot;scenes/scene1&quot;);
+ 
+// エンティティアセットをロード
+var entity = Content.Load&lt;Entity&gt;(&quot;entity1&quot;);
+</code></pre>
+<!--
+```cs
+// Load an asset directly from a file:
+var texture = Content.Load<Texture>("texture1");
+
+// Load a Scene asset
+var scene = Content.Load<Scene>("scenes/scene1");
+ 
+// Load an Entity asset
+var entity = Content.Load<Entity>("entity1");
+```
+-->
+<p>すでにロードされているアセットを再びロードすると、アセットの参照カウンターがインクリメントされるだけで、アセットの再ロード自体は行われないことに注意してください。</p>
+<!--
+Note that loading an asset that has already been loaded only increment the reference counter and do not reload the asset.
+-->
+<h2 id="アンロード">アンロード</h2>
+<!--
+## Unloading
+-->
+<p>アセットのアンロードも @'Stride.Core.Serialization.Assets.AssetManager' クラスを使って行います。</p>
+<!--
+Unloading is also done using the AssetManager class:
+-->
+<pre><code class="lang-cs"> Asset.Unload(asset);
+</code></pre>
+<h2 id="アセットの生存期間">アセットの生存期間</h2>
+<!--
+## Asset life time
+-->
+<p>アセットのロードとアンロードはペアで使用します。それぞれの 'load' 呼び出しに対して、対応する 'unload' の呼び出しが必要です。</p>
+<!--
+Asset load and unload are working in pairs. For each call to 'load', a corresponding call to 'unload' is expected. 
+-->
+<p>アセットが実際にロードされるのは、最初の 'load' 呼び出しが行われたときだけです。それ以降のすべての呼び出しでは、アセットの参照カウンターのインクリメントしか行われません。</p>
+<!--
+An asset is actually loaded only during the first call to 'load'. All subsequent calls only result to an asset reference increment.
+-->
+<p>アセットが実際にアンロードされるのは、unload の呼び出し回数と load の呼び出し回数が一致したときだけです。</p>
+<!--
+An asset is actually unload only when the number of call to unload match the number of call the load.
+-->
+<p>@'Stride.Core.Serialization.Assets.AssetManager.Get' メソッドはロードされたアセットへの参照を返しますが、アセットの参照カウンターはインクリメントされません。</p>
+<!--
+The @'Stride.Core.Serialization.Assets.AssetManager.Get' method returns the reference to a loaded asset but does not increment the asset reference counter.
+-->
+<pre><code class="lang-cs"> var firstReference = Content.Load&lt;Texture&gt;(&quot;MyTexture&quot;); // アセットをロードし、参照カウンターを増やす（参照カウント = 1）
+ 
+// ここでテクスチャを使用できます
+ 
+var secondReference = Content.Load&lt;Texture&gt;(&quot;MyTexture&quot;); // 参照カウンターの増加のみ行われます（参照カウント = 2）
+ 
+// まだここでテクスチャを使用できます
+ 
+Asset.Unload(firstReference); // 参照カウンターを減少します（参照カウント = 1）
+ 
+// まだここでテクスチャを使用できます
+ 
+Asset.Get&lt;Texture&gt;(&quot;MyTexture&quot;); // ロード済みのアセットを取得しても、参照カウンターは増加しません（参照カウント = 1）
+ 
+// まだここでテクスチャを使用できます
+
+Asset.Unload(secondReference); // 参照カウンターを減少し、アセットをアンロードします（参照カウント = 0）
+
+// テクスチャがアンロードされたため、これ以上使用することはできません
+</code></pre>
+<!--
+```cs
+ var firstReference = Content.Load<Texture>("MyTexture"); // load the asset and increase the reference counter (ref count = 1)
+ 
+// the texture can be used here
+ 
+var secondReference = Content.Load<Texture>("MyTexture"); // only increase the reference counter (ref count = 2)
+ 
+// the texture can still be used here
+ 
+Asset.Unload(firstReference); // decrease the reference counter (ref count = 1)
+ 
+// the texture can still be used here
+ 
+Asset.Get<Texture>("MyTexture"); // return the loaded asset without increasing the reference counter (ref count = 1)
+ 
+// the texture can still be used here
+Asset.Unload(secondReference); // decrease the reference counter and unload the asset (ref count = 0)
+ 
+// The texture has been unloaded, it cannot be used here any more.
+```
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/engine/assets/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>プレハブ | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="プレハブ | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/prefabs/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="プレハブ">プレハブ</h1>
+
+<p><span class="badge text-bg-primary">初級</span>
+<span class="badge text-bg-success">プログラマー</span>
+<span class="badge text-bg-success">デザイナー</span></p>
+<p><strong>プレハブ</strong>とはオブジェクトの「マスター」バージョンであり、必要な場所で再利用できます。プレハブを変更すると、そのプレハブのすべてのインスタンスも変わります。</p>
+<p>たとえば、いくつかのエンティティを組み合わせることによって、簡単な木のオブジェクトを作成しているものとします。エンティティには、モデル、マテリアル、物理コライダーなどのコンポーネントが含まれ、それらはアセットを参照しています。</p>
+<p>シーンに木を何本か配置します。木を単に複製するのでもかまいませんが、後で変更したい場合は、個々の木を個別に編集する必要があります。これでは時間がかかり、間違うおそれもあります。</p>
+<p>より適切な方法は、木をプレハブにすることです。そうすれば、どれだけ多くの木を配置しても、プレハブを変更することで、それに合わせてすべての木がすぐに更新されます。多くの時間を節約できます。</p>
+<p><img src="media/create-prefab-trees.gif" alt="Creating trees with prefabs"></p>
+<p>プレハブの最も一般的な使用方法は、小さいシーンの断片を作成し (自動車、NPC、家具など)、それを必要な数だけ複製するというものです。それを変更する必要があるときは (たとえば、モデルを変更する必要がある場合)、1 箇所で変更を行い、すべての場所に一度に変更を適用できます。</p>
+<p>プレハブのどのようなエンティティまたはエンティティの組み合わせでも作成できます。必要に応じて、いくらでも簡単に、または複雑にできます。プレハブに他のプレハブを含めることもできます (<a href="nested-prefabs.html">入れ子になったプレハブ</a>といいます)。</p>
+<p>プレハブの各インスタンスで、<a href="override-prefab-properties.html">特定のプロパティをオーバーライドする</a>ことができます。</p>
+<h2 id="関連項目">関連項目</h2>
+<ul>
+<li><a href="create-a-prefab.html">プレハブを作成する</a></li>
+<li><a href="use-prefabs.html">プレハブを使用する</a></li>
+<li><a href="edit-prefabs.html">プレハブを編集する</a></li>
+<li><a href="nested-prefabs.html">入れ子になったプレハブ</a></li>
+<li><a href="override-prefab-properties.html">プレハブのプロパティをオーバーライドする</a></li>
+<li><a href="prefab-models.html">プレハブ モデル</a></li>
+<li><a href="../archetypes.html">アーキタイプ</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/game-studio/prefabs/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

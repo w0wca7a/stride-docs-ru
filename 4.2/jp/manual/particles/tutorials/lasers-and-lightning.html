@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>チュートリアル: レーザーと稲光 | Stride Manual </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="チュートリアル: レーザーと稲光 | Stride Manual ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/tutorials/lasers-and-lightning.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://www.stride3d.net/">
+            <img id="logo" class="svg" src="../../../media/stride-logo-red.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="チュートリアル-レーザーと稲光">チュートリアル: レーザーと稲光</h1>
+
+<!--
+# Tutorial: Lasers and lightning
+-->
+<p><span class="badge text-bg-primary">中級</span>
+<span class="badge text-bg-success">アーティスト</span>
+<span class="badge text-bg-success">プログラマー</span></p>
+<!--
+<span class="badge text-bg-primary">Intermediate</span>
+<span class="badge text-bg-success">Artist</span>
+<span class="badge text-bg-success">Programmer</span>
+-->
+<p>このチュートリアルでは、パーティクルやカスタムマテリアルを使ってレーザーや稲光を生成する方法を説明します。</p>
+<!--
+This tutorial explains how to create lasers and lightnings using particles and custom materials.
+-->
+<p>このような稲光のアーチを作ることを想像してみてください。</p>
+<!--
+Imagine we want to create a lightning arc like this one:
+-->
+<p><img src="media/particles-tutorials-lasers-1.gif" alt="media/particles-tutorials-lasers-1.gif"></p>
+<p>このエフェクトは、次のような特性を持った 1 本のひもです。</p>
+<!--
+This effect is a strip which:
+-->
+<ul>
+<li><p>固定された 2 点間を結ぶ</p>
+</li>
+<li><p>素早く位置が変わる</p>
+</li>
+<li><p>1 本のひもとして描画できる</p>
+</li>
+</ul>
+<!--
+* connects two fixed points
+
+* changes positions very quickly
+
+* can be rendered as a single strip
+--> 
+<p>稲光は一本の線状の帯なので、リボン シェイプビルダーを使ってレンダリングすることもできますが、いくつか大きな違いがあります。パーティクルです。</p>
+<!--
+Because the lightning is a single-line strip, we can render it using the ribbon shape builder, but with a few major differences. The particles:
+-->
+<ul>
+<li><p>パーティクルは、順番ではなく、同時に生成されます。</p>
+</li>
+<li><p>パーティクルは一本の線または円弧のうえに現れますが、若干ランダムな位置を持つことで、稲光のような視覚を与えます。</p>
+</li>
+<li><p>パーティクルは、とても迅速に再出現します。</p>
+</li>
+</ul>
+<!--
+* spawn at the same time, rather than in sequence
+
+* appear on a single line or arc, but with semi-randomized positions to give the illusion of lightning
+
+* should reappear very quickly
+-->
+<h2 id="同時生成simultaneous-spawning">同時生成（Simultaneous spawning）</h2>
+<!--
+## Simultaneous spawning
+-->
+<p>フレームごとにループするスポナーを作ります。このスポナーは、<strong>毎</strong>フレームごとに一定数（50 個とします）のパーティクルを産み出すものとします。</p>
+<!--
+We can create a looping Spawner by frame which spawns a certain number of particles (lets say 50) **every** frame.
+-->
+<p>一度に表示されるのは 1 つのセットだけなので、エミッターの最大パーティクル数を 50 に制限し、同じライフスパンを与えます（例えば、0.2 秒）。</p>
+<!--
+Because we only need one set visible at a time we limit the Maxmimum Particles on the emitter to 50 and give them the same lifespan (for example 0.2 seconds).
+-->
+<p>つまり、スポナーは毎フレーム 50 個のパーティクルを放出しようとしますが、パーティクルの数を制限しているため、最初のフレームでは 50 個のパーティクルが生成されます。</p>
+<!--
+This means the Spawner will try to emit 50 particles every frame, but because we have limited them it will only spawn 50 particles the first frame.
+-->
+<p>これらのパーティクルはすべて同じライフスパンを持っているので、50 個のパーティクルはすべて同時に消滅し、新たに 50 個のパーティクルが生成されることになります。</p>
+<!--
+They all have the same lifespan, so when they die at the same time a new batch of 50 particles will be spawned.
+-->
+<h4 id="2-点を結ぶ">2 点を結ぶ</h4>
+<!--
+#### Connect two points
+-->
+<p>ここでは、<strong>Position (Arc)</strong> タイプのイニシャライザーを使用します。このイニシャライザーは、他のエンティティ（ターゲットエンティティ）の位置を円弧のもう一方の端として選び、自身のエミッターとターゲットエンティティとの間に引かれた円弧の上にパーティクルが出現させます。</p>
+<!--
+We are going to use the **Position (Arc)** initializer. It picks a second point from another Entity and sets the particles' positions to lie on an arc between the Emitter and the target Entity.
+-->
+<p>Ordered チェックボックスをオンにすると、パーティクルをエミッターからターゲットエンティティに向かって等間隔で配置することができます。
+これは、リボン シェイプビルダーを使ってレンダリングするときには重要です。なぜなら、パーティクルが円弧に沿ってランダムな（順序付けされていない）位置に表示されると、描画の順番や前後関係が混乱してしまうからです。
+よって、Spawn Order タイプのイニシャライザーを追加して、パーティクルを順番に並べ替えなければなりません（これは稲光だけでなく、すべてのリボンに当てはまります）。</p>
+<!--
+By clicking the Ordered checkbox we can force the particles to be placed at equal distances starting from the emitter and moving towards the target Entity.
+This is important when we render them using a Ribbon shape builder because if they appear at random (unordered) positions along the arc it will be a mess. 
+We also have to add Spawn Order initializer and sort the particles by Order (this is true for all ribbons, not just lightning.)
+-->
+<p><strong>Position (Arc)</strong> イニシャライザーの初期設定ではランダムなオフセットを設定することも可能で、その際にはオフセットとしていくつかの小さな数値を設定します。</p>
+<!--
+The arc position initialzier also allows for a random offset which we set to some small number.
+-->
+<h4 id="素早く位置を変える">素早く位置を変える</h4>
+<!--
+#### Change positions fast
+-->
+<p>パーティクルのライフスパンを、小さな数値（例：0.2 秒）に設定します。Time scale パラメータを使うと、さらにパーティクルシステム全体の速度をコントロールすることができます。</p>
+<!--
+We can set the particles' lifespan to a small number (eg 0.2 seconds). With the Time scale parameter, we can additionally control the speed of the entire particle system.
+-->
+<p>ここでは、何が起こっているのかをより分かりやすくするために、リボンの代わりにビルボード シェイプビルダーを使って、同じエフェクトを 30 倍にスローダウンしてみます。</p>
+<!--
+To illustrate better what's going on here is the same effect with Billboard shape builder instead of Ribbon, and slowed down 30 times:
+-->
+<p><img src="media/particles-tutorials-lasers-2.gif" alt="media/particles-tutorials-lasers-2.gif"></p>
+<h4 id="稲光を移動する">稲光を移動する</h4>
+<!--
+#### Moving lightning
+-->
+<p>稲光のアーチを静止させるのではなく、ポイント A からポイント B へと移動させる方法があります。</p>
+<!--
+There is a way to make the lightning arc move from point A to point B instead of being static.
+-->
+<p><img src="media/particles-tutorials-lasers-3.gif" alt="media/particles-tutorials-lasers-3.gif"></p>
+<p>そのためには、いくつかの調整が必要です。</p>
+<!--
+There are a few adjustments we need to make:
+-->
+<ul>
+<li><p>生成レートを下げます。上の例では 600 / 秒として 0.1 の時間スケールで再生していますが、これは 1 フレームあたり約 1 個のパーティクルを生成することを意味しています。</p>
+</li>
+<li><p>アークポジショナーに、固定カウント（50）を設定します。フレームごとに生成されたパーティクルの総数に基づいて距離を補間するため、あまりに大量に連続してパーティクルを生成すると、すべてのパーティクルが円弧の始まりに留まってしまいます。そこで、カウントを 50 に設定することで、アークポジショナーにパーティクルの総数が 50 であることを通知することができます。</p>
+</li>
+<li><p>稲光が歳出減する前に古い稲光が完全に消えるように、スポナーに遅延（delay）を設定します。そうしないと、リボンは古いパーティクルと新しいパーティクルをどのように分割してよいかわからなくなり、誤って接続してしまいます。</p>
+</li>
+</ul>
+<!--
+* Change the spawn rate to a lower one. The example above uses 600/second and is played at 0.1 time scale, which means around 1 particle per frame.
+
+* Set a fixed count on the arc positioner (50). Because it interpolates the distances based on the number of particles spawned *each* frame, if we spawn them sequentially they'll all stay in the beginning of the arc. By setting the count to 50 we tell the arc positioner to expect 50 particles in total.
+
+* Set a delay to the spawner to allow the old arc to completely disappear before starting again. Otherwise the Ribbon will wrongly connect the old and the new particles, as it can't know how to split them.
+-->
+<h2 id="パーティクルを使ったレーザー">パーティクルを使ったレーザー</h2>
+<!--
+## Lasers using particles
+-->
+<p>パーティクルでレーザーを作ることは、稲光を作ることとよく似ています。レーザーはまっすぐかつ逸れることがないので、パーティクルの数は少なくて済みます。
+アークポジショナーの矢高（arc hight）を 0 にして、さらにランダムオフセットを (0, 0, 0) に設定することで、パーティクルを一直線に配置することができます。必要に応じてパーティクルの大きさを少しずつ変え、レーザービームが揺らいでいるように見せることもできます。</p>
+<!--
+Creating lasers with particles is very similar to making lightning. We actually need less particles, because the lasers are straight and do not deviate. 
+By setting the arc positioner's arc height to 0 and random offset to (0, 0, 0) we can spawn the particles in a straight line. If you want you can give them slightly different sizes to make the laser beam appear shimmering.
+-->
+<p>レーザーの注意点としては、通常は、ターゲットが動くとそれに合わせてレーザーも動くということです。アークポジショナーはアップデーターではなくイニシャライザーなので、すでに生成済みのパーティクルには影響を与えられず、後ろに残ってしまいます。これに対処するには 3 つの方法があります。</p>
+<!--
+One thing to be mindful about lasers is that usually when the target moves you want the laser to move with it. Because the arc positioner is an initializer and not an updater, it has no effect on particles already spawned, which and stay behind. There are three ways to counter this.
+-->
+<ul>
+<li><p>パーティクルを非常に高速に生成します。パーティクルのライフスパンが 1 〜 2 フレームであれば、レーザーの再出現が早すぎて、ユーザーが視覚的な違いに気づかなくなります。</p>
+</li>
+<li><p>ローカル空間にパーティクルを生成します。つまり、パーティクルはエミッターと一緒に動きます。ただし、エミッターを回転させたり、スケールしたりして、常にターゲットエンティティの方を向くようにしなければなりません。</p>
+</li>
+<li><p>カスタムアップデーターを作成します。アークポジショナーと似たような（あるいはもっと単純な）カスタムポストアップデーターを作成すれば、パーティクルの位置を毎フレーム更新させ、パーティクルが動いても 2 点間に正しく配置することができます。</p>
+</li>
+</ul>
+<!--
+* Spawn the particles very fast. If they only live for 1-2 frames the laser will be recreated too fast for the user to notice any visual differences.
+
+* Spawn particles in Local space. This means they will move together with the emitter, but then you will have to rotate and scale the emitter to always point to the target Entity.
+
+* Create a custom Updater. If you create a custom post-updater similar (or simpler) to the arc positioner you can force it to update the particle positions every frame, correctly placing them between the two points even if they move.
+-->
+<p>これらの選択肢は、作りたいゲームのタイプによって、それぞれメリットとデメリットがあります。毎フレームごとにパーティクルを生成する方法は最も簡単でシンプルな方法であり、ほとんどのニーズに応えることができます。</p>
+<!--
+Depending on the type of game you want to make each of these options can have benefits or drawbacks. Spawning the particles every frame is the easiest and simplest way to do it and will be sufficient for most needs.
+-->
+<h2 id="カスタムマテリアルを使ったレーザー">カスタムマテリアルを使ったレーザー</h2>
+<!--
+## Lasers using custom materials
+-->
+<p>カスタムマテリアルを使ってレーザーを作る方法は、ローカル空間でパーティクルを扱う方法と似ています。エミッターを手動で回転させたりスケールを変えたりして、常にターゲットエンティティと向かい合わせる必要があります。</p>
+<!--
+Creating lasers using custom materials is similar to using particles in Local space. We need to manually rotate the scale the emitter to always face a target entity.
+-->
+<p>ターゲットに向けた 1 つの軸を長さと呼び、残り 2 つの軸をレーザーの幅と呼ぶことにします。</p>
+<!--
+We can designate one axis which points towards the target to be our length, leaving the other two axes for width of the laser.
+-->
+<p>回転したエンティティの下に配置された高さ 1 の円柱をレンダリングし、その円柱が伸びてターゲットポイントに到達することになります。</p>
+<!--
+Rendering a cylinder with height of 1 which is placed under the rotated entity will cause it to stretch and reach the target point.
+-->
+<p>カスタムマテリアルは、スクロールするテクスチャーを円柱に貼り付けるために必要です。また、スクロールのない通常の発光マップを使用することもできます。その場合には、カスタムマテリアルは必要ありません。</p>
+<!--
+The custom material is required to place a scrolling texture on the cylinder. Or you can use a regular Emissive map with no scrolling in which case you won't need a custom material.
+-->
+<p>パーティクルサンプルには、この方法でレーザーを作成する例がすでにあります。LaserOrientationScript　では、ターゲットポイントに向かってエンティティを回転・スケーリングし、ComputeColorTextureScroll シェーダーではスクロールするテクスチャーをサンプリングしています。</p>
+<!--
+The particles sample already contains an example of how to create lasers this way. The LaserOrientationScript rotates and scales the entity towards a target point and the ComputeColorTextureScroll shader samples a scrolling texture.
+-->
+<h2 id="サンプルプロジェクト">サンプルプロジェクト</h2>
+<!--
+## Sample project
+-->
+<p>このページで紹介されているテクニックをプロジェクトに実装する場合は、新しい <strong>Sample: Particles</strong> プロジェクトを新規に作成して、<strong>Lasers</strong> シーンを開いてください。</p>
+<!--
+To see some of the techniques described on this page implemented in a project, create a new **Sample: Particles** project and open the **Lasers** scene.
+-->
+<p><img src="media/select-particles-sample-project.png" alt="Particles sample project"></p>
+<h2 id="関連項目">関連項目</h2>
+<!--
+## See also
+-->
+<ul>
+<li><a href="create-a-trail.html">チュートリアル: 軌跡の作成</a></li>
+<li><a href="custom-particles.html">チュートリアル: カスタム パーティクル</a></li>
+<li><a href="inheritance.html">チュートリアル: 継承</a></li>
+<li><a href="../index.html">パーティクル</a></li>
+<li><a href="../create-particles.html">パーティクルの作成</a></li>
+</ul>
+<!--
+* [Tutorial: Create a trail](create-a-trail.md)
+* [Tutorial: Custom particles](custom-particles.md)
+* [Tutorial: Inheritance](inheritance.md)
+* [Particles](../index.md)
+* [Create particles](../create-particles.md)
+-->
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/stride3d/stride-docs/blob/master/jp/manual/particles/tutorials/lasers-and-lightning.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
