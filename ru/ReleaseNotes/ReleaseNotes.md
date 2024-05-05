@@ -3,7 +3,7 @@
 20 Ноября 2023
 
 Участники Stride рады объявить о выпуске Stride 4.2, который теперь полностью совместим с .NET 8 и использует последние улучшения C# 12. Этот выпуск значительно улучшает производительность, стабильность и удобство для разработчиков.
-Огромное спасибо open-source сообществу Stride за ваш самоотверженный вклад. В этом выпуске было внесено X вкладов от более чем Y замечательных участников, каждый из которых сыграл решающую роль в воплощении Stride 4.2 в реальность.
+Огромное спасибо open-source сообществу Stride за ваш самоотверженный вклад. В этот выпуск было внесено X вкладов от более чем Y замечательных участников, каждый из которых сыграл решающую роль в воплощении Stride 4.2 в реальность.
 
 ## Что нового в Stride 4.2
 Stride 4.2 включает в себя многочисленные усовершенствования и улучшения.
@@ -36,23 +36,23 @@ Stride 4.2 включает в себя многочисленные усове�
 ## Детальнее об изменениях
 
 * Исправлено исключение, вызванное URL-адресом политики конфиденциальности в Crash Reporter от @MeharDT в https://github.com/stride3d/stride/pull/1878
-* документация: add acastrodev as a contributor for code by @allcontributors in https://github.com/stride3d/stride/pull/1886
-* документация: add SVNMLR as a contributor for design by @allcontributors in https://github.com/stride3d/stride/pull/1887
-* документация: add JeromyWalsh as a contributor for code by @allcontributors in https://github.com/stride3d/stride/pull/1888
-* документация: add parhamgholami as a contributor for design by @allcontributors in https://github.com/stride3d/stride/pull/1889
-* Исправлены отсутствующие форматы текстур OpenGLES. от @Basewq in https://github.com/stride3d/stride/pull/1898
-* field typo by @IXLLEGACYIXL in https://github.com/stride3d/stride/pull/1900
-* [Editor] Improve Cameracontrol in Editor by @SVNMLR in https://github.com/stride3d/stride/pull/1879
-* [XML Comment] Minor updates on EFlags in CollisionFilterGroups.cs by @VaclavElias in https://github.com/stride3d/stride/pull/1910
-* Fixes the issue where projects were disappearing from the launcher by @acastrodev in https://github.com/stride3d/stride/pull/1880
-* Fix typo in translations generation by @Ethereal77 in https://github.com/stride3d/stride/pull/1916
+* документация: @allcontributors добавил acastrodev как участника в коде в https://github.com/stride3d/stride/pull/1886
+* документация: @allcontributors добавил SVNMLR как участника в дизайне в https://github.com/stride3d/stride/pull/1887
+* документация: @allcontributors добавил JeromyWalsh как участника в коде в https://github.com/stride3d/stride/pull/1888
+* документация: @allcontributors добавил parhamgholami как участника в дизайне в https://github.com/stride3d/stride/pull/1889
+* Исправлены отсутствующие форматы текстур OpenGLES. от @Basewq в https://github.com/stride3d/stride/pull/1898
+* опечатка в поле @IXLLEGACYIXL в https://github.com/stride3d/stride/pull/1900
+* [Editor] Улучшение Cameracontrol в Editor от @SVNMLR в https://github.com/stride3d/stride/pull/1879
+* [XML Comment] Небольшие обновления по EFlags в CollisionFilterGroups.cs от @VaclavElias в https://github.com/stride3d/stride/pull/1910
+* Устраняет проблему, из-за которой проекты исчезали из лаунчера от @acastrodev в https://github.com/stride3d/stride/pull/1880
+* Исправить опечатку при генерации переводов @Ethereal77 в https://github.com/stride3d/stride/pull/1916
 * Handle importing meshes with duplicate material names by @adrsch in https://github.com/stride3d/stride/pull/1920
 * [Native] - Implement some existing C++ methods in C# by @Jklawreszuk in https://github.com/stride3d/stride/pull/1896
 * [Launcher] Prevent launcher automatically closing when offline by @Eideren in https://github.com/stride3d/stride/pull/1912
 * Small refactoring changes in Stride.GameStudio by @Jklawreszuk in https://github.com/stride3d/stride/pull/1741
 * Remove MSBuild.Extras from project by @Jklawreszuk in https://github.com/stride3d/stride/pull/1895
 * [Editor] Allow drag and drop of EntityComponent by @Eideren in https://github.com/stride3d/stride/pull/1921
-* Add editor settings for the camera speed increase/decrease hotkeys by @adrsch in https://github.com/stride3d/stride/pull/1927
+* Добавлена настройки горячих клавиш редактора для увеличения/уменьшения скорости камеры от @adrsch в https://github.com/stride3d/stride/pull/1927
 * docs: add adrsch as a contributor for code by @allcontributors in https://github.com/stride3d/stride/pull/1930
 * Let the user set the default Bullet gravity vector in PhysicsSettings by @adrsch in https://github.com/stride3d/stride/pull/1928
 * Migrate Irony.GrammarExplorer to net 6.0 by @Jklawreszuk in https://github.com/stride3d/stride/pull/1932
@@ -107,15 +107,15 @@ Stride 4.2 включает в себя многочисленные усове�
 * @MaximilianEmel made their first contribution in https://github.com/stride3d/stride/pull/1956
 * @ch3mbot made their first contribution in https://github.com/stride3d/stride/pull/1769
 
-## Stride 4.2 Feature Overview
+## Обзор функций Stride 4.2
 
-### F# and Visual Basic Integration
+### Интеграция с F# и Visual Basic
 
-A pivotal PR has enabled **F#** and **Visual Basic** support for game development in Stride. This feature is currently limited to a code-only approach. Detailed insights and tutorials will be provided in upcoming blog posts.
+Важнейший PR позволил включить поддержку **F#** и **Visual Basic** для разработки игр в Stride. Эта функция в настоящее время ограничена подходом, использующим только код. Подробные сведения и учебные пособия будут представлены в следующих публикациях в блоге.
 
-We will use the [Stride Community Toolkit [WIP]](https://stride3d.github.io/stride-community-toolkit/), with further details to be covered in a separate post.
+Мы будем использовать [Инструментарий сообщества Stride [WIP]](https://stride3d.github.io/stride-community-toolkit/), подробности которого будут описаны в отдельном посте.
 
-Below is a simple example of rendering a capsule using F#:
+Ниже приведен простой пример рендеринга капсулы с использованием F#:
 
 ```fsharp
 open Stride.CommunityToolkit.Engine;
@@ -139,9 +139,9 @@ let main argv =
     0
 ```
 
-![Example basic 3d scene with a capsule](media/ReleaseNotes-4.2/stride-game-engine-example01-basic-3d-scene.webp)
+![Пример базовой 3D-сцены с капсулой](media/ReleaseNotes-4.2/stride-game-engine-example01-basic-3d-scene.webp)
 
-The equivalent Visual Basic example:
+Аналогичный пример на Visual Basic:
 
 ```vb
 Imports Stride.CommunityToolkit.Engine
@@ -168,10 +168,10 @@ End Module
 
 ```
 
-These examples showcase how F# and Visual Basic can be utilized in Stride. The Stride Community Toolkit provides a set of helpers and extensions designed to enhance your experience with the Stride Game Engine.
+Эти примеры демонстрируют, как F# и Visual Basic можно использовать в Stride. Инструментарий сообщества Stride предоставляет набор помощников и расширений, предназначенных для улучшения вашего опыта работы с игровым движком Stride.
 
-## Fixes
-Although there have been [many fixes](**https://github.com/stride3d/stride/pulls?page=2&q=is%3Apr+merged%3A%3E2023-10-10**), we like to point out some of them out
+## Исправления
+Хотя было [много исправлений](**https://github.com/stride3d/stride/pulls?page=2&q=is%3Apr+merged%3A%3E2023-10-10**), мы хотели бы отметить некоторые из них
 - [Runtime rasterized fonts are broken #1750](https://github.com/stride3d/stride/issues/1750)
 - [Game Studio doesnt reload sub projects after changes #1703](https://github.com/stride3d/stride/issues/1703)
 - [Changing the comparison project related and not UPath related #1704](https://github.com/stride3d/stride/pull/1704)
@@ -179,7 +179,7 @@ Although there have been [many fixes](**https://github.com/stride3d/stride/pulls
 - [C# Beginner Tutorial Build Errors #1652](https://github.com/stride3d/stride/issues/1652)
 - [Can not create "C# Beginner" project #1650](https://github.com/stride3d/stride/issues/1650)
 
-## Also good to know
+## Также полезно знать
 Although not directly tied to Release 4.2, we have made some other big changes. For instance to our website and documentation. We also had another community meeting to address all those new members.
 - [Website and documentation revamped and build process updated](https://www.stride3d.net/blog/announcing-website-update/)
 - [Contributor section moved to docs](https://doc.stride3d.net/latest/en/contributors/index.html)
