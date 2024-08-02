@@ -118,6 +118,8 @@ items:
             href: engine/entity-component-system/usage.md
           - name: Manage entities
             href: engine/entity-component-system/managing-entities.md
+          - name: Flexible processing
+            href: engine/entity-component-system/flexible-processing.md
       - name: File system
         href: engine/file-system.md
       - name: Build pipeline
@@ -496,6 +498,8 @@ items:
         href: scripts/preprocessor-variables.md
       - name: Create a model from code
         href: scripts/create-a-model-from-code.md
+      - name: Create Gizmos for you components
+        href: scripts/gizmos.md
 
   - name: Sprites
     href: sprites/index.md
