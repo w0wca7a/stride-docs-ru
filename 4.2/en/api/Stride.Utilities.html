@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/new/master/apiSpec/new?filename=Stride_Utilities.md&amp;value=---%0Auid%3A%20Stride.Utilities%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/examples/Stride.Utilities-remarks.md/#L2">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -120,7 +120,32 @@ Class Utilities  <a class="header-action link-secondary" title="View source" hre
 
 
 
+  <h2 id="Stride_Utilities_examples">Examples</h2>
+  
+<pre><code class="lang-csharp">// This example demonstrates how to add C# code snippets to API documentation from external files, though it's unrelated to the subject matter.
 
+var trigger = Entity.Get&lt;PhysicsComponent&gt;();
+
+foreach (var collision in trigger.Collisions)
+{
+    //do something with the collision
+}
+</code></pre>
+
+
+  <h2 id="Stride_Utilities_remarks">Remarks</h2>
+  <div class="markdown level0 remarks">
+<p>This remark serves as a demonstration of how to use overwrite files in API documentation. Overwrite files allow us to add a remarks section to the API docs seamlessly.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This text is an example of how to incorporate notes within the documentation. Notes are useful for providing additional information about the subject. You can also use ticks ` for code snippets.</p>
+</div>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>This text is an example of how to incorporate caution notes within the documentation to highlight important information or warnings.</p>
+</div>
+<p style="color:green">Html support is also available in the remarks section.</p>
+</div>
 
 
   <h2 class="section" id="methods">Methods
@@ -406,7 +431,7 @@ It replaces all the forbidden characters by the provided replacement character.<
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

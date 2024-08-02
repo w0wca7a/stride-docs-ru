@@ -10620,6 +10620,86 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.IComponent-2.IProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.IComponent-2.IProcessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.IComponent-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.IComponent-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.IDrawProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.IDrawProcessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.IMarkedComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.IMarkedComponent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.IProcessorBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.IProcessorBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.IUpdateProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.IUpdateProcessor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.ProcessorManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.ProcessorManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.FlexibleProcessing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.FlexibleProcessing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Stride.Engine.Game.yml",
       "output": {
         ".html": {
@@ -10634,6 +10714,46 @@
       "output": {
         ".html": {
           "relative_path": "api/Stride.Engine.GameSystem.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.Gizmos.GizmoComponentAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.Gizmos.GizmoComponentAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.Gizmos.IEntityGizmo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.Gizmos.IEntityGizmo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.Gizmos.IGizmo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.Gizmos.IGizmo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.Gizmos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.Gizmos.html"
         }
       },
       "version": ""
@@ -10954,6 +11074,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Stride.Engine.Network.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Engine.OpaqueComponentId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Engine.OpaqueComponentId.html"
         }
       },
       "version": ""
@@ -20514,16 +20644,6 @@
       "output": {
         ".html": {
           "relative_path": "api/Stride.Rendering.Lights.ColorLightBase.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Stride.Rendering.Lights.DirectLightBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Stride.Rendering.Lights.DirectLightBase.html"
         }
       },
       "version": ""
@@ -30339,6 +30459,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "diagnostics/STRDIAG010.md",
+      "output": {
+        ".html": {
+          "relative_path": "diagnostics/STRDIAG010.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "diagnostics/index.md",
       "output": {
         ".html": {
@@ -31966,6 +32096,16 @@
       "output": {
         ".html": {
           "relative_path": "manual/engine/build-pipeline.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/engine/entity-component-system/flexible-processing.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/engine/entity-component-system/flexible-processing.html"
         }
       },
       "version": ""
@@ -44812,6 +44952,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "manual/scripts/gizmos.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/scripts/gizmos.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "manual/scripts/index.md",
       "output": {
         ".html": {
@@ -44946,6 +45096,16 @@
       "output": {
         "resource": {
           "relative_path": "manual/scripts/media/get-asset-url.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/scripts/media/gizmo.png",
+      "output": {
+        "resource": {
+          "relative_path": "manual/scripts/media/gizmo.png"
         }
       },
       "version": ""

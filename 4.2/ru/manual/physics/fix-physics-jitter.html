@@ -97,7 +97,7 @@
 <p>In this tutorial, we will explore how to add smoothing to an entity using a SyncScript.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>You can also decrease the <code>Fixed Time Step</code> in the physics settings configuration to achieve more accurate physics simulations. For example, changing it from <code>0.016667</code> to <code>0.008</code> will increase accuracy but at the cost of higher CPU usage.</p>
+<p>You can also decrease the <code>FixedTimeStep</code> in the physics settings configuration to achieve more accurate physics simulations. For example, changing it from <code>0.016667</code> to <code>0.008</code> will increase accuracy but at the cost of higher CPU usage.</p>
 </div>
 <h2 id="code-to-handle-smoothing-between-two-entities">Code to handle smoothing between two entities</h2>
 <p>The following code is all that's needed to smoothly attach two entities. Ensure that you unparent the entity you are trying to smooth, otherwise the transform processor will override this script.</p>
@@ -127,7 +127,7 @@ public class SmoothFollowAndRotate : SyncScript
 }
 </code></pre>
 <h2 id="example-usage">Example Usage</h2>
-<p>This example demonstrates modifications to the <strong>First Person Shooter</strong> Template to integrate smooth camera movement.</p>
+<p>This example demonstrates modifications to the <strong>First Person Shooter</strong> template to integrate smooth camera movement.</p>
 <ol>
 <li>Detach the camera from the physics entity.</li>
 <li>Remove the FPS camera script from the camera.</li>
@@ -153,24 +153,25 @@ public class SmoothFollowAndRotate : SyncScript
 <pre><code class="lang-cs">camera.Update();
 var inverseView = Matrix.Invert(camera.ViewMatrix);
 </code></pre>
-<p>to
-<code>var inverseView = camera.Transform.WorldMatrix;</code></p>
+<p>to</p>
+<pre><code class="lang-cs">var inverseView = camera.Transform.WorldMatrix;
+</code></pre>
 <h3 id="fpscameracs">FpsCamera.cs</h3>
 <p>Remove</p>
-<pre><code class="lang-cs">        /// &lt;summary&gt;
-        /// Gets the camera component used to visualized the scene.
-        /// &lt;/summary&gt;
-        private Entity Component;
+<pre><code class="lang-cs">/// &lt;summary&gt;
+/// Gets the camera component used to visualized the scene.
+/// &lt;/summary&gt;
+private Entity Component;
 </code></pre>
 <p>and change</p>
-<pre><code class="lang-cs">        private void UpdateViewMatrix()
-        {
-            var camera = Component;
-            if (camera == null) return;
-            var rotation = Quaternion.RotationYawPitchRoll(Yaw, Pitch, 0);
+<pre><code class="lang-cs">private void UpdateViewMatrix()
+{
+    var camera = Component;
+    if (camera == null) return;
+    var rotation = Quaternion.RotationYawPitchRoll(Yaw, Pitch0);
 
-            Entity.Transform.Rotation = rotation;
-        }
+    Entity.Transform.Rotation = rotation;
+}
 </code></pre>
 <p>to</p>
 <pre><code class="lang-cs">private void UpdateViewMatrix()
@@ -202,7 +203,7 @@ var inverseView = Matrix.Invert(camera.ViewMatrix);
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

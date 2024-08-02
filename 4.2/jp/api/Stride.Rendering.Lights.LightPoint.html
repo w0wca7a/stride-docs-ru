@@ -104,7 +104,7 @@ Class LightPoint  <a class="header-action link-secondary" title="View source" hr
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[DataContract(&quot;LightPoint&quot;)]
 [Display(&quot;Point&quot;, null)]
-public class LightPoint : DirectLightBase, IDirectLight, IColorLight, ILight</code></pre>
+public class LightPoint : ColorLightBase, IDirectLight, IColorLight, ILight</code></pre>
   </div>
 
 
@@ -115,7 +115,6 @@ public class LightPoint : DirectLightBase, IDirectLight, IColorLight, ILight</co
     <dd>
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
       <div><a class="xref" href="Stride.Rendering.Lights.ColorLightBase.html">ColorLightBase</a></div>
-      <div><a class="xref" href="Stride.Rendering.Lights.DirectLightBase.html">DirectLightBase</a></div>
       <div><span class="xref">LightPoint</span></div>
     </dd>
   </dl>
@@ -133,9 +132,6 @@ public class LightPoint : DirectLightBase, IDirectLight, IColorLight, ILight</co
   <dl class="typelist inheritedMembers">
     <dt>Inherited Members</dt>
     <dd>
-    <div>
-      <a class="xref" href="Stride.Rendering.Lights.DirectLightBase.html#Stride_Rendering_Lights_DirectLightBase_Shadow">DirectLightBase.Shadow</a>
-    </div>
     <div>
       <a class="xref" href="Stride.Rendering.Lights.ColorLightBase.html#Stride_Rendering_Lights_ColorLightBase_Color">ColorLightBase.Color</a>
     </div>
@@ -188,7 +184,7 @@ public class LightPoint : DirectLightBase, IDirectLight, IColorLight, ILight</co
 
   <h3 id="Stride_Rendering_Lights_LightPoint_HasBoundingBox" data-uid="Stride.Rendering.Lights.LightPoint.HasBoundingBox">
   HasBoundingBox
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets a value indicating whether this instance has a bounding box.</p>
@@ -196,7 +192,7 @@ public class LightPoint : DirectLightBase, IDirectLight, IColorLight, ILight</co
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool HasBoundingBox { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool HasBoundingBox { get; }</code></pre>
   </div>
 
 
@@ -251,6 +247,40 @@ public float Radius { get; set; }</code></pre>
 
 
 
+  <a id="Stride_Rendering_Lights_LightPoint_Shadow_" data-uid="Stride.Rendering.Lights.LightPoint.Shadow*"></a>
+
+  <h3 id="Stride_Rendering_Lights_LightPoint_Shadow" data-uid="Stride.Rendering.Lights.LightPoint.Shadow">
+  Shadow
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the shadow.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DataMember(200)]
+public LightPointShadowMap Shadow { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Stride.Rendering.Lights.LightPointShadowMap.html">LightPointShadowMap</a></dt>
+    <dd><p>The shadow.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -259,7 +289,7 @@ public float Radius { get; set; }</code></pre>
 
   <h3 id="Stride_Rendering_Lights_LightPoint_ComputeBounds_Stride_Core_Mathematics_Vector3_Stride_Core_Mathematics_Vector3_" data-uid="Stride.Rendering.Lights.LightPoint.ComputeBounds(Stride.Core.Mathematics.Vector3,Stride.Core.Mathematics.Vector3)">
   ComputeBounds(Vector3, Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Computes the bounds of this light..</p>
@@ -267,7 +297,7 @@ public float Radius { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override BoundingBox ComputeBounds(Vector3 positionWS, Vector3 directionWS)</code></pre>
+    <pre><code class="lang-csharp hljs">public BoundingBox ComputeBounds(Vector3 positionWS, Vector3 directionWS)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -299,7 +329,7 @@ public float Radius { get; set; }</code></pre>
 
   <h3 id="Stride_Rendering_Lights_LightPoint_ComputeScreenCoverage_Stride_Rendering_RenderView_Stride_Core_Mathematics_Vector3_Stride_Core_Mathematics_Vector3_" data-uid="Stride.Rendering.Lights.LightPoint.ComputeScreenCoverage(Stride.Rendering.RenderView,Stride.Core.Mathematics.Vector3,Stride.Core.Mathematics.Vector3)">
   ComputeScreenCoverage(RenderView, Vector3, Vector3)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Computes the screen coverage of this light in pixel.</p>
@@ -307,7 +337,7 @@ public float Radius { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override float ComputeScreenCoverage(RenderView renderView, Vector3 position, Vector3 direction)</code></pre>
+    <pre><code class="lang-csharp hljs">public float ComputeScreenCoverage(RenderView renderView, Vector3 position, Vector3 direction)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -344,7 +374,7 @@ public float Radius { get; set; }</code></pre>
 
   <h3 id="Stride_Rendering_Lights_LightPoint_Update_Stride_Rendering_Lights_RenderLight_" data-uid="Stride.Rendering.Lights.LightPoint.Update(Stride.Rendering.Lights.RenderLight)">
   Update(RenderLight)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Lights/LightPoint.cs/#L61"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -396,7 +426,7 @@ public float Radius { get; set; }</code></pre>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

@@ -273,10 +273,11 @@ For example, User0 config could be stored on index 0, User1 on index 1...etc.</p
 
   <h3 id="Stride_Input_VirtualButtonConfigSet_GetValue_Stride_Input_InputManager_System_Int32_System_Object_" data-uid="Stride.Input.VirtualButtonConfigSet.GetValue(Stride.Input.InputManager,System.Int32,System.Object)">
   GetValue(InputManager, int, object)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Input/VirtualButton/VirtualButtonConfigSet.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Input/VirtualButton/VirtualButtonConfigSet.cs/#L30"><i class="bi bi-code-slash"></i></a>
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Gets a binding value for the specified name and the specified config extract from the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -286,17 +287,156 @@ For example, User0 config could be stored on index 0, User1 on index 1...etc.</p
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>inputManager</code> <a class="xref" href="Stride.Input.InputManager.html">InputManager</a></dt>
-    <dd></dd>
+    <dd><p>The <a class="xref" href="Stride.Input.InputManager.html">InputManager</a> to used to get the device input.</p>
+</dd>
     <dt><code>configIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
+    <dd><p>An index to a <a class="xref" href="Stride.Input.VirtualButtonConfig.html">VirtualButtonConfig</a> stored in the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a>.</p>
+</dd>
     <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
-    <dd></dd>
+    <dd><p>Name of the binding.</p>
+</dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
+    <dd><p>The value of the binding.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Stride_Input_VirtualButtonConfigSet_IsDown_" data-uid="Stride.Input.VirtualButtonConfigSet.IsDown*"></a>
+
+  <h3 id="Stride_Input_VirtualButtonConfigSet_IsDown_Stride_Input_InputManager_System_Int32_System_Object_" data-uid="Stride.Input.VirtualButtonConfigSet.IsDown(Stride.Input.InputManager,System.Int32,System.Object)">
+  IsDown(InputManager, int, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Input/VirtualButton/VirtualButtonConfigSet.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified binding in the specified config in the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a> is currently pressed down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsDown(InputManager inputManager, int configIndex, object name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputManager</code> <a class="xref" href="Stride.Input.InputManager.html">InputManager</a></dt>
+    <dd><p>The <a class="xref" href="Stride.Input.InputManager.html">InputManager</a> to used to get device input.</p>
+</dd>
+    <dt><code>configIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>An index to a <a class="xref" href="Stride.Input.VirtualButtonConfig.html">VirtualButtonConfig</a> stored in the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a>.</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Name of the binding.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the binding is currently pressed down; otherwise, <code>false</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Stride_Input_VirtualButtonConfigSet_IsPressed_" data-uid="Stride.Input.VirtualButtonConfigSet.IsPressed*"></a>
+
+  <h3 id="Stride_Input_VirtualButtonConfigSet_IsPressed_Stride_Input_InputManager_System_Int32_System_Object_" data-uid="Stride.Input.VirtualButtonConfigSet.IsPressed(Stride.Input.InputManager,System.Int32,System.Object)">
+  IsPressed(InputManager, int, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Input/VirtualButton/VirtualButtonConfigSet.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified binding in the specified config in the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a> was pressed since the previous Update.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsPressed(InputManager inputManager, int configIndex, object name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputManager</code> <a class="xref" href="Stride.Input.InputManager.html">InputManager</a></dt>
+    <dd><p>The <a class="xref" href="Stride.Input.InputManager.html">InputManager</a> to used to get device input.</p>
+</dd>
+    <dt><code>configIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>An index to a <a class="xref" href="Stride.Input.VirtualButtonConfig.html">VirtualButtonConfig</a> stored in the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a>.</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Name of the binding.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the binding was pressed; otherwise, <code>false</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Stride_Input_VirtualButtonConfigSet_IsReleased_" data-uid="Stride.Input.VirtualButtonConfigSet.IsReleased*"></a>
+
+  <h3 id="Stride_Input_VirtualButtonConfigSet_IsReleased_Stride_Input_InputManager_System_Int32_System_Object_" data-uid="Stride.Input.VirtualButtonConfigSet.IsReleased(Stride.Input.InputManager,System.Int32,System.Object)">
+  IsReleased(InputManager, int, object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Input/VirtualButton/VirtualButtonConfigSet.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified binding in the specified config in the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a> was released since the previous Update.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsReleased(InputManager inputManager, int configIndex, object name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inputManager</code> <a class="xref" href="Stride.Input.InputManager.html">InputManager</a></dt>
+    <dd><p>The <a class="xref" href="Stride.Input.InputManager.html">InputManager</a> to used to get device input.</p>
+</dd>
+    <dt><code>configIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>An index to a <a class="xref" href="Stride.Input.VirtualButtonConfig.html">VirtualButtonConfig</a> stored in the <a class="xref" href="Stride.Input.VirtualButtonConfigSet.html">VirtualButtonConfigSet</a>.</p>
+</dd>
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>Name of the binding.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the binding was released; otherwise, <code>false</code>.</p>
+</dd>
   </dl>
 
 
@@ -329,7 +469,7 @@ For example, User0 config could be stored on index 0, User1 on index 1...etc.</p
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

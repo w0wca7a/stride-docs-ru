@@ -131,7 +131,7 @@ Class FileVersionManager  <a class="header-action link-secondary" title="View so
 
   <h3 id="Stride_Core_Assets_FileVersionManager_Instance" data-uid="Stride.Core.Assets.FileVersionManager.Instance">
   Instance
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -158,6 +158,42 @@ Class FileVersionManager  <a class="header-action link-secondary" title="View so
 
 
 
+  <a id="Stride_Core_Assets_FileVersionManager_PeekAsyncRequestsLeft_" data-uid="Stride.Core.Assets.FileVersionManager.PeekAsyncRequestsLeft*"></a>
+
+  <h3 id="Stride_Core_Assets_FileVersionManager_PeekAsyncRequestsLeft" data-uid="Stride.Core.Assets.FileVersionManager.PeekAsyncRequestsLeft">
+  PeekAsyncRequestsLeft
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the amount of items scheduled left to process</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long PeekAsyncRequestsLeft { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Stride_Core_Assets_FileVersionManager_PeekAsyncRequestsLeft_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>It may already be out of date as soon as it returns.
+Do not rely on this to check for completion, use the callbacks instead.</p>
+</div>
+
+
+
+
   <h2 class="section" id="methods">Methods
 </h2>
 
@@ -166,7 +202,7 @@ Class FileVersionManager  <a class="header-action link-secondary" title="View so
 
   <h3 id="Stride_Core_Assets_FileVersionManager_ComputeFileHash_Stride_Core_IO_UFile_" data-uid="Stride.Core.Assets.FileVersionManager.ComputeFileHash(Stride.Core.IO.UFile)">
   ComputeFileHash(UFile)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -202,7 +238,7 @@ Class FileVersionManager  <a class="header-action link-secondary" title="View so
 
   <h3 id="Stride_Core_Assets_FileVersionManager_ComputeFileHashAsync_Stride_Core_IO_UFile_System_Action_Stride_Core_IO_UFile_Stride_Core_Storage_ObjectId__System_Nullable_System_Threading_CancellationToken__" data-uid="Stride.Core.Assets.FileVersionManager.ComputeFileHashAsync(Stride.Core.IO.UFile,System.Action{Stride.Core.IO.UFile,Stride.Core.Storage.ObjectId},System.Nullable{System.Threading.CancellationToken})">
   ComputeFileHashAsync(UFile, Action&lt;UFile, ObjectId&gt;, CancellationToken?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -237,7 +273,7 @@ Class FileVersionManager  <a class="header-action link-secondary" title="View so
 
   <h3 id="Stride_Core_Assets_FileVersionManager_ComputeFileHashAsync_System_Collections_Generic_IEnumerable_Stride_Core_IO_UFile__System_Action_Stride_Core_IO_UFile_Stride_Core_Storage_ObjectId__System_Nullable_System_Threading_CancellationToken__" data-uid="Stride.Core.Assets.FileVersionManager.ComputeFileHashAsync(System.Collections.Generic.IEnumerable{Stride.Core.IO.UFile},System.Action{Stride.Core.IO.UFile,Stride.Core.Storage.ObjectId},System.Nullable{System.Threading.CancellationToken})">
   ComputeFileHashAsync(IEnumerable&lt;UFile&gt;, Action&lt;UFile, ObjectId&gt;, CancellationToken?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L104"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -272,7 +308,7 @@ Class FileVersionManager  <a class="header-action link-secondary" title="View so
 
   <h3 id="Stride_Core_Assets_FileVersionManager_Shutdown" data-uid="Stride.Core.Assets.FileVersionManager.Shutdown">
   Shutdown()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/assets/Stride.Core.Assets/FileVersionManager.cs/#L73"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -314,7 +350,7 @@ Class FileVersionManager  <a class="header-action link-secondary" title="View so
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

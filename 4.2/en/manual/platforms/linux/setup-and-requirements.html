@@ -96,7 +96,7 @@
 <li><a href="#freetype">FreeType</a></li>
 <li><a href="#openal">OpenAL</a></li>
 <li><a href="#sdl2">SDL2</a></li>
-<li><a href="https://dotnet.microsoft.com/en-us/download">Latest .NET</a></li>
+<li><a href="#freeimage">FreeImage</a></li>
 </ul>
 <h2 id="freetype">FreeType</h2>
 <p>To render fonts, we use the <a href="https://www.freetype.org/">FreeType</a> library. The minimum required version is 2.6 and can be installed via:</p>
@@ -188,11 +188,36 @@
 </code></pre>
 </section>
 </div>
-<h2 id="net">.NET</h2>
-<p>For information about how to install .NET, see the <a href="https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites">.NET instructions for Linux</a>.</p>
-<p>We recommend to install .NET 8. To check which version you have installed, type:</p>
-<pre><code>dotnet --info
+<h2 id="freeimage">FreeImage</h2>
+<p><a href="https://freeimage.sourceforge.io/">FreeImage</a> is battle-tested library for loading and saving popular image file formats like BMP, PNG, JPEG etc. The minimum required version is 3.18 and can be installed via:</p>
+<div class="tabGroup" id="tabgroup_4">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_4_freeimage-ubuntu" role="tab" aria-controls="tabpanel_4_freeimage-ubuntu" data-tab="freeimage-ubuntu" tabindex="0" aria-selected="true">Debian / Ubuntu</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_freeimage-fedora" role="tab" aria-controls="tabpanel_4_freeimage-fedora" data-tab="freeimage-fedora" tabindex="-1">Fedora</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_freeimage-arch" role="tab" aria-controls="tabpanel_4_freeimage-arch" data-tab="freeimage-arch" tabindex="-1">Arch</a>
+</li>
+</ul>
+<section id="tabpanel_4_freeimage-ubuntu" role="tabpanel" data-tab="freeimage-ubuntu">
+
+<pre><code class="lang-bash">sudo apt install libfreeimage-dev
 </code></pre>
+</section>
+<section id="tabpanel_4_freeimage-fedora" role="tabpanel" data-tab="freeimage-fedora" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-bash">sudo dnf install freeimage-devel
+</code></pre>
+</section>
+<section id="tabpanel_4_freeimage-arch" role="tabpanel" data-tab="freeimage-arch" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-bash">sudo pacman -S freeimage
+</code></pre>
+</section>
+</div>
 <h2 id="see-also">See also</h2>
 <ul>
 <li><a href="create-a-linux-game.html">Create a Linux game</a></li>
@@ -218,7 +243,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.1</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>
