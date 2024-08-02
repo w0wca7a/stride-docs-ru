@@ -1,36 +1,36 @@
-# Stride 4.1 Release Notes
+# Заметки о выпуске Stride 4.1
 
-July 16th, 2022
+16 июля 2022 г.
 
-Stride contributors are proud to announce a new release now running on **.NET 6** supporting the latest **C# 10**. That means you can now head to the download page and start developing your games using the latest .NET technologies.
+Участники Stride с гордостью представляют новую версию, которая теперь работает на **.NET 6** и поддерживает последнюю версию **C# 10**.Это значит, что теперь вы можете перейти на страницу загрузки и начать разрабатывать свои игры, используя новейшие технологии .NET.
 
-## Improvements Summary
+## Резюме улучшений
 
-Here's a non-exhaustive list of new improvements:
+Вот неполный список новых улучшений:
 
-- .NET 6 support and [VS 2022 plugin](https://github.com/stride3d/stride/pull/1221)
-  -  Stride 4.1 leverages the power of .NET 6
-  -  Support for C# 10
-- [Dithered shadows for semi-transparent materials](https://github.com/stride3d/stride/pull/1256)
-- [Physics constraints](https://github.com/stride3d/stride/pull/1114)
-    - Bullet constraints wrapped around in easy to use functionality
-    - Editor gizmos for physics constraints
-- [Physics performance optimization](https://github.com/stride3d/stride/pull/1100)
-- [ACES tonemaping](https://github.com/stride3d/stride/pull/1037)
-- [Fog image effect](https://github.com/stride3d/stride/pull/1039)
-- [Outline image effect](https://github.com/stride3d/stride/pull/1038)
-- [Improved editor gizmos](https://github.com/stride3d/stride/pull/1083)
-- [C# Intermediate tutorials project](https://github.com/stride3d/stride/pull/1401)
-    - This Open Collective sub-project was [successfully funded](https://opencollective.com/stride3d/projects/stride-intermediate-tutorials) by the community.  All related video recordings are available on Stride's [Youtube channel](https://www.youtube.com/c/Stride3D) and the [tutorials page](https://doc.stride3d.net/latest/en/tutorials/index.html) in the documentation will also be update to reflect the new project.
-- Many more minor fixes and quality of life improvements
-  - [Fixed sample game](https://github.com/stride3d/stride/pull/1217)
-  - [Simpler Procedural Model creation](https://github.com/stride3d/stride/pull/1285)
-  - New math signatures ([1122](https://github.com/stride3d/stride/pull/1122), [1121](https://github.com/stride3d/stride/pull/1121), [1090](https://github.com/stride3d/stride/pull/1090))
-  - Dispatcher/threadpool improvements
-  - Ambient Occlusion quality improvement
-  - And many other fixes
+- Поддержка .NET 6 и [плагин VS 2022](https://github.com/stride3d/stride/pull/1221)
+  -  Stride 4.1 использует возможности .NET 6
+  -  Поддержка C# 10
+- [Размытые тени для полупрозрачных материалов](https://github.com/stride3d/stride/pull/1256)
+- [Физические ограничения](https://github.com/stride3d/stride/pull/1114)
+    - Bullet ограничения, заключенные в простую в использовании функциональность
+    - Редакторские инструменты для физических ограничений
+- [Оптимизация производительности физики](https://github.com/stride3d/stride/pull/1100)
+- [Тоновая коррекция ACES](https://github.com/stride3d/stride/pull/1037)
+- [Эффект туманного изображения](https://github.com/stride3d/stride/pull/1039)
+- [Эффект контурного изображения](https://github.com/stride3d/stride/pull/1038)
+- [Улучшенные возможности редактора](https://github.com/stride3d/stride/pull/1083)
+- [Проект учебных пособий по C# для среднего уровня](https://github.com/stride3d/stride/pull/1401)
+    - Этот подпроект Open Collective был [успешно профинансирован](https://opencollective.com/stride3d/projects/stride-intermediate-tutorials) сообществом.  Все соответствующие видеозаписи доступны на [YouTube канале Stride](https://www.youtube.com/c/Stride3D) и [странице с обучающими материалами](https://doc.stride3d.net/latest/en/tutorials/index.html) в документацию также будут внесены изменения, отражающие новый проект.
+- Множество других мелких исправлений и улучшений качества жизни
+  - [Исправлен пример игры](https://github.com/stride3d/stride/pull/1217)
+  - [Более простое создание процедурной модели](https://github.com/stride3d/stride/pull/1285)
+  - Новые математические подписи ([1122](https://github.com/stride3d/stride/pull/1122), [1121](https://github.com/stride3d/stride/pull/1121), [1090](https://github.com/stride3d/stride/pull/1090))
+  - Улучшения диспетчера/пула потоков
+  - Улучшение качества Ambient Occlusion
+  - И многие другие исправления
 
-## Dithered shadows for semi-transparent materials
+## Размытые тени для полупрозрачных материалов
 
 Produces semi-transparent shadows by poking more and more holes in the shadow map based on the transparency of the object, shadow map filtering will blur those holes with their neighbor which will result in those partially opaque pixels.
 
@@ -39,7 +39,7 @@ Produces semi-transparent shadows by poking more and more holes in the shadow ma
 ![Dithered shadow effect comparison](https://i.imgur.com/kHvSy8a.png)
 
 
-## Physics constraints
+## Физические ограничения
 
 Stride's physics system Bullet comes with a set of constraints for you to use in your projects. These constraints are now all visible inside the editor, previewing the constraints using various editor gizmo.
 
@@ -49,25 +49,25 @@ For more information on all the types of constraints, you can read up about them
 
 > [!Video https://www.youtube.com/embed/uMZMYpMD3Wg]
 
-## Physics optimizations
+## Оптимизация физики
 
 Retrieving collision and contact information was previously done by re-testing all components for collisions, which, as one might expect, led to awful performance for physics heavy scenes (could take up to and above 90% of the frame).
 
 Contacts are now lazily evaluated to reduce overhead when nothing ends up reading them.
 Users can now read and iterate over all collisions through Simulation.CurrentCollisions.
 
-## Improved editor gizmos
+## Улучшенные возможности редактора
 
-The old gizmos weren't very nice to look at, so this feature makes them look better and more user-friendly. It also changes how the rotation gizmo works and adds scale planes to the scale gizmo.
+Старые гизмо были не очень красивыми, поэтому эта функция делает их более привлекательными и удобными для пользователя. Она также изменяет работу гизмо вращения и добавляет плоскости масштабирования к гизмо масштабирования.
 
 ![New gizmos](https://i.imgur.com/8siM2Lc.png)
 
-This feature also updates the text on the CameraOrientationGizmo to be XYZ instead of right/left. Still prefer the old text instead of the XYZ coordinate? Don't worry, there's a setting under the viewport settings that swaps it back to the old text.
+Эта функция также обновляет текст на CameraOrientationGizmo, чтобы он был XYZ вместо правого/левого. Все еще предпочитаете старый текст вместо координат XYZ? Не волнуйтесь, в настройках области просмотра есть настройка, которая меняет его обратно на старый текст.
 
 ![Rotation](https://i.imgur.com/W4zIf7J.png =400x160)
 
 
-## Intermediate tutorials
+## Промежуточные обучающие курсы
 
 One of the first Open Collective sub-projects is the [intermediate C# tutorials project](https://opencollective.com/stride3d/projects/stride-intermediate-tutorials). After discussion in community meetings and with various contributors donating directly to this project, the amount for this project to be included in Stride quickly became a realization.
 
@@ -91,18 +91,18 @@ Each tutorial has a video tutorial accompanying it, which can be found on Stride
 
  > [!Video https://www.youtube.com/embed/videoseries?list=PLRZx2y7uC8mOE6_L0ZiFxNBE7HmzU2dP7]
 
-## Known Issues
+## Известные вопросы
 
-### Integrated C# Editor
+### Встроенный редактор C#
 
-The transition to .NET6 unfortunately broke the help tooltips and the code completion of integrated C# code editor. But we decided to accept it for now, as everyone is using a proper C# editor anyways, such as Visual Studio, Rider or Visual Studio Code.
+К сожалению, переход на .NET6 привел к поломке всплывающих подсказок и автодополнения кода интегрированного редактора кода C#. Но мы решили пока смириться с этим, поскольку все и так используют подходящий редактор C#, например Visual Studio, Rider или Visual Studio Code.
 
-The reason for the error is that [RoslynPad](https://github.com/roslynpad/roslynpad), the underlaying library, also needs an update or fix. We'll adress this in one of the upcoming minor version releases.
+Причина ошибки в том, что [RoslynPad](https://github.com/roslynpad/roslynpad), базовая библиотека также нуждается в обновлении или исправлении. Мы займемся этим в одном из предстоящих релизов второстепенной версии.
 
 ![](https://i.imgur.com/Gn2i6Js.png)
 
 
-## A little help
+## Небольшая помощь
 
 We, contributors, believe that Stride can help .NET game developers make the games they want with ease using their favorite languages. We want to make sure Stride offers the most comfortable environment for developing games, and this takes time and effort.
 
@@ -110,11 +110,11 @@ Since the free and open-source release of Stride, the community has been growing
 
 We have various bounties for [bug fixes and features](https://opencollective.com/stride3d/projects) (Vulkan support, decals, morph targets, and many others). If you have or know someone with the skills to tackle those bounties, please reach out to us through the [respective GitHub tickets](https://github.com/stride3d/stride/labels/bounty). You can also contact us through our discord server or on GitHub to propose new bounties.
 
-## Contributors
+## Участники
 
 Many thanks to [all the contributors](https://github.com/stride3d/stride/graphs/contributors?from=2021-02-01&to=2022-06-10&type=c) who have donated their time and skill by adding features, fixing bugs, managing the build pipelines, adding documentation, and reviewing PRs.
 
-### Financial contributors
+### Финансовые спонсоры
 
 Also, a huge thanks to the individuals and companies who contributed financially to our [Open Collective](https://opencollective.com/stride3d)! 
 

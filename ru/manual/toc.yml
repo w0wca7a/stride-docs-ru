@@ -99,73 +99,73 @@ items:
   - name: Set an audio device
     href: audio/set-an-audio-device.md
 
-- name: Engine
+- name: Движок
   href: engine/index.md
   items:
-  - name: Assets
+  - name: Активы(Assets)
     href: engine/assets/index.md
     items:
-    - name: Asset bundles
+    - name: Пакеты активов(Asset bundles)
       href: engine/assets/asset-bundles.md
-    - name: Asset control
+    - name: Управление активами
       href: engine/assets/asset-control.md
-  - name: Entity component model
+  - name: Entity component model (ECM)
     href: engine/entity-component-model/index.md
     items:
-    - name: Usage
+    - name: Применение
       href: engine/entity-component-model/usage.md
-    - name: Manage entities
+    - name: Управление объектами
       href: engine/entity-component-model/managing-entities.md
-  - name: File system
+  - name: Файловая система
     href: engine/file-system.md
 
-- name: Files and folders
+- name: Файлы и папки
   href: files-and-folders/index.md
   items:
-  - name: Project structure
+  - name: Структура проекта
     href: files-and-folders/project-structure.md
-  - name: Cached files
+  - name: Кэшированные файлы
     href: files-and-folders/cached-files.md
-  - name: Version control
+  - name: Контроль версий
     href: files-and-folders/version-control.md
-  - name: Distribute a game
+  - name: Распространение игры
     href: files-and-folders/distribute-a-game.md
 
 - name: Game Studio
   href: game-studio/index.md
   items:
-  - name: Scenes
+  - name: Сцены
     href: game-studio/scenes.md
     items:
-    - name: Create and open a scene
+    - name: Создание и открытие сцены
       href: game-studio/create-a-scene.md
-    - name: Navigate in the Scene Editor
+    - name: Навигация в Редакторе сцен
       href: game-studio/navigate-in-the-scene-editor.md
-    - name: Manage scenes
+    - name: Управление сценами
       href: game-studio/manage-scenes.md
-    - name: Load scenes
+    - name: Загрузка сцен
       href: game-studio/load-scenes.md
-    - name: Add entities
+    - name: Добавление объектов
       href: game-studio/add-entities.md
-    - name: Manage entities
+    - name: Управление объектами
       href: game-studio/manage-entities.md
-  - name: Assets
+  - name: Активы(Assets)
     href: game-studio/assets.md
     items:
-    - name: Create assets
+    - name: Создание активов
       href: game-studio/create-assets.md
-    - name: Manage assets
+    - name: Управление активами
       href: game-studio/manage-assets.md
-    - name: Use assets
+    - name: Использование актив
       href: game-studio/use-assets.md
-    - name: Archetypes
+    - name: Архетипы
       href: game-studio/archetypes.md
-  - name: Prefabs
+  - name: Префабы
     href: game-studio/prefabs/index.md
     items:
-    - name: Create a prefab
+    - name: Создание префаба
       href: game-studio/prefabs/create-a-prefab.md
-    - name: Use prefabs
+    - name: Использование префабов
       href: game-studio/prefabs/use-prefabs.md
     - name: Edit prefabs
       href: game-studio/prefabs/edit-prefabs.md
@@ -178,22 +178,22 @@ items:
   - name: Game settings
     href: game-studio/game-settings.md
     items:
-    - name: Splash screen
+    - name: Заставка
       href: game-studio/splash-screen.md
   - name: World units
     href: game-studio/world-units.md
 
-- name: Graphics
+- name: Графика
   href: graphics/index.md
   items:
-  - name: Cameras
+  - name: Камеры
     href: graphics/cameras/index.md
     items:
-    - name: Camera slots
+    - name: Слоты для камер
       href: graphics/cameras/camera-slots.md
-    - name: Animate a camera with a model file
+    - name: Анимация камеры с помощью файла модели
       href: graphics/cameras/animate-a-camera-with-a-model-file.md
-  - name: Materials
+  - name: Материалы
     href: graphics/materials/index.md
     items:
     - name: Material maps
@@ -547,22 +547,22 @@ items:
   - name: Create Packages
     href: nuget/create-packages.md
 
-- name: Troubleshooting
+- name: Устранение неполадок
   href: troubleshooting/index.md
   items:
-  - name: Logging
+  - name: Ведение журнала
     href: troubleshooting/logging.md
-  - name: Debug text
+  - name: Отладочный текст
     href: troubleshooting/debug-text.md
-  - name: Profiling
+  - name: Профилирование
     href: troubleshooting/profiling.md
-  - name: Stride doesn't run
+  - name: Страйд не запускается
     href: troubleshooting/stride-doesnt-run.md
-  - name: Default value changes ignored at runtime
+  - name: Изменения значений по умолчанию игнорируются во время выполнения
     href: troubleshooting/default-value-changes-ignored-at-runtime.md
-  - name: Lights don't cast shadows
+  - name: Свет не отбрасывает тени
     href: troubleshooting/lights-dont-cast-shadows.md
-  - name: Full call stack not available
+  - name: Полный стек вызовов недоступен
     href: troubleshooting/full-call-stack-not-available.md
   - name: "Error: A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot]"
     href: troubleshooting/error-a-scenecamerarenderer-in-use-has-no-camera-set.md

@@ -4,8 +4,8 @@
 
 Эти страницы содержат информацию о том, как использовать игровой движок Stride с открытым исходным кодом на C# .
 
-> [!Note]
-> The Stride manual is under construction and updated regularly with new content. Follow [Stride on Twitter](https://twitter.com/stridedotnet?lang=en) for documentation updates.
+> [!Примечание]
+> Руководство Stride находится в разработке и регулярно пополняется новым контентом. Следите за обновлениями документации [Stride в Twitter](https://twitter.com/stridedotnet?lang=en).
 
 ## Последняя версия документации
 
