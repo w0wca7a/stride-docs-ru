@@ -1,8 +1,8 @@
-# Documentation Roadmap
+﻿# Дорожная карта документации
 
-This document outlines a proposed roadmap and an ongoing development plan for our Stride Docs website.
+В этом документе излагается предлагаемая дорожная карта и план текущего развития нашего веб-сайта Stride Docs.
 
-- **Address Existing Issues**: Prioritize resolving issues listed in the [Issues](https://github.com/stride3d/stride-docs/issues) section on GitHub.
-- **Image Optimization**: Convert existing images to the WebP format to enhance website performance.
-- **Content Enhancement**: Implement improvements across all sections of the documentation to ensure clarity, accuracy, and comprehensiveness.
-- **Guidance for Contributors**: Provide clear instructions for contributors on writing XML comments in C#, which play a crucial role in enhancing the API documentation.
+- **Решение существующих проблем**: Отдавайте приоритет решению проблем, перечисленных в разделе [Issues](https://github.com/stride3d/stride-docs/issues) на GitHub.
+- **Оптимизация изображения**: Конвертируйте существующие изображения в формат WebP для повышения производительности веб-сайта.
+- **Улучшение контента**: Внедрение улучшения во все разделы документации, чтобы обеспечить ясность, точность и полноту.
+- **Руководство для авторов**: Предоставьте участникам четкие инструкции по написанию XML-комментариев на языке C#, которые играют решающую роль в улучшении документации API.

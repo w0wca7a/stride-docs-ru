@@ -1,6 +1,6 @@
-# New language
+﻿# Новый язык
 WIP
 
-This guide will walk you through the steps on contributing a different language for the documentation
+В этом руководстве вы узнаете, как добавить другой язык в документацию.
 
-# Adding a new language
+# Добавление нового языка

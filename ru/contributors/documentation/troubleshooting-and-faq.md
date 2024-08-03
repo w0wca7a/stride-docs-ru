@@ -1,18 +1,18 @@
-# Troubleshooting and FAQ
-- [Known Issues](#known-issues)
-- [Common Issues and Solutions](#common-issues-and-solutions)
-- [Frequently Asked Questions](#frequently-asked-questions)
+﻿# Устранение неполадок и часто задаваемые вопросы
+- [Известные вопросы](#known-issues)
+- [Распространенные проблемы и решения](#common-issues-and-solutions)
+- [Часто задаваемые вопросы](#frequently-asked-questions)
 
-# Known Issues
+# Известные вопросы
 
 ToDo: Add any known issues
 
-# Common Issues and Solutions
+# Распространенные проблемы и решения
 
-Any issue should be added to Stride Docs [GitHub issues](https://github.com/stride3d/stride-docs/issues) so it can be tracked and elaborated by the community.
+Любую проблему следует добавлять в Stride Docs [GitHub issues](https://github.com/stride3d/stride-docs/issues) чтобы сообщество могло отслеживать и дорабатывать его.
 
-# Frequently Asked Questions
+# Часто задаваемые вопросы
 
-**Q:** I just want to fix a typo in a post. Do I need to follow your installation steps?
+**В:** Я просто хочу исправить опечатку в посте. Нужно ли мне следовать вашим инструкциям по установке?
 
-**A:** *No, you can fix the typo directly on the GitHub website. However, you will still need to fork the repo, make your update on the main branch or a new branch, and then create a pull request. You can follow this guide for [minor updates](content.md#small-updates).*
+**О:** *Нет, вы можете исправить опечатку прямо на сайте GitHub. Однако вам все равно нужно будет сделать форк репозитория, сделать обновление на основной ветке или новой ветке, а затем создать запрос на извлечение. Вы можете следовать этому руководству для [незначительных обновлений](content.md#small-updates).*
