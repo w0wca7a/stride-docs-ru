@@ -10,11 +10,13 @@
 ## Последняя версия документации
 
 ### Недавние обновления
+- <span class="badge text-bg-info">Новое</span> [Скрипты - Гизмо](scripts/gizmos.md) - Описание и пример гибкой системы обработки
+- <span class="badge text-bg-info">Новое</span> [ECS - Гибкая обработка](engine/entity-component-system/flexible-processing.md) - Описание и пример гибкой системы обработки
 - <span class="badge text-bg-info">Обновлено</span> [Linux - Требования к установке](platforms/linux/setup-and-requirements.md) - добавлена Fedora OS
-- <span class="badge text-bg-success">Новое</span> [Скриптинг - Сериализация](scripts/serialization.md) - объяснение Сериализации
-- <span class="badge text-bg-info">>Обновлено</span> [Скриптинг - Public свойства и поля](scripts/public-properties-and-fields.md) - Улучшения и дополнения контента
-- <span class="badge text-bg-success">Новое</span> [Engine - Entity Component model - Usage](engine/entity-component-model/usage.md) - ECS объяснение использования
-- <span class="badge text-bg-info">Обновлено</span> [Engine - Entity Component model](engine/entity-component-model/index.md) - Улучшения контента
+- <span class="badge text-bg-success">Новое</span> [Скрипты - Сериализация](scripts/serialization.md) - объяснение Сериализации
+- <span class="badge text-bg-info">>Обновлено</span> [Скрипты - Public свойства и поля](scripts/public-properties-and-fields.md) - Улучшения и дополнения контента
+- <span class="badge text-bg-success">Новое</span> [Движок - Entity Component model - Использование](engine/entity-component-model/usage.md) - объяснение использования ECS 
+- <span class="badge text-bg-info">Обновлено</span> [Движок - Entity Component model](engine/entity-component-model/index.md) - Улучшения контента
 - <span class="badge text-bg-info">Обновлено</span> [Stride для Unity® разработчиков](stride-for-unity-developers/index.md) - Улучшения контента
 
 ### Предыдущие обновления
