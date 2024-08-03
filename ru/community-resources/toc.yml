@@ -1,0 +1,24 @@
+items:
+- name: 👾 Игры и демо
+  href: games-and-demos.md
+  expanded: true
+- name: ⚙️ Примеры проектов
+  href: example-projects.md
+- name: 🎓 Учебные пособия
+  href: tutorials-and-articles.md
+- name: ⨺ Модели и анимация
+  href: models-and-animations.md
+- name: ⛰️ Рельеф и вода
+  href: terrain-and-water.md
+- name: 🍎  Физика
+  href: physics.md
+- name: 🌈 Шейдеры
+  href: shaders.md
+- name: 🎥 Рендеринг и камера
+  href: rendering-and-camera.md
+- name: 🪟 UI
+  href: ui.md
+- name: 🗠 Визуальное программирование
+  href: visual-programming.md
+- name: 🛠️ Утилиты и импорт
+  href: tools-and-importers.md
