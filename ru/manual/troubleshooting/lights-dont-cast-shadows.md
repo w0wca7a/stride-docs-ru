@@ -18,7 +18,7 @@
 
     ![media/DirectionalLightProperties.png](../graphics/lights-and-shadows/media/DirectionalLightProperties-size.png)
 
-    Альтернативно, полностью отключите тени на источнике света, сняв флажок **Shadows**.
+    Или же полностью отключите тени на источнике света, сняв флажок **Shadows**.
 
 Повторите эти шаги для необходимого количества световых объектов, чтобы освободить место в атласе теней.
 

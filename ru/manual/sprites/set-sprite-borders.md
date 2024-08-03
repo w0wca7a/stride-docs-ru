@@ -1,36 +1,36 @@
-# Set sprite borders
+﻿# Установка границы спрайта
 
-<span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Designer</span>
+<span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Дизайнер</span>
 
-**Sprite borders** are areas that don't deform when you scale the sprite. These are often useful for sprites used for [UI elements](../ui/ui-libraries.md) such as menu buttons. You can only set sprite borders for sprites set to the **UI** sheet type.
+**Границы спрайта (Sprite borders)** это области, которые не деформируются при масштабировании спрайта. Они часто полезны для спрайтов, предназначенных для [Элементов пользовательского интерфейса](../ui/ui-libraries.md), например кнопки меню. Вы можете установить границы спрайтов только для спрайтов с установленным типом **Пользовательский интерфейс (UI)** .
 
-| Original sprite | Scaled without borders  | Scaled with borders  |
+| Оригинальный спрайт | Масштабируется без границ  | Масштабируется с границами  |
 |----------|---|---|
-|   ![Original sprite](media/original-sprite.png)       |![With border](media/sprite-stretched-no-border.png)   | ![With border](media/sprite-stretched-with-border.png)  |
-||Edges are deformed|Edges not deformed|
+|   ![Оригинальный спрайт](media/original-sprite.png)       |![С границей](media/sprite-stretched-no-border.png)   | ![С границей](media/sprite-stretched-with-border.png)  |
+||Края деформируются|Края не деформируются|
 
 
-### Set sprite borders
+### Установка границы спрайта
 
-1. In the Sprite Editor, make sure the **sheet type** is set to **UI**.
+1. В редакторе спрайтов убедитесь, что **тип листа** установлен на **Пользовательский интерфейс (UI)**.
 
-    ![Choose UI](media/select-type-UI.png)
+    ![Выбор пользовательского интерфейса](media/select-type-UI.png)
 
     >[!Note]
-    >This has no effect on how the sprite is rendered at runtime, but lets you set slightly different properties, including sprite borders.
+    >Это не влияет на то, как спрайт отображается во время выполнения, но позволяет задать немного другие свойства, включая границы спрайта.
 
-2. From the **Sprites** list, select the sprite you want to add sprite borders to.
+2. В списке **Спрайты (Sprites)** выберите спрайт, к которому вы хотите добавить границы.
 
-3. Make sure the texture region for the sprite is correct. For information about how to do this, see [Edit sprites](edit-sprites.md).
+3. Убедитесь, что область текстуры для спрайта правильная. Информацию о том, как это сделать, см. в разделе [Редактирование спрайтов](edit-sprites.md).
 
-    ![Select texture region](media/select-starbox.png)
+    ![Выбор области текстуры](media/select-starbox.png)
 
-4. In the Sprite Editor toolbar, select **Sprite border resize** tool.
+4. На панели инструментов редактора спрайтов выберите инструмент **Изменение размера границы спрайта (Sprite border resize)**.
 
-    ![Border resize tool](media/border-resize-tool-icon.png)
+    ![Инструмент изменения размера границы](media/border-resize-tool-icon.png)
 
-5. Drag the sprite borders into position.
+5. Перетащите границы спрайта в нужное положение.
 
 <p>
     <video autoplay loop class="responsive-video" poster="media\adjust-sprite-border.png">
@@ -39,29 +39,29 @@
 </p>
 
 >[!Note]
->By default, the sprite borders match the sprite texture region.
+>По умолчанию границы спрайта соответствуют области текстуры спрайта.
 
 >[!TIP]
->You can zoom in and out using **Ctrl + mousewheel** to make precise selections.
+>Вы можете увеличивать и уменьшать масштаб, используя **Ctrl + КолесоМыши** для точного выбора.
 
 > [!TIP]
 >
-> For fine-tune control over the sprite borders, adjusting one-by-one in the **Property Grid**
+> Для точной настройки границ спрайта, настраивайте их по одному в **Сетке свойств (Property Grid)**
 >
-> ![Adjust sprite borders from Property grid](media/adjust-sprite-border-from-property-grid.png)
+> ![Отрегулируйте границы спрайта с помощью сетки свойств](media/adjust-sprite-border-from-property-grid.png)
 
-## Lock the sprite borders
+## Блокировка границ спрайта
 
-By default, sprite borders move as you resize the texture region. To stop this from happening, click **Lock the sprite borders** in the toolbar.
+По умолчанию границы спрайта перемещаются при изменении размера области текстуры. Чтобы этого не произошло, нажмите **Заблокировать границы спрайта (Lock the sprite borders)** на панели инструментов.
 
-![Lock icon](media/lock-icon.png)
+![Иконка блокировки](media/lock-icon.png)
 
 >[!Note]
->Sprite borders always stay inside the texture region.
+>Границы спрайта всегда остаются внутри области текстуры.
 
 ## See also
 
-* [Import sprite sheets](import-sprite-sheets.md)
-* [Edit sprites](edit-sprites.md)
-* [Use sprites](use-sprites.md)
-* [UI](../ui/index.md)
+* [Импорт спрайт-листов](import-sprite-sheets.md)
+* [Редактирование спрайтов](edit-sprites.md)
+* [Использование спрайтов](use-sprites.md)
+* [Пользовательский интерфейс (UI)](../ui/index.md)

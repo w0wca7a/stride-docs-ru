@@ -75,28 +75,28 @@ items:
   items:
   - name: Импорт звуковых файлов
     href: audio/import-audio.md
-  - name: Audio asset properties
+  - name: Свойства аудио-актива
     href: audio/audio-asset-properties.md
-  - name: Non-spatialized audio
+  - name: Непространственный звук
     href: audio/non-spatialized-audio.md
-  - name: Spatialized audio
+  - name: Пространственный звук
     href: audio/spatialized-audio.md
     items:
-    - name: Аудио эммитеры
+    - name: Аудио излучатели
       href: audio/audio-emitters.md
-    - name: Audio listeners
+    - name: Слушатели аудио
       href: audio/audio-listeners.md
     - name: HRTF
       href: audio/hrtf.md
-  - name: Stream audio
+  - name: Аудиопоток
     href: audio/stream-audio.md
-  - name: Global audio settings
+  - name: Глобальные звуковые настройки
     href: audio/global-audio-settings.md
-  - name: Play a range within an audio file
+  - name: Воспроизведение диапазона
     href: audio/play-a-range-within-an-audio-file.md
-  - name: Custom audio data
+  - name: Пользовательские аудиоданные
     href: audio/custom-audio-data.md
-  - name: Set an audio device
+  - name: Настройка аудиоустройства
     href: audio/set-an-audio-device.md
 
 - name: Движок
@@ -487,17 +487,17 @@ items:
   - name: Create a model from code
     href: scripts/create-a-model-from-code.md
 
-- name: Sprites
+- name: Спрайты
   href: sprites/index.md
   items:
-  - name: Import sprite sheets
+  - name: Импорт спрайт-листов
     href: sprites/import-sprite-sheets.md
-  - name: Edit sprites
+  - name: Редактирование спрайтов
     href: sprites/edit-sprites.md
     items:
-    - name: Set sprite borders
+    - name: Установка границ спрайта
       href: sprites/set-sprite-borders.md
-  - name: Use sprites
+  - name: Использование спрайтов
     href: sprites/use-sprites.md
 
 - name: UI

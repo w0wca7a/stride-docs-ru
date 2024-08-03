@@ -191,7 +191,7 @@ Render Doc — это бесплатный автономный графичес
    ```cs
    game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
    ```
-   >[!Примечание]
+   >[!Note]
    >Если у вас возникло исключение `SharpDXException` типа`DXGI_ERROR_SDK_COMPONENT_MISSING`, пожалуйста, следуйте инструкциям https://docs.microsoft.com/en-us/windows/uwp/gaming/use-the-directx-runtime-and-visual-studio-graphics-diagnostic-features
 
    2.2. Также убедитесь, что профилировщик включен, вызвав этот код из любого игрового скрипта:
