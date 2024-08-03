@@ -1,67 +1,67 @@
-# Launch a game
+﻿# Запуск игры
 
-<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-primary">Начинающий</span>
 
-This page explains how to launch your game using Game Studio or Visual Studio.
+На этой странице объясняется, как запустить игру с помощью Game Studio или Visual Studio.
 
-## Launch a game from Game Studio
+## Запуск игры из Game Studio
 
-> [!Note]
-> Game Studio can't launch games for the Windows Store or UWP (Universal Windows Platform) platforms. To launch a game for those platforms, use Visual Studio (see below).
+> [!Примечание]
+> Game Studio не может запускать игры для платформ Windows Store или UWP (Universal Windows Platform). Чтобы запустить игру для этих платформ, используйте Visual Studio (см. ниже).
 
-  1. In the **toolbar**, select your target platform.
+  1. На **панели инструментов** выберите целевую платформу.
 
-      ![Platform selection](media/launch-your-game-game-studio-profiles.png)
+      ![Выбор платформы](media/launch-your-game-game-studio-profiles.png)
 
-      > [!Note]
-      > You can only select platforms you selected in the **Create a new game** dialog when you created the project. To add additional platforms to the project, see [Add or remove a platform](../platforms/add-or-remove-a-platform.md).
+      > [!Примечание]
+      > Вы можете выбрать только те платформы, которые вы выбрали в диалоговом окне **Создать новую игру** при создании проекта. Чтобы добавить дополнительные платформы в проект, см. [Добавление или удаление платформы](../platforms/add-or-remove-a-platform.md).
 
-  2. To run the game, click ![Play icon](media/launch-your-game-play-icon.png) in the toolbar or press **F5**.
+  2. Чтобы запустить игру, нажмите ![Значок запуска](media/launch-your-game-play-icon.png) на панели инструментов или нажмите клавишу **F5**.
 
-      ![Game Studio play button](media/game-studio-toolbar-build-button.png)
+      ![Кнопка запуска Game Studio](media/game-studio-toolbar-build-button.png)
 
-  The **Output window** shows the build progress. 
+  **Окно вывода (Output)** показывает ход сборки. 
 
-  ![Output window](media/output-window.png)
+  ![Окно вывода](media/output-window.png)
 
-  When the build is complete, your game starts on the selected platform.
+  После завершения сборки ваша игра запустится на выбранной платформе.
 
-## Launch a game from Visual Studio
+## Запуск игры из Visual Studio
 
-1. In Game Studio, in the toolbar, click ![Open in IDE](media/launch-your-game-ide-icon.png) (**Open in IDE**) to launch Visual Studio.
+1. В Game Studio на панели инструментов нажмите ![Открыть в IDE](media/launch-your-game-ide-icon.png) (**Открыть в IDE (Open in IDE)**) для запуска Visual Studio.
 
-2. In the Visual Studio toolbar, set the appropriate project as the startup project.
+2. На панели инструментов Visual Studio установите соответствующий проект в качестве запускаемого.
          
 	![Select build profile in Visual Studio](media/launch-your-game-visual-studio-profiles.png)
    
-   The startup project configuration is updated automatically.
+   Конфигурация стартового проекта обновляется автоматически.
  
-   > [!TIP]
-   > You can see your projects in the Solution Explorer on the right. The project filename extensions identify the platform (eg *.Android*, *.iOS*, etc).
+   > [!ПОДСКАЗКА]
+   > Вы можете увидеть свои проекты в Solution Explorer справа. Расширения имен файлов проектов идентифицируют платформу (например, *.Android*, *.iOS* и т.д.).
 
-3. Check that the configuration and platform properly matches what you are expected.
+3. Убедитесь, что конфигурация и платформа полностью соответствуют вашим ожиданиям.
   
-4. * To start the game without debugging, press **Ctrl + F5**.
+4. * Чтобы запустить игру без отладки, нажмите **Ctrl + F5**.
    
-   * To start the game with debugging, click **Start** or press **F5**.
+   * Чтобы запустить игру с отладкой, нажмите **Start** или клавишу **F5**.
 
-      ![Visual Studio Start button](media/visual-studio-start-button.png)
+      ![Кнопка запуска Visual Studio](media/visual-studio-start-button.png)
 
-## Remove borders
+## Удаление границ
 
-By default, the game runs with window borders.
+По умолчанию игра запускается в окне с границами.
 
-| With borders              | Without borders 
+| С границами             | Без границ
 |---------------------------|-----------------
-| ![With borders](media/with-borders.jpg)   | ![Without borders](media/without-borders.jpg) 
+| ![С границами](media/with-borders.jpg)   | ![Без границ](media/without-borders.jpg) 
 
-To run the game without borders, use:
+Чтобы запустить игру в окне без границ, используйте:
 
 ```cs
 Game.Window.IsBorderLess = true;
 ```
 
-For example:
+Например:
 
 ```cs
 using Stride.Engine;

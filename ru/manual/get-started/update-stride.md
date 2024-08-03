@@ -1,25 +1,25 @@
-# Update Stride
+﻿# Обновление Stride
 
 <span class="badge text-bg-primary">Beginner</span>
 
-Updating Stride is a straightforward process, but it's important to follow the steps carefully to ensure a seamless transition. Below are the guidelines for updating both the Stride engine and your existing projects.
+Обновление Stride — это простой процесс, но важно внимательно следовать шагам, чтобы обеспечить плавный переход. Ниже приведены рекомендации по обновлению как движка Stride, так и ваших существующих проектов.
 
-> [!NOTE]
-> The instructions provided here can be used as a general guide for updating to any new version of Stride.
+> [!ПРИМЕЧАНИЕ]
+> Приведенные здесь инструкции можно использовать в качестве общего руководства по обновлению любой новой версии Stride.
 
-## Updating Stride
+## Обновление Stride
 
-1. **Update Visual Studio 2022:** Ensure that you have the latest version of Visual Studio 2022. This is crucial for compatibility with the latest Stride version. After updating Visual Studio, restart your computer to apply the changes fully.
-1. **Stride Launcher Instructions:** Open the Stride Launcher. Follow the instructions provided to update or install the Visual Studio plugin for Stride. This step is essential for integrating the latest version of Stride with your development environment.
-1. **Restart Again:** After completing the installation or update of the Visual Studio plugin, restart your computer once more. This helps to ensure that all components are correctly loaded and ready for use.
+1. **Обновление Visual Studio 2022:** Убедитесь, что у вас установлена ​​последняя версия Visual Studio 2022. Это имеет решающее значение для совместимости с последней версией Stride. После обновления Visual Studio перезагрузите компьютер, чтобы изменения вступили в силу полностью.
+1. **Инструкции Stride Launcher:** Откройте Stride Launcher. Следуйте инструкциям, чтобы обновить или установить плагин Visual Studio для Stride. Этот шаг необходим для интеграции последней версии Stride с вашей средой разработки.
+1. **Перезагрузите снова:** После завершения установки или обновления плагина Visual Studio перезагрузите компьютер еще раз. Это поможет убедиться, что все компоненты правильно загружены и готовы к использованию.
 
-## Updating Your Project
+## Обновление вашего проекта
 
-1. **Version Control:** Before proceeding with the update, confirm that your project is under version control with all current changes committed. This provides a safety net, allowing you to revert to the previous state if needed. If you're not using version control, ensure you have a backup of your project.
-1. **Opening the Project:** When you open a project created with an older version of Stride, a dialogue will appear, prompting you to update the project. Make sure to check the option to apply the update to all packages in the solution. Additionally, you can verify later whether all packages have been updated by checking your project files, specifically the `.csproj` files.
-  ![New Project dialog](media/update-stride-packages.webp) *Dialog prompting for project update in Stride.*
-1. **Saving the Project:** After Stride updates the project, it's crucial to save it immediately. This step prevents the project from being in an undefined state and solidifies the changes made during the update.
-  ![New Project dialog](media/update-stride-save-project.webp)
-1. **Rebuild and Reload:** Finally, rebuild the project and reload assemblies. This ensures that all components are up-to-date and properly synchronized with the new version of Stride.
+1. **Контроль версий:** Прежде чем приступить к обновлению, убедитесь, что ваш проект находится под контролем версий и все текущие изменения зафиксированы. Это обеспечивает подстраховку, позволяющую при необходимости вернуться к предыдущему состоянию. Если вы не используете контроль версий, убедитесь, что у вас есть резервная копия проекта.
+1. **Открытие проекта:** При открытии проекта, созданного в более старой версии Stride, появится диалоговое окно с предложением обновить проект. Обязательно установите флажок применить обновление ко всем пакетам в решении. Кроме того, позже вы сможете проверить, были ли обновлены все пакеты, проверив файлы вашего проекта, в частности файлы `.csproj`.
+  ![Диалоговое окно «Новый проект»](media/update-stride-packages.webp) *Диалоговое окно с запросом на обновление проекта в Stride.*
+1. **Сохранение проекта:** После того, как Stride обновит проект, крайне важно сохранить его немедленно. Этот шаг предотвращает нахождение проекта в неопределенном состоянии и закрепляет изменения, внесенные во время обновления.
+  ![Диалоговое окно «Новый проект»](media/update-stride-save-project.webp)
+1. **Перестроить и перезагрузить:** Наконец, перестройте проект и перезагрузите сборки. Это гарантирует, что все компоненты обновлены и правильно синхронизированы с новой версией Stride.
 
-By following these steps, you can smoothly transition to the latest version of Stride, taking full advantage of the new features and improvements it offers. Remember, these procedures are designed to provide a hassle-free update experience and safeguard your project against potential issues.
+Выполнив эти шаги, вы сможете плавно перейти на последнюю версию Stride, в полной мере используя новые функции и улучшения, которые она предлагает. Помните, что эти процедуры предназначены для обеспечения беспроблемного обновления и защиты вашего проекта от потенциальных проблем.
