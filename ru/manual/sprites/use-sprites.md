@@ -1,24 +1,24 @@
-# Use sprites
+﻿# Использование спрайтов
 
-<span class="badge text-bg-primary">Intermediate</span>
-<span class="badge text-bg-success">Programmer</span>
+<span class="badge text-bg-primary">Продвинутый</span>
+<span class="badge text-bg-success">Программист</span>
 
-To add a sprite to a scene, add a **sprite component** to an entity. Afterwards, you can control the sprite with a script.
+Чтобы добавить спрайт в сцену, добавьте **компонент спрайта** к объекту. После этого вы сможете управлять спрайтом с помощью скрипта.
 
-## Add a sprite component
+## Добавление компонента спрайта
 
-1. In the **Scene Editor**, select the entity you want to add a sprite to.
+1. В **Редакторе сцен (Scene Editor)** выберите объект, к которому вы хотите добавить спрайт.
 
-    >[!Tip]
-    >To create an entity, right-click the scene or Entity Tree and select **Empty entity**.
+    >[!Подсказка]
+    >Чтобы создать объект, щелкните правой кнопкой мыши на сцене или дереве объектов и выберите **Пустая объект (Empty entity)**.
 
-2. In the **Property Grid**, click **Add component** and select **Sprite**.
+2. В **Сетке свойств (Property Grid)** нажмите **Добавить компонент (Add component)** и выберите **Спрайт (Sprite)**.
 
-    ![Sprite sheet](media/SpriteEntity.png)
+    ![Лист спрайтов](media/SpriteEntity.png)
 
-    Game Studio adds a Sprite component to the entity.
+    Game Studio добавит компонент Sprite к объекту.
 
-3. From the **Asset View**, drag the sprite sheet to the **Source** field in the Sprite component:
+3. Из **Просмотра активов (Asset View)** перетащите лист спрайтов в поле **Источник (Source)** в компоненте спрайта:
 
     <p>
         <video autoplay loop class="responsive-video" poster="media\drag-sprite-sheet-to-asset-picker.png">
@@ -26,64 +26,66 @@ To add a sprite to a scene, add a **sprite component** to an entity. Afterwards,
         </video>
     </p>
 
-    Alternatively, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**):
+    Либо нажмите ![Значок руки](~/manual/game-studio/media/hand-icon.png) (**Выберите актив (Select an asset)**):
 
-    ![Pick asset up](media/pick-asset-up.png)
+    ![Прикрепление актива](media/pick-asset-up.png)
 
-    Then choose a sprite sheet:
+    Затем выберите лист спрайтов:
 
-    ![Select an asset](media/asset-picker.png)
+    ![Выбор актива](media/asset-picker.png)
 
-Game Studio adds the sprite to the entity.
+Game Studio добавит спрайт к объекту.
 
-### Sprite component properties
+### Свойства компонента спрайта
 
-You can access the sprite component properties in the **Property Grid**.
+Вы можете получить доступ к свойствам компонента спрайта в **Сетке свойств (Property Grid)**..
 
-![Sprite component properties](media/sprite-component-properties.png)
+![Свойства компонента спрайта](media/sprite-component-properties.png)
 
-| Property   | Function    
+| Свойство   | Функция  
 |------------|-----------
-| Source | The source image file for the sprite
-| Type | **Sprites** have 3D space in the scene. <br><p>**Billboards** always face the camera and appear fixed in 3D space.
-| Color | Applies a color to the sprite
-| Intensity | The intensity by which the color is scaled (mainly used for rendering LDR sprites in HDR scenes)
-| Premultiply alpha | Premultiply color components by their alpha component
-| Ignore depth | Ignore the depth of other elements in the scene when rendering the sprite. This always places the sprite on top of previous elements. 
-| Alpha cutoff | Ignore pixels with low alpha values when rendering the sprite
-| Sampler | The texture sampling method used for the sprite: Point (nearest), Linear, or Anisotropic
-| Swizzle | How the color channels are accessed. <br><p>**Default** leaves the image unchanged (finalRGB = originalRGB) <br><p>**Normal map** uses the color channels as a [normal map](../graphics/textures/normal-maps.md) <br><p>**Grayscale (alpha)** uses only the R channel (finalRGBA = originalRRRR), so the sprite is red <br><p>**Grayscale (opaque)** is the same as **Grayscale (alpha)**, but uses a value of `1` for the alpha channel, so the sprite is opaque
-| Render group | Which render group the sprite belongs to. Cameras can render different groups. For more information, see [Render groups and render masks](../graphics/graphics-compositor/render-groups-and-masks.md).
+| Источник (Source) | Исходный файл изображения для спрайта
+| Кадр по умолчанию (Default Frame) | Индекс спрайта в спрайт-листе, который будет отображаться
+| Тип (Type) | **Sprite** имеет 3D пространство в сцене. <br><p>**Billboard** всегда смотрите в камеру и кажется неподвижным в трехмерном пространстве.
+| Цвет (Color) | Применяет цвет к спрайту
+| Интенсивность (Intensity) | Интенсивность, с которой масштабируется цвет (в основном используется для рендеринга LDR-спрайтов в HDR-сценах)
+| Предварительно умножить альфу (Premultiply alpha) | Предварительно умножить компоненты цвета на их альфа-компоненту
+| Игнорировать глубину (Ignore depth) | Игнорировать глубину других элементов сцены при рендеринге спрайта. Это всегда помещает спрайт поверх предыдущих элементов.
+| Альфа-отсечка (Alpha cutoff) | Игнорировать пиксели с низкими значениями альфа при рендеринге спрайта
+| Режим смешивания (Blend mode) | TODO...
+| Сэмплер (Sampler)| Метод выборки текстуры, используемый для спрайта: Точечный (ближайший), линейный или анизотропный (Point (nearest), Linear, or Anisotropic)
+| Swizzle | Как осуществляется доступ к цветовым каналам. <br><p>**Default** оставляет изображение неизменным (окончательный RGB = исходный RGB) <br><p>**Normal map** использует цветовые каналы как [карта нормалей](../graphics/textures/normal-maps.md) <br><p>**Grayscale (alpha)** использует только канал R (конечный RGBA = исходный RRRR), поэтому спрайт красный <br><p>**Grayscale (opaque)** тоже, что и **Grayscale (alpha)**, но использует значение `1` для альфа-канала, поэтому спрайт непрозрачен
+| Группа рендеринга (Render group) | К какой группе рендеринга принадлежит спрайт. Камеры могут визуализировать различные группы. Для получения дополнительной информации см. [Группы рендеринга и маски рендеринга](../graphics/graphics-compositor/render-groups-and-masks.md).
 
-## Use sprites in a script
+## Использование спрайтов в скрипте
 
-You can use scripts to render sprites at runtime. To do this, attach the script to an entity with a sprite component.
+Вы можете использовать скрипты для рендеринга спрайтов во время выполнения. Для этого прикрепите скрипт к объекту с компонентом спрайта.
 
-For information about how to add scripts to entities, see [Use a script](../scripts/use-a-script.md).
+Информацию о том, как добавлять скрипты к сущностям, см. в разделе [Использование скрипта](../scripts/use-a-script.md).
 
-### Code sample
+### Пример кода
 
-This script displays a sprite that advances to the next sprite in the index every second. After it reaches the end of the sprite index, it loops.
+Этот скрипт отображает спрайт, каждую секунду переходящий к следующему индексу спрайта. После того, как он достигает конечного индекса спрайта, переход зацикливается.
 
 ```cs
 using Stride.Rendering.Sprites;
 
 public class Animation : SyncScript
 {
-   // Declared public member fields and properties are displayed in Game Studio.
+   // Объявленные публичные поля и свойства членов отображаются в Game Studio.
    private SpriteFromSheet sprite;
    private DateTime lastFrame;
 
    public override void Start()
    {
-       // Initialize the script.
+       // Инициализация скрипта.
        sprite = Entity.Get<SpriteComponent>().SpriteProvider as SpriteFromSheet;
        lastFrame = DateTime.Now;
    }
 
    public override void Update()
    {
-      // Do something every new frame.
+      // Делать что-нибудь в каждом новом кадре.
       if ((DateTime.Now - lastFrame) > new TimeSpan(0, 0, 1))
       {
          sprite.CurrentFrame += 1;
@@ -93,7 +95,7 @@ public class Animation : SyncScript
 }
 ```
 
-## See also
+## Смотрите также
 
-* [Import sprite sheets](import-sprite-sheets.md)
-* [Edit sprites](edit-sprites.md)
+* [Импорт спрайт-листов](import-sprite-sheets.md)
+* [Редактирование спрайтов](edit-sprites.md)

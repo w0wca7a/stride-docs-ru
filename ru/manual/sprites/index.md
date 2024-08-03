@@ -1,14 +1,14 @@
-# Sprites
+﻿# Спрайты
 
-2D applications are made of **sprites**.
+2D-приложения сделаны из **спрайтов**.
 
-![Sprite sheet](media/SpriteEntity.png)
+![Лист спрайтов](media/SpriteEntity.png)
 
-The most efficient way to render sprites is to add them all to a **sprite sheet**, a single image. You can then define regions of the sprite sheet as different sprites in Game Studio's Sprite Editor. After you define sprites, you can add them to entities using sprite components and render them with scripts.
+Самый эффективный способ рендеринга спрайтов — добавить их все в **лист спрайтов**, одно изображение. Затем вы можете определить области листа спрайтов как разные спрайты в редакторе спрайтов Game Studio. После определения спрайтов вы можете добавить их к сущностям с помощью компонентов спрайтов и отрендерить их с помощью скриптов.
 
-## In this section
+## В этом разделе
 
-* [Import sprite sheets](import-sprite-sheets.md)
-* [Edit sprites](edit-sprites.md)
-    * [Set sprite borders](set-sprite-borders.md)
-* [Use sprites](use-sprites.md)
+* [Импорт спрайт-листов](import-sprite-sheets.md)
+* [Редактирование спрайтов](edit-sprites.md)
+    * [Установка границы спрайта](set-sprite-borders.md)
+* [Использование спрайтов](use-sprites.md)

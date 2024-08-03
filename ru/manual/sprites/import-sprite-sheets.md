@@ -1,11 +1,11 @@
-# Import sprite sheets
+﻿# Импорт спрайт-листов
 
-<span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Designer</span>
+<span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Дизайнер</span>
 
-You can import sprite sheets (image files containing sprites) just like any other kind of asset.
+Вы можете импортировать листы спрайтов (файлы изображений, содержащие спрайты) так же, как и любой другой тип ресурсов.
 
-1. Drag the sprite sheet file from Explorer to the Game Studio **Asset View**.
+1. Перетащите файл спрайт-листа из Проводника в **Просмотр активов (Asset View)** Game Studio .
 
     <p>
     <video autoplay loop class="responsive-video" poster="media/drag-and-drop-sprite-sheet.jpg">
@@ -13,21 +13,21 @@ You can import sprite sheets (image files containing sprites) just like any othe
     </video>
     </p>
 
-    Alternatively, in the **Asset View**, click **Add asset**.
+    Либо в **Просмотре активов (Asset View)** нажмите **Добавить актив (Add asset)**.
 
-2. Choose a preset for the sprite sheet.
+2. Выберите предустановку для листа спрайтов.
 
-    If you want to use the sprite sheet for UI elements such as menu buttons, select **Sprite sheet - UI sprites**. This lets you set borders for the sprite (see [Set sprite borders](set-sprite-borders.md)). Otherwise, select **Sprite sheet - 2D sprites**.
+    Если вы хотите использовать таблицу спрайтов для элементов пользовательского интерфейса, таких как кнопки меню, выберите **Лист спрайтов - Спрайты пользовательского интерфейса (Sprite sheet - UI sprites)**. Это позволяет вам установить границы спрайта (см. [Установка границ спрайта]).(set-sprite-borders.md)). В противном случае выберите **Лист спрайтов - 2D спрайты (Sprite sheet - 2D sprites)**.
 
-    >[!Note]
-    >You can change this any time. For more information, see [Edit sprites](edit-sprites.md).
+    >[!Примечание]
+    >Вы можете внести изменения в любое время. Для получения дополнительной информации см. [Редактирование спрайтов](edit-sprites.md).
 
-    ![Create from file](media/create-and-add-assets-import-directly-from-file.png)
+    ![Создание из файла](media/create-and-add-assets-import-directly-from-file.png)
 
-    Game Studio adds a sprite sheet asset.
+    Game Studio добавляет ассет спрайт-листа.
 
-## See also
+## Смотрите также
 
-* [Edit sprites](edit-sprites.md)
-* [Use sprites](use-sprites.md)
-* [Assets](../game-studio/assets.md)
+* [Редактирование спрайтов](edit-sprites.md)
+* [Использование спрайтов](use-sprites.md)
+* [Активы (Assets)](../game-studio/assets.md)

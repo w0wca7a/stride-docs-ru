@@ -1,80 +1,80 @@
-# Edit sprites
+﻿# Редактирование спрайтов
 
-<span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Designer</span>
+<span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Дизайнер</span>
 
-After you [import a sprite sheet](import-sprite-sheets.md), you can use the dedicated **Sprite Editor** to select sprites within the sprite sheet.
+После того, как вы [импортируете лист спрайтов](import-sprite-sheets.md), вы можете использовать отделенный **Редактор спрайтов (Sprite Editor)** для выбора спрайта из таблицы спрайтов.
 
-You can also edit sprite properties in the **Property Grid** like any other asset.
+Вы также можете редактировать свойства спрайта в **Сетке свойств (Property Grid)** как и любой другой актив.
 
-## Open the Sprite Editor
+## Редактор спрайтов (Sprite Editor)
 
-To open the Sprite Editor, in the **Asset View**, double-click the sprite sheet asset.
+Чтобы открыть редактор спрайтов, в **Просмотре активов (Asset View)** дважды щелкните ресурс листа спрайтов.
 
-The sprite sheet opens in the Sprite Editor.
+Лист спрайтов откроется в Редакторе спрайтов.
 
-![Sprite Editor](media/sprite-editor.png)
+![Редактор спрайтов](media/sprite-editor.png)
 
-### Set sprite sheet type
+### Установка типа спрайт-листа
 
-You can set whether the sprite sheet contains gameplay sprites (**Sprite2D**) or UI sprites (**UI**). This has no effect on how the sprite is rendered at runtime, but lets you set slightly different properties, described under **Sprite properties** below. You can change the sprite sheet type any time.
+Вы можете указать, будет ли лист спрайтов содержать игровые спрайты (**Sprite2D**) или спрайты пользовательского интерфейса (**UI**). Это не влияет на то, как спрайт отображается во время выполнения, но позволяет вам устанавливать немного другие свойства, описаны ниже в разделе **Свойства спрайта (Sprite properties)**. Вы можете изменить тип спрайт-листа в любое время.
 
-![Choose Sprite 2D or UI](media/sprite2D-UI.png)
+![Выбор Sprite 2D или UI.](media/sprite2D-UI.png)
 
-### Add a sprite
+### Добавление спрайта
 
-1. Click the **Add empty sprite** button.
+1. Нажмите кнопку **Добавить пустой спрайт (Add empty sprite)**.
 
-    ![Add sprite](media/add-sprite-button.png)
+    ![Добавление спрайта](media/add-sprite-button.png)
 
-    Game Studio adds a empty sprite to the list.
+    Game Studio добавит в список пустой спрайт.
 
-2. In the **Property Grid** on the right, in the **Source** field, specify the sprite sheet that contains the sprite.
+2. В **Сетке свойств (Property Grid)** справа, в поле **Источник (Source)**, укажите лист спрайтов, содержащий спрайт.
 
->[!Tip]
->If you want to create a new sprite from the same sprite sheet as other sprites in the list, it's often faster to duplicate an existing sprite. To duplicate a sprite, select it and click **Duplicate selected sprites** or press **Ctrl + D**.
+>[!Подсказка]
+>Если вы хотите создать новый спрайт из того же листа спрайтов, что и другие спрайты в списке, часто быстрее дублировать существующий спрайт. Чтобы дублировать спрайт, выберите его и щелкните **Дублировать выбранные спрайты (Duplicate selected sprites)** или нажмите сочетание клавиш **Ctrl + D**.
 >
->![Duplicate selected sprites](media/duplicate-selected-sprites.png)
+>![Дублирование выбранных спрайтов](media/duplicate-selected-sprites.png)
 
-### Sprite list
+### Список спрайтов
 
-The Sprite Editor lists the sprites in your project on the left. Each sprite has an index number; the first has the index *[0]*, second has index *[1]*, and so on. You can use these indexes in your scripts (see [Use sprites](use-sprites.md)).
+Sprite Editor перечисляет спрайты вашего проекта слева. Каждый спрайт имеет индексный номер; первый имеет индекс *[0]*, второй имеет индекс *[1]* и т.д. Вы можете использовать эти индексы в своих скриптах. (см. [Использование спрайтов](use-sprites.md)).
 
-![Sprite list](media/sprite-list.png)
+![Список спрайтов](media/sprite-list.png)
 
-To change the order (and index number) of sprites, use the ![Move selected sprite up/down](media/move-sprite-up-and-down.png) (**Move selected sprite up/down**) buttons. For example, if you move *[1] Sprite* down, it becomes *[2] Sprite*.
+Чтобы изменить порядок (и индексный номер) спрайтов, используйте кнопки ![Переместить выбранный спрайт вверх/вниз](media/move-sprite-up-and-down.png) (**Переместить выбранный спрайт вверх/вниз (Move selected sprite up/down)**). Например, если переместить *[1] Sprite* вниз, он станет *[2] Sprite*.
 
-To rename a sprite in the list, double-click it and type a new name.
+Чтобы переименовать спрайт в списке, дважды щелкните по нему и введите новое имя.
 
-### Set the texture region
+### Установка области текстуры
 
-You create sprites by defining rectangular **texture regions** in the sprite sheet.
+Спрайты создаются путем определения прямоугольных **областей текстуры (texture regions)** в таблице спрайтов.
 
-![Select a sprite region](media/select-sprite.png)
+![Выбор региона спрайта](media/select-sprite.png)
 
-There are three ways to do this: by using the Magic Wand tool, by setting the edges of the region manually, or by specifying the pixel coordinates in the sprite properties.
+Сделать это можно тремя способами: с помощью инструмента «Волшебная палочка», вручную, задав границы области или указав координаты пикселей в свойствах спрайта.
 
-#### Use the Magic Wand
+#### Использование "Волшебной палочки"
 
-The **Magic Wand** selects the texture region around a sprite automatically. This is usually the fastest way to select sprites.
+**Волшебная палочка** автоматически выбирает область текстуры вокруг спрайта. Обычно это самый быстрый способ выбора спрайтов.
 
-![Magic wand](media/magic-wand.gif)
+![Волшебная палочка](media/magic-wand.gif)
 
-To select or deselect the Magic Wand, click the icon in the Sprite Editor toolbar, or press the **M** key.
+Чтобы выбрать или отменить выбор волшебной палочки, щелкните значок на панели инструментов редактора спрайтов или нажмите клавишу **M**.
 
-![Select Magic Wand](media/select-magic-wand.png)
+![Выбор Волшебной палочки](media/select-magic-wand.png)
 
-To choose how the Magic Wand identifies texture regions, use the **drop-down list** in the toolbar.
+Чтобы выбрать, как Волшебная палочка будет определять области текстуры, используйте **раскрывающийся список** на панели инструментов.
 
-![Select transparency or color key](media/magic-wand-select-transparency-or-color-key.png)
+![Выберите прозрачность или цветовой ключ](media/magic-wand-select-transparency-or-color-key.png)
 
-* **Transparency**: The Magic Wand treats the edges of the non-transparent regions as the edges of the texture region. For example, if the sprite is surrounded by transparent space, it sets the texture region at the edge of the transparent space.
+* **Прозрачность**: Волшебная палочка рассматривает края непрозрачных областей как края области текстуры. Например, если спрайт окружен прозрачным пространством, он устанавливает область текстуры на краю прозрачного пространства.
 
-* **Color key**: The Magic Wand identifies texture regions using the color set under **Color key** in the Sprite Editor. For example, if the sprite is surrounded by absolute black (#FF000000), and you set absolute black as the color key, the Magic Wand sets the texture region at the edge of the absolute black space.
+* **Цветовой ключ**: Волшебная палочка определяет области текстуры, используя заданный ниже цвет **Цветового ключа (Color key)** в редакторе спрайтов. Например, если спрайт окружен абсолютно черным (#FF000000), и вы устанавливаете абсолютно черный цвет в качестве цветового ключа, Волшебная палочка устанавливает область текстуры на краю абсолютно черного пространства.
 
-#### Set texture region manually
+#### Ручная установка области текстуры
 
-You can drag the edges of the texture region and reposition the region manually.
+Вы можете перетаскивать края области текстуры и вручную изменять ее положение.
 
 <p>
     <video autoplay loop class="responsive-video" poster="media\select-sprite-borders.jpg">
@@ -82,74 +82,74 @@ You can drag the edges of the texture region and reposition the region manually.
     </video>
 </p>
 
-#### Set the texture region in the Property Grid
+#### Установите область текстуры в Сетке Свойств (Property Grid)
 
-You can define the pixel coordinates of the texture region in **Property Grid** under **Texture Region**. X is the left edge, Y is the top, Z is the right, and W is the bottom.
+Вы можете определить пиксельные координаты области текстуры в **Сетке Свойств (Property Grid)** под **Областью текстуры (Texture Region)**. X это левый край, Y это вершина, W это правая сторона, и H это низ.
 
-![Set texture region in Property Grid](media/set-texture-region-in-property-grid.png)
+![Установка области текстуры в сетке свойств](media/set-texture-region-in-property-grid.png)
 
-#### Use entire sprite sheet for the sprite
+#### Использование всего листа для спрайта
 
-If you want to use the entire sprite sheet image for the sprite, you can do this quickly by clicking **Use whole image for this sprite** in the toolbar. This is useful when you have only one sprite in a sprite sheet.
+Если вы хотите использовать для спрайта все изображение спрайт-листа, вы можете сделать это быстро, нажав **Использовать все изображение для этого спрайта (Use whole image for this sprite)** на панели инструментов. Это полезно, когда в таблице спрайтов есть только один спрайт.
 
-![Use entire sprite sheet](media/use-entire-sprite-sheet.png)
+![Использование всего листа спрайтов](media/use-entire-sprite-sheet.png)
 
-### Set transparency
+### Установка прозрачности
 
-By default, Stride treats transparent areas of the sprite sheet as transparent at runtime. Alternatively, you can set a key color as transparent. To do this, select **Use color key** and define a color. For example, if you set absolute black (#FF000000), areas of absolute black are transparent at runtime.
+По умолчанию Stride обрабатывает прозрачные области листа спрайтов как прозрачные во время выполнения. В качестве альтернативы вы можете установить ключевой цвет как прозрачный. Для этого выберите **Использовать цветовой ключ (Use color key)** и укажите цвет. Например, если установить абсолютно черный цвет (#FF000000), области абсолютно черного цвета будут прозрачными во время выполнения.
 
-![Select color key](media/color-key.png)
+![Выбор цветового ключа](media/color-key.png)
 
-You can also use the **color picker** tool to select a color from the sprite sheet.
+Вы также можете использовать инструмент **выбор цвета (color picker)** для выбора цвета из таблицы спрайтов.
 
-![Color picker](media/color-picker.png)
+![Выбор цвета](media/color-picker.png)
 
-## Sprite properties
+## Свойства спрайта
 
-You can set the properties of individual sprites in the **Property Grid**.
+Вы можете задать свойства отдельных спрайтов в **Сетке Свойств (Property Grid)**.
 
-![Adjust frame properties](media/adjust-frame-properties.png)
+![Настройка свойств кадра](media/adjust-frame-properties.png)
 
-| Property | Description |
+| Свойство | Описание|
 |--------------------|------------------------- |
-| Source | The path to the sprite sheet |
-| Name | The name of this sprite. You can also edit this by double-clicking a sprite in the sprite list in the Sprite Editor |
-| Texture region | The region of the sprite sheet used for this sprite |
-| Pixels per unit | The number of pixels representing a unit in the scene. The higher this number, the smaller the sprite is rendered in the scene |
-| Orientation | If you select **Rotated90**, Stride rotates the sprite 90 degrees at runtime |
-| Center | The position of the center of the sprite, in pixels. By default, the center is **0, 0**. Note: this property is only available if the sprite sheet type is set to **Sprite2D** in the Sprite Editor. |
-| Center from middle | Have the value in the Center property represent the offset of the sprite center from the middle of the sprite. Note: this property is only available if the sprite sheet type is set to **Sprite2D** in the Sprite Editor. |
-| Borders |  The size in pixels of the sprite borders (areas that don't deform when stretched). X is the left border, Y is the top, Z is the right, and W is the bottom. For more information, see [Set sprite borders](set-sprite-borders.md). Note: this property is only available if the sprite sheet is set to **UI** on the left. |
+| Источник (Source) | Путь к спрайт-листу |
+| Название (Name) | Имя этого спрайта. Вы также можете изменить его, дважды щелкнув по спрайту в списке в редакторе спрайтов |
+| Область текстуры (Texture region) | Область спрайт-листа, используемая для этого спрайта |
+| Количество пикселей на единицу (Pixels per unit) | Количество пикселей, представляющих единицу в сцене. Чем больше это число, тем меньше спрайт отображается в сцене |
+| Ориентация (Orientation) | Если вы выберете **Повернуто90 (Rotated90)**, Stride поворачивает спрайт на 90 градусов во время выполнения |
+| Центр (Center) | Положение центра спрайта в пикселях. По умолчанию центр — **0, 0**. Примечание: это свойство доступно только в том случае, если для типа листа спрайтов установлено значение **Sprite2D** в редакторе спрайтов |
+| Центр из середины (Center from middle) | Значение свойства Center должно представлять смещение центра спрайта относительно его середины. Примечание: это свойство доступно только в том случае, если в редакторе спрайтов для типа спрайт-листа установлено значение **Sprite2D** |
+| Границы (Borders) |  Размер границ спрайта в пикселях (областей, которые не деформируются при растяжении). X это левая граница, Y это верх, W это право, и W это низ. Для получения более подробной информации см. [Установка границ спрайта](set-sprite-borders.md). Примечание: это свойство доступно только в том случае, если для таблицы спрайтов установлено значение **UI** слева |
 
-## Sprite sheet properties
+## Свойства спрайт-листа
 
-You can also set the properties for the entire sprite sheet asset. To access the properties:
+Вы также можете задать свойства для всего ассета спрайт-листа. Чтобы получить доступ к свойствам:
 
-* select the sprite sheet asset in the **Asset View** and set the properties in the **Property Grid**, or
-* in the Sprite Editor, click **Sprite sheet properties**.
+* выберите актив листа спрайтов в **Просмотре активов (Asset View)** и установите параметры в **Сетке свойств (Property Grid)**, или
+* в редакторе спрайтов нажмите **Свойства спрайт-листа (Sprite sheet properties)**.
 
-    ![Sprite sheet properties button](media/sprite-sheet-properties-button.png)
+    ![Кнопка свойств спрайт-листа](media/sprite-sheet-properties-button.png)
 
-Many of the properties are the same as texture properties. 
+Многие свойства совпадают со свойствами текстуры.
 
-![Sprite sheet properties](media/sprite-sheet-properties.png)
+![Свойства спрайт-листа](media/sprite-sheet-properties.png)
 
-| Property | Description |
+| Свойство | Описание |
 |--------------------|---------------|
-| Sheet Type | Specify whether this sprite sheet is used for 2D sprites or UI elements. If you select **Sprite sheet for UI**, you can define [sprite borders](set-sprite-borders.md) in the sprites.|
-| Color Key Color | The color used for transparency at runtime. This is only applied if **Color Key Enabled** is selected below |
-| Color Key Enabled | Use the color set in the **Color Key Color** property for transparency at runtime. If this isn't selected, the project uses transparent areas of the sprite sheet instead |
-| Compress | Compress the texture to a format based on the target platform. The final texture size will be a multiple of 4. |
-| ColorSpace | The color space for the sprites in the sprite sheet (Auto, Linear, or Gamma) |
-| Alpha | The texture alpha format which all the sprites in the sprite sheet are converted to (None, Mask, Explicit, Interpolated, or Auto) |
-| Generate Mipmaps | Generates mipmaps for all sprites in the sprite sheet |
-| Premultiply Alpha |  Premultiply all color components of the images by their alpha component |
-| Allow Multipacking | Generate multiple atlas textures if the sprites can't fit into a single atlas |
-| Allow rotations | Rotate sprites inside the sprite sheet to optimize space. This doesn't affect how sprites are displayed at runtime. |
-| Border size | The size in pixels of the border around the sprites. This prevents side effects in the sprite sheet. |
+| Тип листа (Sheet type) | Укажите, будет ли этот лист спрайтов использоваться для 2D-спрайтов или элементов пользовательского интерфейса. Если вы выберете **Лист спрайтов для пользовательского интерфейса (Sprite sheet for UI)**, вы можете определить [границы](set-sprite-borders.md) в спрайтах.|
+| Цвет ключевого цвета (Color Key Color) | Цвет, используемый для прозрачности во время выполнения. Это применяется только в том случае, если ниже выбрано **Цветовой ключ включен (Color Key Enabled)** |
+| Цветовой ключ включен (Color Key Enabled) | Используйте цвет, заданный в свойстве **Цвет ключевого цвета (Color Key Color)**, для обеспечения прозрачности во время выполнения. Если этот параметр не выбран, вместо этого в проекте используются прозрачные области листа спрайтов |
+| Сжатие (Compress) | Сжать текстуру в формат, основанный на целевой платформе. Окончательный размер текстуры будет кратен 4 |
+| Цветовое пространство (ColorSpace) | Цветовое пространство для спрайтов в таблице спрайтов (Авто, Линейное или Гамма) |
+| Alpha | Формат альфа-текстуры, в который преобразуются все спрайты в таблице спрайтов (Нет, Маска, Явный, Интерполированный или Авто) |
+| Генерировать MIP-карты (Generate Mipmaps) | Генерирует MIP-карты для всех спрайтов в таблице спрайтов |
+| Предварительное умножение Альфа (Premultiply Alpha) |  Предварительно умножить все цветовые компоненты изображений на их альфа-компоненту |
+| Разрешить мультиупаковку (Allow Multipacking) | Сгенерировать несколько текстур атласа, если спрайты не помещаются в один атлас |
+| Разрешить вращения (Allow rotations) | Поворачивайте спрайты внутри листа спрайтов, чтобы оптимизировать пространство. Это не влияет на отображение спрайтов во время выполнения |
+| Размер границы (Border size) | Размер в пикселях границы вокруг спрайтов. Это предотвращает побочные эффекты в спрайт-листе |
 
-## See also
+## Смотрите также
 
-* [Import sprite sheets](import-sprite-sheets.md)
-* [Set sprite borders](set-sprite-borders.md)
-* [Use sprites](use-sprites.md)
+* [Импорт спрайт-листов](import-sprite-sheets.md)
+* [Установка границ спрайта](set-sprite-borders.md)
+* [Использование спрайтов](use-sprites.md)
