@@ -1,21 +1,21 @@
----
+п»ї---
 uid: ../toc.md
 ---
-# Начните работу со Stride
+# РќР°С‡Р°Р»Рѕ СЂР°Р±РѕС‚С‹ СЃРѕ Stride
 
-<span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-primary">РќР°С‡РёРЅР°СЋС‰РёР№</span>
 
-В этой главе объясняется все, что вам нужно, чтобы начать использовать Stride с нуля. Взгляните на [видеоуроки](https://doc.stride3d.net/latest/en/tutorials/index.html).
+Р’ СЌС‚РѕР№ РіР»Р°РІРµ РѕР±СЉСЏСЃРЅСЏРµС‚СЃСЏ РІСЃРµ, С‡С‚Рѕ РІР°Рј РЅСѓР¶РЅРѕ, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Stride СЃ РЅСѓР»СЏ. Р’С‹ С‚Р°РєР¶Рµ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЃСЏ СЃ [РІРёРґРµРѕСѓСЂРѕРєР°РјРё](https://doc.stride3d.net/latest/en/tutorials/index.html).
 
 ![Game Studio](media/get-started.jpg)
 
-## В этом разделе
+## Р’ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ
 
-* [Установка Stride](install-stride.md)
-* [Запуск Stride](launch-Stride.md)
-* [Расширение Visual Studio](visual-studio-extension.md)
-* [Создание проекта](create-a-project.md)
+* [РЈСЃС‚Р°РЅРѕРІРєР° Stride](install-stride.md)
+* [Р—Р°РїСѓСЃРє Stride](launch-Stride.md)
+* [Р Р°СЃС€РёСЂРµРЅРёРµ Visual Studio](visual-studio-extension.md)
+* [РЎРѕР·РґР°РЅРёРµ РїСЂРѕРµРєС‚Р°](create-a-project.md)
 * [Game Studio](../game-studio/index.md)
-* [Ассеты](../game-studio/assets.md)
-* [Знакомство со сценами](../game-studio/scenes.md)
-* [Запуск игры](launch-a-game.md)
+* [РђСЃСЃРµС‚С‹](../game-studio/assets.md)
+* [Р—РЅР°РєРѕРјСЃС‚РІРѕ СЃРѕ СЃС†РµРЅР°РјРё](../game-studio/scenes.md)
+* [Р—Р°РїСѓСЃРє РёРіСЂС‹](launch-a-game.md)

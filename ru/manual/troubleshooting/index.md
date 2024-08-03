@@ -1,14 +1,14 @@
-# Устранение неполадок
+п»ї# РЈСЃС‚СЂР°РЅРµРЅРёРµ РЅРµРїРѕР»Р°РґРѕРє
 
-На этих страницах описывается, как устранить проблемы со Stride.
+РќР° СЌС‚РёС… СЃС‚СЂР°РЅРёС†Р°С… РѕРїРёСЃС‹РІР°РµС‚СЃСЏ, РєР°Рє СѓСЃС‚СЂР°РЅРёС‚СЊ РїСЂРѕР±Р»РµРјС‹ СЃРѕ Stride.
 
-![Поиск неисправностей](media/troubleshooting.png)
+![РџРѕРёСЃРє РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚РµР№](media/troubleshooting.png)
 
-* [Ведение журнала](logging.md)
-* [Отладочный текст](debug-text.md)
-* [Профилирование](profiling.md)
-* [Stride не запускается](stride-doesnt-run.md)
-* [Изменения значений по умолчанию игнорируются во время выполнения](default-value-changes-ignored-at-runtime.md)
-* [Свет не отбрасывает тени](lights-dont-cast-shadows.md)
-* [Полный стек вызовов недоступен](full-call-stack-not-available.md)
-* [Ошибка: "A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot]"](error-a-scenecamerarenderer-in-use-has-no-camera-set.md)
+* [Р’РµРґРµРЅРёРµ Р¶СѓСЂРЅР°Р»Р°](logging.md)
+* [РћС‚Р»Р°РґРѕС‡РЅС‹Р№ С‚РµРєСЃС‚](debug-text.md)
+* [РџСЂРѕС„РёР»РёСЂРѕРІР°РЅРёРµ](profiling.md)
+* [Stride РЅРµ Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ](stride-doesnt-run.md)
+* [РР·РјРµРЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РёРіРЅРѕСЂРёСЂСѓСЋС‚СЃСЏ РІРѕ РІСЂРµРјСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ](default-value-changes-ignored-at-runtime.md)
+* [РЎРІРµС‚ РЅРµ РѕС‚Р±СЂР°СЃС‹РІР°РµС‚ С‚РµРЅРё](lights-dont-cast-shadows.md)
+* [РџРѕР»РЅС‹Р№ СЃС‚РµРє РІС‹Р·РѕРІРѕРІ РЅРµРґРѕСЃС‚СѓРїРµРЅ](full-call-stack-not-available.md)
+* [РћС€РёР±РєР°: "A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot]"](error-a-scenecamerarenderer-in-use-has-no-camera-set.md)

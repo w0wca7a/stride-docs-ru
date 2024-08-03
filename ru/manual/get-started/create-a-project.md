@@ -1,90 +1,90 @@
-# Create a project
+# Создание проекта
 
-<span class="badge text-bg-primary">Beginner</span>
+<span class="badge text-bg-primary">Начинающий</span>
 
-This page explains how to:
+На этой странице объясняется, как:
 
-* create a new empty project 
-* create a project based on a template or sample 
+* создать новый пустой проект
+* создать проект на основе шаблона или образца 
 
-**Templates** are projects that contain just the necessary elements to start working on a game.
+**Шаблоны** — это проекты, содержащие только необходимые элементы для начала работы над игрой.
 
-**Samples** are complete games, which you can learn from or base a new game on.
+**Образцы** — это полноценные игры, на которых вы можете учиться или основывать новую игру.
 
-## Create an empty project
+## Создание пустого проекта
 
-An **empty project** is project that contains only the bare minimum to make a game: a simple scene with a light, camera, and script to move the camera, plus a preconfigured rendering pipeline. This is good when you want to start your game from scratch without elements you don't need. 
+**Пустой проект** — это проект, который содержит только самый минимум содержимого для создания игры: простую сцену со светом, камерой и скриптом для перемещения камеры, а также предварительно настроенный конвейер рендеринга. Это хорошо, когда вы хотите начать игру с нуля без элементов, которые вам не нужны.
 
-To create an empty project:
+Чтобы создать пустой проект:
 
-1. In the **Stride Launcher**, click **Start** to start Game Studio. 
+1. В **Stride Launcher** нажмите **Start**, чтобы запустить Game Studio. 
 
-    The **New/open project** dialog opens.
+    Откроется диалоговое окно **Новый/существующий проект (New/open project)**.
     
     ![New Project dialog](media/create-project-new-open-project-window.png)
 
-    You can also open a new project in Game Studio from **File > New**. 
+    Вы также можете открыть новый проект в Game Studio из **File > New**. 
     
-2. Select **New Game**.
+2. Выберите **New Game**.
 
-3. In the **Name** and **Location** fields, specify a name for the project and the folder to save it in.
+3. В полях **Name** and **Location** укажите имя проекта и папку для его сохранения.
 
-4. Click **Select**.
+4. Нажмите **Select**.
 
-    The **Create a new game** dialog opens.
+    Откроется диалоговое окно **Create a new game**.
 
     ![Create a new game dialog](media/create-project-create-new-game.png)
 
-5. In the **Namespace** field, specify the namespace you want to use. If you don't know what your namespace should be, leave it as default.
+5. В поле **Namespace** укажите пространство имен, которое вы хотите использовать. Если вы не знаете, каким должно быть ваше пространство имен, оставьте его по умолчанию.
 
-6. Under **Platforms**, select the platforms you want your game to support.  
+6. В разделе **Platforms** выберите платформы, которые должна поддерживать ваша игра.
 
-    > [!Note]
-    >  To support iOS and Android, you need to install <a href="https://www.xamarin.com/studio" target="_blank">Xamarin</a> (free if you have Visual Studio).
+    > [!Примечание]
+    >  Для поддержки iOS и Android вам необходимо установить <a href="https://www.xamarin.com/studio" target="_blank">Xamarin</a> (бесплатно, если у вас есть Visual Studio).
 
-    If your development system is missing prerequisites for any of the platforms you select, Stride displays a warning.
+   Если в вашей системе отсутствуют предварительно установленные компоненты для любой из выбранных вами платформ, Stride выведет предупреждение.
 
-7. Under **Asset Packs**, you can select additional assets to include in your project. These include assets such as animations and materials. The asset packs are fun to play with when you're learning how to use Stride, but they're not necessary.
+7. В разделе **Asset Packs** вы можете выбрать дополнительные ресурсы для включения в свой проект. К ним относятся такие ресурсы, как анимация и материалы. С пакетами ресурсов интересно играть, когда вы учитесь использовать Stride, но они не являются необходимыми.
 
-8. Under **Rendering**, select the options you want.  
+8. В разделе **Rendering** выберите нужные параметры.  
     
-    **Graphics API:** The graphics features you can use in your project depend on the API you select. For advanced graphics features, select the latest version of the graphics APIs.
+    **Graphics API:** Графические функции, которые вы можете использовать в своем проекте, зависят от выбранного вами API. Для расширенных графических функций выберите последнюю версию графических API.
     
-    >[!Warning]
-    >Some graphics cards don't support the latest APIs. For some mobile devices, only Direct3D 9.3 / OpenGL ES 2.0 and Direct3D 10.0 / OpenGL ES 3.0 are available.
+    >[!Предупреждение]
+    >Некоторые видеокарты не поддерживают новейшие API. Для некоторых мобильных устройств доступны только Direct3D 9.3 / Open GL ES 2.0 и Direct3D 10.0 / Open GL ES 3.0.
 
-    **High or Low Dynamic Range (HDR / LDR):** This defines how color is computed in your project. In LDR mode, colors range from 0 to 1. In HDR mode colors can take any float value. HDR provides more advanced and realistic rendering but requires more processing power and profile Direct3D 10.0 / OpenGL ES 3.0 or later.
+    **High or Low Dynamic Range (HDR / LDR):** Это определяет, как вычисляется цвет в вашем проекте. В режиме LDR цвета находятся в диапазоне от 0 до 1. В режиме HDR цвета могут принимать любое значение с плавающей точкой. HDR обеспечивает более продвинутый и реалистичный рендеринг, но требует большей вычислительной мощности и профиля Direct3D 10.0 / Open GL ES 3.0 или более поздней версии.
 
-9. Under **Orientation**, choose the orientation for your project. For PC games, use landscape. Portrait should usually only be used for mobile games.
+9. В разделе **Orientation** выберите ориентацию для вашего проекта. Для игр на ПК используйте альбомную ориентацию. Портретную ориентацию обычно следует использовать только для мобильных игр.
 
-10. Click **OK**.
+10. Нажмите **ОК**.
 
-Stride creates the project and opens it in Game Studio. For more information, see [Game Studio](../game-studio/index.md).
+Stride создаст проект и откроет его в Game Studio. Для получения дополнительной информации см. [Game Studio](../game-studio/index.md).
 
-## Create a project from a sample or template
+## Создание проекта по образцу или шаблону
 
-Stride includes several sample projects demonstrating each part of the engine (2D, 3D, sprites, fonts, UI, audio, input, etc). It also includes template games to help you make your own game. 
+Stride включает в себя несколько примеров проектов, демонстрирующих каждую часть движка (2D, 3D, спрайты, шрифты, пользовательский интерфейс, аудио, ввод и т. д.). Он также включает в себя шаблоны игр, которые помогут вам создать собственную игру.
     
-To create a project from a sample or template:
+Чтобы создать проект по образцу или шаблону:
 
- 1. Open the **New Project** dialog.
+ 1. Откройте диалоговое окно **New Project**.
     
- 2.	On the left, navigate to **New project > Samples**.
+ 2.	Слева перейдите в **New project > Samples**..
  
- 3. **Select the sample** you want to create a project from.
+ 3. Выберите **Select the sample** образец из которого вы хотите создать проект.
     
-   ![New Project window — samples](media/create-project-new-open-project-samples.png)
+   ![Окно нового проекта — samples](media/create-project-new-open-project-samples.png)
 
- 4. Click **Select**.
+ 4. Нажмите **Select**.
 
-    The **Select Platforms** window opens.
+    Откроется окно выбора платформ **Select Platforms**.
 
-    ![Select Platforms window](media/create-project-select-platform.png)
+    ![Окно выбора платформ](media/create-project-select-platform.png)
     	
- 5. Select the platforms you want your game to support and click **OK**.
+ 5. Выберите платформы, которые должна поддерживать ваша игра, и нажмите **OK**.
 
-Stride creates the project and opens it in Game Studio. 
+Stride создаст проект и откроет его в Game Studio.
 
-## What's next?
+## Что дальше?
 
-* [Get familiar with Game Studio](../game-studio/index.md)
+* [Познакомьтесь с Game Studio](../game-studio/index.md)
