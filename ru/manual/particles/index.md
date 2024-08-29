@@ -7,20 +7,20 @@
 ## В этом разделе
 
 * [Создание частиц](create-particles.md)
-    * [Эмитеры](emitters.md)
-        * [Формы (shapes)](shapes.md)
-            * [Ленты и траектории движения (ribbons и trails)](ribbons-and-trails.md)
+    * [Излучатели (Emitters)](emitters.md)
+        * [Формы (Shapes)](shapes.md)
+            * [Ленты и траектории движения (Ribbons и Trails)](ribbons-and-trails.md)
         * [Материалы](materials.md)
         * [Спаунеры (Spawners)](spawners.md)
         * [Инициализаторы](initializers.md)
         * [Апдейтеры (Updaters)](updaters.md)
 
-### Учебные пособия
+### Примеры
 
-* [Создание троп (trail)](tutorials/create-a-trail.md) — Создание траектории движения для анимации удара мечом
+* [Создание траектории движения (Trail)](tutorials/create-a-trail.md) — Создание траектории движения для анимации удара мечом
 * [Лазеры и молнии](tutorials/lasers-and-lightning.md) — Создание эффектов лазера и молнии, используя частицы и специальные материалы.
 * [Наследование](tutorials/inheritance.md) — Создание частиц, которые наследуют атрибуты других частиц.
-* [???Particle materials](tutorials/particle-materials.md)
+* [Материалы частиц](tutorials/particle-materials.md)
 * [Пользовательские частицы](tutorials/custom-particles.md)
 
 ## Пример проекта

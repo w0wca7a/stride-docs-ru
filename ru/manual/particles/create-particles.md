@@ -1,50 +1,50 @@
-# �������� ������
+﻿# Создание частиц
 
-<span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Artist</span>
-<span class="badge text-bg-success">Programmer</span>
+<span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Художник</span>
+<span class="badge text-bg-success">Программист</span>
 
-To create a particle system, right-click the scene or Entity Tree, select **Particle System**, and choose a preset (**Empty**, **Simple**, **Fountain**, or **Ribbon**).
+Чтобы создать систему частиц, щелкните правой кнопкой мыши на сцене или дереве объектов, выберите **Particle System**, и выберите предустановку (**Empty**, **Simple**, **Fountain**, или **Ribbon**).
 
 ![media/particles-reference-editor-1.png](media/particles-reference-editor-1.png)
 
-Game Studio creates an entity with a **Transform** component and a **Particle System** component with your chosen preset. Particle entities are represented with a flame icon.
+Game Studio создаст объект с компонентами **Transform** и **Particle System** с выбранной вами предустановкой. Частицы представлены значком пламени.
 
 ![media/particles-reference-editor-2.png](media/particles-reference-editor-2.png) 
 
-Alternatively, you can add a particle component to an existing entity. With the entity selected, in the **Property Grid**, click **Add component** and select **Particle System**.
+В качестве альтернативы вы можете добавить компонент частицы к существующему объекту. Выбрав объект, в **Сетке свойств (Property Grid)**, нажимите **Добавить компонент (Add component)** и выберите **Систему частиц (Particle System)**.
 
 ![Add Particle System](tutorials/media/add-particle-system.png)
 
-Game Studio adds an empty particle system to the entity.
+Game Studio добавит к объекту пустую систему частиц.
 
-## Transform component
+## Трансформация компонента
 
-All entities have a transform component. Some particle elements ignore some elements of the transform component, such as rotation or scaling. For example, the gravity force shouldn't depend on the rotation of the particle system, and always ignores rotation; however, fountain particle systems inherit the location for the purposes of initial particle velocity.
+Все объекты имеют компонент преобразования. Некоторые элементы частиц игнорируют некоторые элементы компонента преобразования, такие как вращение или масштабирование. Например, сила тяжести не должна зависеть от вращения системы частиц и всегда игнорирует вращение; Однако системы фонтанных частиц наследуют местоположение для определения начальной скорости частицы.
 
-Only uniform scaling is supported. If you have a non-uniform scale on the transform component, only the X axis is used.
+Поддерживается только равномерное масштабирование. Если у вас неравномерный масштаб на компоненте преобразования, используется только ось X.
 
-If you want two particle systems to share a transform component, create two particle system entities and make one a child of the other.
+Если вы хотите, чтобы две системы частиц использовали один и тот же компонент преобразования, создайте два объекта систем частиц и сделайте один из них дочерним по отношению к другому.
 
-## Particle component properties
+## Свойства компонентов частиц
 
-With a particle system entity selected, you can edit its properties in the **Property Grid**, just like any other entity.
+Выбрав элемент системы частиц, вы можете редактировать его свойства в **Сетке свойств (Property Grid)**, как и любой другой объект.
 
 ![media/particles-reference-editor-3.png](media/particles-reference-editor-3.png)
 
-| Property         | Description |
+| Свойство        | Описание |
 | ---------------- | -------------
-| Editor control | This changes how Game Studio displays particles while you work on the scene. You can play, pause, and stop the particle system. You can also reset the particle effect at set intervals, which is useful for previewing one-shot effects. The editor controls don't affect how particles are displayed at runtime.
-| Warm-up time  | If you set the warm-up time to a value greater than 0, the particle appears as if it's already active when it appears. This value is in seconds. For example, if you set the warm-up time to 1, the particle effect appears as if it has already been active for 1 second when it appears. This is useful, for example, if you set a fire effect warm-up time to 0, the fire appears to ignite as soon as it's rendered. If you want the fire to appear as if it's already ignited when it's rendered, increase the warm-up time.
-| Speed scale  | Controls the speed of the particle effect.
-| Culling AABB | This creates an axis-aligned bounding box (AABB) around the particle effect. If the bounding box isn't in the camera view, Stride doesn't render the particle effect. This is useful for culling and optimization. **Rotated AABB** sets box shape in XYZ co-ordinates. **Uniform AABB** creates a cube of the scale you specify (in [world units](../game-studio/world-units.md)). To view the AABB in the Scene Editor, select **Debug Draw**.
-| Emitters | The emitters the particle system contains. The emitters are updated and drawn in the order they appear in the list, and can be re-ordered. For more information, see [Emitters](emitters.md).
+| Editor control | Изменение способа отображения частиц в Game Studio во время работы над сценой. Вы можете воспроизводить, приостанавливать и останавливать систему частиц. Вы также можете сбрасывать эффект частиц через заданные интервалы времени, что полезно для предварительного просмотра одноразовых эффектов. Имейте ввиду, что данные настройки не влияют на то, как частицы отображаются в игре, и требуются лишь для оценки визуальных свойств.
+| Warm-up time (время прогрева)  |  Значение в секундах времени прогрева перед появлением. Если вы установите время прогрева Warm-up time на значение большее, чем 0, частица выглядит так, как будто она уже активна в момент своего появления. Например, если вы установите время разогрева 1, эффект частицы выглядит так, как будто он уже был активен в течение 1 секунды в момент своего появления. Это полезно, например, если вы устанавливаете время разогрева эффекта огня 0, огонь, кажется, загорается сразу после разведения. Если вы хотите, чтобы при разведении огня создавалось впечатление, будто он уже разгорелся, увеличьте время разогрева.
+| Speed scale (скорость эффекта)  | Управляет скоростью эффекта частиц.
+| Culling AABB (ограничивающая рамка) | Это создает ограничивающую рамку, выровненную по осям (AABB) вокруг эффекта частиц. Если ограничивающая рамка не находится в поле зрения камеры, Stride не отображает эффект частиц. Это полезно для отбраковки и оптимизации. **Rotated AABB** задает форму короба в координатах XYZ. **Uniform AABB** создает куб указанного вами масштаба (в [мировых единицах](../game-studio/world-units.md)). Для просмотра AABB в Редакторе Сцены (Scene Editor), выберите **Debug Draw**.
+| Emitters (эмитеры/источники) | Излучатели, содержащиеся в системе частиц. Эмиттеры обновляются и отображаются в том порядке, в котором они указаны в списке, и их порядок можно изменить. Для получения более подробной информации см. [Излучатели (Emitters)](emitters.md).
 
-## See also
+## Смотрите также
 
-* [Emitters](emitters.md)
-* [Shapes](shapes.md)
-* [Materials](materials.md)
-* [Spawners](spawners.md)
-* [Initializers](initializers.md)
-* [Updaters](updaters.md)
+* [Излучатели (Emitters)](emitters.md)
+* [Формы (Shapes)](shapes.md)
+* [Материалы](materials.md)
+* [Спаунеры (Spawners)](spawners.md)
+* [Инициализаторы](initializers.md)
+* [Апдейтеры (Updaters)](updaters.md)
