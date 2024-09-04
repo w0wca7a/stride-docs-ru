@@ -45,6 +45,6 @@ Game Studio добавит к объекту пустую систему час�
 * [Излучатели (Emitters)](emitters.md)
 * [Формы (Shapes)](shapes.md)
 * [Материалы](materials.md)
-* [Спаунеры (Spawners)](spawners.md)
+* [Генераторы (Spawners)](spawners.md)
 * [Инициализаторы](initializers.md)
-* [Апдейтеры (Updaters)](updaters.md)
+* [Актуализаторы (Updaters)](updaters.md)

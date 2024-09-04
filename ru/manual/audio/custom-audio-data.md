@@ -1,14 +1,14 @@
-# Custom audio data
+﻿# Пользовательские аудиоданные
 
-<span class="badge text-bg-primary">Advanced</span>
-<span class="badge text-bg-success">Programmer</span>
+<span class="badge text-bg-primary">Продвинутый</span>
+<span class="badge text-bg-success">Программист</span>
 
-You can generate audio using your own mechanism. To do this, create a subclass of [DynamicSoundSource](xref:Stride.Audio.DynamicSoundSource).
-For an example of how to implement this, see the [CompressedSoundSource` source code](https://github.com/Stride3d/stride/blob/master/sources/engine/Stride.Audio/CompressedSoundSource.cs).
+Вы можете генерировать звук, используя свой собственный механизм. Для этого создадим подкласс [DynamicSoundSource](xref:Stride.Audio.DynamicSoundSource).
+Пример того, как это реализовать, см. [исходный код CompressedSoundSource ](https://github.com/Stride3d/stride/blob/master/sources/engine/Stride.Audio/CompressedSoundSource.cs).
 
-## Example code
+## Пример кода
 
-To play a custom [DynamicSoundSource](xref:Stride.Audio.DynamicSoundSource) at runtime, use:
+Чтобы воспроизвести пользовательский [DynamicSoundSource](xref:Stride.Audio.DynamicSoundSource) во время выполнения используйте:
 
 ```
 int sampleRate = 48000;
@@ -22,5 +22,5 @@ await myCustomInstance.ReadyToPlay();
 myCustomInstance.Play();
 ```
 
-## See also
-* [Global audio settings](global-audio-settings.md)
+## Смотрите также
+* [Глобальные звуковые настройки](global-audio-settings.md)

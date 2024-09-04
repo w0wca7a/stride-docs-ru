@@ -39,8 +39,8 @@ Stride рисует частицы билборда в соответствии 
 ## Смотрите также
 
 * [Создание частиц](create-particles.md)
-* [Эмитеры (Emitters)](emitters.md)
+* [Излучатели (Emitters)](emitters.md)
 * [Материалы](materials.md)
-* [Спаунеры (Spawners)](spawners.md)
+* [Генераторы (Spawners)](spawners.md)
 * [Инициализаторы](initializers.md)
-* [Апдейтеры (Updaters)](updaters.md)
+* [Актуализаторы (Updaters)](updaters.md)

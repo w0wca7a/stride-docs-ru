@@ -11,9 +11,9 @@
         * [Формы (Shapes)](shapes.md)
             * [Ленты и траектории движения (Ribbons и Trails)](ribbons-and-trails.md)
         * [Материалы](materials.md)
-        * [Спаунеры (Spawners)](spawners.md)
+        * [Генераторы (Spawners)](spawners.md)
         * [Инициализаторы](initializers.md)
-        * [Апдейтеры (Updaters)](updaters.md)
+        * [Актуализаторы (Updaters)](updaters.md)
 
 ### Примеры
 

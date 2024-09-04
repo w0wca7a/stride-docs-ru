@@ -10,55 +10,56 @@
 
 ## Динамический эмиссионный материал
 
-Этот материал использует полупрозрачный эмиссионный цвет RGBA for the pixel shading. In HDR rendering mode, the values are used as intensity, and can be higher than 1.
+Этот материал использует полупрозрачный эмиссионный цвет RGBA для пиксельного затенения. В режиме HDR-рендеринга значения используются как интенсивность и могут быть выше 1.
 
 ![media/particles-reference-materials-1.png](media/particles-reference-materials-1.png)
 
-| Property            | Description  
+| Свойство           | Описание
 |---------------------|------------
-| Alpha-Add           | Translucent rendering supports alpha-blending, additive blending or anything in-between. With this parameter you can control how much alpha-blended (0) or additive (1) the particles should be.
-| Culling             | There are options for no culling, front face culling and back face culling. Camera-facing particles always have their front face towards the camera.
-| Emissive            | The emissive RGBA color for the particle. See [Material maps](../graphics/materials/material-maps.md) for a full description.
-| UV coords           | For particles which use texture sampling uv coordinates animation can be specified. The two currently existing types are specified below.
+| Alpha-Добавление (Alpha-Add) | Прозрачный рендеринг поддерживает альфа-смешивание, аддитивное смешивание или что-то среднее. С помощью этого параметра вы можете контролировать, насколько альфа-смешанными (0) или аддитивными (1) должны быть частицы.
+| Выбраковка (Culling) | Имеются варианты без отбраковки, с отбраковкой по передней и задней граням. Частицы, обращенные к камере, всегда обращены своей передней поверхностью к камере.
+| Эмиссия (Emissive)  | Излучаемый RGBA-цвет частицы. См. [Карты материалов](../graphics/materials/material-maps.md) для полного описания.
+| UV coords           |Для частиц, использующих текстурную выборку, можно задать анимацию координат UV. Ниже указаны два существующих в настоящее время типа.
 ### UV Coords — Flipbook
 
-The flipbook animation considers a texture a sequence of frames and displays it one frame at a time, like a flipbook.
+Анимация Flipbook* рассматривает текстуру как последовательность кадров и отображает ее по одному кадру за раз, как в кинеографе.
 
-This image is an example of a 4x4 flipbook animation texture of an explosion:
+Это изображение представляет собой пример анимационной текстуры взрыва в формате Flipbook размером 4x4:
 
 ![media/particles-reference-materials-4.png](media/particles-reference-materials-4.png)
 
-The flipbook animation has the following properties:
+Анимация Flipbook имеет следующие свойства:
 
 ![media/particles-reference-materials-2.png](media/particles-reference-materials-2.png)
 
-| Property            | Description    
+| Свойство            | Описание   
 |---------------------|------------
-| X divisions         | The number of columns to split the texture into
-| Y divisions         | The number of rows to split the texture into
-| Starting frame      | The frame to start the animation at. The top-left frame is 0 and increases by 1 from left to right before moving down.
-| Animation speed     | The total number of frames to show over the particle lifetime. If Speed = X x Y, then the animation shows **all** frames over the particle lifetime. The speed is relative; particles with longer lifespans have slower animation. 
+| X divisions         | Количество столбцов, на которые нужно разбить текстуру
+| Y divisions         | Tколичество строк, на которые нужно разбить текстуру
+| Starting frame      | Кадр, с которого начинается анимация. Верхний левый кадр имеет номер 0 и увеличивается на 1 слева направо перед перемещением вниз.
+| Animation speed     | Общее количество кадров, отображаемых за время жизни частицы. Если Speed = X x Y, анимация показывает **все** кадры за время жизни частицы. Скорость относительна: частицы с большей продолжительностью жизни имеют более медленную анимацию.
 
-### UV Coords — Scrolling
+*Flipbook - Кинеограф, создание анимированого изображения, состоящего из отдельных кадров, нанесённых на листы бумаги и сшитые в тетрадь. Быстро перелистывая тетрадь, наблюдает эффект анимации.
+### UV Coords — прокрутка Scrolling
 
-The scrolling animation defines a starting rectangle for the billboard or quad, which moves across the texture to its end position. This creates a scrolling or a scaling effect of the texture across the quad's surface.
+Анимация прокрутки определяет начальный прямоугольник для билборда или четырехугольника, который перемещается по текстуре к своему конечному положению. Это создает эффект прокрутки или масштабирования текстуры по поверхности квадрата.
 
-The texture coordinates can go below 0 or above 1. How the texture is sampled depends on the addressing mode defined in the [material maps](../graphics/materials/material-maps.md). For more information, see the [MSDN documentation](http://tinyurl.com/TextureAddressingModes).
+Координаты текстуры могут быть ниже 0 или выше 1. То, как выбирается текстура, зависит от режима адресации, определенного в [картах материалов](../graphics/materials/material-maps.md). Для получения более подробной информации см. [MSDN документацию](http://tinyurl.com/TextureAddressingModes).
 
-The scrolling animation has the following properties:
+Анимация прокрутки имеет следующие свойства:
 
 ![media/particles-reference-materials-3.png](media/particles-reference-materials-3.png)
 
-| Property            | Description
+| Свойство           | Описание
 |---------------------|-------------
-| Start frame         | The initial rectangle for texture sampling when the particle first spawns
-| End frame           | The last rectangle for texture sampling when the particle disappears
+| Start frame         | Начальный прямоугольник для выборки текстуры при первом появлении частицы
+| End frame           | Последний прямоугольник для выборки текстуры при исчезновении частицы
 
 ## Смотрите также
 
 * [Создание частиц](create-particles.md)
 * [Излучатели (Emitters)](emitters.md)
 * [Формы](shapes.md)
-* [Спаунеры (Spawners)](spawners.md)
+* [Генераторы (Spawners)](spawners.md)
 * [Инициализаторы](initializers.md)
-* [Апдейтеры (Updaters)](updaters.md)
+* [Актуализаторы (Updaters)](updaters.md)

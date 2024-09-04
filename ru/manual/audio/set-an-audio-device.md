@@ -1,15 +1,15 @@
-# Set an audio device
+﻿# Установка аудиоустройства
 
-<span class="badge text-bg-primary">Advanced</span>
-<span class="badge text-bg-success">Programmer</span>
+<span class="badge text-bg-primary">Продвинутый</span>
+<span class="badge text-bg-success">Программист</span>
 
-You can set which audio device Stride uses. For example, you can access the _Oculus Rift_ audio device from your custom game constructor.
+Вы можете указать, какое аудиоустройство будет использовать Stride. Например, вы можете получить доступ к аудиоустройству Oculus Rift из своего конструктора игры.
 
-If you don't specify a device, Stride uses the default audio advice.
+Если устройство не указано, Stride использует звуковое устройство системы по умолчанию.
 
-## Example code
+## Пример кода
 
-This code sets the Oculus Rift device at runtime:
+Этот код настраивает устройство Oculus Rift во время выполнения:
 
 ```cs
 namespace OculusRenderer
@@ -26,5 +26,5 @@ namespace OculusRenderer
 }
 ```
 
-## See also
-* [Global audio settings](global-audio-settings.md)
+## Смотрите также
+* [Глобальные звуковые настройки](global-audio-settings.md)
