@@ -1,10 +1,10 @@
-# Head-related transfer function (HRTF) audio
+﻿# Передаточная функция, связанная с головой (HRTF)
 
-**Head-related transfer function (HRTF)** is an advanced way of rendering audio so that sounds appear to come from a specific point in 3D space, synthesizing binaural audio. It provides more realistic audio than standard [spatialized audio](spatialized-audio.md). For example, with HRTF, the player can hear whether a character is above or below them. This is particularly useful for [VR applications](../virtual-reality/index.md), as it increases immersion.
+**Передаточная функция, связанная с головой (HRTF)** — это усовершенствованный способ обработки звука, при котором создается впечатление, что звук исходит из определенной точки трехмерного пространства, что позволяет синтезировать бинауральный звук. Обеспечивает более реалистичный звук, чем стандартный [пространственный звук](spatialized-audio.md). Например, с помощью HRTF игрок может слышать, находится ли персонаж выше или ниже него. Это особенно полезно для [VR приложений](../virtual-reality/index.md), так как это увеличивает погружение.
 
-Players don't need special hardware to use HRTF. However, the effect works much better with headphones than speakers.
+Для использования HRTF игрокам не нужно специальное оборудование. Однако эффект работает гораздо лучше с наушниками, чем с динамиками.
 
-This video demonstrates the effect of HRTF audio:
+Это видео демонстрирует эффект звука HRTF:
 
 <p>
 <video class="embed-responsive-item" poster="media/hrtf-first-frame.jpg" controls>
@@ -13,15 +13,15 @@ This video demonstrates the effect of HRTF audio:
 </p>
 
 >[!Note]
->For now, you can only use HRTF on Windows 10.
+>На данный момент HRTF можно использовать только в Windows 10.
 
-## Enable HRTF
+## Включение HRTF
 
-To use HRTF, first enable it globally in the **Game Settings** asset, then enable HRTF on the entities you want to use it with.
+Чтобы использовать HRTF, сначала включите его глобальное изменение в активе **Game Settings**, затем включите HRTF для тех объектов, с которыми вы хотите его использовать.
 
-### 1. Enable HRTF globally
+### 1. Включение глобальной настройки HRTF
 
-1. In **Solution explorer** (the bottom-left pane by default), select the **Assets folder**.
+1. В **Solution explorer** (нижняя левая панель по умолчанию), select the **Assets folder**.
 
     ![Select Assets folder asset](../game-studio/media/select-asset-folder.png)
 

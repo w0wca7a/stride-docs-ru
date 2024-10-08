@@ -1,53 +1,53 @@
-# Audio emitters
+﻿# Аудиоизлучатели / Источники звука
 
-<span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Programmer</span>
-<span class="badge text-bg-success">Designer</span>
+<span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Программист</span>
+<span class="badge text-bg-success">Дизайнер</span>
 
-[Audio emitter components](xref:Stride.Audio.AudioEmitter) emit audio used to create [spatialized audio](spatialized-audio.md). You can add them to any entity.
+[Компоненты Audio emitter](xref:Stride.Audio.AudioEmitter) издают звук, используемый для создания [пространственного звука](spatialized-audio.md). Вы можете добавить их к любому объекту.
 
-The pitch and volume of the sound changes as the [audio listener](audio-listeners.md) moves closer to and away from the audio emitter.
+Высота и громкость звука изменяются по мере того как [аудио слушатель](audio-listeners.md) приближается к источнику звука и удаляется от него.
 
 > [!Note] 
-You need at least one [AudioListenerComponent](xref:Stride.Audio.AudioListener) in the scene to hear audio from audio emitters.
+Вам нужен как минимум один [компонент AudioListenerComponent](xref:Stride.Audio.AudioListener) в сцене, чтобы слышать звук от аудиоизлучателей.
 
-## 1. Set up an audio emitter asset
+## 1. Настройка актива аудиоизлучателя
 
-1. In the **Scene view**, select an entity you want to be an audio emitter.
+1. В **Обзоре сцены (Scene view)** выберите объект, который вы хотите сделать источником звука.
 
     ![Select an entity](media/audio-add-audiolistener-component-select-entity.png)
 
-2. In the **Property Grid**, click **Add component** and select **Audio Emitter**.
+2. В **Сетке свойств (Property Grid)**, нажимите **Добавить компонент (Add component)** и выберите **Аудиоизлучатель (Audio Emitter)**.
 
     ![Add AudioEmitter Component](media/audio-add-audioemitter-component-select-entity.png)
 
-    Now we need to add audio to the emitter.
+    Теперь нам нужно добавить звук к излучателю.
 
-3.  Under **Audio Emitter**, click ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Add**) and specify a name for the audio.
+3.  Под **Аудиоизлучателем (Audio Emitter)**, нажимите ![Green plus button](~/manual/game-studio/media/green-plus-icon.png) (**Добавить (Add)**) и укажите название аудио.
 
     ![Add new sound entry](media/audio-play-audioemitter-component-add-new-entry.png)
 
-4. From the **Asset View**, drag and drop an audio asset to the audio you just added:
+4. Из **Просмотра активов (Asset View)**, перетащите аудиоресурс на только что добавленный вами аудиофайл:
 
     ![Drag and drop an audio asset](media/audio-play-drag-and-drop-audio-asset.gif)
 
-    Alternatively, click ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Select an asset**).
+    В качестве альтернативы нажмите ![Hand icon](~/manual/game-studio/media/hand-icon.png) (**Выберите актив (Select an asset)**).
 
     ![Pick up an asset](media/audio-play-audioemitter-component-pick-an-asset.png)
 
-    Then choose an audio asset:
+    Затем выберите аудиоактив:
 
     ![Select audio  asset](media/audio-play-audioemitter-component-add-select-audio-asset.png)
 
-5. Repeat steps 3 and 4 to add as many audio assets as you need.
+5. Повторите шаги 3 и 4, чтобы добавить столько аудиоресурсов, сколько вам нужно.
 
-6. Configure the properties for this audio emitter.
+6. Настройте свойства этого аудиоизлучателя.
 
     ![Audio emitter properties](media/audio-emitter-properties.png)
 
-| Property           | Description  
+| Свойство          | Описание
 |--------------------|-------------
-| Use HRTF           | Enable head-related transfer function (HRTF). With this enabled, sounds appear to come from a specific point in 3D space, synthesizing binaural audio. For more information, see [HRTF](hrtf.md).
+| Использовать HRTF (Use HRTF)          | Включить функцию передачи, связанную с головой (HRTF). При включении этой функции создается впечатление, что звуки исходят из определенной точки трехмерного пространства, что создает [бинауральный звук](https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D0%BD%D0%B0%D1%83%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D1%8D%D1%84%D1%84%D0%B5%D0%BA%D1%82#%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5). Для получения более подробной информации см. [HRTF](hrtf.md).
 | Directional factor | How directional the audio is, from 0 (min) to 1 (max). If set to 0, the audio is emitted from all directions. You can control this with a slider or number value. 
 | Environment        | The reverb type for the audio, simulating reverberation of real environments (small, medium, large, or outdoors).
 
@@ -101,7 +101,7 @@ Game Studio lists the script as a component under **Add component**. Add the scr
 
     ![Add audio script](media/add-sound-script.png)
 
-## See also
-* [Spatialized audio](spatialized-audio.md)
-* [Audio listeners](audio-listeners.md)
+## Смотрите также
+* [Пространственный звук](spatialized-audio.md)
+* [Слушатели аудио](audio-listeners.md)
 * [Global audio settings](global-audio-settings.md)
