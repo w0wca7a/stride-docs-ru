@@ -30,17 +30,18 @@ Each vertex can be influenced by one or more node through weight values that det
 
 ## Operating principle
 
-When [importing](../game-studio/create-assets.md) a model containing nodes, Stride automatically creates a Model [Skeleton](xref:Stride.Rendering.Skeleton), containing a description of the nodes array [ModelNodeDefinition](xref:Stride.Rendering.ModelNodeDefinition). And also a model [Mesh](xref:Stride.Rendering.Mesh) with the [MeshSkinningDefinition](xref:Stride.Rendering.MeshSkinningDefinition) parameter, containing an array of nodes and areas of their influence (weight values) on the Mesh [MeshBoneDefinition](xref:Stride.Rendering.MeshBoneDefinition). In this case, all model nodes are indexed.
+When [importing](../game-studio/create-assets.md) a model containing nodes, Stride automatically creates a Model [Skeleton](xref:Stride.Rendering.Skeleton), containing a description of the nodes array [ModelNodeDefinition](xref:Stride.Rendering.ModelNodeDefinition). And also a model [Mesh](xref:Stride.Rendering.Mesh) with the [MeshSkinningDefinition](xref:Stride.Rendering.MeshSkinningDefinition) parameter, containing an array of nodes and areas of their influence (weight values) on the model mesh [MeshBoneDefinition](xref:Stride.Rendering.MeshBoneDefinition). In this case, all model nodes are indexed.
 
 To manage model nodes, the [SkeletonUpdater](xref:Stride.Rendering.SkeletonUpdater) class is used, which performs a hierarchical model nodes transformation.
 
-SkeletonUpdater class allows you to transform one node, and the next node in the hierarchy that relies on it will be automatically transformed.
+`SkeletonUpdater` class allows you to transform one node, and the next node in the hierarchy that relies on it will be automatically transformed.
 
 ## Creating a project
 
-1. [Launch](..\get-started\launch-stride.md) Stride and Create New Project 
+1. [Launch](../get-started/launch-stride.md) Stride and Create New Project 
 
 ![Create New Project](media/node-animation-3.jpg)
+
 ![Project name](media/node-animation-4.jpg)
 
 2. Add asset with **Animated Models**
@@ -122,23 +123,29 @@ This example uses a neck node called "CATRigSpine3294". Nodes names can be found
 
 ![Nodes names](media/node-animation-7.webp)
 
+>[!Note]
+>Game Studio currently only provides preview information about the nodes
+
 using a third-party 3D modelling software,
 
 ![Nodes names](media/node-animation-8.jpg)
 
 or with a code.
 ```cs
-SkeletonUpdater skeletonUpdater = Entity.FindRoot().Get<ModelComponent>().Skeleton;
+...
+public override void Start()
+        {
+            SkeletonUpdater skeletonUpdater = Entity.FindRoot().Get<ModelComponent>().Skeleton;
             for (int i = 0; i < skeletonUpdater.Nodes.Length; i++)
             {
                 Log.Warning(string.Format("NodeParentId: {0}, NodeIndex:{1}, Name: {2}",
                   skeletonUpdater.Nodes[i].ParentIndex, i,
                   skeletonUpdater.Nodes[i].Name));
             }
+         }
+...
 ```
 
->[!Note]
->Game Studio currently only provides preview information about the nodes
 
 ## See also
 * [Import animations](import-animations.md)

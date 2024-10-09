@@ -71,6 +71,8 @@ items:
         href: animation/model-node-links.md
       - name: Custom attributes
         href: animation/custom-attributes.md
+      - name: Node animation
+        href: animation/node-animation.md
 
   - name: Audio
     href: audio/index.md
