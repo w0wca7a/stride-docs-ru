@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class GraphicsCompositor | Stride Docs ">
       
-      
+      <meta name="description" content="The GraphicsCompositor class organizes how scenes are rendered in the Stride engine, providing extensive customization of the rendering pipeline.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -89,7 +89,7 @@
 
 
   <h1 id="Stride_Rendering_Compositing_GraphicsCompositor" data-uid="Stride.Rendering.Compositing.GraphicsCompositor" class="text-break">
-Class GraphicsCompositor  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L18"><i class="bi bi-code-slash"></i></a>
+Class GraphicsCompositor  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L41"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,8 @@ Class GraphicsCompositor  <a class="header-action link-secondary" title="View so
   <dl><dt>Assembly</dt><dd>Stride.Engine.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>The <code>GraphicsCompositor</code> class organizes how scenes are rendered in the Stride engine, providing extensive customization of the rendering pipeline.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -249,6 +250,16 @@ public class GraphicsCompositor : RendererBase, IComponent, IReferencable, IColl
 
 
 
+  <h2 id="Stride_Rendering_Compositing_GraphicsCompositor_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class handles the initialization and destruction of the render system, manages the cameras used in the composition, and controls the render stages and features.
+It provides entry points for the game compositor, a single view compositor, and a compositor used by the scene editor.</p>
+<p>
+Key features of the <code>GraphicsCompositor</code> include:
+</p><ul><li>Using one or multiple cameras</li><li>Filtering entities</li><li>Rendering to one or more render textures with different viewports</li><li>Setting HDR or LDR rendering</li><li>Applying post effects to a render target</li><li>Clearing a render target or only the depth buffer</li><li>Editable in the Game Studio and at runtime from scripts</li></ul><p>
+For more information, see the
+<a href="https://doc.stride3d.net/latest/en/manual/graphics/graphics-compositor/index.html">Graphics Compositor</a> documentation.
+</p>
+</div>
 
 
   <h2 class="section" id="fields">Fields
@@ -258,7 +269,7 @@ public class GraphicsCompositor : RendererBase, IComponent, IReferencable, IColl
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_Current" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.Current">
   Current
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L53"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>A property key to get the current <a class="xref" href="Stride.Rendering.Compositing.GraphicsCompositor.html">GraphicsCompositor</a> from the <a class="xref" href="Stride.Core.ComponentBase.html#Stride_Core_ComponentBase_Tags">Tags</a>.</p>
@@ -294,7 +305,7 @@ public class GraphicsCompositor : RendererBase, IComponent, IReferencable, IColl
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_Cameras" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.Cameras">
   Cameras
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the cameras used by this composition.</p>
@@ -328,7 +339,7 @@ public SceneCameraSlotCollection Cameras { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_Editor" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.Editor">
   Editor
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L110"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The entry point for a compositor used by the scene editor.</p>
@@ -360,7 +371,7 @@ public SceneCameraSlotCollection Cameras { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_Game" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.Game">
   Game
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L100"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The entry point for the game compositor.</p>
@@ -392,7 +403,7 @@ public SceneCameraSlotCollection Cameras { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_RenderFeatures" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.RenderFeatures">
   RenderFeatures
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L92"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The list of render features.</p>
@@ -425,7 +436,7 @@ public IList&lt;RootRenderFeature&gt; RenderFeatures { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_RenderStages" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.RenderStages">
   RenderStages
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The list of render stages.</p>
@@ -458,7 +469,7 @@ public IList&lt;RenderStage&gt; RenderStages { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_RenderSystem" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.RenderSystem">
   RenderSystem
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L68"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets the render system used with this graphics compositor.</p>
@@ -490,7 +501,7 @@ public IList&lt;RenderStage&gt; RenderStages { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_SingleView" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.SingleView">
   SingleView
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L105"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The entry point for a compositor that can render a single view.</p>
@@ -526,7 +537,7 @@ public IList&lt;RenderStage&gt; RenderStages { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_Destroy" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.Destroy">
   Destroy()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L121"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Disposes of object resources.</p>
@@ -553,7 +564,7 @@ public IList&lt;RenderStage&gt; RenderStages { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_DrawCore_Stride_Rendering_RenderDrawContext_" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.DrawCore(Stride.Rendering.RenderDrawContext)">
   DrawCore(RenderDrawContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L146"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Main drawing method for this renderer that must be implemented.</p>
@@ -586,7 +597,7 @@ public IList&lt;RenderStage&gt; RenderStages { get; }</code></pre>
 
   <h3 id="Stride_Rendering_Compositing_GraphicsCompositor_InitializeCore" data-uid="Stride.Rendering.Compositing.GraphicsCompositor.InitializeCore">
   InitializeCore()
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L113"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -612,7 +623,7 @@ public IList&lt;RenderStage&gt; RenderStages { get; }</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L18" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Engine/Rendering/Compositing/GraphicsCompositor.cs/#L41" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -628,7 +639,7 @@ public IList&lt;RenderStage&gt; RenderStages { get; }</code></pre>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Create a project | Stride Manual </title>
+      <title>Создание проекта | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Create a project | Stride Manual ">
+      <meta name="title" content="Создание проекта | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/get-started/create-a-project.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/get-started/create-a-project.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,95 +85,90 @@
         </div>
 
         <article data-uid="">
-<h1 id="create-a-project">Create a project</h1>
+<h1 id="создание-проекта">Создание проекта</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span></p>
-<p>This page explains how to:</p>
+<p><span class="badge text-bg-primary">Начинающий</span></p>
+<p>На этой странице объясняется, как:</p>
 <ul>
-<li>create a new empty project</li>
-<li>create a project based on a template or sample</li>
+<li>создать новый пустой проект</li>
+<li>создать проект на основе шаблона или образца</li>
 </ul>
-<p><strong>Templates</strong> are projects that contain just the necessary elements to start working on a game.</p>
-<p><strong>Samples</strong> are complete games, which you can learn from or base a new game on.</p>
-<h2 id="create-an-empty-project">Create an empty project</h2>
-<p>An <strong>empty project</strong> is project that contains only the bare minimum to make a game: a simple scene with a light, camera, and script to move the camera, plus a preconfigured rendering pipeline. This is good when you want to start your game from scratch without elements you don't need.</p>
-<p>To create an empty project:</p>
+<p><strong>Шаблоны</strong> — это проекты, содержащие только необходимые элементы для начала работы над игрой.</p>
+<p><strong>Образцы</strong> — это полноценные игры, на которых вы можете учиться или основывать новую игру.</p>
+<h2 id="создание-пустого-проекта">Создание пустого проекта</h2>
+<p><strong>Пустой проект</strong> — это проект, который содержит только самый минимум содержимого для создания игры: простую сцену со светом, камерой и скриптом для перемещения камеры, а также предварительно настроенный конвейер рендеринга. Это хорошо, когда вы хотите начать игру с нуля без элементов, которые вам не нужны.</p>
+<p>Чтобы создать пустой проект:</p>
 <ol>
-<li><p>In the <strong>Stride Launcher</strong>, click <strong>Start</strong> to start Game Studio.</p>
-<p>The <strong>New/open project</strong> dialog opens.</p>
+<li><p>В <strong>Stride Launcher</strong> нажмите <strong>Start</strong>, чтобы запустить Game Studio.</p>
+<p>Откроется диалоговое окно <strong>Новый/существующий проект (New/open project)</strong>.</p>
 <p><img src="media/create-project-new-open-project-window.png" alt="New Project dialog"></p>
-<p>You can also open a new project in Game Studio from <strong>File &gt; New</strong>.</p>
+<p>Вы также можете открыть новый проект в Game Studio из <strong>File &gt; New</strong>.</p>
 </li>
-<li><p>Select <strong>New Game</strong>.</p>
+<li><p>Выберите <strong>New Game</strong>.</p>
 </li>
-<li><p>In the <strong>Name</strong> and <strong>Location</strong> fields, specify a name for the project and the folder to save it in.</p>
+<li><p>В полях <strong>Name</strong> and <strong>Location</strong> укажите имя проекта и папку для его сохранения.</p>
 </li>
-<li><p>Click <strong>Select</strong>.</p>
-<p>The <strong>Create a new game</strong> dialog opens.</p>
+<li><p>Нажмите <strong>Select</strong>.</p>
+<p>Откроется диалоговое окно <strong>Create a new game</strong>.</p>
 <p><img src="media/create-project-create-new-game.png" alt="Create a new game dialog"></p>
 </li>
-<li><p>In the <strong>Namespace</strong> field, specify the namespace you want to use. If you don't know what your namespace should be, leave it as default.</p>
+<li><p>В поле <strong>Namespace</strong> укажите пространство имен, которое вы хотите использовать. Если вы не знаете, каким должно быть ваше пространство имен, оставьте его по умолчанию.</p>
 </li>
-<li><p>Under <strong>Platforms</strong>, select the platforms you want your game to support.</p>
+<li><p>В разделе <strong>Platforms</strong> выберите платформы, которые должна поддерживать ваша игра.</p>
 <div class="NOTE">
 <h5>Note</h5>
 </div>
 </li>
 </ol>
-<p>&gt;  To support iOS and Android, you need to install <a href="https://www.xamarin.com/studio" target="_blank">Xamarin</a> (free if you have Visual Studio).</p>
-<pre><code>If your development system is missing prerequisites for any of the platforms you select, Stride displays a warning.
-</code></pre>
+<p>&gt;  Для поддержки iOS и Android вам необходимо установить <a href="https://www.xamarin.com/studio" target="_blank">Xamarin</a> (бесплатно, если у вас есть Visual Studio).</p>
+<p>Если в вашей системе отсутствуют предварительно установленные компоненты для любой из выбранных вами платформ, Stride выведет предупреждение.</p>
 <ol start="7">
-<li><p>Under <strong>Asset Packs</strong>, you can select additional assets to include in your project. These include assets such as animations and materials. The asset packs are fun to play with when you're learning how to use Stride, but they're not necessary.</p>
+<li><p>В разделе <strong>Asset Packs</strong> вы можете выбрать дополнительные ресурсы для включения в свой проект. К ним относятся такие ресурсы, как анимация и материалы. С пакетами ресурсов интересно играть, когда вы учитесь использовать Stride, но они не являются необходимыми.</p>
 </li>
-<li><p>Under <strong>Rendering</strong>, select the options you want.</p>
-<p><strong>Graphics API:</strong> The graphics features you can use in your project depend on the API you select. For advanced graphics features, select the latest version of the graphics APIs.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Some graphics cards don't support the latest APIs. For some mobile devices, only Direct3D 9.3 / OpenGL ES 2.0 and Direct3D 10.0 / OpenGL ES 3.0 are available.</p>
-</div>
-<p><strong>High or Low Dynamic Range (HDR / LDR):</strong> This defines how color is computed in your project. In LDR mode, colors range from 0 to 1. In HDR mode colors can take any float value. HDR provides more advanced and realistic rendering but requires more processing power and profile Direct3D 10.0 / OpenGL ES 3.0 or later.</p>
+<li><p>В разделе <strong>Rendering</strong> выберите нужные параметры.</p>
+<p><strong>Graphics API:</strong> Графические функции, которые вы можете использовать в своем проекте, зависят от выбранного вами API. Для расширенных графических функций выберите последнюю версию графических API.</p>
+<blockquote>
+<p>[!Предупреждение]
+Некоторые видеокарты не поддерживают новейшие API. Для некоторых мобильных устройств доступны только Direct3D 9.3 / Open GL ES 2.0 и Direct3D 10.0 / Open GL ES 3.0.</p>
+</blockquote>
+<p><strong>High or Low Dynamic Range (HDR / LDR):</strong> Это определяет, как вычисляется цвет в вашем проекте. В режиме LDR цвета находятся в диапазоне от 0 до 1. В режиме HDR цвета могут принимать любое значение с плавающей точкой. HDR обеспечивает более продвинутый и реалистичный рендеринг, но требует большей вычислительной мощности и профиля Direct3D 10.0 / Open GL ES 3.0 или более поздней версии.</p>
 </li>
-<li><p>Under <strong>Orientation</strong>, choose the orientation for your project. For PC games, use landscape. Portrait should usually only be used for mobile games.</p>
+<li><p>В разделе <strong>Orientation</strong> выберите ориентацию для вашего проекта. Для игр на ПК используйте альбомную ориентацию. Портретную ориентацию обычно следует использовать только для мобильных игр.</p>
 </li>
-<li><p>Click <strong>OK</strong>.</p>
+<li><p>Нажмите <strong>ОК</strong>.</p>
 </li>
 </ol>
-<p>Stride creates the project and opens it in Game Studio. For more information, see <a href="../game-studio/index.html">Game Studio</a>.</p>
-<h2 id="create-a-project-from-a-sample-or-template">Create a project from a sample or template</h2>
-<p>Stride includes several sample projects demonstrating each part of the engine (2D, 3D, sprites, fonts, UI, audio, input, etc). It also includes template games to help you make your own game.</p>
-<p>To create a project from a sample or template:</p>
+<p>Stride создаст проект и откроет его в Game Studio. Для получения дополнительной информации см. <a href="../game-studio/index.html">Game Studio</a>.</p>
+<h2 id="создание-проекта-по-образцу-или-шаблону">Создание проекта по образцу или шаблону</h2>
+<p>Stride включает в себя несколько примеров проектов, демонстрирующих каждую часть движка (2D, 3D, спрайты, шрифты, пользовательский интерфейс, аудио, ввод и т. д.). Он также включает в себя шаблоны игр, которые помогут вам создать собственную игру.</p>
+<p>Чтобы создать проект по образцу или шаблону:</p>
 <ol>
-<li><p>Open the <strong>New Project</strong> dialog.</p>
+<li><p>Откройте диалоговое окно <strong>New Project</strong>.</p>
 </li>
-<li><p>On the left, navigate to <strong>New project &gt; Samples</strong>.</p>
+<li><p>Слева перейдите в <strong>New project &gt; Samples</strong>..</p>
 </li>
-<li><p><strong>Select the sample</strong> you want to create a project from.</p>
+<li><p>Выберите <strong>Select the sample</strong> образец из которого вы хотите создать проект.</p>
 </li>
 </ol>
-<p><img src="media/create-project-new-open-project-samples.png" alt="New Project window — samples"></p>
+<p><img src="media/create-project-new-open-project-samples.png" alt="Окно нового проекта — samples"></p>
 <ol start="4">
-<li><p>Click <strong>Select</strong>.</p>
-<p>The <strong>Select Platforms</strong> window opens.</p>
-<p><img src="media/create-project-select-platform.png" alt="Select Platforms window"></p>
+<li><p>Нажмите <strong>Select</strong>.</p>
+<p>Откроется окно выбора платформ <strong>Select Platforms</strong>.</p>
+<p><img src="media/create-project-select-platform.png" alt="Окно выбора платформ"></p>
 </li>
-<li><p>Select the platforms you want your game to support and click <strong>OK</strong>.</p>
+<li><p>Выберите платформы, которые должна поддерживать ваша игра, и нажмите <strong>OK</strong>.</p>
 </li>
 </ol>
-<p>Stride creates the project and opens it in Game Studio.</p>
-<h2 id="whats-next">What's next?</h2>
+<p>Stride создаст проект и откроет его в Game Studio.</p>
+<h2 id="что-дальше">Что дальше?</h2>
 <ul>
-<li><a href="../game-studio/index.html">Get familiar with Game Studio</a></li>
+<li><a href="../game-studio/index.html">Познакомьтесь с Game Studio</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/get-started/create-a-project.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/get-started/create-a-project.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -190,7 +185,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

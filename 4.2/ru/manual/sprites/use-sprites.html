@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Use sprites | Stride Manual </title>
+      <title>Использование спрайтов | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Use sprites | Stride Manual ">
+      <meta name="title" content="Использование спрайтов | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/sprites/use-sprites.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/sprites/use-sprites.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,116 +85,120 @@
         </div>
 
         <article data-uid="">
-<h1 id="use-sprites">Use sprites</h1>
+<h1 id="использование-спрайтов">Использование спрайтов</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Intermediate</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p>To add a sprite to a scene, add a <strong>sprite component</strong> to an entity. Afterwards, you can control the sprite with a script.</p>
-<h2 id="add-a-sprite-component">Add a sprite component</h2>
+<p><span class="badge text-bg-primary">Продвинутый</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p>Чтобы добавить спрайт в сцену, добавьте <strong>компонент спрайта</strong> к объекту. После этого вы сможете управлять спрайтом с помощью скрипта.</p>
+<h2 id="добавление-компонента-спрайта">Добавление компонента спрайта</h2>
 <ol>
-<li><p>In the <strong>Scene Editor</strong>, select the entity you want to add a sprite to.</p>
-<div class="TIP">
-<h5>Tip</h5>
-<p>To create an entity, right-click the scene or Entity Tree and select <strong>Empty entity</strong>.</p>
-</div>
+<li><p>В <strong>Редакторе сцен (Scene Editor)</strong> выберите объект, к которому вы хотите добавить спрайт.</p>
+<blockquote>
+<p>[!Подсказка]
+Чтобы создать объект, щелкните правой кнопкой мыши на сцене или дереве объектов и выберите <strong>Пустая объект (Empty entity)</strong>.</p>
+</blockquote>
 </li>
-<li><p>In the <strong>Property Grid</strong>, click <strong>Add component</strong> and select <strong>Sprite</strong>.</p>
-<p><img src="media/SpriteEntity.png" alt="Sprite sheet"></p>
-<p>Game Studio adds a Sprite component to the entity.</p>
+<li><p>В <strong>Сетке свойств (Property Grid)</strong> нажмите <strong>Добавить компонент (Add component)</strong> и выберите <strong>Спрайт (Sprite)</strong>.</p>
+<p><img src="media/SpriteEntity.png" alt="Лист спрайтов"></p>
+<p>Game Studio добавит компонент Sprite к объекту.</p>
 </li>
-<li><p>From the <strong>Asset View</strong>, drag the sprite sheet to the <strong>Source</strong> field in the Sprite component:</p>
+<li><p>Из <strong>Просмотра активов (Asset View)</strong> перетащите лист спрайтов в поле <strong>Источник (Source)</strong> в компоненте спрайта:</p>
  <p>
      <video autoplay="" loop="" class="responsive-video" poster="media\drag-sprite-sheet-to-asset-picker.png">
      <source src="media/drag-sprite-sheet-to-asset-picker.mp4" type="video/mp4">
      </video>
  </p>
-<p>Alternatively, click <img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (<strong>Select an asset</strong>):</p>
-<p><img src="media/pick-asset-up.png" alt="Pick asset up"></p>
-<p>Then choose a sprite sheet:</p>
-<p><img src="media/asset-picker.png" alt="Select an asset"></p>
+<p>Либо нажмите <img src="../game-studio/media/hand-icon.png" alt="Значок руки"> (<strong>Выберите актив (Select an asset)</strong>):</p>
+<p><img src="media/pick-asset-up.png" alt="Прикрепление актива"></p>
+<p>Затем выберите лист спрайтов:</p>
+<p><img src="media/asset-picker.png" alt="Выбор актива"></p>
 </li>
 </ol>
-<p>Game Studio adds the sprite to the entity.</p>
-<h3 id="sprite-component-properties">Sprite component properties</h3>
-<p>You can access the sprite component properties in the <strong>Property Grid</strong>.</p>
-<p><img src="media/sprite-component-properties.png" alt="Sprite component properties"></p>
+<p>Game Studio добавит спрайт к объекту.</p>
+<h3 id="свойства-компонента-спрайта">Свойства компонента спрайта</h3>
+<p>Вы можете получить доступ к свойствам компонента спрайта в <strong>Сетке свойств (Property Grid)</strong>..</p>
+<p><img src="media/sprite-component-properties.png" alt="Свойства компонента спрайта"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Function</th>
+<th>Свойство</th>
+<th>Функция</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Source</td>
-<td>The source image file for the sprite</td>
+<td>Источник (Source)</td>
+<td>Исходный файл изображения для спрайта</td>
 </tr>
 <tr>
-<td>Type</td>
-<td><strong>Sprites</strong> have 3D space in the scene. <br><p><strong>Billboards</strong> always face the camera and appear fixed in 3D space.</p></td>
+<td>Кадр по умолчанию (Default Frame)</td>
+<td>Индекс спрайта в спрайт-листе, который будет отображаться</td>
 </tr>
 <tr>
-<td>Color</td>
-<td>Applies a color to the sprite</td>
+<td>Тип (Type)</td>
+<td><strong>Sprite</strong> имеет 3D пространство в сцене. <br><p><strong>Billboard</strong> всегда смотрите в камеру и кажется неподвижным в трехмерном пространстве.</p></td>
 </tr>
 <tr>
-<td>Intensity</td>
-<td>The intensity by which the color is scaled (mainly used for rendering LDR sprites in HDR scenes)</td>
+<td>Цвет (Color)</td>
+<td>Применяет цвет к спрайту</td>
 </tr>
 <tr>
-<td>Premultiply alpha</td>
-<td>Premultiply color components by their alpha component</td>
+<td>Интенсивность (Intensity)</td>
+<td>Интенсивность, с которой масштабируется цвет (в основном используется для рендеринга LDR-спрайтов в HDR-сценах)</td>
 </tr>
 <tr>
-<td>Ignore depth</td>
-<td>Ignore the depth of other elements in the scene when rendering the sprite. This always places the sprite on top of previous elements.</td>
+<td>Предварительно умножить альфу (Premultiply alpha)</td>
+<td>Предварительно умножить компоненты цвета на их альфа-компоненту</td>
 </tr>
 <tr>
-<td>Alpha cutoff</td>
-<td>Ignore pixels with low alpha values when rendering the sprite</td>
+<td>Игнорировать глубину (Ignore depth)</td>
+<td>Игнорировать глубину других элементов сцены при рендеринге спрайта. Это всегда помещает спрайт поверх предыдущих элементов.</td>
 </tr>
 <tr>
-<td>Sampler</td>
-<td>The texture sampling method used for the sprite: Point (nearest), Linear, or Anisotropic</td>
+<td>Альфа-отсечка (Alpha cutoff)</td>
+<td>Игнорировать пиксели с низкими значениями альфа при рендеринге спрайта</td>
+</tr>
+<tr>
+<td>Режим смешивания (Blend mode)</td>
+<td>TODO...</td>
+</tr>
+<tr>
+<td>Сэмплер (Sampler)</td>
+<td>Метод выборки текстуры, используемый для спрайта: Точечный (ближайший), линейный или анизотропный (Point (nearest), Linear, or Anisotropic)</td>
 </tr>
 <tr>
 <td>Swizzle</td>
-<td>How the color channels are accessed. <br><p><strong>Default</strong> leaves the image unchanged (finalRGB = originalRGB) <br><p><strong>Normal map</strong> uses the color channels as a <a href="../graphics/textures/normal-maps.html">normal map</a> <br><p><strong>Grayscale (alpha)</strong> uses only the R channel (finalRGBA = originalRRRR), so the sprite is red <br><p><strong>Grayscale (opaque)</strong> is the same as <strong>Grayscale (alpha)</strong>, but uses a value of <code>1</code> for the alpha channel, so the sprite is opaque</p></td>
+<td>Как осуществляется доступ к цветовым каналам. <br><p><strong>Default</strong> оставляет изображение неизменным (окончательный RGB = исходный RGB) <br><p><strong>Normal map</strong> использует цветовые каналы как <a href="../graphics/textures/normal-maps.html">карта нормалей</a> <br><p><strong>Grayscale (alpha)</strong> использует только канал R (конечный RGBA = исходный RRRR), поэтому спрайт красный <br><p><strong>Grayscale (opaque)</strong> тоже, что и <strong>Grayscale (alpha)</strong>, но использует значение <code>1</code> для альфа-канала, поэтому спрайт непрозрачен</p></td>
 </tr>
 <tr>
-<td>Render group</td>
-<td>Which render group the sprite belongs to. Cameras can render different groups. For more information, see <a href="../graphics/graphics-compositor/render-groups-and-masks.html">Render groups and render masks</a>.</td>
+<td>Группа рендеринга (Render group)</td>
+<td>К какой группе рендеринга принадлежит спрайт. Камеры могут визуализировать различные группы. Для получения дополнительной информации см. <a href="../graphics/graphics-compositor/render-groups-and-masks.html">Группы рендеринга и маски рендеринга</a>.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="use-sprites-in-a-script">Use sprites in a script</h2>
-<p>You can use scripts to render sprites at runtime. To do this, attach the script to an entity with a sprite component.</p>
-<p>For information about how to add scripts to entities, see <a href="../scripts/use-a-script.html">Use a script</a>.</p>
-<h3 id="code-sample">Code sample</h3>
-<p>This script displays a sprite that advances to the next sprite in the index every second. After it reaches the end of the sprite index, it loops.</p>
+<h2 id="использование-спрайтов-в-скрипте">Использование спрайтов в скрипте</h2>
+<p>Вы можете использовать скрипты для рендеринга спрайтов во время выполнения. Для этого прикрепите скрипт к объекту с компонентом спрайта.</p>
+<p>Информацию о том, как добавлять скрипты к сущностям, см. в разделе <a href="../scripts/use-a-script.html">Использование скрипта</a>.</p>
+<h3 id="пример-кода">Пример кода</h3>
+<p>Этот скрипт отображает спрайт, каждую секунду переходящий к следующему индексу спрайта. После того, как он достигает конечного индекса спрайта, переход зацикливается.</p>
 <pre><code class="lang-cs">using Stride.Rendering.Sprites;
 
 public class Animation : SyncScript
 {
-   // Declared public member fields and properties are displayed in Game Studio.
+   // Объявленные публичные поля и свойства членов отображаются в Game Studio.
    private SpriteFromSheet sprite;
    private DateTime lastFrame;
 
    public override void Start()
    {
-       // Initialize the script.
+       // Инициализация скрипта.
        sprite = Entity.Get&lt;SpriteComponent&gt;().SpriteProvider as SpriteFromSheet;
        lastFrame = DateTime.Now;
    }
 
    public override void Update()
    {
-      // Do something every new frame.
+      // Делать что-нибудь в каждом новом кадре.
       if ((DateTime.Now - lastFrame) &gt; new TimeSpan(0, 0, 1))
       {
          sprite.CurrentFrame += 1;
@@ -203,16 +207,16 @@ public class Animation : SyncScript
    }
 }
 </code></pre>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="import-sprite-sheets.html">Import sprite sheets</a></li>
-<li><a href="edit-sprites.html">Edit sprites</a></li>
+<li><a href="import-sprite-sheets.html">Импорт спрайт-листов</a></li>
+<li><a href="edit-sprites.html">Редактирование спрайтов</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/sprites/use-sprites.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/sprites/use-sprites.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -229,7 +233,7 @@ public class Animation : SyncScript
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

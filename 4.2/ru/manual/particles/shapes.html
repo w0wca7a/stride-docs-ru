@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Particle shapes | Stride Manual </title>
+      <title>Формы (Shapes) частиц | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Particle shapes | Stride Manual ">
+      <meta name="title" content="Формы (Shapes) частиц | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/shapes.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/shapes.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,45 +85,41 @@
         </div>
 
         <article data-uid="">
-<h1 id="particle-shapes">Particle shapes</h1>
+<h1 id="формы-shapes-частиц">Формы (Shapes) частиц</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Artist</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p>Because particles are essentially only points in space, they have no defined shape. Instead, Stride draws shapes <strong>between</strong> the points.</p>
-<p>The major difference between particle shapes is whether they always face the camera, or if they can rotate freely in 3D space.</p>
-<p>Currently, emitters can only emit one type of shape at a time.</p>
-<h2 id="billboards">Billboards</h2>
-<p><strong>Billboards</strong> always face the camera. They appear <strong>fixed in 3D space</strong>, so they don't change with the camera position.</p>
-<p>Because they always face the camera, billboards support angular rotation only. This means they only rotate clockwise or counter-clockwise.</p>
-<h2 id="hexagon">Hexagon</h2>
-<p><strong>Hexagons</strong> are identical to billboards, but are hexagonal in shape. Like billboards, they always face the camera and support angular rotation only.</p>
-<h2 id="quads">Quads</h2>
-<p>Quads are identical to billboards, but don't rotate to face the camera, and so support 3D orientation and rotation.</p>
-<p>Stride draws billboard particles to the <strong>Size</strong> value in the particle effect properties. If you don't specify a size, Stride expands the quads to 1m x 1m.</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Художник</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p>Поскольку частицы по сути являются лишь точками в пространстве, они не имеют определенной формы. Вместо этого Stride рисует фигуры <strong>между</strong> точками.</p>
+<p>Основное различие между формами частиц заключается в том, всегда ли они обращены к камере или могут свободно вращаться в трехмерном пространстве.</p>
+<p>В настоящее время излучатели могут одновременно излучать только один тип формы.</p>
+<h2 id="билборды-billboards">Билборды (Billboards)</h2>
+<p><strong>Билборды</strong> всегда повернуты к камере. Они кажутся <strong>фиксированными в трехмерном пространстве</strong>, поэтому они не меняются в зависимости от положения камеры.</p>
+<p>Поскольку они всегда обращены к камере, билборды поддерживают только угловое вращение. Это означает, что они вращаются только по часовой стрелке или против часовой стрелки.</p>
+<h2 id="шестигранник-hexagon">Шестигранник (Hexagon)</h2>
+<p><strong>Шестигранники</strong> идентичны билбордам, но имеют шестиугольную форму. Как и билборды, они всегда обращены к камере и поддерживают только угловое вращение.</p>
+<h2 id="квадраты-quads">Квадраты (Quads)</h2>
+<p>Квадраты идентичны билбордам, но не поворачиваются лицом к камере, и таким образом поддерживать 3D-ориентацию и вращение.</p>
+<p>Stride рисует частицы билборда в соответствии со значением <strong>Размера (Size)</strong> в свойствах эффекта частиц. Если размер не указан, Stride расширит квадраты до 1 м x 1 м.</p>
 <p><img src="media/particles-reference-shapebuilders-1.png" alt="media/particles-reference-shapebuilders-1.png"></p>
-<h2 id="direction-aligned-sprite">Direction-aligned sprite</h2>
-<p>This sprite is billboard-aligned and stretched in the direction of the particle. You can set an initial direction for the particles with an initializer, or add an updater which writes particle speed as direction.</p>
-<h2 id="ribbons-and-trails">Ribbons and trails</h2>
-<p>See <a href="ribbons-and-trails.html">Ribbons and trails</a>.</p>
-<h2 id="see-also">See also</h2>
+<h2 id="спрайт-выровненный-по-направлению-direction-aligned-sprite">Спрайт, выровненный по направлению (Direction-aligned sprite)</h2>
+<p>Этот спрайт выровнен по билборду и растянут в направлении частицы. Вы можете задать начальное направление частиц с помощью инициализатора, или добавить апдейтер, который записывает скорость частицы как направление.</p>
+<h2 id="ленты-и-траектории-движения-ribbons-и-trails">Ленты и траектории движения (Ribbons и Trails)</h2>
+<p>См. <a href="ribbons-and-trails.html">Ленты и траектории движения</a>.</p>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="create-particles.html">Create particles</a></li>
-<li><a href="emitters.html">Emitters</a></li>
-<li><a href="materials.html">Materials</a></li>
-<li><a href="spawners.html">Spawners</a></li>
-<li><a href="initializers.html">Initializers</a></li>
-<li><a href="updaters.html">Updaters</a></li>
+<li><a href="create-particles.html">Создание частиц</a></li>
+<li><a href="emitters.html">Излучатели (Emitters)</a></li>
+<li><a href="materials.html">Материалы</a></li>
+<li><a href="spawners.html">Генераторы (Spawners)</a></li>
+<li><a href="initializers.html">Инициализаторы</a></li>
+<li><a href="updaters.html">Актуализаторы (Updaters)</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/shapes.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/shapes.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -140,7 +136,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

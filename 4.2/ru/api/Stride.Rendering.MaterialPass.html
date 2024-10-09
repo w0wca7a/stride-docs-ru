@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -196,7 +196,7 @@ public class MaterialPass</code></pre>
 
   <h3 id="Stride_Rendering_MaterialPass_BlendState" data-uid="Stride.Rendering.MaterialPass.BlendState">
   BlendState
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L54"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Overrides the blend state for this material.</p>
@@ -256,9 +256,40 @@ public class MaterialPass</code></pre>
 
 
 
+  <h3 id="Stride_Rendering_MaterialPass_DepthFunction" data-uid="Stride.Rendering.MaterialPass.DepthFunction">
+  DepthFunction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Overrides depth clip for this material.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CompareFunction? DepthFunction</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Stride.Graphics.CompareFunction.html">CompareFunction</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Stride_Rendering_MaterialPass_TessellationMethod" data-uid="Stride.Rendering.MaterialPass.TessellationMethod">
   TessellationMethod
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L59"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The tessellation method used by the material.</p>
@@ -294,7 +325,7 @@ public class MaterialPass</code></pre>
 
   <h3 id="Stride_Rendering_MaterialPass_AlphaToCoverage" data-uid="Stride.Rendering.MaterialPass.AlphaToCoverage">
   AlphaToCoverage
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L70"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Whether or not to use the alpha-to-coverage multisampling technique.</p>
@@ -326,7 +357,7 @@ public class MaterialPass</code></pre>
 
   <h3 id="Stride_Rendering_MaterialPass_HasTransparency" data-uid="Stride.Rendering.MaterialPass.HasTransparency">
   HasTransparency
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L65"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets a value indicating whether this instance has transparent.</p>
@@ -359,7 +390,7 @@ public class MaterialPass</code></pre>
 
   <h3 id="Stride_Rendering_MaterialPass_IsLightDependent" data-uid="Stride.Rendering.MaterialPass.IsLightDependent">
   IsLightDependent
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L76"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Determines if this material is affected by lighting.</p>
@@ -457,7 +488,7 @@ public class MaterialPass</code></pre>
 
   <h3 id="Stride_Rendering_MaterialPass_PassIndex" data-uid="Stride.Rendering.MaterialPass.PassIndex">
   PassIndex
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/MaterialPass.cs/#L84"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>The index of this pass as part of its containing <a class="xref" href="Stride.Rendering.MaterialPass.html#Stride_Rendering_MaterialPass_Material">Material</a>.</p>
@@ -508,7 +539,7 @@ public class MaterialPass</code></pre>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

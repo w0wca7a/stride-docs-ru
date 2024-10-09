@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Launch a game | Stride Manual </title>
+      <title>Запуск игры | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Launch a game | Stride Manual ">
+      <meta name="title" content="Запуск игры | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/get-started/launch-a-game.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/get-started/launch-a-game.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,78 +85,74 @@
         </div>
 
         <article data-uid="">
-<h1 id="launch-a-game">Launch a game</h1>
+<h1 id="запуск-игры">Запуск игры</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span></p>
-<p>This page explains how to launch your game using Game Studio or Visual Studio.</p>
-<h2 id="launch-a-game-from-game-studio">Launch a game from Game Studio</h2>
+<p><span class="badge text-bg-primary">Начинающий</span></p>
+<p>На этой странице объясняется, как запустить игру с помощью Game Studio или Visual Studio.</p>
+<h2 id="запуск-игры-из-game-studio">Запуск игры из Game Studio</h2>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Game Studio can't launch games for the Windows Store or UWP (Universal Windows Platform) platforms. To launch a game for those platforms, use Visual Studio (see below).</p>
+<p>Game Studio не может запускать игры для платформ Windows Store или UWP (Universal Windows Platform). Чтобы запустить игру для этих платформ, используйте Visual Studio (см. ниже).</p>
 </div>
 <ol>
-<li><p>In the <strong>toolbar</strong>, select your target platform.</p>
-<p><img src="media/launch-your-game-game-studio-profiles.png" alt="Platform selection"></p>
+<li><p>На <strong>панели инструментов</strong> выберите целевую платформу.</p>
+<p><img src="media/launch-your-game-game-studio-profiles.png" alt="Выбор платформы"></p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>You can only select platforms you selected in the <strong>Create a new game</strong> dialog when you created the project. To add additional platforms to the project, see <a href="../platforms/add-or-remove-a-platform.html">Add or remove a platform</a>.</p>
+<p>Вы можете выбрать только те платформы, которые вы выбрали в диалоговом окне <strong>Создать новую игру</strong> при создании проекта. Чтобы добавить дополнительные платформы в проект, см. <a href="../platforms/add-or-remove-a-platform.html">Добавление или удаление платформы</a>.</p>
 </div>
 </li>
-<li><p>To run the game, click <img src="media/launch-your-game-play-icon.png" alt="Play icon"> in the toolbar or press <strong>F5</strong>.</p>
-<p><img src="media/game-studio-toolbar-build-button.png" alt="Game Studio play button"></p>
+<li><p>Чтобы запустить игру, нажмите <img src="media/launch-your-game-play-icon.png" alt="Значок запуска"> на панели инструментов или нажмите клавишу <strong>F5</strong>.</p>
+<p><img src="media/game-studio-toolbar-build-button.png" alt="Кнопка запуска Game Studio"></p>
 </li>
 </ol>
-<p>The <strong>Output window</strong> shows the build progress.</p>
-<p><img src="media/output-window.png" alt="Output window"></p>
-<p>When the build is complete, your game starts on the selected platform.</p>
-<h2 id="launch-a-game-from-visual-studio">Launch a game from Visual Studio</h2>
+<p><strong>Окно вывода (Output)</strong> показывает ход сборки.</p>
+<p><img src="media/output-window.png" alt="Окно вывода"></p>
+<p>После завершения сборки ваша игра запустится на выбранной платформе.</p>
+<h2 id="запуск-игры-из-visual-studio">Запуск игры из Visual Studio</h2>
 <ol>
-<li><p>In Game Studio, in the toolbar, click <img src="media/launch-your-game-IDE-icon.png" alt="Open in IDE"> (<strong>Open in IDE</strong>) to launch Visual Studio.</p>
+<li><p>В Game Studio на панели инструментов нажмите <img src="media/launch-your-game-IDE-icon.png" alt="Открыть в IDE"> (<strong>Открыть в IDE (Open in IDE)</strong>) для запуска Visual Studio.</p>
 </li>
-<li><p>In the Visual Studio toolbar, set the appropriate project as the startup project.</p>
+<li><p>На панели инструментов Visual Studio установите соответствующий проект в качестве запускаемого.</p>
 <p><img src="media/launch-your-game-visual-studio-profiles.png" alt="Select build profile in Visual Studio"></p>
-<p>The startup project configuration is updated automatically.</p>
+<p>Конфигурация стартового проекта обновляется автоматически.</p>
 <div class="TIP">
 <h5>Tip</h5>
-<p>You can see your projects in the Solution Explorer on the right. The project filename extensions identify the platform (eg <em>.Android</em>, <em>.iOS</em>, etc).</p>
+<p>Вы можете увидеть свои проекты в Solution Explorer справа. Расширения имен файлов проектов идентифицируют платформу (например, <em>.Android</em>, <em>.iOS</em> и т.д.).</p>
 </div>
 </li>
-<li><p>Check that the configuration and platform properly matches what you are expected.</p>
+<li><p>Убедитесь, что конфигурация и платформа полностью соответствуют вашим ожиданиям.</p>
 </li>
 <li>
 <ul>
-<li><p>To start the game without debugging, press <strong>Ctrl + F5</strong>.</p>
+<li><p>Чтобы запустить игру без отладки, нажмите <strong>Ctrl + F5</strong>.</p>
 </li>
-<li><p>To start the game with debugging, click <strong>Start</strong> or press <strong>F5</strong>.</p>
-<p><img src="media/visual-studio-start-button.png" alt="Visual Studio Start button"></p>
+<li><p>Чтобы запустить игру с отладкой, нажмите <strong>Start</strong> или клавишу <strong>F5</strong>.</p>
+<p><img src="media/visual-studio-start-button.png" alt="Кнопка запуска Visual Studio"></p>
 </li>
 </ul>
 </li>
 </ol>
-<h2 id="remove-borders">Remove borders</h2>
-<p>By default, the game runs with window borders.</p>
+<h2 id="удаление-границ">Удаление границ</h2>
+<p>По умолчанию игра запускается в окне с границами.</p>
 <table>
 <thead>
 <tr>
-<th>With borders</th>
-<th>Without borders</th>
+<th>С границами</th>
+<th>Без границ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="media/with-borders.jpg" alt="With borders"></td>
-<td><img src="media/without-borders.jpg" alt="Without borders"></td>
+<td><img src="media/with-borders.jpg" alt="С границами"></td>
+<td><img src="media/without-borders.jpg" alt="Без границ"></td>
 </tr>
 </tbody>
 </table>
-<p>To run the game without borders, use:</p>
+<p>Чтобы запустить игру в окне без границ, используйте:</p>
 <pre><code class="lang-cs">Game.Window.IsBorderLess = true;
 </code></pre>
-<p>For example:</p>
+<p>Например:</p>
 <pre><code class="lang-cs">using Stride.Engine;
 
 namespace MyGame
@@ -175,7 +171,7 @@ namespace MyGame
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/get-started/launch-a-game.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/get-started/launch-a-game.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -192,7 +188,7 @@ namespace MyGame
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

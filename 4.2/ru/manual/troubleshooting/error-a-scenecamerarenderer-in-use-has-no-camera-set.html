@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Error: &quot;A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot].&quot; | Stride Manual </title>
+      <title>Ошибка: &quot;A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot].&quot; | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Error: &quot;A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot].&quot; | Stride Manual ">
+      <meta name="title" content="Ошибка: &quot;A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot].&quot; | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/error-a-scenecamerarenderer-in-use-has-no-camera-set.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/error-a-scenecamerarenderer-in-use-has-no-camera-set.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,53 +85,49 @@
         </div>
 
         <article data-uid="">
-<h1 id="error-a-scenecamerarenderer-in-use-has-no-camera-assigned-to-its-slot-make-sure-a-camera-is-enabled-and-assigned-to-the-slot">Error: &quot;A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot].&quot;</h1>
+<h1 id="ошибка-a-scenecamerarenderer-in-use-has-no-camera-assigned-to-its-slot-make-sure-a-camera-is-enabled-and-assigned-to-the-slot">Ошибка: &quot;A SceneCameraRenderer in use has no camera assigned to its [Slot]. Make sure a camera is enabled and assigned to the [Slot].&quot;</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
 <div class="NOTE">
 <h5>Note</h5>
-<p>In earlier versions of Stride, this error message was: &quot;A SceneCameraRenderer in use has no camera set. Make sure the camera component to use is enabled and has its [Slot] property correctly set.&quot;</p>
+<p>В более ранних версиях Stride сообщение об ошибке выглядело так:&quot;A SceneCameraRenderer in use has no camera set. Make sure the camera component to use is enabled and has its [Slot] property correctly set.&quot;</p>
 </div>
-<p>This error means there's no camera available for the scene renderer to use. This has several possible causes:</p>
+<p>Эта ошибка означает, что нет камеры, доступной для использования рендерером сцены. Это может иметь несколько возможных причин:</p>
 <ul>
-<li>there's no enabled <a href="../graphics/cameras/index.html">camera</a></li>
-<li>the camera is set to the wrong <a href="../graphics/cameras/camera-slots.html">camera slot</a></li>
-<li>there are multiple enabled cameras assigned to the same camera slot</li>
+<li>нет включенной <a href="../graphics/cameras/index.html">камеры</a></li>
+<li>камера установлена ​​в неправильном <a href="../graphics/cameras/camera-slots.html">слоте камеры</a></li>
+<li>несколько включенных камер назначены на один и тот же слот камеры</li>
 </ul>
-<h2 id="fix">Fix</h2>
-<p>If you create your camera components in Game Studio, make sure:</p>
+<h2 id="исправление">Исправление</h2>
+<p>Если вы создаете компоненты камеры в Game Studio, убедитесь, что:</p>
 <ul>
-<li>the camera slots are set to the <strong>Main</strong> slot (see <a href="../graphics/cameras/camera-slots.html">Graphics — Camera slots</a>)</li>
-<li>only the initial camera is enabled</li>
+<li>слоты камеры установлены в слот <strong>Main</strong>  (см. <a href="../graphics/cameras/camera-slots.html">Графика — Слоты для камер</a>)</li>
+<li>включена только начальная камера</li>
 </ul>
-<p>If you create your camera components in code, make sure you retrieve the correct slot from the graphics compositor. Use:</p>
+<p>Если вы создаете компоненты камеры в коде, убедитесь, что вы извлекаете правильный слот из графического компоновщика. Используйте:</p>
 <pre><code class="lang-cs">var camera = new CameraComponent();
 camera.Slot = SceneSystem.GraphicsCompositor.Cameras[0].ToSlotId();
 </code></pre>
-<p>To change the camera at runtime, toggle the <code>Enabled</code> property.</p>
+<p>Чтобы изменить камеру во время выполнения, переключите свойство <code>Enabled</code> .</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Make sure you:</p>
+<p>Убедитесь, что вы:</p>
 <ul>
-<li><p>always have at least one enabled camera</p>
+<li><p>всегда имеете хотя бы одну включенную камеру</p>
 </li>
-<li><p>don't have multiple cameras enabled and assigned to the same slot at the same time</p>
+<li><p>не включайте и не назначайте одновременно несколько камер одному и тому же слоту</p>
 </li>
 </ul>
 </div>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="../graphics/cameras/camera-slots.html">Graphics — Camera slots</a></li>
-<li><a href="../graphics/cameras/index.html">Graphics — Cameras</a></li>
+<li><a href="../graphics/cameras/camera-slots.html">Графика — Слоты для камер</a></li>
+<li><a href="../graphics/cameras/index.html">Графика — Камеры</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/error-a-scenecamerarenderer-in-use-has-no-camera-set.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/error-a-scenecamerarenderer-in-use-has-no-camera-set.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -148,7 +144,7 @@ camera.Slot = SceneSystem.GraphicsCompositor.Cameras[0].ToSlotId();
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

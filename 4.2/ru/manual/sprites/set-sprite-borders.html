@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Set sprite borders | Stride Manual </title>
+      <title>Установка границы спрайта | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Set sprite borders | Stride Manual ">
+      <meta name="title" content="Установка границы спрайта | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/sprites/set-sprite-borders.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/sprites/set-sprite-borders.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,54 +85,50 @@
         </div>
 
         <article data-uid="">
-<h1 id="set-sprite-borders">Set sprite borders</h1>
+<h1 id="установка-границы-спрайта">Установка границы спрайта</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Designer</span></p>
-<p><strong>Sprite borders</strong> are areas that don't deform when you scale the sprite. These are often useful for sprites used for <a href="../ui/ui-libraries.html">UI elements</a> such as menu buttons. You can only set sprite borders for sprites set to the <strong>UI</strong> sheet type.</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Дизайнер</span></p>
+<p><strong>Границы спрайта (Sprite borders)</strong> это области, которые не деформируются при масштабировании спрайта. Они часто полезны для спрайтов, предназначенных для <a href="../ui/ui-libraries.html">Элементов пользовательского интерфейса</a>, например кнопки меню. Вы можете установить границы спрайтов только для спрайтов с установленным типом <strong>Пользовательский интерфейс (UI)</strong> .</p>
 <table>
 <thead>
 <tr>
-<th>Original sprite</th>
-<th>Scaled without borders</th>
-<th>Scaled with borders</th>
+<th>Оригинальный спрайт</th>
+<th>Масштабируется без границ</th>
+<th>Масштабируется с границами</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="media/original-sprite.png" alt="Original sprite"></td>
-<td><img src="media/sprite-stretched-no-border.png" alt="With border"></td>
-<td><img src="media/sprite-stretched-with-border.png" alt="With border"></td>
+<td><img src="media/original-sprite.png" alt="Оригинальный спрайт"></td>
+<td><img src="media/sprite-stretched-no-border.png" alt="С границей"></td>
+<td><img src="media/sprite-stretched-with-border.png" alt="С границей"></td>
 </tr>
 <tr>
 <td></td>
-<td>Edges are deformed</td>
-<td>Edges not deformed</td>
+<td>Края деформируются</td>
+<td>Края не деформируются</td>
 </tr>
 </tbody>
 </table>
-<h3 id="set-sprite-borders-1">Set sprite borders</h3>
+<h3 id="установка-границы-спрайта-1">Установка границы спрайта</h3>
 <ol>
-<li><p>In the Sprite Editor, make sure the <strong>sheet type</strong> is set to <strong>UI</strong>.</p>
-<p><img src="media/select-type-UI.png" alt="Choose UI"></p>
+<li><p>В редакторе спрайтов убедитесь, что <strong>тип листа</strong> установлен на <strong>Пользовательский интерфейс (UI)</strong>.</p>
+<p><img src="media/select-type-UI.png" alt="Выбор пользовательского интерфейса"></p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>This has no effect on how the sprite is rendered at runtime, but lets you set slightly different properties, including sprite borders.</p>
+<p>Это не влияет на то, как спрайт отображается во время выполнения, но позволяет задать немного другие свойства, включая границы спрайта.</p>
 </div>
 </li>
-<li><p>From the <strong>Sprites</strong> list, select the sprite you want to add sprite borders to.</p>
+<li><p>В списке <strong>Спрайты (Sprites)</strong> выберите спрайт, к которому вы хотите добавить границы.</p>
 </li>
-<li><p>Make sure the texture region for the sprite is correct. For information about how to do this, see <a href="edit-sprites.html">Edit sprites</a>.</p>
-<p><img src="media/select-starbox.png" alt="Select texture region"></p>
+<li><p>Убедитесь, что область текстуры для спрайта правильная. Информацию о том, как это сделать, см. в разделе <a href="edit-sprites.html">Редактирование спрайтов</a>.</p>
+<p><img src="media/select-starbox.png" alt="Выбор области текстуры"></p>
 </li>
-<li><p>In the Sprite Editor toolbar, select <strong>Sprite border resize</strong> tool.</p>
-<p><img src="media/border-resize-tool-icon.png" alt="Border resize tool"></p>
+<li><p>На панели инструментов редактора спрайтов выберите инструмент <strong>Изменение размера границы спрайта (Sprite border resize)</strong>.</p>
+<p><img src="media/border-resize-tool-icon.png" alt="Инструмент изменения размера границы"></p>
 </li>
-<li><p>Drag the sprite borders into position.</p>
+<li><p>Перетащите границы спрайта в нужное положение.</p>
 </li>
 </ol>
 <p>
@@ -142,36 +138,36 @@
 </p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>By default, the sprite borders match the sprite texture region.</p>
+<p>По умолчанию границы спрайта соответствуют области текстуры спрайта.</p>
 </div>
 <div class="TIP">
 <h5>Tip</h5>
-<p>You can zoom in and out using <strong>Ctrl + mousewheel</strong> to make precise selections.</p>
+<p>Вы можете увеличивать и уменьшать масштаб, используя <strong>Ctrl + КолесоМыши</strong> для точного выбора.</p>
 </div>
 <div class="TIP">
 <h5>Tip</h5>
-<p>For fine-tune control over the sprite borders, adjusting one-by-one in the <strong>Property Grid</strong></p>
-<p><img src="media/adjust-sprite-border-from-property-grid.png" alt="Adjust sprite borders from Property grid"></p>
+<p>Для точной настройки границ спрайта, настраивайте их по одному в <strong>Сетке свойств (Property Grid)</strong></p>
+<p><img src="media/adjust-sprite-border-from-property-grid.png" alt="Отрегулируйте границы спрайта с помощью сетки свойств"></p>
 </div>
-<h2 id="lock-the-sprite-borders">Lock the sprite borders</h2>
-<p>By default, sprite borders move as you resize the texture region. To stop this from happening, click <strong>Lock the sprite borders</strong> in the toolbar.</p>
-<p><img src="media/lock-icon.png" alt="Lock icon"></p>
+<h2 id="блокировка-границ-спрайта">Блокировка границ спрайта</h2>
+<p>По умолчанию границы спрайта перемещаются при изменении размера области текстуры. Чтобы этого не произошло, нажмите <strong>Заблокировать границы спрайта (Lock the sprite borders)</strong> на панели инструментов.</p>
+<p><img src="media/lock-icon.png" alt="Иконка блокировки"></p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Sprite borders always stay inside the texture region.</p>
+<p>Границы спрайта всегда остаются внутри области текстуры.</p>
 </div>
 <h2 id="see-also">See also</h2>
 <ul>
-<li><a href="import-sprite-sheets.html">Import sprite sheets</a></li>
-<li><a href="edit-sprites.html">Edit sprites</a></li>
-<li><a href="use-sprites.html">Use sprites</a></li>
-<li><a href="../ui/index.html">UI</a></li>
+<li><a href="import-sprite-sheets.html">Импорт спрайт-листов</a></li>
+<li><a href="edit-sprites.html">Редактирование спрайтов</a></li>
+<li><a href="use-sprites.html">Использование спрайтов</a></li>
+<li><a href="../ui/index.html">Пользовательский интерфейс (UI)</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/sprites/set-sprite-borders.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/sprites/set-sprite-borders.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -188,7 +184,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

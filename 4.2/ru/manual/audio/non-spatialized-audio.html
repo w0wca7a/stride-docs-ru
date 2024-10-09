@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Non-spatialized audio | Stride Manual </title>
+      <title>Непространственный звук | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Non-spatialized audio | Stride Manual ">
+      <meta name="title" content="Непространственный звук | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/audio/non-spatialized-audio.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/audio/non-spatialized-audio.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,98 +85,94 @@
         </div>
 
         <article data-uid="">
-<h1 id="non-spatialized-audio">Non-spatialized audio</h1>
+<h1 id="непространственный-звук">Непространственный звук</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p><strong>Non-spatialized audio</strong> sounds the same throughout the scene, regardless of the position of entities (such as the player camera). It's stereo and moves along a single axis (usually the X-axis). Unlike <a href="spatialized-audio.html">spatialized audio</a>, the <em>volume</em>, <em>pitch</em> (<em>frequency</em>), and other parameters of spatialized audio don't change. This is useful, for example, for background music and menu sound effects.</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p><strong>Непространственный звук (Non-spatialized audio)</strong> звучит одинаково на протяжении всей сцены, независимо от положения объектов (например, камеры игрока).Он стерео и движется вдоль одной оси (обычно оси X). В отличие от <a href="spatialized-audio.html">пространственного звука</a>, <em>volume</em>, <em>pitch</em> (<em>frequency</em>), и других параметров пространственного звука не изменяются. Это полезно, например, для фоновой музыки и звуковых эффектов меню.</p>
 <p><img src="media/audio-index-non-spatialized-audio.png" alt="Non-spatialized audio"></p>
-<p>Non-spatialized audio requires no <a href="audio-emitters.html">audio emitters</a> or <a href="audio-listeners.html">audio listeners</a>.</p>
-<h2 id="1-import-audio-and-include-it-in-the-build">1. Import audio and include it in the build</h2>
+<p>Непространственный звук не требует <a href="audio-emitters.html">аудио излучателей</a> или <a href="audio-listeners.html">аудио слушателей</a>.</p>
+<h2 id="1-импорт-звукового-файла-и-включение-его-в-сборку">1. Импорт звукового файла и включение его в сборку</h2>
 <ol>
-<li><p><a href="import-audio.html">Import the audio as a audio asset</a>.</p>
+<li><p><a href="import-audio.html">Импорт звукового файла как аудиоактива</a>.</p>
 </li>
-<li><p>Make sure the audio asset is a <strong>root asset</strong>. Root assets are assets that Stride includes in the build so they can be used at runtime.</p>
-<p>In the <strong>Asset View</strong>, right-click the asset and select <strong>Include in build as root asset</strong>:</p>
+<li><p>Убедитесь, что аудиоактив является <strong>корневым активом</strong>. Корневые активы — это активы, которые Stride включает в сборку, чтобы их можно было использовать во время выполнения.</p>
+<p>В <strong>Просмотр активов (Asset View)</strong>, щелкните правой кнопкой мыши по активу и выберите <strong>Включить в сборку как корневой ресурс (Include in build as root asset)</strong>:</p>
 <p><img src="media/audio-include-in-build-as-root-asset.png" alt="Include in build as root asset"></p>
-<p>If the menu option reads <strong>Do not include in build as root asset</strong>, the option is already selected and you don't need to change it.</p>
+<p>Если в меню указано <strong>Не включать в сборку как корневой ресурс (Do not include in build as root asset)</strong>, опция уже выбрана, и вам не нужно ее менять.</p>
 </li>
 </ol>
-<h2 id="2-create-a-script-to-play-audio">2. Create a script to play audio</h2>
-<p>To play non-spatialized audio at runtime, create an instance of it and define its behavior in the code.</p>
-<p>The <a class="xref" href="../../api/Stride.Audio.SoundInstance.html">SoundInstance</a> controls audio at runtime with the following properties:</p>
+<h2 id="2-создание-скрипта-для-воспроизведения-звука">2. Создание скрипта для воспроизведения звука</h2>
+<p>Чтобы воспроизвести непространственный звук во время выполнения, создайте его экземпляр и определите его поведение в коде.
+<a class="xref" href="../../api/Stride.Audio.SoundInstance.html">SoundInstance</a> управляет звуком во время выполнения с помощью следующих свойств:</p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Function</th>
+<th>Свойство</th>
+<th>Функция</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_IsLooping">IsLooping</a></td>
-<td>Gets or sets looping of the audio.</td>
+<td>Зацикливание <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_IsLooping">IsLooping</a></td>
+<td>Получает или задает зацикливание звука.</td>
 </tr>
 <tr>
-<td><a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Pan">Pan</a></td>
-<td>Sets the balance between left and right speakers. By default, each speaker a value of 0.</td>
+<td>Баланс <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Pan">Pan</a></td>
+<td>Устанавливает баланс между левым и правым динамиками. По умолчанию каждому динамику присвоено значение 0.</td>
 </tr>
 <tr>
 <td><a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Pitch">Pitch</a></td>
-<td>Gets or sets the audio pitch (frequency).</td>
+<td>Получает или задает высоту звука (частоту).</td>
 </tr>
 <tr>
 <td><a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_PlayState">PlayState</a></td>
-<td>Gets the state of the <a class="xref" href="../../api/Stride.Audio.SoundInstance.html">SoundInstance</a>.</td>
+<td>Получает состояние <a class="xref" href="../../api/Stride.Audio.SoundInstance.html">SoundInstance</a>.</td>
 </tr>
 <tr>
 <td><a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Position">Position</a></td>
-<td>Gets the current play position of the audio.</td>
+<td>Получает текущую позицию воспроизведения аудио.</td>
 </tr>
 <tr>
 <td><a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Volume">Volume</a></td>
-<td>Sets the audio volume.</td>
+<td>Устанавливает громкость звука.</td>
 </tr>
 </tbody>
 </table>
-<p>For more details, see the <a class="xref" href="../../api/Stride.Audio.SoundInstance.html">SoundInstance API documentation</a>.</p>
+<p>Более подробную информацию см. <a class="xref" href="../../api/Stride.Audio.SoundInstance.html">SoundInstance API documentation</a>.</p>
 <div class="NOTE">
 <h5>Note</h5>
 </div>
-<p>If the sound is already playing, Stride ignores all additional calls to <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Play">SoundInstance.Play</a>.
-The same goes for <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Pause">SoundInstance.Pause</a> (when a sound is already paused) and <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Stop">SoundInstance.Stop</a> (when a sound is already stopped).</p>
-<p>For example, the following code:</p>
+<p>Если звук уже воспроизводится, Stride игнорирует все дополнительные вызовы <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Play">SoundInstance.Play</a>.
+То же самое касается <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Pause">SoundInstance.Pause</a> (когда воспроизведение уже приостановлено) и <a class="xref" href="../../api/Stride.Audio.SoundInstance.html#Stride_Audio_SoundInstance_Stop">SoundInstance.Stop</a> (когда воспроизведение уже остановлено).</p>
+<p>Например, следующий код:</p>
 <ul>
-<li>instantiates non-spatialized audio</li>
-<li>sets the audio to loop</li>
-<li>sets the volume</li>
-<li>plays the audio</li>
+<li>создает непространственный звук</li>
+<li>устанавливает зацикливание воспроизведения</li>
+<li>устанавливает громкость</li>
+<li>воспроизводит звук</li>
 </ul>
 <pre><code class="lang-cs">public override async Task Execute()
 {
-    // Load the sound
+    // Загрузка звука
     Sound musicSound = Content.Load&lt;Sound&gt;(&quot;MySound&quot;);
             
-    // Create a sound instance
+    // Создание непространственного звука
     SoundInstance music = musicSound.CreateInstance();
             
-    // Loop
+    // Зацикливание
     music.IsLooping = true;
 
-    // Set the volume
+    // Устанавливка громкости
     music.Volume = 0.25f;
 
-    // Play the music
+    // Воспроизведение
     music.Play();
 }
 </code></pre>
-<h3 id="alternative-create-a-script-with-public-variables">Alternative: create a script with public variables</h3>
-<p>Create a public variable for each audio asset you want to use. You can use the same properties listed above.</p>
-<p>For example:</p>
+<h3 id="альтернативный-способ-создание-скрипта-с-public-переменными">Альтернативный способ: создание скрипта с public переменными</h3>
+<p>Создайте public переменную для каждого аудиоактива, который вы хотите использовать. Вы можете использовать те же свойства, что перечислены вышe.</p>
+<p>Например:</p>
 <pre><code class="lang-cs">public class MySoundScript : SyncScript
 {
     public Sound MyMusic;
@@ -191,13 +187,13 @@ The same goes for <a class="xref" href="../../api/Stride.Audio.SoundInstance.htm
 
     public override void Update()
     {
-        // If music isn't playing but should be, play the music.
+        // Если музыка не играет, но должна играть, включите ее.
         if (PlayMusic &amp; musicInstance.PlayState != PlayState.Playing)
         {
             musicInstance.Play();
         }
 
-        // If music is playing but shouldn't be, stop the music.
+        // Если музыка играет, но не должна, выключите ее.
         else if (!PlayMusic)
         {
             musicInstance.Stop();
@@ -205,35 +201,35 @@ The same goes for <a class="xref" href="../../api/Stride.Audio.SoundInstance.htm
     }
 }
 </code></pre>
-<h2 id="add-the-script-to-the-entity">Add the script to the entity</h2>
+<h2 id="добавьте-скрипт-к-объекту-entity">Добавьте скрипт к объекту Entity</h2>
 <ol>
-<li><p>In the <strong>Scene view</strong>, select the entity you want to add the script to:</p>
+<li><p>В <strong>Просмотре сцены (Scene view)</strong>, выберите объект, к которому вы хотите добавить скрипт:</p>
 <p><img src="media/audio-add-audiolistener-component-select-entity.png" alt="Select an entity"></p>
 </li>
-<li><p>In the <strong>Property Grid</strong>, click <strong>Add component</strong> and select your script:</p>
+<li><p>В <strong>Сетке свойств (Property Grid)</strong>, нажимите <strong>Добавить компонент (Add component)</strong> и выберите свой скрипт:</p>
 <p><img src="media/audio-emitters-add-script-component.png" alt="Click Add component"></p>
-<p>The script is added to the entity.</p>
+<p>Скрипт добавляется к объекту.</p>
 </li>
-<li><p>If you added <strong>public variables</strong> to the script, you need to tie them to audio assets.</p>
-<p>Drag and drop an asset from the <strong>Asset View</strong> to each variable:</p>
+<li><p>Если вы добавили <strong>public переменные</strong> в скрипте, вам необходимо привязать их к аудиоактивам.</p>
+<p>Перетащите актив из <strong>Просмотра активов (Asset View)</strong> в каждую переменную:</p>
 <p><img src="media/entity-audio-drag-and-drop-audio-asset-to-script-component.gif" alt="Drag and drop an audio asset"></p>
-<p>Alternatively, click <img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (<strong>Select an asset</strong>):</p>
+<p>В качестве альтернативы нажмите <img src="../game-studio/media/hand-icon.png" alt="Hand icon"> (<strong>Выбрать актив (Select an asset)</strong>):</p>
 <p><img src="media/audio-play-script-component-pick-an-asset.png" alt="Pick up an asset"></p>
-<p>Then choose the audio asset you want to use:</p>
+<p>Затем выберите аудиоресурс, который вы хотите использовать:</p>
 <p><img src="media/audio-play-audioemitter-component-add-select-audio-asset.png" alt="Select an audio asset"></p>
 </li>
 </ol>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="import-audio.html">Import audio</a></li>
-<li><a href="global-audio-settings.html">Global audio settings</a></li>
-<li><a href="spatialized-audio.html">Spatialized audio</a></li>
+<li><a href="import-audio.html">Импорт звука</a></li>
+<li><a href="global-audio-settings.html">Глобальные настройки звука</a></li>
+<li><a href="spatialized-audio.html">Пространственный звук</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/audio/non-spatialized-audio.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/audio/non-spatialized-audio.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -250,7 +246,7 @@ The same goes for <a class="xref" href="../../api/Stride.Audio.SoundInstance.htm
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

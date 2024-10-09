@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Stride doesn&#39;t run | Stride Manual </title>
+      <title>Stride не запускается | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Stride doesn&#39;t run | Stride Manual ">
+      <meta name="title" content="Stride не запускается | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/stride-doesnt-run.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/stride-doesnt-run.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,68 +85,64 @@
         </div>
 
         <article data-uid="">
-<h1 id="stride-doesnt-run">Stride doesn't run</h1>
+<h1 id="stride-не-запускается">Stride не запускается</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>If you're having trouble running Stride, make sure you've installed all the prerequisites:</p>
+<h2 id="предпосылки">Предпосылки</h2>
+<p>Если у вас возникли проблемы с запуском Stride, убедитесь, что установлены все необходимые компоненты::</p>
 <ul>
 <li>.NET 8 SDK</li>
-<li>Visual C++ Redistributable 2019 (or later)</li>
-<li>.NET Framework 4.7.2 (required for the Visual Studio plugin)</li>
-<li>Visual Studio or Build Tools (optional but recommended)</li>
+<li>Visual C++ Redistributable 2019 (или более поздний)</li>
+<li>.NET Framework 4.7.2 (требуется для плагина Visual Studio)</li>
+<li>Visual Studio или Инструменты для сборки (необязательно, но рекомендуется)</li>
 </ul>
-<p>Alternatively, uninstall Stride, restart the Stride installer, and install the prerequisites when prompted.</p>
+<p>Либо удалите Stride, перезапустите установщик Stride и установите необходимые компоненты при появлении соответствующего запроса.</p>
 <h3 id="net-sdk-80">.NET SDK 8.0</h3>
-<p>.NET SDK 8.0 should have been installed by Stride prerequisite installer, if Visual Studio 2022 didn't do it previously.</p>
-<p>If for some reason you need to install it manually, you can use <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0">this link</a> and select the latest .NET 8 SDK for Windows.</p>
-<h3 id="visual-c-redistributable-2019-or-later">Visual C++ Redistributable 2019 (or later)</h3>
-<p>To check if this is installed, see <strong>Control Panel &gt; Programs &gt; Programs and Features</strong> and look for <strong>2015-2019 Redistributable</strong>.</p>
-<p><img src="media/programs-and-features-redistributable.webp" alt="Programs and features"></p>
-<p>If it's not installed, you can download the Redistributable from <a href="https://www.visualstudio.com/downloads/">Visual Studio Downloads</a> (under <strong>Other Tools and Frameworks</strong>). Make sure to install both <strong>x86</strong> and <strong>x64</strong> versions.</p>
+<p>.NET SDK 8.0 должен был быть установлен установщиком обязательных компонентов Stride, если Visual Studio 2022 не сделал этого ранее.</p>
+<p>Если по какой-то причине вам необходимо установить его вручную, вы можете воспользоваться <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0">этой ссылкой</a> и выбать последнюю версию .NET 8 SDK для Windows.</p>
+<h3 id="распространяемый-пакет-visual-c-2019-или-более-поздняя-версия">Распространяемый пакет Visual C++ 2019 (или более поздняя версия)</h3>
+<p>Чтобы проверить, установлен ли он, перейдите в <strong>Панель управления &gt; Программы &gt; Программы и компоненты</strong> и найдите <strong>Microsoft Visual C++ 2015-2019 Redistributable</strong>.</p>
+<p><img src="media/programs-and-features-redistributable.webp" alt="Программы и компоненты"></p>
+<p>Если он не установлен, вы можете скачать распространяемый пакет из <a href="https://www.visualstudio.com/downloads/">Visual Studio Downloads</a> (в разделе <strong>Другие инструменты, платформы и распространяемые пакеты</strong>). Обязательно установите обе версии <strong>x86</strong> и <strong>x64</strong>..</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>If you see <strong>2015-2022 Redistributable</strong> instead, it's ok. Since 2015, they are cumulative. Just make sure the last year is at least 2019.</p>
+<p>Если вместо этого вы видите <strong>2015-2022 Redistributable</strong>, это нормально. С 2015 года они являются накопительными. Просто убедитесь, что последний год — это не менее 2019.</p>
 </div>
-<h3 id="net-framework-472-or-later">.NET Framework 4.7.2 (or later)</h3>
-<p>To check if this is installed, follow the instructions on <a href="https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed">this page</a>.</p>
-<p>If it's not installed, you can download it from the <a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework">Microsoft Download Center</a>.</p>
+<h3 id="net-framework-472-или-более-поздняя-версия">.NET Framework 4.7.2 (или более поздняя версия)</h3>
+<p>Чтобы проверить, установлен ли он, следуйте инструкциям на <a href="https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed">этой странице</a>.</p>
+<p>Если он не установлен, вы можете скачать его с сайта<a href="https://dotnet.microsoft.com/en-us/download/dotnet-framework">Microsoft Download Center</a>.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>If you have .NET 4.8 installed, you don't need to install .NET 4.7.2. Each 4.x version is cumulative.</p>
+<p>Если у вас установлен .NET 4.8, вам не нужно устанавливать .NET 4.7.2. Каждая версия 4.x является накопительной.</p>
 </div>
-<h3 id="visual-studio-2022-optional">Visual Studio 2022 (optional)</h3>
-<p>If you have Visual Studio 2022 (or later) installed, you need to have the following workloads and/or components installed:</p>
+<h3 id="visual-studio-2022-по-желанию">Visual Studio 2022 (по желанию)</h3>
+<p>Если у вас установлена ​​Visual Studio 2022 (или более поздняя версия), вам необходимо установить следующие рабочие нагрузки и/или компоненты:</p>
 <ul>
-<li><strong>.NET desktop development</strong> with <strong>Development tools for .NET</strong> optional component enabled.</li>
+<li><strong>.NET desktop development</strong> с включенным дополнительным компонентом <strong>Development tools for .NET</strong>.</li>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>Earlier versions might work with older version of Stride. However, for Stride 4.2 and later you only need to have .NET 8 SDK installed.</p>
+<p>Более ранние версии могут работать с более старой версией Stride. Однако для Stride 4.2 и более поздних версий вам нужно иметь установленным только .NET 8 SDK.</p>
 </div>
-<h3 id="build-tools-for-visual-studio-2022-optional">Build Tools for Visual Studio 2022 (optional)</h3>
-<p>If you <strong>don't</strong> have Visual Studio installed and don't want to install it, you can install <strong>Build Tools for Visual Studio</strong> instead. You can download this from <a href="https://www.visualstudio.com/downloads/">Visual Studio Downloads</a> (under <strong>Tools for Visual Studio</strong>).</p>
-<p>You need to have the following workloads and/or components installed:</p>
+<h3 id="build-tools-для-visual-studio-2022-по-желанию">Build Tools для Visual Studio 2022 (по желанию)</h3>
+<p>Если у вас <strong>не установлена</strong> ​​Visual Studio и вы не хотите ее устанавливать, вы можете установить вместо этого <strong>Build Tools for Visual Studio</strong>. Вы можете скачать это здесь <a href="https://www.visualstudio.com/downloads/">Visual Studio Downloads</a> (в разделе <strong>Инструменты для Visual Studio</strong>).</p>
+<p>Вам необходимо установить следующие рабочие нагрузки и/или компоненты:</p>
 <ul>
-<li><strong>.NET desktop build tools</strong> with <strong>.NET SDK</strong> optional component enabled.</li>
+<li><strong>.NET desktop build tools</strong> с включенным дополнительным компонентом <strong>.NET SDK</strong>.</li>
 </ul>
 <div class="NOTE">
 <h5>Note</h5>
-<p>If you don't need Visual Studio, don't worry – it doesn't install it.
-<img src="../get-started/media/installing-vs-build-tools.webp" alt="Installing VS build tools"></p>
+<p>Если вам не нужена Visual Studio, не волнуйтесь — она не устанавится.
+<img src="../get-started/media/installing-vs-build-tools.webp" alt="Установка инструментов сборки Visual Studio"></p>
 </div>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="../get-started/install-stride.html">Install Stride</a></li>
+<li><a href="../get-started/install-stride.html">Установка Stride</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/stride-doesnt-run.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/stride-doesnt-run.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -163,7 +159,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Import audio | Stride Manual </title>
+      <title>Импорт звуковых файлов | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Import audio | Stride Manual ">
+      <meta name="title" content="Импорт звуковых файлов | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/audio/import-audio.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/audio/import-audio.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,65 +85,61 @@
         </div>
 
         <article data-uid="">
-<h1 id="import-audio">Import audio</h1>
+<h1 id="импорт-звуковых-файлов">Импорт звуковых файлов</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Designer</span></p>
-<p>You can import audio files to use as <strong>audio assets</strong> in your project. You can import file types including .wav, .mp3, .ogg, .aac, .aiff, .flac, .m4a, .wma, and .mpc.</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Дизайнер</span></p>
+<p>Вы можете импортировать аудиофайлы для использования в качестве <strong>аудиоактивов (audio assets)</strong> в вашем проекте. Вы можете импортировать такие типы файлов, как: .wav, .mp3, .ogg, .aac, .aiff, .flac, .m4a, .wma, и .mpc.</p>
 <ol>
-<li><p>Drag and drop the audio file from Windows Explorer to the <strong>Asset View</strong>:</p>
-<p><img src="media/import-setup-drag-and-drop-audio-to-asset-view.gif" alt="Drag and drop"></p>
-<p>Alternatively, in the <strong>Asset View</strong>:</p>
+<li><p>Перетащите аудиофайл из проводника Windows в <strong>Просмотр активов (Asset View)</strong>.:</p>
+<p><img src="media/import-setup-drag-and-drop-audio-to-asset-view.gif" alt="Перетаскивание"></p>
+<p>В качестве альтернативы, в <strong>Просмотре активов (Asset View)</strong>:</p>
 <ol>
-<li><p>Click <img src="media/index-audio-add-new-asset-button.png" alt=""></p>
+<li><p>Нажимите <img src="media/index-audio-add-new-asset-button.png" alt=""></p>
 </li>
-<li><p>Click <img src="media/index-audio-import-audio-directly-from-file.png" alt=""> (<strong>Import audio directly from file</strong>) and select the audio file.</p>
+<li><p>Нажимите <img src="media/index-audio-import-audio-directly-from-file.png" alt=""> (<strong>Импортировать аудио напрямую из файла (Import audio directly from file)</strong>) и выберите аудиофайл.</p>
 </li>
 </ol>
 </li>
-<li><p>To give the audio asset some default properties, choose a preset. (You can always <a href="audio-asset-properties.html">change the properties in the Property Grid later</a>.)</p>
-<p><img src="media/import-audio-choose-asset-type.png" alt="Choose Asset type"></p>
+<li><p>Чтобы присвоить аудиоресурсу некоторые свойства по умолчанию, выберите предустановку. (Вы всегда можете <a href="audio-asset-properties.html">изменить свойства в Сетке свойств позже</a>.)</p>
+<p><img src="media/import-audio-choose-asset-type.png" alt="Выбор типа актива"></p>
 <ul>
-<li><p><strong>Sound effect</strong>: Recommended for smaller files that you want to play directly from memory.</p>
+<li><p><strong>Звуковой эффект (Sound effect)</strong>: Рекомендуется для небольших файлов, которые вы хотите воспроизводить непосредственно из памяти.</p>
 </li>
-<li><p>*<em>Spatialized audio</em>: Process the audio asset as <a href="spatialized-audio.html">spatialized audio</a>. Note that Stride processes audio files as mono (single-channel) audio. The source file is unaffected.</p>
+<li><p><strong>Пространственный звук (Spatialized audio)</strong>: Подготовить аудиоактив как <a href="spatialized-audio.html">пространственный звук</a>. Обратите внимание, что Stride обрабатывает аудиофайлы как моно (одноканальный) звук. Исходный файл не затрагивается.</p>
 </li>
-<li><p><strong>Music</strong>: Recommended for larger files that you want to stream from disk to save memory.</p>
+<li><p><strong>Музыка (Music)</strong>: Рекомендуется для больших файлов, которые вы хотите транслировать с диска для экономии памяти.</p>
 </li>
 </ul>
 </li>
 </ol>
-<p>After you import an audio file, you can select it as an asset in the <strong>Asset View</strong>.</p>
-<h2 id="import-audio-from-a-video-file">Import audio from a video file</h2>
-<p>You can also import a <a href="../video/index.html">video</a> file and choose to import only the audio tracks from it.</p>
+<p>После импорта аудиофайла вы можете выбрать его в качестве актива в <strong>Просмотре активов (Asset View)</strong>..</p>
+<h2 id="импорт-звука-из-видеофайла">Импорт звука из видеофайла</h2>
+<p>Вы также можете импортировать <a href="../video/index.html">видео</a> файл и выбрать импорт только аудиодорожек из него.</p>
 <ol>
-<li><p>In the <strong>Asset View</strong>, click <strong>Add asset</strong> and select <strong>Media &gt; Video</strong>.</p>
-<p><img src="../video/media/add-video-asset.png" alt="Add video asset"></p>
+<li><p>В <strong>Просмотре активов (Asset View)</strong>, нажимите <strong>Добавить актив (Add asset)</strong> и выберите <strong>Media &gt; Video</strong>.</p>
+<p><img src="../video/media/add-video-asset.png" alt="Добавление видео актива"></p>
 </li>
-<li><p>Browse to the video you want to import audio from and click <strong>Open</strong>.</p>
-<p>Alternatively, drag the file from <strong>Explorer</strong> into the <strong>Asset View</strong>.</p>
+<li><p>Найдите видео, из которого вы хотите импортировать звук, и нажмите <strong>Открыть (Open)</strong>.</p>
+<p>Либо перетащите файл из <strong>Проводника</strong> в <strong>Просмотр активов (Asset View)</strong>.</p>
 </li>
-<li><p>Clear <strong>Import video</strong> and click <strong>OK</strong>.</p>
-<p><img src="media/import-audio-only.png" alt="Import video"></p>
-<p>Stride adds the audio tracks from the video to the <strong>Asset View</strong>.</p>
+<li><p>Снимите галку <strong>Импорт видео (Import video)</strong> и нажмите <strong>OK</strong>.</p>
+<p><img src="media/import-audio-only.png" alt="Импорт видео"></p>
+<p>Stride добавит аудиодорожки из видео в <strong>Просмотр активов (Asset View)</strong>.</p>
 </li>
 </ol>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="spatialized-audio.html">Spatialized audio</a></li>
-<li><a href="non-spatialized-audio.html">Non-spatialized audio</a></li>
-<li><a href="global-audio-settings.html">Global audio settings</a></li>
-<li><a href="../video/index.html">Video</a></li>
+<li><a href="spatialized-audio.html">Пространственный звук</a></li>
+<li><a href="non-spatialized-audio.html">Непространственный звук</a></li>
+<li><a href="global-audio-settings.html">Глобальные звуковые настройки</a></li>
+<li><a href="../video/index.html">Видео</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/audio/import-audio.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/audio/import-audio.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -160,7 +156,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

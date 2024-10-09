@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Development Requirements | Stride Manual </title>
+      <title>Требования для разработки | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Development Requirements | Stride Manual ">
+      <meta name="title" content="Требования для разработки | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/requirements/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/requirements/index.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,29 +85,25 @@
         </div>
 
         <article data-uid="">
-<h1 id="development-requirements">Development Requirements</h1>
+<h1 id="требования-для-разработки">Требования для разработки</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<h2 id="general-requirements">General requirements</h2>
-<p>To develop projects with Stride, you need:</p>
+<h2 id="общие-требования">Общие требования</h2>
+<p>Для разработки проектов с помощью Stride вам необходимо:</p>
 <table>
 <thead>
 <tr>
-<th>Requirement</th>
-<th>Specifications</th>
+<th>Требование</th>
+<th>Технические характеристики</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Hard drive space</td>
+<td>Место на жестком диске</td>
 <td>5GB</td>
 </tr>
 <tr>
-<td>Operating system</td>
-<td>Windows 10, 11 <small class="text-secondary">[see (1)]</small></td>
+<td>Операционная система</td>
+<td>Windows 10, 11 <small class="text-secondary">[см. (1)]</small></td>
 </tr>
 <tr>
 <td>CPU</td>
@@ -115,60 +111,60 @@
 </tr>
 <tr>
 <td>GPU</td>
-<td>Direct3D 10+ compatible GPU</td>
+<td>Графический процессор, совместимый с Direct3D 10+</td>
 </tr>
 <tr>
 <td>RAM</td>
-<td>4GB (minimum), 8GB (recommended) <small class="text-secondary">[see (2)]</small></td>
+<td>4GB (минимум), 8GB (рекомендуемые) <small class="text-secondary">[см. (2)]</small></td>
 </tr>
 <tr>
 <td>.NET SDK</td>
-<td>8+ <small class="text-secondary">[see (3)]</small></td>
+<td>8+ <small class="text-secondary">[см. (3)]</small></td>
 </tr>
 </tbody>
 </table>
-<p>(1) Earlier versions of Windows <em>may</em> work but are untested.</p>
-<p>(2) RAM requirements vary depending on your project:</p>
+<p>(1) Более ранние версии Windows могут работать, но они не тестировались.</p>
+<p>(2) Требования к RAM различаются в зависимости от вашего проекта:</p>
 <ul>
-<li>Developing simple 2D applications doesn't require much RAM.</li>
-<li>Developing 3D games with lots of assets requires larger amounts of RAM.</li>
+<li>Разработка простых 2D-приложений не требует большого объема оперативной памяти.</li>
+<li>Разработка 3D-игр с большим количеством ресурсов требует большего объема оперативной памяти.</li>
 </ul>
-<p>(3) .NET SDK is being downloaded with the Stride installer.</p>
-<h2 id="mobile-development-requirements">Mobile development requirements</h2>
-<p>To develop for mobile platforms, you also need:</p>
+<p>(3) .NET SDK загружается вместе с установщиком Stride.</p>
+<h2 id="требования-к-разработке-мобильных-приложений">Требования к разработке мобильных приложений</h2>
+<p>Для разработки под мобильные платформы вам также понадобится:</p>
 <table>
 <thead>
 <tr>
-<th>Platform</th>
-<th>Requirements</th>
+<th>Платформа</th>
+<th>Требования</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Android</td>
-<td>Xamarin <small class="text-secondary">[see (4)]</small></td>
+<td>Xamarin <small class="text-secondary">[см. (4)]</small></td>
 </tr>
 <tr>
 <td>iOS</td>
-<td>Mac computer, Xamarin <small class="text-secondary">[see (4)]</small></td>
+<td>Компьютер Mac, Xamarin <small class="text-secondary">[см. (4)]</small></td>
 </tr>
 </tbody>
 </table>
-<p>(4) Xamarin is included with Visual Studio installations. For instructions on installing Xamarin with Visual Studio, see <a href="https://docs.microsoft.com/en-us/visualstudio/cross-platform/setup-and-install">this MSDN page</a>.</p>
-<h2 id="running-stride-games">Running Stride Games</h2>
-<p>To run games made with Stride, you need:</p>
+<p>(4) Xamarin включен в установку Visual Studio. Инструкции по установке Xamarin с Visual Studio см. на <a href="https://docs.microsoft.com/en-us/visualstudio/cross-platform/setup-and-install">этой странице MSDN</a>.</p>
+<h2 id="запуск-игр-stride">Запуск игр Stride</h2>
+<p>Для запуска игр, созданных с помощью Stride, вам необходимо:</p>
 <ul>
-<li>.NET 8 if your application is not <a href="https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained">self-contained</a></li>
-<li>DirectX11 (included with Windows 10 and later), OpenGL, or Vulkan depending on the platform, and the graphics API override set in your <code>.csproj</code></li>
-<li>Visual C++ 2015 runtimes (x86 and/or x64, depending on what you set in your project properties in Visual Studio)</li>
+<li>.NET 8 если ваше приложение не <a href="https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained">автономное</a></li>
+<li>Direct X11 (входит в состав Windows 10 и более поздних версий), Open GL или Vulkan в зависимости от платформы и переопределения графического API, установленного в вашем<code>.csproj</code></li>
+<li>Распространяемые пакеты Visual C++ 2015 runtimes (x86 и/или x64, в зависимости от того, что вы установили в свойствах проекта в Visual Studio)</li>
 </ul>
-<h2 id="supported-platforms">Supported Platforms</h2>
-<p>For information about platforms Stride supports, see <a href="../platforms/index.html">Platforms</a>.</p>
+<h2 id="поддерживаемые-платформы">Поддерживаемые платформы</h2>
+<p>Информацию о платформах, поддерживаемых Stride, см. <a href="../platforms/index.html">Платформы</a>.</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/requirements/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/requirements/index.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -185,7 +181,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

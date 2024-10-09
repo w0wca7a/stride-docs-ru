@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Particle initializers | Stride Manual </title>
+      <title>Инициализаторы частиц | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Particle initializers | Stride Manual ">
+      <meta name="title" content="Инициализаторы частиц | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/initializers.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/initializers.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,145 +85,141 @@
         </div>
 
         <article data-uid="">
-<h1 id="particle-initializers">Particle initializers</h1>
+<h1 id="инициализаторы-частиц">Инициализаторы частиц</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Intermediate</span>
-<span class="badge text-bg-success">Artist</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p><strong>Initializers</strong> control the states of particles such as position, velocity, size, and so on when the particles are first spawned. They have no effect on particles spawned on previous frames.</p>
+<p><span class="badge text-bg-primary">Продвинутый</span>
+<span class="badge text-bg-success">Художник</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p><strong>Инициализаторы</strong> контролируют состояния частиц, такие как положение, скорость, размер и т.д., когда частицы впервые создаются. Они не оказывают никакого влияния на частицы, созданные в предыдущих кадрах.</p>
 <div class="NOTE">
 <h5>Note</h5>
 </div>
-<p>Some <a href="updaters.html">updaters</a> act change the particle's value at the <em>end</em> of the frame. They effectively overwrite any initial values set by a similar initializer. Such is the case with all animations. They operate on the particle's lifetime and a color animation updater will overwrite any initial values from a color initializer.</p>
-<p>Similarly, initializers which operate on the same field are exclusive and only the bottom one will have any effect, since they are executed in order. For example if you assign two color initializer, only the second one will have any effect.]</p>
-<h2 id="common-properties">Common properties</h2>
-<p>Several properties are common across many initializers.</p>
+<p>Некоторые <a href="updaters.html">актуализаторы</a> изменяют значение частицы в <em>конце</em> кадра. Они фактически перезаписывают любые начальные значения, установленные аналогичным инициализатором. Так обстоит дело со всеми анимациями. Они работают на протяжении всего времени существования частицы, а актуализатор цветовой анимации перезаписывает любые начальные значения из инициализатора цвета.</p>
+<p>Аналогично, инициализаторы, работающие с одним и тем же полем, являются исключительными, и только нижний из них будет иметь какой-либо эффект, поскольку они выполняются по порядку. Например, если назначить два инициализатора цвета, то только второй из них будет иметь какой-либо эффект.</p>
+<h2 id="общие-свойства">Общие свойства</h2>
+<p>Некоторые свойства являются общими для многих инициализаторов.</p>
 <p><img src="media/particles-reference-initializers-1.png" alt="media/particles-reference-initializers-1.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Debug draw</td>
-<td>Draws a debug wireframe in the scene to show the boundaries of the initializer. This is only visible in the Scene Editor, not at runtime.</td>
+<td>Debug draw (Отладочное рисование)</td>
+<td>Рисует каркас отладки в сцене, чтобы показать границы инициализатора. Это видно только в редакторе сцен, а не во время работы игры.</td>
 </tr>
 <tr>
-<td>Position inheritance</td>
-<td>Inherit the particle system component position, as defined in the particle entity's Transform component</td>
+<td>Position inheritance (Наследование положения)</td>
+<td>Наследовать положение компонента системы частиц, как определено в компоненте Transform объекта частицы</td>
 </tr>
 <tr>
-<td>Position offset</td>
-<td>Additional translation of the module. If it inherits the parent position, this is applied on top of the inherited position.</td>
+<td>Position offset (Смещение положения)</td>
+<td>Дополнительное смещение положения модуля. Если он наследует родительское положение, то применяется поверх унаследованного положения.</td>
 </tr>
 <tr>
-<td>Rotation inheritance</td>
-<td>Inherit the particle system component's rotation, as defined in the Transform component</td>
+<td>Rotation inheritance (Наследование вращения)</td>
+<td>Наследовать вращение компонента системы частиц, как определено в компоненте Transform</td>
 </tr>
 <tr>
-<td>Rotation offset</td>
-<td>Additional rotation of the module. If it inherits the parent's rotation, this is applied on top of the inherited rotation.</td>
+<td>Rotation offset (Смещение вращения)</td>
+<td>Дополнительное вращение модуля. Если он наследует вращение родителя, то оно применяется поверх унаследованного вращения.</td>
 </tr>
 <tr>
-<td>Scale inheritance</td>
-<td>Inherit the particle system component's uniform scale, as defined in the Transform component</td>
+<td>Scale inheritance (Наследование масштаба)</td>
+<td>Наследовать равномерный масштаб компонента системы частиц, как определено в компоненте Transform</td>
 </tr>
 <tr>
-<td>Scale offset</td>
-<td>Additional scaling of the module. If it inherits the parent's scale, this is applied on top of the inherited scale.</td>
+<td>Scale offset (Смещение масштаба)</td>
+<td>Дополнительное масштабирование модуля. Если он наследует масштаб родителя, то он применяется поверх унаследованного масштаба.</td>
 </tr>
 </tbody>
 </table>
-<p>For example, a velocity initializer can change its direction depending on the parent's rotation or decide to ignore it and always shoot particles in a fixed direction.</p>
-<p>On the other hand, size initializers don't change based on the parent's rotation, so the rotation fields won't appear at all.</p>
-<h2 id="position">Position</h2>
-<p>Particles are spawned in an axis-aligned bounding box, defined by its left lower back corner and its right upper front corner.</p>
+<p>Например, инициализатор скорости может изменить свое направление в зависимости от вращения родителя или решить игнорировать его и всегда стрелять частицами в фиксированном направлении.</p>
+<p>С другой стороны, инициализаторы размера не изменяются в зависимости от поворота родителя, поэтому поля поворота вообще не появятся.</p>
+<h2 id="положение-position"><em>Положение (Position)</em></h2>
+<p>Частицы создаются в ограничивающем каркасе, выровненном по осям и определяемом левым нижним задним углом и правым верхним передним углом.</p>
 <p><img src="media/particles-reference-initializers-2.png" alt="media/particles-reference-initializers-2.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Seed offset</td>
-<td>Used for random numbers. Set it to the same value to force the position to be coupled with other other particle fields which have three properties (X, Y, Z), eg velocity. Make them different to force the position to be unique and independent from other fields</td>
+<td>Смещение семян (Seed offset)</td>
+<td>Используется для случайных чисел. Установите то же значение, чтобы принудительно связать положение с другими полями частиц, имеющими три свойства (X, Y, Z), например, скорость. Сделайте их разными, чтобы сделать позицию уникальной и независимой от других областей.</td>
 </tr>
 <tr>
 <td>Position min</td>
-<td>Left lower back corner for the box</td>
+<td>Левый нижний задний угол для ограничивающего каркаса</td>
 </tr>
 <tr>
 <td>Position max</td>
-<td>Right upper front corner for the box</td>
+<td>Правый верхний передний угол для ограничивающего каркаса</td>
 </tr>
 </tbody>
 </table>
-<p>This image shows the bounding box where particles initially appear for this emitter. In addition to the corners (-1, 0.8, -1) ~ (1, 1, 1), the box is further rotated by 45 degrees as seen from the offset rotation.</p>
+<p>На этом изображении показан ограничивающий каркас, где изначально появляются частицы для этого излучателя. В дополнение к углам (-1, 0.8, -1) ~ (1, 1, 1), ящик дополнительно повернут на 45 градусов, как видно из смещения вращения.</p>
 <p><img src="media/particles-reference-initializers-3.png" alt="media/particles-reference-initializers-3.png"></p>
-<h2 id="velocity">Velocity</h2>
-<p>Particles spawn with initial velocity which ranges between the defined values. The velocity is independent in all three directions between X, Y and Z.</p>
+<h2 id="скорость-velocity"><em>Скорость (Velocity)</em></h2>
+<p>Частицы появляются с начальной скоростью, которая находится в диапазоне определенных значений. Скорость независима во всех трех направлениях между X, Y и Z.</p>
 <p><img src="media/particles-reference-initializers-4.png" alt="media/particles-reference-initializers-4.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Seed offset</td>
-<td>This is used for random numbers. Set it to the same value to force the velocity to be coupled with other other particle fields which have 3 properties (x, Y, Z), like position for example. Make them different to force the velocity to be unique and independent from other fields.</td>
+<td>Смещение семян (Seed offset)</td>
+<td>Это используется для случайных чисел. Установите его на то же значение, чтобы заставить скорость быть связанной с другими полями частиц, которые имеют 3 свойства (x, Y, Z), например, положение. Сделайте их разными, чтобы скорость была уникальной и независимой от других полей.</td>
 </tr>
 <tr>
 <td>Velocity min</td>
-<td>Left lower back corner for the box</td>
+<td>Левый нижний задний угол для ограничивающего каркаса</td>
 </tr>
 <tr>
 <td>Velocity max</td>
-<td>Right upper front corner for the box</td>
+<td>Right upper front corner for ограничивающего каркаса</td>
 </tr>
 </tbody>
 </table>
-<h2 id="size">Size</h2>
-<p>Initial size sets the particle's uniform size when it's spawned for the first time. A size of 1 will result in a 1 meter by 1 meter billboard or quad when rendered.</p>
+<h2 id="размер-size"><em>Размер (Size)</em></h2>
+<p>Начальный размер устанавливает равномерный размер частицы при ее первом появлении. Размер 1 приведет к билборду или квадрату размером 1 метр на 1 метр при рендеринге.</p>
 <p><img src="media/particles-reference-initializers-5.png" alt="media/particles-reference-initializers-5.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Seed offset</td>
-<td>This is used for random numbers. Set it to the same value to force the size to be coupled with other particle fields which have 1 property, like color for example. Make them different to force the size to be unique and independent from other fields</td>
+<td>Смещение семян (Seed offset)</td>
+<td>Используется для случайных чисел. Установите его на то же значение, чтобы заставить размер быть связанным с другими полями частиц, которые имеют 1 свойство, например, цвет. Сделайте их разными, чтобы заставить размер быть уникальным и независимым от других полей</td>
 </tr>
 <tr>
-<td>Random size</td>
-<td>Shows the minimum and maximum size a particle can have at spawn time</td>
+<td>Случайный размер (Random size)</td>
+<td>Показывает минимальный и максимальный размер частицы во время появления.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="rotation">Rotation</h2>
-<p>Initial rotation sets the particle's angular rotation when facing the camera. Positive values are clockwise rotations. The field only has meaning for camera-facing particles, such as billboards. It has no effect on oriented quads and models.</p>
+<h2 id="вращение-rotation"><em>Вращение (Rotation)</em></h2>
+<p>Начальное вращение задает угловое вращение частицы, обращенной к камере. Положительные значения — это вращение по часовой стрелке. Поле имеет значение только для частиц, обращенных к камере, таких как билборды. Оно не влияет на ориентированные квадраты и модели.</p>
 <p><img src="media/particles-reference-initializers-6.png" alt="media/particles-reference-initializers-6.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -237,14 +233,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="color">Color</h2>
-<p>Initial color sets the particle's initial color at spawn time. It goes into the vertex buffer when building the particles and can be used by the material, but might not if the option is not set in the material itself. If setting the color has no effect please refer to the <a href="materials.html">Material</a> page for further discussion.</p>
+<h2 id="цвет-color"><em>Цвет (Color)</em></h2>
+<p>Начальный цвет устанавливает начальный цвет частицы во время появления. Он попадает в буфер вершин при построении частиц и может использоваться материалом, но может и не использоваться, если опция не установлена ​​в самом материале. Если настройка цвета не дала результата, обратитесь к странице <a href="materials.html">Материал</a> для дальнейшего обсуждения.</p>
 <p><img src="media/particles-reference-initializers-7.png" alt="media/particles-reference-initializers-7.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -262,14 +258,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="3d-orientation">3D Orientation</h2>
-<p>Initial 3D orientation sets the orientation for 3D-aware particles when they first spawn. The editable fields use euclidean rotation which is packed into a quaternion orientation by the engine. The interpolated value is on the shortest path  between the two orientations, rather than interpolating each value separately.</p>
+<h2 id="3d-ориентация-3d-orientation"><em>3D-ориентация (3D Orientation)</em></h2>
+<p>Начальная 3D-ориентация задает ориентацию для 3D-частиц при их первом появлении. Редактируемые поля используют евклидово вращение, которое упаковано в кватернионную ориентацию движком. Интерполированное значение находится на кратчайшем пути между двумя ориентациями, а не интерполируется каждое значение по отдельности.</p>
 <p><img src="media/particles-reference-initializers-8.png" alt="media/particles-reference-initializers-8.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -287,13 +283,13 @@
 </tr>
 </tbody>
 </table>
-<h2 id="direction">Direction</h2>
-<p>This initializer creates the <strong>Direction</strong> field in the particle properties and sets its initial value. Some shape builders, like the Trail shape or the Direction Aligned Sprite shape use the particle's direction to properly display it.</p>
+<h2 id="направление-direction"><em>Направление (Direction)</em></h2>
+<p>Этот инициализатор создает поле <strong>Направление (Direction)</strong> в свойствах частицы и задает его начальное значение. Некоторые конструкторы фигур, такие как форма Trail или форма Direction Aligned Sprite, используют направление частицы для ее правильного отображения.</p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -319,8 +315,8 @@
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -374,8 +370,8 @@
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -409,8 +405,8 @@
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -475,14 +471,14 @@
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Seed offset</td>
-<td>This is used for random numbers. Set it to the same value to force the color to be coupled with other particle fields which have 1 property, like size for example. Make them different to force the color to be unique and independent from other fields.</td>
+<td>Смещение семян</td>
+<td>Используется для случайных чисел. Установите его на то же значение, чтобы заставить цвет быть связанным с другими полями частиц, которые имеют 1 свойство, например, размер. Сделайте их разными, чтобы заставить цвет быть уникальным и независимым от других полей.</td>
 </tr>
 <tr>
 <td>Color A</td>
@@ -511,8 +507,8 @@
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
@@ -530,26 +526,26 @@
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><p><a href="create-particles.html">Create particles</a></p>
+<li><p><a href="create-particles.html">Создание частиц</a></p>
 </li>
-<li><p><a href="emitters.html">Emitters</a></p>
+<li><p><a href="emitters.html">Излучатели (Emitters)</a></p>
 </li>
-<li><p><a href="shapes.html">Shapes</a></p>
+<li><p><a href="shapes.html">Формы (Shapes)</a></p>
 </li>
-<li><p><a href="materials.html">Materials</a></p>
+<li><p><a href="materials.html">Материалы</a></p>
 </li>
-<li><p><a href="spawners.html">Spawners</a></p>
+<li><p><a href="spawners.html">Генераторы (Spawners)</a></p>
 </li>
-<li><p><a href="updaters.html">Updaters</a></p>
+<li><p><a href="updaters.html">Актуализаторы</a></p>
 </li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/initializers.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/initializers.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -566,7 +562,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

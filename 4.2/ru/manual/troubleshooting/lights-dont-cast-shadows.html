@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Lights don&#39;t cast shadows | Stride Manual </title>
+      <title>Свет не отбрасывает тени | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Lights don&#39;t cast shadows | Stride Manual ">
+      <meta name="title" content="Свет не отбрасывает тени | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/lights-dont-cast-shadows.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/lights-dont-cast-shadows.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,53 +85,49 @@
         </div>
 
         <article data-uid="">
-<h1 id="lights-dont-cast-shadows">Lights don't cast shadows</h1>
+<h1 id="свет-не-отбрасывает-тени">Свет не отбрасывает тени</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p>If you've enabled shadows on a light in your scene, but it isn't casting shadows, make sure you have enough space in the shadow atlas. You might need to reduce the size of the shadows in the properties of your light components to create room.</p>
-<p>For more information about shadows and the shadow atlas, see <a href="../graphics/lights-and-shadows/shadows.html">Graphics - Shadows</a>.</p>
-<h2 id="shadow-atlas-comparison">Shadow atlas comparison</h2>
+<p>Если вы включили тени на источнике света в своей сцене, но он не отбрасывает тени, убедитесь, что в атласе теней достаточно места. Возможно, вам придется уменьшить размер теней в свойствах компонентов освещения, чтобы создать пространство.
+Более подробную информацию о тенях и атласе теней см. <a href="../graphics/lights-and-shadows/shadows.html">Графика - Тени</a>.</p>
+<h2 id="сравнение-атласа-теней">Сравнение атласа теней.</h2>
 <table>
 <thead>
 <tr>
-<th>Size: 2x</th>
-<th>Size: 1x</th>
+<th>Размер: 2x</th>
+<th>Размер: 1x</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="../graphics/lights-and-shadows/media/shadow-atlas-2x.png" alt="FPS scene shadow map"></td>
-<td><img src="../graphics/lights-and-shadows/media/shadow-atlas-1x.png" alt="FPS scene shadow map"></td>
+<td><img src="../graphics/lights-and-shadows/media/shadow-atlas-2x.png" alt="FPS карта теней сцены"></td>
+<td><img src="../graphics/lights-and-shadows/media/shadow-atlas-1x.png" alt="FPS карта теней сцены"></td>
 </tr>
 <tr>
-<td>This light source uses the entirety of the shadow atlas. This means other lights won't cast shadows, as there's no room left in the atlas.</td>
-<td>This light source uses one quarter of the shadow atlas. The rest can be allocated to other light sources.</td>
+<td>Этот источник света использует весь атлас теней. Это значит, что другие источники света не будут отбрасывать тени, поскольку в атласе не осталось места.</td>
+<td>Этот источник света использует одну четверть теневого атласа. Остальное можно распределить между другими источниками света.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="reduce-the-shadow-size">Reduce the shadow size</h2>
+<h2 id="уменьшить-размер-тени">Уменьшить размер тени</h2>
 <ol>
-<li><p>In the Scene Editor, select an entity with a light that casts a shadow.</p>
+<li><p>В Редакторе сцены, выберите объект со светом, который отбрасывает тень.</p>
 </li>
-<li><p>In the <strong>Light</strong> component properties, under <strong>Shadow &gt; Size</strong>, reduce the size of the shadow using the drop-down menu.</p>
+<li><p>В свойствах компонента <strong>Light</strong>, под <strong>Shadow &gt; Size</strong>, уменьшите размер тени с помощью выпадающего меню.</p>
 <p><img src="../graphics/lights-and-shadows/media/DirectionalLightProperties-size.png" alt="media/DirectionalLightProperties.png"></p>
-<p>Alternatively, disable shadows on the light entirely by clearing the <strong>Shadows</strong> checkbox.</p>
+<p>Или же полностью отключите тени на источнике света, сняв флажок <strong>Shadows</strong>.</p>
 </li>
 </ol>
-<p>Repeat these steps for as many light entities as you need to create space in the shadow atlas.</p>
-<h2 id="see-also">See also</h2>
+<p>Повторите эти шаги для необходимого количества световых объектов, чтобы освободить место в атласе теней.</p>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="../graphics/lights-and-shadows/shadows.html">Graphics — Shadows</a></li>
-<li><a href="../graphics/lights-and-shadows/directional-lights.html">Graphics — Directional lights</a></li>
+<li><a href="../graphics/lights-and-shadows/shadows.html">Графика — Тени</a></li>
+<li><a href="../graphics/lights-and-shadows/directional-lights.html">Графика — Направленные источники света</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/lights-dont-cast-shadows.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/lights-dont-cast-shadows.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -148,7 +144,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

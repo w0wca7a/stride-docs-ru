@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Particle spawners | Stride Manual </title>
+      <title>Генераторы (Spawners) | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Particle spawners | Stride Manual ">
+      <meta name="title" content="Генераторы (Spawners) | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/spawners.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/spawners.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,199 +85,195 @@
         </div>
 
         <article data-uid="">
-<h1 id="particle-spawners">Particle spawners</h1>
+<h1 id="генераторы-spawners">Генераторы (Spawners)</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Artist</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p><strong>Particle spawners</strong> control when, how many, and how quickly particles are emitted. Emitters need at least one spawner, but can contain multiple spawners with different settings.</p>
-<h2 id="per-second">Per second</h2>
-<p>Emits a fixed number of particles per second. It balances and interpolates them and is stable even if the framerate changes or drops. For example, at a rate of 20 particles per second, the spawner spawns one particle every three frames for 60fps games and two particles for every three frames (skipping every third frame) for 30fps games.</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Художник</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p><strong>Генераторы частиц</strong> задают: когда, сколько и как быстро испускаются частицы. Для излучателей требуется как минимум один генератор, но они могут содержать несколько генераторов с разными настройками.</p>
+<h2 id="за-секунду-per-second">За секунду (Per second)</h2>
+<p>Выпускает фиксированное количество частиц в секунду. Он балансирует и интерполирует их и сохраняет стабильность даже при изменении или падении частоты кадров. Например, при скорости 20 частиц в секунду генератор создает одну частицу каждые три кадра для игр с частотой 60 кадров в секунду и две частицы на каждые три кадра (пропуская каждый третий кадр) для игр с частотой 30 кадров в секунду.</p>
 <p><img src="media/particles-reference-spawners-1.png" alt="media/particles-reference-spawners-1.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Loop</td>
-<td>To have the spawner loop when it reaches the end of its duration, select <strong>Looping</strong> (default). To have the spawner loop with no wait between each loop, select <strong>Looping, no delay</strong>. To have the spawner spawn once and then stop, select <strong>One shot</strong>.</td>
+<td>Зацикливание  (Loop)</td>
+<td>Чтобы генератор зацикливался по достижении конца своего времени, выберите <strong>Looping</strong> (по умолчанию). Чтобы цикл генератора не прерывался, выберите <strong>Looping, no delay</strong>. Чтобы генератор отработал один раз и затем остановился, выберите <strong>One shot</strong>.</td>
 </tr>
 <tr>
-<td>Delay</td>
-<td>How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.</td>
+<td>Задержка (Delay)</td>
+<td>Как долго (в секундах) генератор ждет перед генерацией. Это случайное значение между значениями X (минимальное) и Y (максимальное).</td>
 </tr>
 <tr>
-<td>Duration</td>
-<td>How long (in seconds) the spawner spawns particles for. At the end of the duration, the spawner either starts again or stops, depending on the Loop property.</td>
+<td>Продолжительность (Duration)</td>
+<td>Как долго (в секундах) генератор создает частицы. По окончании периода генератор либо запускается снова, либо останавливается, в зависимости от свойства <strong>Зацикливания (Loop)</strong>.</td>
 </tr>
 <tr>
-<td>Particles</td>
-<td>The number of particles the spawned per second. This can be a floating value (eg 36.875).</td>
+<td>Частицы (Particles )</td>
+<td>Количество частиц, создаваемых в секунду. Это может быть  значение float (например 36.875).</td>
 </tr>
 </tbody>
 </table>
-<h2 id="per-frame">Per frame</h2>
-<p>Emits a fixed number of particles per frame, regardless of framerate. This can be useful if you require a fixed number of particles - for example, exactly one every frame, which is useful for trails and ribbons.</p>
+<h2 id="за-кадр-per-frame">За кадр (Per frame)</h2>
+<p>Выпускает фиксированное количество частиц за кадр, независимо от частоты кадров. Это может быть полезно, если вам требуется фиксированное количество частиц - например, ровно один на кадр, что полезно для траекторий движения и лент.</p>
 <p><img src="media/particles-reference-spawners-2.png" alt="media/particles-reference-spawners-2.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Loop</td>
-<td>To have the spawner loop when it reaches the end of its duration, select <strong>Looping</strong> (default). To have the spawner loop with no wait between each loop, select <strong>Looping, no delay</strong>. To have the spawner spawn once and then stop, select <strong>One shot</strong>.</td>
+<td>Зацикливание  (Loop)</td>
+<td>Чтобы генератор зацикливался по достижении конца своего времени, выберите <strong>Looping</strong> (по умолчанию). Чтобы цикл генератора не прерывался, выберите <strong>Looping, no delay</strong>. Чтобы генератор отработал один раз и затем остановился, выберите <strong>One shot</strong>.</td>
 </tr>
 <tr>
-<td>Delay</td>
-<td>How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.</td>
+<td>Задержка (Delay)</td>
+<td>Как долго (в секундах) генератор ждет перед генерацией. Это случайное значение между значениями X (минимальное) и Y (максимальное).</td>
 </tr>
 <tr>
-<td>Duration</td>
-<td>How long (in seconds) the spawner spawns particles for.</td>
+<td>Продолжительность (Duration)</td>
+<td>Как долго (в секундах) генератор создает частицы.</td>
 </tr>
 <tr>
-<td>Particles</td>
-<td>The number of particles spawned per frame. The value can be a floating value, including values less than 1, in which case a new particle is spawned every few frames.</td>
+<td>Частицы (Particles )</td>
+<td>Количество частиц, создаваемых за кадр. Значение может быть float, включая значения меньше 1, в этом случае новая частица создается каждые несколько кадров.</td>
 </tr>
 <tr>
-<td>Framerate</td>
-<td>This is for estimation purposes only when the engine calculates the maximum number of particles.</td>
+<td>Частота кадров (Framerate)</td>
+<td>Это необходимо только для оценки, когда движок рассчитывает максимальное количество частиц.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="burst">Burst</h2>
-<p>Emits all particles in one burst.</p>
+<h2 id="всплеск-burst">Всплеск (Burst)</h2>
+<p>Выпускает все частицы одним залпом.</p>
 <p><img src="media/particles-reference-spawners-3.png" alt="media/particles-reference-spawners-2.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Loop</td>
-<td>To have the spawner loop when it reaches the end of its duration, select <strong>Looping</strong> (default). To have the spawner loop with no wait between each loop, select <strong>Looping, no delay</strong>. To have the spawner spawn once and then stop, select <strong>One shot</strong>.</td>
+<td>Зацикливание  (Loop)</td>
+<td>Чтобы генератор зацикливался по достижении конца своего времени, выберите <strong>Looping</strong> (по умолчанию). Чтобы цикл генератора не прерывался, выберите <strong>Looping, no delay</strong>. Чтобы генератор отработал один раз и затем остановился, выберите <strong>One shot</strong>.</td>
 </tr>
 <tr>
-<td>Delay</td>
-<td>How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.</td>
+<td>Задержка (Delay)</td>
+<td>Как долго (в секундах) генератор ждет перед созданием. Это случайное значение между значениями X (минимальное) и Y (максимальное).</td>
 </tr>
 <tr>
-<td>Duration</td>
-<td>How long (in seconds) the spawner spawns particles for.</td>
+<td>Продолжительность (Duration)</td>
+<td>Как долго (в секундах) генератор создает частицы.</td>
 </tr>
 <tr>
-<td>Particles/burst</td>
-<td>The number of particles spawned in each burst.</td>
+<td>Частиц на всплеск (Particles/burst)</td>
+<td>Количество частиц, созданных в каждом всплеске.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="distance">Distance</h2>
-<p>Emits particles based on the distance traveled by the emitter. If the emitter doesn't move, it spawns no particles.</p>
+<h2 id="расстояние-distance">Расстояние (Distance)</h2>
+<p>Излучает частицы в зависимости от расстояния, пройденного излучателем. Если излучатель не движется, он не создает никаких частиц.</p>
 <p><img src="media/particles-reference-spawners-4.png" alt="media/particles-reference-spawners-2.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Loop</td>
-<td>To have the spawner loop when it reaches the end of its duration, select <strong>Looping</strong> (default). To have the spawner loop with no wait between each loop, select <strong>Looping, no delay</strong>. To have the spawner spawn once and then stop, select <strong>One shot</strong>.</td>
+<td>Зацикливание  (Loop)</td>
+<td>Чтобы генератор зацикливался по достижении конца своего времени, выберите <strong>Looping</strong> (по умолчанию). Чтобы цикл генератора не прерывался, выберите <strong>Looping, no delay</strong>. Чтобы генератор появился один раз и затем остановился, выберите <strong>One shot</strong>.</td>
 </tr>
 <tr>
-<td>Delay</td>
-<td>How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.</td>
+<td>Задержка (Delay)</td>
+<td>Как долго (в секундах) генератор ждет перед созданием. Это случайное значение между значениями X (минимальное) и Y (максимальное).</td>
 </tr>
 <tr>
-<td>Duration</td>
-<td>How long (in seconds) the spawner spawns particles for.</td>
+<td>Продолжительность (Duration)</td>
+<td>Как долго (в секундах) генератор создает частицы.</td>
 </tr>
 <tr>
-<td>Particles/unit</td>
-<td>The number of particles spawned for every distance unit the spawner moves. You can use fractions if you need fewer than one particle per distance unit. The rate adjusts with scaling.</td>
+<td>Частиц на единицу (Particles/unit)</td>
+<td>Количество частиц, создаваемых за каждую единицу расстояния, на которое перемещается генератор. Если вам нужно меньше одной частицы на единицу расстояния, можно использовать дроби. Скорость корректируется в зависимости от масштабирования</td>
 </tr>
 </tbody>
 </table>
-<h2 id="from-parent">From parent</h2>
-<p>Emits particles based on other particles (parents). When certain conditions in a parent particle are met, the spawner spawns particles.</p>
+<h2 id="from-parent-от-родителя">From parent (От родителя)</h2>
+<p>Выпускает частицы на основе других частиц (родителей). Когда в родительской частице выполняются определенные условия, генератор создает частицы.</p>
 <p><img src="media/particles-reference-spawners-5.png" alt="media/particles-reference-spawners-2.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Loop</td>
-<td>To have the spawner loop when it reaches the end of its duration, select <strong>Looping</strong> (default). To have the spawner loop with no wait between each loop, select <strong>Looping, no delay</strong>. To have the spawner spawn once and then stop, select <strong>One shot</strong>.</td>
+<td>Зацикливание  (Loop)</td>
+<td>Чтобы генератор зацикливался по достижении конца своего времени, выберите <strong>Looping</strong> (по умолчанию). Чтобы цикл генератора не прерывался, выберите <strong>Looping, no delay</strong>. Чтобы генератор отработал один раз и затем остановился, выберите <strong>One shot</strong>.</td>
 </tr>
 <tr>
-<td>Delay</td>
-<td>How long (in seconds) the spawner waits before spawning. This is a random value between the X (minimum) and Y (maximum) values.</td>
+<td>Задержка (Delay)</td>
+<td>Как долго (в секундах) генератор ждет перед созданием. Это случайное значение между значениями X (минимальное) и Y (максимальное).</td>
 </tr>
 <tr>
-<td>Duration</td>
-<td>How long (in seconds) the spawner spawns particles for.</td>
+<td>Продолжительность (Duration)</td>
+<td>Как долго (в секундах) генератор создает частицы.</td>
 </tr>
 <tr>
-<td>Parent emitter</td>
-<td>The parent emitter, which should match the emitter's name set on that emitter.</td>
+<td>Родительский излучатель (Parent emitter )</td>
+<td>Родительский излучатель, который должен совпадать с именем излучателя, установленным на этом излучателе.</td>
 </tr>
 <tr>
-<td>Spawn Control Group</td>
-<td>This field will be added to the parent particles for more precise control over which parent particle spawns how many children. There are 4 groups you can choose from and they should match the initializers' groups, if initializers require control.</td>
+<td>Группа контроля появления (Spawn Control Group)</td>
+<td>Это поле будет добавлено к родительским частицам для более точного контроля над тем, сколько дочерних частиц какая родительская частица создает. Есть 4 группы, из которых вы можете выбрать и они должны соответствовать группам инициализаторов, если инициализаторам требуется управление.</td>
 </tr>
 <tr>
-<td>Particles/trigger</td>
-<td>How many particles (min and max) are spawned from a parent each time the triggering condition is met.</td>
+<td>Частиц на триггер (Particles/trigger)</td>
+<td>Сколько частиц (мин. и макс.) порождается родительским объектом каждый раз, когда выполняется условие срабатывания.</td>
 </tr>
 <tr>
-<td>Particle Spawn Trigger</td>
-<td>What condition triggers child particles spawning (detailed below)</td>
+<td>Триггер появления частиц (Particle Spawn Trigger)</td>
+<td>Какое условие запускает появление дочерних частиц (подробнее см. ниже)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="particle-spawn-trigger">Particle Spawn Trigger</h3>
+<h3 id="триггер-появления-частиц-particle-spawn-trigger">Триггер появления частиц (Particle Spawn Trigger)</h3>
 <ul>
-<li>On Birth - Child particles are spawned once when a parent particle is born (once per parent)</li>
-<li>On Death - Child particles are spawned once when a parent particle dies (once per parent)</li>
-<li>Distance - Child particles are spawned per distance traveled as the parent particle moves</li>
-<li>On Hit - Parent particles need to implement <em>Collision Updater</em>. Child particles are spawned when a parent particle hits the surface.</li>
-<li>Lifetime - Child particles are spawned when the parent particle's lifetime is between two limits, A and B, expressed as normalized values (0 to 1) over the particle's lifetime. If A &lt; B, the period is 0..(A..B)..1, if B &gt; A the period is reversed to (0..B)..(A..1). This method is less precise than the On Birth/On Death conditions.</li>
+<li><em>При рождении (On Birth)</em> - Дочерние частицы появляются один раз при появлении родительской частицы (один раз на родителя).</li>
+<li><em>При исчезновении (On Death)</em> - Дочерние частицы появляются один раз, когда исчезает родительская частица (один раз на родителя).</li>
+<li><em>Расстояние (Distance)</em> - Дочерние частицы появляются на расстоянии, пройденном родительской частицей.</li>
+<li><em>При попадании (On Hit)</em> - Родительские частицы должны реализовать <em>Collision Updater</em>. Дочерние частицы появляются, когда родительская частица сталкивается с поверхностью.</li>
+<li><em>Продолжительность существования (Lifetime)</em> - Дочерние частицы появляются, когда продолжительность существования родительской частицы находится между двумя пределами, A и B, выраженными в виде нормализованных значений (от 0 до 1) за время жизни частицы. Если А &lt; В, период равен 0..(A..B)..1, если B &gt; A, то период меняется на обратный (0..B)..(A..1). Этот метод менее точен, чем условия <em>On Birth/On Death</em>.</li>
 </ul>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="create-particles.html">Create particles</a></li>
-<li><a href="emitters.html">Emitters</a></li>
-<li><a href="shapes.html">Shapes</a></li>
-<li><a href="materials.html">Materials</a></li>
-<li><a href="initializers.html">Initializers</a></li>
-<li><a href="updaters.html">Updaters</a></li>
+<li><a href="create-particles.html">Создание частиц</a></li>
+<li><a href="emitters.html">Излучатели (Emitters)</a></li>
+<li><a href="shapes.html">Формы (Shapes)</a></li>
+<li><a href="materials.html">Материалы</a></li>
+<li><a href="initializers.html">Инициализаторы</a></li>
+<li><a href="updaters.html">Актуализаторы (Updaters)</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/spawners.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/spawners.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -294,7 +290,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

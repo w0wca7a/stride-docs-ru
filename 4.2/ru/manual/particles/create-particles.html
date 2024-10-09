@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Create particles | Stride Manual </title>
+      <title>Создание частиц | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Create particles | Stride Manual ">
+      <meta name="title" content="Создание частиц | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/create-particles.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/create-particles.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,73 +85,69 @@
         </div>
 
         <article data-uid="">
-<h1 id="create-particles">Create particles</h1>
+<h1 id="создание-частиц">Создание частиц</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Artist</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p>To create a particle system, right-click the scene or Entity Tree, select <strong>Particle System</strong>, and choose a preset (<strong>Empty</strong>, <strong>Simple</strong>, <strong>Fountain</strong>, or <strong>Ribbon</strong>).</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Художник</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p>Чтобы создать систему частиц, щелкните правой кнопкой мыши на сцене или дереве объектов, выберите <strong>Particle System</strong>, и выберите предустановку (<strong>Empty</strong>, <strong>Simple</strong>, <strong>Fountain</strong>, или <strong>Ribbon</strong>).</p>
 <p><img src="media/particles-reference-editor-1.png" alt="media/particles-reference-editor-1.png"></p>
-<p>Game Studio creates an entity with a <strong>Transform</strong> component and a <strong>Particle System</strong> component with your chosen preset. Particle entities are represented with a flame icon.</p>
+<p>Game Studio создаст объект с компонентами <strong>Transform</strong> и <strong>Particle System</strong> с выбранной вами предустановкой. Частицы представлены значком пламени.</p>
 <p><img src="media/particles-reference-editor-2.png" alt="media/particles-reference-editor-2.png"></p>
-<p>Alternatively, you can add a particle component to an existing entity. With the entity selected, in the <strong>Property Grid</strong>, click <strong>Add component</strong> and select <strong>Particle System</strong>.</p>
+<p>В качестве альтернативы вы можете добавить компонент частицы к существующему объекту. Выбрав объект, в <strong>Сетке свойств (Property Grid)</strong>, нажимите <strong>Добавить компонент (Add component)</strong> и выберите <strong>Систему частиц (Particle System)</strong>.</p>
 <p><img src="tutorials/media/add-particle-system.png" alt="Add Particle System"></p>
-<p>Game Studio adds an empty particle system to the entity.</p>
-<h2 id="transform-component">Transform component</h2>
-<p>All entities have a transform component. Some particle elements ignore some elements of the transform component, such as rotation or scaling. For example, the gravity force shouldn't depend on the rotation of the particle system, and always ignores rotation; however, fountain particle systems inherit the location for the purposes of initial particle velocity.</p>
-<p>Only uniform scaling is supported. If you have a non-uniform scale on the transform component, only the X axis is used.</p>
-<p>If you want two particle systems to share a transform component, create two particle system entities and make one a child of the other.</p>
-<h2 id="particle-component-properties">Particle component properties</h2>
-<p>With a particle system entity selected, you can edit its properties in the <strong>Property Grid</strong>, just like any other entity.</p>
+<p>Game Studio добавит к объекту пустую систему частиц.</p>
+<h2 id="трансформация-компонента">Трансформация компонента</h2>
+<p>Все объекты имеют компонент преобразования. Некоторые элементы частиц игнорируют некоторые элементы компонента преобразования, такие как вращение или масштабирование. Например, сила тяжести не должна зависеть от вращения системы частиц и всегда игнорирует вращение; Однако системы фонтанных частиц наследуют местоположение для определения начальной скорости частицы.</p>
+<p>Поддерживается только равномерное масштабирование. Если у вас неравномерный масштаб на компоненте преобразования, используется только ось X.</p>
+<p>Если вы хотите, чтобы две системы частиц использовали один и тот же компонент преобразования, создайте два объекта систем частиц и сделайте один из них дочерним по отношению к другому.</p>
+<h2 id="свойства-компонентов-частиц">Свойства компонентов частиц</h2>
+<p>Выбрав элемент системы частиц, вы можете редактировать его свойства в <strong>Сетке свойств (Property Grid)</strong>, как и любой другой объект.</p>
 <p><img src="media/particles-reference-editor-3.png" alt="media/particles-reference-editor-3.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Editor control</td>
-<td>This changes how Game Studio displays particles while you work on the scene. You can play, pause, and stop the particle system. You can also reset the particle effect at set intervals, which is useful for previewing one-shot effects. The editor controls don't affect how particles are displayed at runtime.</td>
+<td>Изменение способа отображения частиц в Game Studio во время работы над сценой. Вы можете воспроизводить, приостанавливать и останавливать систему частиц. Вы также можете сбрасывать эффект частиц через заданные интервалы времени, что полезно для предварительного просмотра одноразовых эффектов. Имейте ввиду, что данные настройки не влияют на то, как частицы отображаются в игре, и требуются лишь для оценки визуальных свойств.</td>
 </tr>
 <tr>
-<td>Warm-up time</td>
-<td>If you set the warm-up time to a value greater than 0, the particle appears as if it's already active when it appears. This value is in seconds. For example, if you set the warm-up time to 1, the particle effect appears as if it has already been active for 1 second when it appears. This is useful, for example, if you set a fire effect warm-up time to 0, the fire appears to ignite as soon as it's rendered. If you want the fire to appear as if it's already ignited when it's rendered, increase the warm-up time.</td>
+<td>Warm-up time (время прогрева)</td>
+<td>Значение в секундах времени прогрева перед появлением. Если вы установите время прогрева Warm-up time на значение большее, чем 0, частица выглядит так, как будто она уже активна в момент своего появления. Например, если вы установите время разогрева 1, эффект частицы выглядит так, как будто он уже был активен в течение 1 секунды в момент своего появления. Это полезно, например, если вы устанавливаете время разогрева эффекта огня 0, огонь, кажется, загорается сразу после разведения. Если вы хотите, чтобы при разведении огня создавалось впечатление, будто он уже разгорелся, увеличьте время разогрева.</td>
 </tr>
 <tr>
-<td>Speed scale</td>
-<td>Controls the speed of the particle effect.</td>
+<td>Speed scale (скорость эффекта)</td>
+<td>Управляет скоростью эффекта частиц.</td>
 </tr>
 <tr>
-<td>Culling AABB</td>
-<td>This creates an axis-aligned bounding box (AABB) around the particle effect. If the bounding box isn't in the camera view, Stride doesn't render the particle effect. This is useful for culling and optimization. <strong>Rotated AABB</strong> sets box shape in XYZ co-ordinates. <strong>Uniform AABB</strong> creates a cube of the scale you specify (in <a href="../game-studio/world-units.html">world units</a>). To view the AABB in the Scene Editor, select <strong>Debug Draw</strong>.</td>
+<td>Culling AABB (ограничивающая рамка)</td>
+<td>Это создает ограничивающую рамку, выровненную по осям (AABB) вокруг эффекта частиц. Если ограничивающая рамка не находится в поле зрения камеры, Stride не отображает эффект частиц. Это полезно для отбраковки и оптимизации. <strong>Rotated AABB</strong> задает форму короба в координатах XYZ. <strong>Uniform AABB</strong> создает куб указанного вами масштаба (в <a href="../game-studio/world-units.html">мировых единицах</a>). Для просмотра AABB в Редакторе Сцены (Scene Editor), выберите <strong>Debug Draw</strong>.</td>
 </tr>
 <tr>
-<td>Emitters</td>
-<td>The emitters the particle system contains. The emitters are updated and drawn in the order they appear in the list, and can be re-ordered. For more information, see <a href="emitters.html">Emitters</a>.</td>
+<td>Emitters (эмитеры/источники)</td>
+<td>Излучатели, содержащиеся в системе частиц. Эмиттеры обновляются и отображаются в том порядке, в котором они указаны в списке, и их порядок можно изменить. Для получения более подробной информации см. <a href="emitters.html">Излучатели (Emitters)</a>.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="emitters.html">Emitters</a></li>
-<li><a href="shapes.html">Shapes</a></li>
-<li><a href="materials.html">Materials</a></li>
-<li><a href="spawners.html">Spawners</a></li>
-<li><a href="initializers.html">Initializers</a></li>
-<li><a href="updaters.html">Updaters</a></li>
+<li><a href="emitters.html">Излучатели (Emitters)</a></li>
+<li><a href="shapes.html">Формы (Shapes)</a></li>
+<li><a href="materials.html">Материалы</a></li>
+<li><a href="spawners.html">Генераторы (Spawners)</a></li>
+<li><a href="initializers.html">Инициализаторы</a></li>
+<li><a href="updaters.html">Актуализаторы (Updaters)</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/create-particles.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/create-particles.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -168,7 +164,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

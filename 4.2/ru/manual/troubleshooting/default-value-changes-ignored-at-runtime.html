@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Default value changes ignored at runtime | Stride Manual </title>
+      <title>Изменения значений по умолчанию игнорируются во время выполнения | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Default value changes ignored at runtime | Stride Manual ">
+      <meta name="title" content="Изменения значений по умолчанию игнорируются во время выполнения | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/default-value-changes-ignored-at-runtime.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/default-value-changes-ignored-at-runtime.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,37 +85,33 @@
         </div>
 
         <article data-uid="">
-<h1 id="default-value-changes-ignored-at-runtime">Default value changes ignored at runtime</h1>
+<h1 id="изменения-значений-по-умолчанию-игнорируются-во-время-выполнения">Изменения значений по умолчанию игнорируются во время выполнения</h1>
 
-<p>When you add a script to your project as a component, Game Studio lists its public variables in the Property Grid. These are the values used at runtime.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p>However, if you then change the default value in the script, Game Studio doesn't update the component with the new value.</p>
-<p>For example, imagine you have a script with the variable <code>SpeedFactor</code> with a default value of <code>5.0f</code>. You add the script to the project as a component. Now, in the script, you change the default value of the <code>SpeedFactor</code> variable to <code>6.0f</code>, save the script, and run the project. Game Studio doesn't update the component with the script changes, so the speed <code>SpeedFactor</code> value is still <code>5.0f</code>.</p>
-<h2 id="fix">Fix</h2>
-<p>In your project, delete and re-add the script component.</p>
-<p>Alternatively, if you want Game Studio to update the values in the component properties after you change them in the script, you can do this with additional code. You need to add a new line of code for every property you want this to apply to.</p>
+<p>Когда вы добавляете скрипт в свой проект как компонент, Game Studio перечисляет общедоступные переменные в Сетке свойств. Это значения, используемые во время выполнения.</p>
+<p>Однако если вы затем измените значение по умолчанию в скрипте, Game Studio не обновит компонент новым значением.</p>
+<p>Например, представьте, что у вас есть скрипт с переменной <code>SpeedFactor</code> со значением по умолчанию<code>5.0f</code>. Вы добавляете скрипт в проект как компонент. Теперь в скрипте вы меняете значение <code>SpeedFactor</code> по умолчанию  на <code>6.0f</code>, сохраните скрипт и запустите проект. Game Studio не обновляет компонент при изменении скрипта, поэтому значение скорости <code>SpeedFactor</code>  все еще <code>5.0f</code>.</p>
+<h2 id="исправление">Исправление</h2>
+<p>В своем проекте удалите и заново добавьте компонент скрипта.</p>
+<p>В качестве альтернативы, если вы хотите, чтобы Game Studio обновила значения в свойствах компонента после их изменения в скрипте, Вы можете сделать это с помощью дополнительного кода. YВам необходимо добавить новую строку кода для каждого свойства, к которому вы хотите применить это.</p>
 <ol>
-<li><p>Add <code>using System.ComponentModel</code> at the top of the script.</p>
+<li><p>Добавьте <code>using System.ComponentModel</code> в верхней части сценария.</p>
 </li>
-<li><p>Above the variable you want to update, add <code>[DefaultValue()]</code>. For example, if the variable is <code>SpeedFactor</code>, use:</p>
+<li><p>Над переменной, которую вы хотите обновить, добавьте <code>[DefaultValue()]</code>. Например, если переменная <code>SpeedFactor</code>, используйте:</p>
 </li>
 </ol>
 <pre><code class="lang-cs">[DefaultValue(6.0f)]
 public float SpeedFactor { get; set; } = 6.0f;
 </code></pre>
-<p>When you change the value, update both the <code>SpeedFactor</code> and the <code>DefaultValue</code> to the same value.</p>
+<p>При изменении значения обновите оба <code>SpeedFactor</code> и <code>DefaultValue</code> к тому же значению.</p>
 <div class="NOTE">
 <h5>Note</h5>
-<p>This doesn't work in both directions. If you set a value other than the <code>DefaultValue</code> in the Property Grid, Game Studio saves the value in the asset and overrides the default value at runtime.</p>
+<p>Это не работает в обоих направлениях.Если вы установите значение, отличное от <code>DefaultValue</code> в Сетке свойств, Game Studio сохраняет значение в ассете и переопределяет значение по умолчанию во время выполнения.</p>
 </div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/default-value-changes-ignored-at-runtime.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/default-value-changes-ignored-at-runtime.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -132,7 +128,7 @@ public float SpeedFactor { get; set; } = 6.0f;
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

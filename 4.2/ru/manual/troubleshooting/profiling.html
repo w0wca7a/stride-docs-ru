@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Profiling | Stride Manual </title>
+      <title>Профилирование | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Profiling | Stride Manual ">
+      <meta name="title" content="Профилирование | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/profiling.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/profiling.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,26 +85,22 @@
         </div>
 
         <article data-uid="">
-<h1 id="profiling">Profiling</h1>
+<h1 id="профилирование">Профилирование</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p>You can <strong>profile</strong> your project to check its runtime performance and find problems. Use the Stride <strong>Game Profiler</strong> script or an external profiling tool such as the Performance Profiler in Visual Studio.</p>
-<p><img src="media/profiling.png" alt="Profiling"></p>
-<h2 id="profile-with-the-stride-game-profiler-script">Profile with the Stride <strong>Game Profiler</strong> script</h2>
-<p>The <strong>Game Profiler</strong> script shows how performance costs change at runtime. This helps isolate bottlenecks and find their cause.</p>
-<p><img src="media/profiling-profiler-at-runtime.jpg" alt="Profiler at runtime"></p>
-<p>To use the script:</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p>Вы можете <strong>профилировать</strong> свой проект, чтобы проверить его производительность во время выполнения и найти проблемы. Используйте скрипт Stride <strong>Game Profiler</strong> или внешний инструмент профилирования, например Performance Profiler в Visual Studio.</p>
+<p><img src="media/profiling.png" alt="Профилирование"></p>
+<h2 id="профилирование-с-помощью-скрипта-stride-game-profiler">Профилирование с помощью скрипта Stride <strong>Game Profiler</strong></h2>
+<p>Скрипт <strong>Game Profiler</strong> показывает, как изменяются показатели производительности во время выполнения. Это помогает выявить узкие места и найти их причину.</p>
+<p><img src="media/profiling-profiler-at-runtime.jpg" alt="Профилировщик во время выполнения"></p>
+<p>Чтобы использовать скрипт:</p>
 <ol>
 <li><p>In the <strong>Asset View</strong>, click <img src="media/profiling-add-new-asset-button.png" alt="Add new asset button"> and select <strong>Scripts &gt; Game Profiler</strong>.</p>
-<p><img src="media/profiling-add-game-profiler-script.png" alt="Add Game Profiler script"></p>
+<p><img src="media/profiling-add-game-profiler-script.png" alt="Добавить скрипт Game Profiler"></p>
 </li>
-<li><p>The <strong>New script dialog</strong> opens. Leave the default information and click <strong>Create script</strong>.</p>
-<p><img src="media/create-profiler-script.png" alt="New script"></p>
+<li><p>Откроется <strong>Диалоговое окно Новый скрипт</strong>. Оставьте информацию по умолчанию и нажмите <strong>Создать скрипт</strong>.</p>
+<p><img src="media/create-profiler-script.png" alt="Новый скрипт"></p>
 <p>Game Studio adds the GameProfiler script to your project.</p>
 </li>
 <li><p>Add the script to an entity. For instructions, see <a href="../scripts/use-a-script.html">Use scripts</a>.</p>
@@ -329,25 +325,25 @@ Number keys | Jump to a page</li>
 </li>
 </ol>
 <p>For more information about the Visual Studio profiler, see the <a href="https://msdn.microsoft.com/en-us/library/mt210448.aspx">MSDN documentation</a>.</p>
-<h3 id="use-renderdoc">Use RenderDoc</h3>
-<p>RenderDoc is a free MIT licensed stand-alone graphics debugger that allows quick and easy single-frame capture and detailed introspection of any application using Vulkan, D3D11, OpenGL &amp; OpenGL ES or D3D12 across Windows 7 - 10, Linux, Android, or Nintendo Switch™.</p>
+<h3 id="использование-renderdoc">Использование RenderDoc</h3>
+<p>Render Doc — это бесплатный автономный графический отладчик с лицензией MIT, который позволяет быстро и легко захватывать отдельные кадры и проводить подробный анализ любого приложения с использованием Vulkan, D3D11, Open GL и Open GL ES или D3D12 в Windows 7–10, Linux, Android или Nintendo Switch™.</p>
 <ol>
-<li><p>Download <a href="https://renderdoc.org/builds">RenderDoc</a>.</p>
+<li><p>Загрузить <a href="https://renderdoc.org/builds">Render Doc</a>.</p>
 </li>
-<li><p>Optional: This step is optional and only necessary if you want to have render pass markers with name following the Graphics Compositor:</p>
-<p>2.1. In your executable project (Windows), locate <code>game.Run();</code> and insert the following code just before:</p>
+<li><p>Необязательно: Этот шаг необязателен и необходим только в том случае, если вы хотите иметь маркеры прохода рендеринга с именем, следующим за Graphics Compositor:</p>
+<p>2.1. В своем исполняемом проекте (Windows) найдите <code>game.Run();</code> и вставьте следующий код непосредственно перед ним:</p>
 <pre><code class="lang-cs">game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
 </code></pre>
 <div class="NOTE">
 <h5>Note</h5>
-<p>If you have a <code>SharpDXException</code> of type <code>DXGI_ERROR_SDK_COMPONENT_MISSING</code>, please follow the instructions from <a href="https://docs.microsoft.com/en-us/windows/uwp/gaming/use-the-directx-runtime-and-visual-studio-graphics-diagnostic-features">https://docs.microsoft.com/en-us/windows/uwp/gaming/use-the-directx-runtime-and-visual-studio-graphics-diagnostic-features</a></p>
+<p>Если у вас возникло исключение <code>SharpDXException</code> типа<code>DXGI_ERROR_SDK_COMPONENT_MISSING</code>, пожалуйста, следуйте инструкциям <a href="https://docs.microsoft.com/en-us/windows/uwp/gaming/use-the-directx-runtime-and-visual-studio-graphics-diagnostic-features">https://docs.microsoft.com/en-us/windows/uwp/gaming/use-the-directx-runtime-and-visual-studio-graphics-diagnostic-features</a></p>
 </div>
-<p>2.2. Also, make sure profiler is enabled by calling this code from any of your game script:</p>
+<p>2.2. Также убедитесь, что профилировщик включен, вызвав этот код из любого игрового скрипта:</p>
 <pre><code class="lang-cs">GameProfiler.EnableProfiling();
 </code></pre>
 </li>
-<li><p>Optional: Add a package reference to <code>Stride.Graphics.RenderDocPlugin</code>.</p>
-<p>You can then use the @'Stride.Graphics.RenderDocManager' class to trigger captures:</p>
+<li><p>Необязательно: Добавьте ссылку на пакет<code>Stride.Graphics.RenderDocPlugin</code>.</p>
+<p>Затем вы можете использовать класс @'Stride.Graphics.RenderDocManager' для запуска захвата:</p>
 <pre><code class="lang-cs">var renderDocManager = new RenderDocManager();
 renderDocManager.StartCapture(GraphicsDevice, IntPtr.Zero);
 // Some rendering code...
@@ -355,33 +351,33 @@ renderDocManager.EndFrameCapture(GraphicsDevice, IntPtr.Zero);
 </code></pre>
 </li>
 </ol>
-<h2 id="common-bottlenecks">Common bottlenecks</h2>
-<p>As CPU and GPU process different types of data, it's usually easy to identify which part is causing a bottleneck.</p>
-<p>Most GPU problems arise when the application uses expensive rendering techniques, such as post effects, lighting, shadows, and tessellation. To identify the problem, disable rendering features.</p>
-<p>If instead there seems to be a CPU bottleneck, reduce the complexity of the scene.</p>
-<p>For graphics:</p>
+<h2 id="распространенные-узкие-места">Распространенные узкие места</h2>
+<p>Поскольку центральный процессор и графический процессор обрабатывают разные типы данных, обычно легко определить, какой из компонентов является узким местом.</p>
+<p>Большинство проблем с графическим процессором возникают, когда приложение использует ресурсоемкие методы рендеринга, такие как постэффекты, освещение, тени и тесселяция. Чтобы определить проблему, отключите функции рендеринга.</p>
+<p>Если вместо этого вы обнаружите узкое место в работе процессора, уменьшите сложность сцены.</p>
+<p>Для графики:</p>
 <ul>
-<li>decrease the resolution of your game</li>
-<li>reduce the quality of your <a href="../graphics/post-effects/index.html">post effects</a></li>
-<li>reduce the number of lights and size of <a href="../graphics/lights-and-shadows/shadows.html">shadow maps</a></li>
-<li>reduce shadow map sizes</li>
-<li>use culling techniques to reduce the number of objects and vertices rendered</li>
+<li>уменьшите разрешение вашей игры</li>
+<li>уменьшите качество ваших <a href="../graphics/post-effects/index.html">пост-эффектов</a></li>
+<li>уменьшите количество источников света и размер <a href="../graphics/lights-and-shadows/shadows.html">карт теней</a></li>
+<li>уменьшите размеры карты теней</li>
+<li>используйте методы отбраковки для уменьшения количества визуализируемых объектов и вершин</li>
 </ul>
-<p>For textures:</p>
+<p>Для текстур:</p>
 <ul>
-<li>use <a href="../graphics/textures/compression.html">compressed textures</a> on slower devices</li>
-<li>use sprite sheets, not individual images</li>
-<li>use texture atlases, not separate textures</li>
+<li>используйте <a href="../graphics/textures/compression.html">сжатые текстуры</a> on slower devices</li>
+<li>используйте спрайт-листы, а не отдельные изображения</li>
+<li>используйте атласы текстур, а не отдельные текстуры</li>
 </ul>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="profiling.html">Profiling</a></li>
+<li><a href="profiling.html">Профилирование</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/troubleshooting/profiling.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/troubleshooting/profiling.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -398,7 +394,7 @@ renderDocManager.EndFrameCapture(GraphicsDevice, IntPtr.Zero);
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

@@ -7620,16 +7620,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Stride.Core.PropertyChangedExtendedEventArgs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Stride.Core.PropertyChangedExtendedEventArgs.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Stride.Core.PropertyContainer.PropertyUpdatedDelegate.yml",
       "output": {
         ".html": {
@@ -21530,6 +21520,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/Stride.Rendering.Materials.ComputeColors.ComputeColorParameterBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Stride.Rendering.Materials.ComputeColors.ComputeColorParameterBool.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/Stride.Rendering.Materials.ComputeColors.ComputeColorParameterFloat.yml",
       "output": {
         ".html": {
@@ -31402,6 +31402,86 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-1.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-2.webp",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-2.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-3.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-3.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-4.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-4.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-5.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-5.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-6.webp",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-6.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-7.webp",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-7.webp"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "manual/animation/media/node-animation-8.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "manual/animation/media/node-animation-8.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "manual/animation/media/pick-an-asset-up.png",
       "output": {
         "resource": {
@@ -31536,6 +31616,16 @@
       "output": {
         ".html": {
           "relative_path": "manual/animation/model-node-links.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/animation/node-animation.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/animation/node-animation.html"
         }
       },
       "version": ""

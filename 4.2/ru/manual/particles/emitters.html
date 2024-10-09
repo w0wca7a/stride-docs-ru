@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Emitters | Stride Manual </title>
+      <title>Эмитеры/Излучатели (Emitters) | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Emitters | Stride Manual ">
+      <meta name="title" content="Эмитеры/Излучатели (Emitters) | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/emitters.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/emitters.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,96 +85,92 @@
         </div>
 
         <article data-uid="">
-<h1 id="emitters">Emitters</h1>
+<h1 id="эмитерыизлучатели-emitters">Эмитеры/Излучатели (Emitters)</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p><span class="badge text-bg-primary">Beginner</span>
-<span class="badge text-bg-success">Artist</span>
-<span class="badge text-bg-success">Programmer</span></p>
-<p><strong>Particle emitters</strong> manage how many particles are in an effect, how they appear, move, and disappear, and how they are drawn. For example, a fire effect might be composed of three separate particle effects: flames, embers, and smoke. Each of these effects is managed by a separate particle emitter.</p>
-<p>Emitters contain further controls such as <a href="spawners.html">spawners</a>, <a href="initializers.html">initializers</a>, and <a href="updaters.html">updaters</a>.</p>
+<p><span class="badge text-bg-primary">Начинающий</span>
+<span class="badge text-bg-success">Художник</span>
+<span class="badge text-bg-success">Программист</span></p>
+<p><strong>Излучатели частиц</strong> управляют количеством частиц в эффекте, тем, как они появляются, движутся и исчезают, а также тем, как они отрисовываются. Например, эффект огня может состоять из трех отдельных эффектов частиц: пламени, углей и дыма. Каждый из этих эффектов управляется отдельным излучателем частиц.</p>
+<p>Эмиттеры содержат дополнительные элементы управления, такие как <a href="spawners.html">генераторы (spawners)</a>, <a href="initializers.html">инициализаторы (initializers)</a>, и <a href="updaters.html">актуализаторы (updaters)</a>.</p>
 <p><img src="media/particles-reference-emitters-1.png" alt="media/particles-reference-emitters-1.png"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Emitter name</td>
-<td>A unique identifier for the particle emitter</td>
+<td>Имя излучателя (Emitter name)</td>
+<td>Уникальный идентификатор излучателя частиц</td>
 </tr>
 <tr>
-<td>Max particles</td>
-<td>The maximum number of active particles the emitter can manage at a given time, based on the particles' spawn rate and lifespan. If you leave this at 0, Stride uses its own estimate.</td>
+<td>Макс. количество частиц (Max particles)</td>
+<td>Максимальное количество активных частиц, которыми излучатель может управлять в данный момент времени, рассчитывается на основе скорости появления частиц и продолжительности их жизни. Если оставить значение 0, Stride будет использовать собственную оценку.</td>
 </tr>
 <tr>
-<td>Lifespan</td>
-<td>New particles have a lifespan between these two values</td>
+<td>Продолжительность жизни (Lifespan)</td>
+<td>Новые частицы имеют продолжительность жизни между этими двумя значениями</td>
 </tr>
 <tr>
-<td>Space</td>
-<td>Particles in <strong>world</strong> space remain in the world space when the emitter moves away from them. Particles in <strong>local</strong> space always exist in the emitter's local coordinate system; if the emitter moves, rotates, or scales, the particles move with it.</td>
+<td>Пространство (Space)</td>
+<td>Частицы в <strong>мировом (world)</strong> пространстве остаются в мировом пространстве, когда излучатель удаляется от них. Частицы в <strong>локальном (local)</strong> пространстве всегда существуют в локальной системе координат излучателя; если излучатель движется, вращается или масштабируется, частицы движутся вместе с ним.</td>
 </tr>
 <tr>
-<td>Randomize</td>
-<td>Particles use pseudo-random values for everything which requires randomness. If you set this to <strong>Time</strong>, different emitters generate different random numbers. If you set it to <strong>Fixed</strong>, different instances of the same effect behave identically. <strong>Position</strong> acts as Fixed but is different for different positions.</td>
+<td>Случайный выбор (Randomize)</td>
+<td>Частицы используют псевдослучайные значения для всего, что требует случайного выбора. Если вы установите значение <strong>Time</strong>, разные излучатели генерируют разные случайные числа. Если вы установите его на <strong>Fixed</strong>, разные экземпляры одного и того же эффекта ведут себя одинаково. <strong>Position</strong> действует как Fixed но различен для разных положений.</td>
 </tr>
 <tr>
-<td>Draw priority</td>
-<td>This controls the order in which particles are drawn. Higher numbers have higher priority. For example, if this particle effect has a draw priority of 2, it will be drawn after a particle effect with a draw priority of 1.</td>
+<td>Приоритет рисования (Draw priority)</td>
+<td>Контролирует порядок, в котором отрисовываются частицы. Более высокие числа имеют более высокий приоритет. Например, если этот эффект частиц имеет приоритет отрисовки 2, он будет отрисован после эффекта частиц с приоритетом отрисовки 1.</td>
 </tr>
 <tr>
-<td>Sorting</td>
-<td>Choose if the articles should be drawn by <strong>depth</strong> (away from the camera), <strong>age</strong> (particles spawned first are drawn on top), <strong>order</strong>, or in no order <strong>none</strong> (good for additive particles, which need no sorting).</td>
+<td>Сортировка (Sorting)</td>
+<td>Рисовать частицы по <strong>глубине (depth)</strong> (подальше от камеры), <strong>возрасту (age)</strong> (частицы, созданные первыми, рисуются сверху), <strong>order</strong> (по порядку), или не по порядку <strong>none</strong> (подходит для аддитивных частиц, не требующих сортировки).</td>
 </tr>
 <tr>
-<td>Shape</td>
-<td>Specifies the <a href="shapes.html">shape</a> used to draw the particles</td>
+<td>Форма (Shape)</td>
+<td>Указывает <a href="shapes.html">форму</a>, которая используется для рисования частиц.</td>
 </tr>
 <tr>
-<td>Material</td>
-<td>Specifies the <a href="materials.html">material</a> used to render the particles</td>
+<td>Материал</td>
+<td>Указывает <a href="materials.html">материал</a>, который используется для визуализации частиц</td>
 </tr>
 <tr>
-<td>Spawners</td>
-<td><a href="spawners.html">Spawners</a> control how quickly new particles are emitted. To emit particles, emitters must have at least one spawner.</td>
+<td>Генераторы (Spawners)</td>
+<td><a href="spawners.html">Генераторы</a> контролируют скорость испускания новых частиц. Для испускания частиц излучатели должны иметь хотя бы один генератор.</td>
 </tr>
 <tr>
-<td>Initializers</td>
-<td><a href="initializers.html">Initializers</a> set the initial values of new particles</td>
+<td>Инициализаторы (Initializers)</td>
+<td><a href="initializers.html">Инициализаторы</a> устанавливают начальные значения новых частиц</td>
 </tr>
 <tr>
-<td>Updaters</td>
-<td><a href="updaters.html">Updaters</a> update living particles every frame, changing their attributes. Updaters execute in the order in which they appear on the list.</td>
+<td>Актуализаторы (Updaters)</td>
+<td><a href="updaters.html">Актуализаторы</a> обновляют живые частицы каждый кадр, изменяя их атрибуты. Актуализаторы выполняются в том порядке, в котором они указаны в списке.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><p><a href="create-particles.html">Create particles</a></p>
+<li><p><a href="create-particles.html">Создание частиц</a></p>
 </li>
-<li><p><a href="shapes.html">Shapes</a></p>
+<li><p><a href="shapes.html">Формы (Shapes)</a></p>
 </li>
-<li><p><a href="materials.html">Materials</a></p>
+<li><p><a href="materials.html">Материалы</a></p>
 </li>
-<li><p><a href="spawners.html">Spawners</a></p>
+<li><p><a href="spawners.html">Генераторы (Spawners)</a></p>
 </li>
-<li><p><a href="initializers.html">Initializers</a></p>
+<li><p><a href="initializers.html">Инициализаторы</a></p>
 </li>
-<li><p><a href="updaters.html">Updaters</a></p>
+<li><p><a href="updaters.html">Актуализаторы (Updaters)</a></p>
 </li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/particles/emitters.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/particles/emitters.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -191,7 +187,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

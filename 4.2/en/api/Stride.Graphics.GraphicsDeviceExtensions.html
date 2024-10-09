@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -89,7 +89,7 @@
 
 
   <h1 id="Stride_Graphics_GraphicsDeviceExtensions" data-uid="Stride.Graphics.GraphicsDeviceExtensions" class="text-break">
-Class GraphicsDeviceExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L15"><i class="bi bi-code-slash"></i></a>
+Class GraphicsDeviceExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L14"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -132,7 +132,7 @@ Class GraphicsDeviceExtensions  <a class="header-action link-secondary" title="V
 
   <h3 id="Stride_Graphics_GraphicsDeviceExtensions_DrawQuad_Stride_Graphics_CommandList_" data-uid="Stride.Graphics.GraphicsDeviceExtensions.DrawQuad(Stride.Graphics.CommandList)">
   DrawQuad(CommandList)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L34"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a full screen quad. An <a class="xref" href="Stride.Graphics.Effect.html">Effect</a> must be applied before calling this method.</p>
@@ -164,7 +164,7 @@ Class GraphicsDeviceExtensions  <a class="header-action link-secondary" title="V
 
   <h3 id="Stride_Graphics_GraphicsDeviceExtensions_DrawQuad_Stride_Graphics_GraphicsContext_Stride_Rendering_EffectInstance_" data-uid="Stride.Graphics.GraphicsDeviceExtensions.DrawQuad(Stride.Graphics.GraphicsContext,Stride.Rendering.EffectInstance)">
   DrawQuad(GraphicsContext, EffectInstance)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L22"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a fullscreen quad with the specified effect and parameters.</p>
@@ -178,9 +178,10 @@ Class GraphicsDeviceExtensions  <a class="header-action link-secondary" title="V
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>graphicsContext</code> <a class="xref" href="Stride.Graphics.GraphicsContext.html">GraphicsContext</a></dt>
-    <dd></dd>
+    <dd><p>The graphics context used for drawing.</p>
+</dd>
     <dt><code>effectInstance</code> <a class="xref" href="Stride.Rendering.EffectInstance.html">EffectInstance</a></dt>
-    <dd><p>The effect instance.</p>
+    <dd><p>The effect instance to apply when drawing the quad.</p>
 </dd>
   </dl>
 
@@ -195,7 +196,7 @@ Class GraphicsDeviceExtensions  <a class="header-action link-secondary" title="V
   <h4 class="section">Exceptions</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
-    <dd><p>effect</p>
+    <dd><p>Thrown when <code class="paramref">effectInstance</code> is <code>null</code>.</p>
 </dd>
   </dl>
 
@@ -205,7 +206,7 @@ Class GraphicsDeviceExtensions  <a class="header-action link-secondary" title="V
 
   <h3 id="Stride_Graphics_GraphicsDeviceExtensions_DrawTexture_Stride_Graphics_GraphicsContext_Stride_Graphics_Texture_Stride_Core_Mathematics_Color4_System_Nullable_Stride_Graphics_BlendStateDescription__" data-uid="Stride.Graphics.GraphicsDeviceExtensions.DrawTexture(Stride.Graphics.GraphicsContext,Stride.Graphics.Texture,Stride.Core.Mathematics.Color4,System.Nullable{Stride.Graphics.BlendStateDescription})">
   DrawTexture(GraphicsContext, Texture, Color4, BlendStateDescription?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L67"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a fullscreen texture using a <a class="xref" href="Stride.Graphics.SamplerStateFactory.html#Stride_Graphics_SamplerStateFactory_LinearClamp">LinearClamp</a> sampler
@@ -246,7 +247,7 @@ and the texture color multiplied by a custom color. See Draw+a+texture to learn 
 
   <h3 id="Stride_Graphics_GraphicsDeviceExtensions_DrawTexture_Stride_Graphics_GraphicsContext_Stride_Graphics_Texture_Stride_Graphics_SamplerState_Stride_Core_Mathematics_Color4_System_Nullable_Stride_Graphics_BlendStateDescription__" data-uid="Stride.Graphics.GraphicsDeviceExtensions.DrawTexture(Stride.Graphics.GraphicsContext,Stride.Graphics.Texture,Stride.Graphics.SamplerState,Stride.Core.Mathematics.Color4,System.Nullable{Stride.Graphics.BlendStateDescription})">
   DrawTexture(GraphicsContext, Texture, SamplerState, Color4, BlendStateDescription?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L80"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a fullscreen texture using the specified sampler
@@ -290,7 +291,7 @@ and the texture color multiplied by a custom color. See Draw+a+texture to learn 
 
   <h3 id="Stride_Graphics_GraphicsDeviceExtensions_DrawTexture_Stride_Graphics_GraphicsContext_Stride_Graphics_Texture_Stride_Graphics_SamplerState_System_Nullable_Stride_Graphics_BlendStateDescription__" data-uid="Stride.Graphics.GraphicsDeviceExtensions.DrawTexture(Stride.Graphics.GraphicsContext,Stride.Graphics.Texture,Stride.Graphics.SamplerState,System.Nullable{Stride.Graphics.BlendStateDescription})">
   DrawTexture(GraphicsContext, Texture, SamplerState, BlendStateDescription?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L55"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a fullscreen texture using the specified sampler. See Draw+a+texture to learn how to use it.</p>
@@ -330,7 +331,7 @@ and the texture color multiplied by a custom color. See Draw+a+texture to learn 
 
   <h3 id="Stride_Graphics_GraphicsDeviceExtensions_DrawTexture_Stride_Graphics_GraphicsContext_Stride_Graphics_Texture_System_Nullable_Stride_Graphics_BlendStateDescription__" data-uid="Stride.Graphics.GraphicsDeviceExtensions.DrawTexture(Stride.Graphics.GraphicsContext,Stride.Graphics.Texture,System.Nullable{Stride.Graphics.BlendStateDescription})">
   DrawTexture(GraphicsContext, Texture, BlendStateDescription?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L44"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Draws a fullscreen texture using a <a class="xref" href="Stride.Graphics.SamplerStateFactory.html#Stride_Graphics_SamplerStateFactory_LinearClamp">LinearClamp</a> sampler. See Draw+a+texture to learn how to use it.</p>
@@ -367,7 +368,7 @@ and the texture color multiplied by a custom color. See Draw+a+texture to learn 
 
   <h3 id="Stride_Graphics_GraphicsDeviceExtensions_GetSharedWhiteTexture_Stride_Graphics_GraphicsDevice_" data-uid="Stride.Graphics.GraphicsDeviceExtensions.GetSharedWhiteTexture(Stride.Graphics.GraphicsDevice)">
   GetSharedWhiteTexture(GraphicsDevice)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L86"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
@@ -403,7 +404,7 @@ and the texture color multiplied by a custom color. See Draw+a+texture to learn 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L15" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Graphics/GraphicsDeviceExtensions.cs/#L14" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -419,7 +420,7 @@ and the texture color multiplied by a custom color. See Draw+a+texture to learn 
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Audio asset properties | Stride Manual </title>
+      <title>Свойства аудио-актива | Stride Manual </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Audio asset properties | Stride Manual ">
+      <meta name="title" content="Свойства аудио-актива | Stride Manual ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/en/manual/audio/audio-asset-properties.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/stride3d/stride-docs/blob/master/ru/manual/audio/audio-asset-properties.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -85,56 +85,52 @@
         </div>
 
         <article data-uid="">
-<h1 id="audio-asset-properties">Audio asset properties</h1>
+<h1 id="свойства-аудио-актива">Свойства аудио-актива</h1>
 
-<div class="WARNING">
-<h5>Warning</h5>
-<p>Приносим свои извинения за неудобства. Для этой страницы нет перевода на русский язык. Она будет отображаться на английском языке.</p>
-</div>
-<p>After you select an audio asset in the <strong>Asset View</strong>, you can configure its properties in the <strong>Property Grid</strong>.</p>
-<p><img src="media/audio-asset-properties.png" alt="Audio asset properties"></p>
+<p>После выбора аудио-актива в <strong>Просмотре активов (Asset View)</strong> вы можете настроить его свойства в <strong>Таблице свойств (Property grid)</strong>.
+<img src="media/audio-asset-properties.png" alt="Свойства аудио-актива"></p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Description</th>
+<th>Свойство</th>
+<th>Описание</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Source</strong></td>
-<td>The source audio file (note that Stride never alters source files)</td>
+<td><strong>Источник (Source)</strong></td>
+<td>Исходный аудиофайл (обратите внимание, что Stride никогда не изменяет исходные файлы)</td>
 </tr>
 <tr>
-<td><strong>Compression ratio</strong></td>
-<td>Set the compression rate from <code>1</code> (no compression) to <code>40</code> (maximum). Greater compression optimizes memory use, but decreases audio quality. Stride compresses audio files with the open-source <a href="https://en.wikipedia.org/wiki/CELT">Opus/Celt</a> codec.</td>
+<td><strong>Коэффициент сжатия (Compression ratio)</strong></td>
+<td>Установите степень сжатия от «1» (без сжатия) до «40» (максимум). Большее сжатие оптимизирует использование памяти, но снижает качество звука. Stride сжимает аудиофайлы с помощью кодека с открытым исходным кодом <a href="https://en.wikipedia.org/wiki/CELT">Opus/Celt</a>.</td>
 </tr>
 <tr>
-<td><strong>Sample rate</strong></td>
-<td>The rate at which Stride <a href="https://en.wikipedia.org/wiki/Sampling_(signal_processing)#Sampling_rate">resamples</a> the source file. The higher the sample rate, the higher the audio quality. Typical sample rates are 44.1 kHz (44,100 Hz), 48 kHz, 88.2 kHz, and 96 kHz. Note that high sampling rates doesn't improve the quality of low-quality audio files.</td>
+<td><strong>Частота дискретизации (Sample rate)</strong></td>
+<td>Скорость, с которой Stride <a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B0%D1%81%D1%82%D0%BE%D1%82%D0%B0_%D0%B4%D0%B8%D1%81%D0%BA%D1%80%D0%B5%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8">производит ресэмпл</a> исходного файла. Чем выше частота дискретизации, тем выше качество звука. Наиболее используемые частоты дискретизации: 44.1 kГц (44,100 Гц), 48 kГц, 88.2 kГц, and 96 kГц. Обратите внимание, что высокая частота дискретизации не улучшает качество аудиофайлов низкого качества.</td>
 </tr>
 <tr>
-<td><strong>Spatialized</strong></td>
-<td>Simulate 3D audio (see <a href="spatialized-audio.html">spatialized audio</a>)</td>
+<td><strong>Пространственный (Spatialized)</strong></td>
+<td>Имитация 3D-аудио (см. <a href="spatialized-audio.html">пространственный звук</a>)</td>
 </tr>
 <tr>
-<td><strong>Stream from disk</strong></td>
-<td>Streaming is useful for larger audio files, as it saves memory. For more information, see <a href="stream-audio.html">Stream audio</a>.</td>
+<td><strong>Транслировать с диска (Stream from disk)</strong></td>
+<td>Потоковая передача полезна для больших аудиофайлов, так как она экономит память. Для получения дополнительной информации см. <a href="stream-audio.html">Аудиопоток</a>.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See also</h2>
+<h2 id="смотрите-также">Смотрите также</h2>
 <ul>
-<li><a href="import-audio.html">Import audio</a></li>
-<li><a href="global-audio-settings.html">Global audio settings</a></li>
-<li><a href="spatialized-audio.html">Spatialized audio</a></li>
-<li><a href="non-spatialized-audio.html">Non-spatialized audio</a></li>
+<li><a href="import-audio.html">Импорт звуковых файлов</a></li>
+<li><a href="global-audio-settings.html">Глобальные звуковые настройки</a></li>
+<li><a href="spatialized-audio.html">Пространственный звук</a></li>
+<li><a href="non-spatialized-audio.html">Непространственный звук</a></li>
 </ul>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/stride3d/stride-docs/blob/master/en/manual/audio/audio-asset-properties.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/stride3d/stride-docs/blob/master/ru/manual/audio/audio-asset-properties.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
@@ -151,7 +147,7 @@
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>

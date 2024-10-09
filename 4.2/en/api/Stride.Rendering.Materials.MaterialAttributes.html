@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -176,7 +176,7 @@ public class MaterialAttributes : IMaterialAttributes, IMaterialFeature, IMateri
 
   <h3 id="Stride_Rendering_Materials_MaterialAttributes_ClearCoat" data-uid="Stride.Rendering.Materials.MaterialAttributes.ClearCoat">
   ClearCoat
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Materials/MaterialAttributes.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Materials/MaterialAttributes.cs/#L188"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Gets or sets the clear coat shading features for the material.</p>
@@ -230,6 +230,40 @@ public CullMode CullMode { get; set; }</code></pre>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Stride.Graphics.CullMode.html">CullMode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Stride_Rendering_Materials_MaterialAttributes_DepthFunction_" data-uid="Stride.Rendering.Materials.MaterialAttributes.DepthFunction*"></a>
+
+  <h3 id="Stride_Rendering_Materials_MaterialAttributes_DepthFunction" data-uid="Stride.Rendering.Materials.MaterialAttributes.DepthFunction">
+  DepthFunction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Materials/MaterialAttributes.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The test used to figure out whether the material should be drawn when behind other models</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Display(&quot;Depth Function&quot;, &quot;Misc&quot;)]
+[DataMember(135)]
+public CompareFunction DepthFunction { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Stride.Graphics.CompareFunction.html">CompareFunction</a></dt>
     <dd></dd>
   </dl>
 
@@ -735,7 +769,7 @@ public IMaterialTransparencyFeature Transparency { get; set; }</code></pre>
 
   <h3 id="Stride_Rendering_Materials_MaterialAttributes_Visit_Stride_Rendering_Materials_MaterialGeneratorContext_" data-uid="Stride.Rendering.Materials.MaterialAttributes.Visit(Stride.Rendering.Materials.MaterialGeneratorContext)">
   Visit(MaterialGeneratorContext)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Materials/MaterialAttributes.cs/#L184"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/stride3d/stride/blob/locale-ru/sources/engine/Stride.Rendering/Rendering/Materials/MaterialAttributes.cs/#L193"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"><p>Generates the shader.</p>
@@ -784,7 +818,7 @@ public IMaterialTransparencyFeature Transparency { get; set; }</code></pre>
     <footer class="border-top text-secondary">
       <div class="container-xxl">
         <div class="flex-fill">
-          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.3</p><p>&copy; .NET Foundation and Contributors</p></div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-1 text-center small"><p>Supported by the <a href="https://dotnetfoundation.org/" target="_blank" rel="noopener">.NET Foundation</a></p><p>Made with <a href="https://dotnet.github.io/docfx">docfx</a></p><p>Stride Docs Website v.2.0.0.4</p><p>&copy; .NET Foundation and Contributors</p></div>
         </div>
       </div>
     </footer>
