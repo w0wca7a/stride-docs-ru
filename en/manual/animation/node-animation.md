@@ -149,5 +149,5 @@ public override void Start()
 
 ## See also
 * [Import animations](import-animations.md)
-* [Create a script](..\Scripts\create-a-script.md)
-* [Use assets](..\game-studio\use-assets.md)
+* [Create a script](../Scripts/create-a-script.md)
+* [Use assets](../game-studio/use-assets.md)
